@@ -102,3 +102,9 @@ dist
 
 # TernJS port file
 .tern-port
+
+# requirements
+/requirements
+
+# css
+museum/css/style.css.map
