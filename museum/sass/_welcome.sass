@@ -1,2 +1,43 @@
 .welcome
-  
+  position: relative
+  height: 750px
+  padding-top: 114px
+  background-color: $blackBg
+  &__wrapper
+    position: absolute
+    z-index: 2
+    max-width: 598px
+  &__text
+    margin-top: 26px
+    font-family: $roboto
+    font-size: 28px
+    line-height: 33px
+    letter-spacing: 2px
+    font-weight: 300
+    color: $white
+  &__btn
+    display: block
+    width: 360px
+    height: 75px
+    margin-top: 76px
+    padding: 27px 66px
+    font-family: $roboto
+    font-size: 22px
+    line-height: 26px
+    letter-spacing: 2px
+    font-weight: 100
+    text-decoration: none
+    text-align: center
+    color: $white
+    background-color: $red
+    border-radius: 10px
+    transition: background-color 0.6s linear
+    &:hover
+      background-color: $gold   
+  &__img
+    position: absolute
+    z-index: 1
+    right: 240px
+    top: 0
+    width: 1215px
+    height: 750px

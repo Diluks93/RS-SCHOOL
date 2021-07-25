@@ -16,6 +16,7 @@ $forum : Forum, cursive
 @import "main"
 @import "mixins"
 @import "tickets"
+@import "title"
 @import "video"
 @import "visiting"
 @import "welcome"
@@ -27,6 +28,6 @@ $forum : Forum, cursive
   scroll-behavior: smooth
 
 .container
-  display: flex
-  justify-content: center
-  align-items: center
+  display: block
+  max-width: 1440px
+  margin: 0 auto
