@@ -1,36 +1,45 @@
 .header
   max-height: 200px
-  width: 1920px
-  background-color: #030303
   padding: 74px 240px 76px
+  background-color: $blackBg
   &__wrapper
     display: flex
     justify-content: space-between
   &__logo
     width: 195px
     height: 50px
-    background: url("../assets/svg/logo.svg") 0px center/20% no-repeat
-    color: white
-    font-family: Forum
-    font-weight: 400
+    font-family: $forum
     font-size: 28px
     line-height: 50px
+    font-weight: 400
     letter-spacing: 5px
-    text-transform: uppercase
     text-align: right
+    text-transform: uppercase
+    color: $white
+    background: url("../assets/svg/logo.svg") 0px center/20% no-repeat
   &__items
     display: flex
     justify-content: space-between
     align-items: center
-    list-style-type: none
-    width: 720px
-    margin-left: 525px
+    max-width: 720px
     padding: 0
+    margin-left: 525px
+    list-style: none
+  &__item
+    margin-right: 76px
+    &:last-child
+      margin-right: 0
   &__link
-    font-family: Roboto
-    font-weight: 100
+    height: 50px
+    font-family: $roboto 
     font-size: 22px
     line-height: 50px
-    color: #FFFFFF
+    letter-spacing: 2px
+    font-weight: 100
     text-decoration: none
+    color: $white
+    &:hover
+      color: $gold
+    &:active
+      color: $gold
 
