@@ -1,2 +1,33 @@
 .explore
-  
+  max-height: 865px
+  padding-top: 90px
+  padding-bottom: 75px
+  color: $white
+  background-color: $blackBg
+  &__block
+    width: 660px
+    margin-right: 60px
+  .container
+    display: flex
+    justify-content: space-between
+  &__title
+    @include title
+  hr
+    @include hr
+    border: 0.5px solid $red
+  &__text
+    margin-top: 25px
+    font-family: $roboto
+    font-size: 22px
+    line-height: 38px
+    font-weight: 300
+    span
+      color: $gold
+    &:nth-child(n + 2):nth-child(-n + 3)
+      margin-top: 75px
+  &__img
+    display: none
+    width: 720px
+    height: 700px
+  .active
+    display: inline
