@@ -111,26 +111,26 @@
             <source src="#">
           </video>
           <button>
-              <img src="assets/svg/video/play.svg" alt="play button">
+              <svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#play"></use></svg>
           </button>
         </div>
         <div class="video__block">
           <button class="video__btn">
-            <img src="assets/svg/video/back.svg" alt="back button">
+            <svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#back"></use></svg>
           </button>
           <button class="video__btn">
-            <img src="assets/svg/video/playSmall.svg" alt="play button">
+            <svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#playSmall"></use></svg>
           </button>
           <button class="video__btn">
-            <img src="assets/svg/video/foward.svg" alt="foward button">
+            <svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#foward"></use></svg>
           </button>
-          <input type="range">
+          <input type="range" value="40" min="0" max="100" step="1" class="video__block_progress" id="longRange">
           <button class="video__btn">
-            <img src="assets/svg/video/sound.svg" alt="sound button">
+            <svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#sound"></use></svg>
           </button>
-          <input type="range">
+          <input type="range" value="40" min="0" max="100" step="1" class="video__block_progress" id="shortRange">
           <button class="video__btn">
-            <img src="assets/svg/video/fullscreen.svg" alt="fullscreen button">
+            <svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#fullscreen"></use></svg>
           </button>
         </div>
         <div class="video__wrapper">
@@ -143,5 +143,6 @@
     <section class="contacts" id="contacts"></section>
   </main>
   <footer class="footer"></footer>
+  <script src="js/script.js"></script>
 </body>
 </html>
