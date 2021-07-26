@@ -1,1 +1,23 @@
 .video
+  max-height: 1009px
+  padding-top: 90px
+  &__wrap
+    position: relative
+    z-index: 1
+    button
+      position: absolute
+      z-index: 2
+      left: calc(50% - 110px)
+      top: 50%
+      transform: translateY(-50%)
+      background: none
+      border: none
+      padding: 0
+      cursor: pointer
+      img
+        width: 220px
+        height: 220px
+        fill: $white
+        &:hover
+          fill: $red
+  
