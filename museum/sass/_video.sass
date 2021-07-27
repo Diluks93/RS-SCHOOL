@@ -31,12 +31,13 @@
   &__block
     display: flex
     justify-content: space-between
+    height: 85px
     align-items: center
     padding: 25px 41px 24px
     background-color: $black
     &_progress
       width: 820px
-      height: 7px
+      height: 8px
       background: linear-gradient(to right, #24809E 0%, #24809E 40%, #C4C4C4 40%, #C4C4C4 100%)
       outline: none
       transition: background 450ms ease-in
@@ -44,8 +45,8 @@
       &:nth-child(3n)
         width: 155px
     &_progress::-webkit-slider-thumb 
-      width: 20px
-      height: 20px
+      width: 15px
+      height: 15px
       border-radius: 50%
       -webkit-appearance: none
       cursor: ew-resize
@@ -69,6 +70,7 @@
     &:last-child
       .icon
         width: 36px
+        height: 36px
     .icon
       width: 27px
       height: 30px 
