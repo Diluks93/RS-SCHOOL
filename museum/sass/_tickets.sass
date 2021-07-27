@@ -1,6 +1,169 @@
 .tickets
+  max-height: 893px
+  padding-top: 75px
+  padding-bottom: 75px
+  background-color: $blackBg
+  &__title
+    @include title
+  hr
+    @include hr
+    height: 3px
+    margin-top: 25px
+    border: 0.5px solid $red
+  &__wrapper
+    display: flex
+    justify-content: space-between
+    margin-top: 75px
+    color: $white
+  &__img
+    width: 720px
+    height: 550px
   &__block
+    display: flex
+    justify-content: space-between
+    width: 660px
+    &_wrap
+      display: flex
+      flex-direction: column
+    &_title
+      font-family: $roboto
+      font-weight: 900
+      font-size: 28px
+      line-height: 33px
+    &_label
+      width: 270px
+      margin-top: 50px
+      display: block
+      position: relative
+      padding-left: 40px
+      cursor: pointer
+      font-size: 22px
+      user-select: none
+      font-family: $roboto
+      font-weight: 300
+      line-height: 26px
+      &:hover input ~ .tickets__block_checkmark 
+        background-color: $black
+      input:checked ~ .tickets__block_checkmark 
+        background-color: $black
+      input:checked ~ .tickets__block_checkmark:after 
+        display: block
+      input 
+        position: absolute
+        opacity: 0
+        cursor: pointer
+    &_checkmark 
+      position: absolute
+      top: 3px
+      left: 0
+      height: 17px
+      width: 17px
+      background-color: $black
+      border: 2px solid $white
+      border-radius: 50%
+      &:after
+        content: ""
+        position: absolute
+        display: none
+      &:after 
+        top: 3px
+        left: 3px
+        width: 7px
+        height: 7px
+        border-radius: 50%
+        background: white
+  &__box
+    &_wrap
+      display: flex
+      flex-direction: column
+      width: 175px
+      &:nth-child(2)
+        label
+          margin-top: 35px
+    &_title
+      font-family: $roboto
+      font-weight: 900
+      font-size: 28px
+      line-height: 33px
+      text-align: right
+    &_label
+      margin-top: 11px
+      font-family: $roboto
+      font-weight: 300
+      font-size: 22px
+      line-height: 26px
+      div
+        display: flex
+        align-items: flex-end
+        button
+          width: 30%
+          height: 50px
+          margin-top: 14px
+          padding: 0
+          color: $white
+          border: 2px solid $white
+          background-color: $blackBg
+          font-family: $roboto
+          font-weight: 400
+          font-size: 32px
+          line-height: 37px
+          text-align: center
+          &:nth-child(1n)
+            border-right: none
+          &:last-child
+            border-right: 2px solid $white
+            border-left: none
     &_input
-      all: unset
-      width: 3em
+      width: 40%
+      height: 50px
+      padding: 0
+      padding-left: 15px
+      background-color: $blackBg
+      border: none
+      border-bottom: 2px solid $white
+      border-top: 2px solid $white
       text-align: center
+      color: $white
+      font-family: $roboto
+      font-weight: 300
+      font-size: 22px
+      line-height: 26px
+    &_total
+      margin-top: 50px
+      font-family: $roboto
+      font-weight: 900
+      font-size: 28px
+      line-height: 33px
+      letter-spacing: 1.65px
+      .tickets__box_input
+        width: 40%
+        height: 50px
+        padding: 0
+        padding-right: 17px
+        background-color: $blackBg
+        border: none
+        color: $white
+        font-family: $roboto
+        font-weight: 900
+        font-size: 28px
+        line-height: 33px
+        letter-spacing: 1.65px
+    &_btn
+      width: 175px
+      height: 50px
+      margin-top: 50px
+      background: $white
+      border-radius: 2px
+      font-family: $roboto
+      font-weight: 300
+      font-size: 22px
+      line-height: 26px
+      letter-spacing: 2px
+      border: none
+      transition: all 0.5s
+      cursor: pointer
+      &:hover
+        background-color: $gold
+      &:active
+        background-color: $gold
+        

@@ -140,33 +140,42 @@
       </div>
     </section>
     <section class="tickets" id="tickets"><!--TICKETS-->
-      <h2 class="tickets__title">Buy tickets</h2>
-      <hr>
-      <div class="tickets__wrapper">
-        <img src="assets/img/tickets.jpg" alt="picture" class="tickets__img">
-        <div class="tickets__block">
-          <div class="tickets__block_wrap">
-            <h3 class="tickets__block_title">Ticket Type</h3>
-            <input type="radio" checked="checked" name="radio" class="tickets__block_input">Permanent exhibition
-            <input type="radio" checked="checked" name="radio" class="tickets__block_input">Temporary exhibition
-            <input type="radio" checked="checked" name="radio" class="tickets__block_input">Combined Admission
-          </div>
-          <div class="tickets__block_wrap">
-            <h3 class="tickets__block_title">Amount</h3>
-            <label>Basic 18+
-              <button type="button" onclick="this.nextElementSibling.stepDown()">-</button>
-              <input type="number" min="0" max="100" value="1" readonly class="tickets__block_input">
-              <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
-            </label>
-            <label>Senior 65+
-              <button type="button" onclick="this.nextElementSibling.stepDown()">-</button>
-              <input type="number" min="0" max="100" value="1" readonly class="tickets__block_input">
-              <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
-            </label>
-            <label>Total €
-              <input type="text" value="220">
-            </label>
-            <button class="tickets__block_btn">Buy Now</button>
+      <div class="container">
+        <h2 class="tickets__title">Buy tickets</h2>
+        <hr>
+        <div class="tickets__wrapper">
+          <img src="assets/img/tickets.jpg" alt="picture" class="tickets__img">
+          <div class="tickets__block">
+            <div class="tickets__block_wrap">
+              <h3 class="tickets__block_title">Ticket Type</h3>
+              <label class="tickets__block_label">Permanent exhibition
+                <input type="radio" checked="checked" name="radio" class="tickets__block_input">
+                <span class="tickets__block_checkmark"></span>
+              </label>
+              <label class="tickets__block_label">Temporary exhibition
+                <input type="radio" name="radio" class="tickets__block_input">
+                <span class="tickets__block_checkmark"></span>
+              </label>
+              <label class="tickets__block_label">Combined Admission
+                <input type="radio" name="radio" class="tickets__block_input">
+                <span class="tickets__block_checkmark"></span>
+              </label>
+            </div>
+            <div class="tickets__box_wrap">
+              <h3 class="tickets__box_title">Amount</h3>
+              <label class="tickets__box_label">Basic 18+<br>
+                <div>
+                  <button type="button" onclick="this.nextElementSibling.stepDown()">&#8212</button><input type="number" min="0" max="100" value="1" readonly class="tickets__box_input"><button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                </div>
+              </label>
+              <label class="tickets__box_label">Senior 65+<br>
+                <div>
+                  <button type="button" onclick="this.nextElementSibling.stepDown()">&#8212</button><input type="number" min="0" max="100" value="1" readonly class="tickets__box_input"><button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                </div>
+              </label>
+              <label class="tickets__box_total">Total €<input type="text" value="220" class="tickets__box_input"></label>
+              <button class="tickets__box_btn">Buy Now</button>
+            </div>
           </div>
         </div>
       </div>
