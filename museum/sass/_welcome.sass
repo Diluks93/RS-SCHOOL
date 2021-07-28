@@ -1,15 +1,14 @@
 .welcome
-  position: relative
   height: 750px
   padding-top: 114px
   background-color: $blackBg
-  overflow: hidden
+  background-image: url("../assets/img/welcome.jpg")
+  background-repeat: no-repeat
+  background-position: calc(50% + 353px) 0
+  background-size: 1215px 750px
   &__title
     @include title
   &__wrapper
-    position: absolute
-    left: 240px
-    z-index: 2
     max-width: 598px
   &__text
     margin-top: 26px
@@ -24,14 +23,14 @@
     width: 360px
     height: 75px
     margin-top: 76px
-    padding: 26px 66px
+    padding: 25px 66px
     font-family: $roboto
     font-size: 22px
     line-height: 26px
     letter-spacing: 2px
     font-weight: 100
     text-decoration: none
-    text-align: center
+    text-align: end
     color: $white
     background-color: $red
     border-radius: 10px
@@ -39,9 +38,5 @@
     &:hover
       background-color: $gold   
   &__img
-    position: absolute
-    z-index: 1
-    right: -16px
-    top: 0
     width: 1215px
     height: 750px

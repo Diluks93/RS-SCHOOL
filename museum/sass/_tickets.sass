@@ -99,14 +99,12 @@
         align-items: flex-end
         justify-content: space-between
         column-gap: 0
-        width: 148px
+        width: 149px
         button
           width: 25%
           height: 50px
           margin-top: 14px
           padding: 0
-          padding-right: 5px
-          padding-left: 5px
           color: $white
           border: 3px solid $white
           background-color: $blackBg
@@ -115,16 +113,17 @@
           font-size: 32px
           line-height: 37px
           text-align: center
-          &:nth-child(1n)
+          &:nth-child(1)
             border-right: none
+            padding-left: 4px
           &:last-child
             border-right: 3px solid $white
             border-left: none
+            padding-right: 5px
     &_input
       width: 50%
       height: 50px
       padding: 0
-      padding-left: 15px
       background-color: $blackBg
       border: none
       border-bottom: 3px solid $white
@@ -135,6 +134,7 @@
       font-weight: 300
       font-size: 22px
       line-height: 26px
+      letter-spacing: -1px
     &_total
       margin-top: 41px
       margin-left: 16px
