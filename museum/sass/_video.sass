@@ -6,10 +6,10 @@
     position: relative
     z-index: 1
     height: 629px
-    video
+    video //use this tag so that in the future I don't have to 
       width: 1440px
       height: 629px
-    button
+    button //style to play.svg
       position: absolute
       z-index: 2
       left: calc(50% - 110px)
@@ -27,7 +27,7 @@
           fill: $smoke
         &:active
           fill: $gold
-  &__block
+  &__block //style control panel
     position: relative
     display: flex
     justify-content: space-between
@@ -35,7 +35,7 @@
     align-items: center
     padding: 25px 41px 24px
     background-color: $black
-    &_progress
+    &_progress //style progress bar associated with JS
       position: absolute
       left: 241px
       width: 820px
@@ -48,7 +48,7 @@
         left: 1160px
         width: 155px
         background: linear-gradient(to right, #24809E 0%, #24809E 46%, #C4C4C4 48%, #C4C4C4 100%)
-    &_progress::-webkit-slider-thumb 
+    &_progress::-webkit-slider-thumb //style slider
       width: 15px
       height: 15px
       border-radius: 50%
@@ -67,7 +67,7 @@
     border: none
     padding: 0
     cursor: pointer
-    &:nth-child(2)
+    &:nth-child(2) //give each element control panel a position and width
       left: 110px
       .icon
         width: 23px
