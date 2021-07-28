@@ -10,10 +10,6 @@
     padding-left: 70px
     margin-right: 145px
     font-family: $forum
-    font-size: 28px
-    line-height: 50px
-    font-weight: 400
-    letter-spacing: 5px
     text-align: right
     text-transform: uppercase
     color: $white
@@ -21,6 +17,20 @@
     background-size: 25%
     background-position: calc(7% - 11px) calc(77% - 10px)
     background-repeat: no-repeat
+    text-decoration: none
+    transition: 0.5s
+    h5
+      font-size: 28px
+      line-height: 50px
+      font-weight: 400
+      letter-spacing: 5px
+    &:hover
+      background-image: url("../assets/svg/logoGold.svg")
+      color: $gold
+    &:active
+      background-image: url("../assets/svg/logoGold.svg")
+      color: $gold
+
   &__items
     display: flex
     flex-direction: column

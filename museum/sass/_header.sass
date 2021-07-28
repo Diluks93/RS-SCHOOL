@@ -1,6 +1,7 @@
 .header
   max-height: 200px
-  padding: 74px 240px 76px
+  padding-top: 74px 
+  padding-bottom: 76px
   background-color: $blackBg
   &__wrapper
     display: flex
@@ -10,17 +11,26 @@
     height: 50px
     padding-left: 70px
     font-family: $forum
-    font-size: 28px
-    line-height: 50px
-    font-weight: 400
-    letter-spacing: 5px
     text-align: right
     text-transform: uppercase
-    color: $white
     background-image: url("../assets/svg/logo.svg")
     background-size: 25%
     background-position: calc(7% - 11px) calc(77% - 10px)
     background-repeat: no-repeat
+    color: $white
+    text-decoration: none
+    transition: 0.5s
+    h1
+      font-size: 28px
+      line-height: 50px
+      font-weight: 400
+      letter-spacing: 5px
+    &:hover
+      background-image: url("../assets/svg/logoGold.svg")
+      color: $gold
+    &:active
+      background-image: url("../assets/svg/logoGold.svg")
+      color: $gold
   &__items
     display: flex
     justify-content: space-between
