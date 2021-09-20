@@ -107,36 +107,62 @@
     </section>
     <section class="video" id="video"><!--VIDEO-->
       <div class="container">
-        <div class="video__wrap">
-          <video class="video__img" poster="assets/img/poster.jpg">
-            <source src="#">
-          </video>
-          <button>
-              <svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#play"></use></svg>
-          </button>
-        </div>
-        <div class="video__block">
-          <button class="video__btn">
-            <svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#back"></use></svg>
-          </button>
-          <button class="video__btn">
-            <svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#playSmall"></use></svg>
-          </button>
-          <button class="video__btn">
-            <svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#foward"></use></svg>
-          </button>
-          <input type="range" value="47" min="0" max="100" step="1" class="video__block_progress" id="longRange">
-          <button class="video__btn">
-            <svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#sound"></use></svg>
-          </button>
-          <input type="range" value="50" min="0" max="100" step="1" class="video__block_progress" id="shortRange">
-          <button class="video__btn">
-            <svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#fullscreen"></use></svg>
-          </button>
-        </div>
         <div class="video__wrapper">
           <h2 class="video__title">Video journey</h2>
           <p class="video__descr">Enter and visit one of the most famous museums in the world and enjoy masterpieces such as Mona Lisa or Hammurabi's Code</p>
+        </div>
+        <div class="video__player">
+          <video class="video__video play" poster="assets/img/poster0.jpg" data-content="0" src="assets/video/video0.mp4"></video>
+          <video class="video__video" poster="assets/img/poster1.jpg" data-content="1" src="assets/video/video1.mp4"></video>
+          <video class="video__video" poster="assets/img/poster2.jpg" data-content="2" src="assets/video/video2.mp4"></video>
+          <video class="video__video" poster="assets/img/poster3.jpg" data-content="3" src="assets/video/video3.mp4"></video>
+          <video class="video__video" poster="assets/img/poster4.jpg" data-content="4" src="assets/video/video4.mp4"></video>
+          <button>
+              <svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#play"></use></svg>
+          </button>
+          <div class="video__controls">
+            <button class="video__btn toggle-play" id="play">
+              <svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#playSmall"></use></svg>
+            </button>
+            <div class="video__controls_progress" id="progress">
+              <div class="video__controls_progress-filled" id="progress-filled"></div>
+            </div>
+            <button class="video__btn" id="mute">
+              <svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#sound"></use></svg>
+            </button>
+            <input type="range" value="100" min="0" max="100" step="1" class="video__controls_progress" id="volume">
+            <button class="video__btn" id="fullscreen">
+              <svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#fullscreen"></use></svg>
+            </button>
+          </div>
+        </div>
+        <div class="video__slider">
+          <img src="assets/img/poster0.jpg" class="video__img" data-btn="0" alt="welcome to the Louvre">
+          <button>
+              <svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#youtube"></use></svg>
+          </button>
+          <img src="assets/img/poster1.jpg" class="video__img active" data-btn="1" alt="monument">
+          <button>
+              <svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#youtube"></use></svg>
+          </button>
+          <img src="assets/img/poster2.jpg" class="video__img active" data-btn="2" alt="virtual tour">
+          <button>
+              <svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#youtube"></use></svg>
+          </button>
+          <img src="assets/img/poster3.jpg" class="video__img active" data-btn="3" alt="exposition">
+          <button>
+              <svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#youtube"></use></svg>
+          </button>
+          <img src="assets/img/poster4.jpg" class="video__img" data-btn="4" alt="I'll see you">
+        </div>
+        <div class="video__dots">
+          <svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#arrow"></use></svg>
+          <div class="video__dot active" data-btn="0"></div>
+          <div class="video__dot" data-btn="1"></div>
+          <div class="video__dot" data-btn="2"></div>
+          <div class="video__dot" data-btn="3"></div>
+          <div class="video__dot" data-btn="4"></div>
+          <svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#arrow"></use></svg>
         </div>
       </div>
     </section>
