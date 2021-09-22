@@ -1,3 +1,5 @@
+import customVideoPlayer from './_video.js';
+
 const long = document.getElementById('longRange'),
   short = document.getElementById('shortRange');
 

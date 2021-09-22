@@ -1,0 +1,49 @@
+.contacts
+  max-height: 963px
+  padding-top: 75px
+  padding-bottom: 75px
+  &__title
+    @include title
+    color: $gold
+  hr
+    @include hr
+  &__wrap
+    display: flex
+    justify-content: space-between
+    padding-top: 75px
+  &__block
+    margin-top: 9px
+    display: flex
+    flex-direction: column
+    width: 282px
+    &_title
+      line-height: 35px
+      font-family: $roboto
+      font-weight: 500
+      font-size: 28px
+      color: $black
+    &_items
+      margin-top: 35px
+      padding-left: 0
+      list-style: none
+    &_item
+      margin-top: 20px
+      &:first-child
+        margin-top: 0
+    &_item,
+    &_link
+      font-style: normal //only style address
+      font-family: $roboto
+      font-weight: 300
+      font-size: 22px
+      line-height: 26px
+      color: $black
+      text-decoration: none
+      &:hover
+        color: $grey
+      &:active
+        color: $gold
+  &__img
+    width: 960px
+    height: 620px
+

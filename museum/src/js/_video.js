@@ -1,5 +1,4 @@
 //give object
-
 const 
   player = document.querySelector('.video__player'),
   video = document.querySelector('.video__video'),
@@ -186,3 +185,6 @@ tabs,dots.addEventListener('click', event => {
 function changeVideo(num) {
   return video.paused ? currentVideo = num : currentVideo;
 }
+
+
+export default customVideoPlayer;
