@@ -1,4 +1,5 @@
 .footer
+  max-height: 392px
   padding-top: 75px
   padding-bottom: 75px
   background-color: $blackBg
@@ -8,7 +9,7 @@
     width: 195px
     height: 50px
     margin-right: 145px
-    padding-left: 70px
+    padding-left: 73px
     font-family: $forum
     text-align: right
     text-transform: uppercase
@@ -17,15 +18,16 @@
     h5
       position: relative
       font-size: 28px
-      line-height: 50px
+      line-height: 55px
       font-weight: 400
       letter-spacing: 5px
       transition: 0.5s
       &::before
         content: url("../assets/svg/logo.svg")
         position: absolute
-        left: -50%
+        left: -67%
         transform: translateX(-50%)
+        transform: scale(0.65)
         top: 0
       &:hover
         filter: invert(57%) sepia(6%) saturate(1845%) hue-rotate(356deg) brightness(94%) contrast(84%)
@@ -39,8 +41,9 @@
     width: 366px
     height: 150px
     margin-right: 398px
+    margin-top: 2px
     padding-left: 0
-    column-gap: 153px
+    column-gap: 166px
     list-style: none
   &__item
     &_link
@@ -60,6 +63,7 @@
     width: 336px
     height: 48px
     margin-top: 88px
+    margin-bottom: 55px
     &_items
       display: flex
       flex-direction: row
@@ -89,3 +93,39 @@
           fill: $gold
         &:active
           fill: $gold
+  &__divider
+    background-color: #666666
+    height: 3px
+    border: none
+  &__wrapper
+    display: flex
+    justify-content: space-between
+    align-items: center
+    width: 100%
+    flex-direction: row
+    margin-top: 50px
+  &__year,
+  &__link,
+  &__username
+    display: block
+    font-family: $roboto
+    font-style: normal
+    font-weight: 300
+    font-size: 22px
+    line-height: 22px
+    letter-spacing: 2px
+    color: $white
+  &__year
+    position: relative
+    margin-left: 26px
+    &::before
+      content: "©"
+      position: absolute
+      left: -25px
+  &__link
+    text-transform: capitalize
+    text-decoration: none
+    text-align: center
+    margin-left: 18px
+  &__username
+    text-align: end
