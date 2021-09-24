@@ -1,3 +1,5 @@
+//todo подумать над функциональным подходом, убрать лишние переменные и символы если они есть.
+
 //give object
 const 
   player = document.querySelector('.video__player'),
@@ -25,10 +27,10 @@ function updateButton() {
   const togglePlayBtn = document.querySelector('.toggle-play');
 
   if(this.paused) {
-    togglePlayBtn.innerHTML = `<svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#playSmall"></use></svg>`;
-    play.innerHTML = `<svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#play"></use></svg>`;
+    togglePlayBtn.innerHTML = `<svg class="icon"><use xlink:href="assets/svg/sprite.svg#playSmall"></use></svg>`;
+    play.innerHTML = `<svg class="icon"><use xlink:href="assets/svg/sprite.svg#play"></use></svg>`;
   } else {
-    togglePlayBtn.innerHTML = `<svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#pauseSmall"></use></svg>`;
+    togglePlayBtn.innerHTML = `<svg class="icon"><use xlink:href="assets/svg/sprite.svg#pause"></use></svg>`;
     play.innerHTML = ``;
   }
 }
@@ -48,12 +50,12 @@ function videoChangeVolume() {
 function videoMute() {
   if (videos[currentVideo].volume === 0) {
     videos[currentVideo].volume = volume.value / 100;
-    mute.innerHTML = `<svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#sound"></use></svg>`;
+    mute.innerHTML = `<svg class="icon"><use xlink:href="assets/svg/sprite.svg#sound"></use></svg>`;
     const value = volume.value;
     volume.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
   } else {
     videos[currentVideo].volume = 0;
-    mute.innerHTML = `<svg class="icon"><use xlink:href="assets/svg/videoSpriteIcons.svg#mute"></use></svg>`;
+    mute.innerHTML = `<svg class="icon"><use xlink:href="assets/svg/sprite.svg#mute"></use></svg>`;
     const value = videos[currentVideo].volume;
     volume.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
   }
@@ -70,11 +72,13 @@ function skip() {
 }
 
 function toggleFullscreen() {
-
+  const togglePlayBtn = document.querySelector('.toggle-fullscreen');
   if (!document.fullscreenElement) {
     player.requestFullscreen();
+    togglePlayBtn.innerHTML = `<svg class="icon"><use xlink:href="assets/svg/sprite.svg#fullscreenExit"></use></svg>`;
   } else {
     document.exitFullscreen();
+    togglePlayBtn.innerHTML = `<svg class="icon"><use xlink:href="assets/svg/sprite.svg#fullscreen"></use></svg>`;
   }
 }
 
@@ -185,6 +189,3 @@ tabs,dots.addEventListener('click', event => {
 function changeVideo(num) {
   return video.paused ? currentVideo = num : currentVideo;
 }
-
-
-export default customVideoPlayer;

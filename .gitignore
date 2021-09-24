@@ -107,7 +107,7 @@ dist
 /requirements
 
 # css
-museum/css/style.css.map
+museum/src/css/style.css.map
 
 # pixel perfect
-museum/pp
+museum/src/assets/pp

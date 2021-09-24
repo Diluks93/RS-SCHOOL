@@ -1,0 +1,41 @@
+.gallery
+  max-height: 2200px
+  padding-top: 75px
+  color: $white
+  background-color: $blackBg
+  overflow: hidden
+  &__title
+    @include title
+  &__wrapper
+    position: relative
+    display: flex
+    margin-top: 75px
+    flex-flow: column wrap
+    align-content: space-between
+    height: 2900px
+    &::before,
+    &::after
+      content: ""
+      flex-basis: 100%
+      width: 0
+      order: 2
+  &__img
+    width: 456px
+    margin-bottom: 24px
+    display: block
+    &:first-child,
+    &:nth-child(3)
+      padding-top: 45px
+    &:nth-child(3n + 1) 
+      order: 1
+    &:nth-child(3n + 2)
+      order: 2
+    &:nth-child(3n)
+      order: 3
+  &__gradient
+    position: absolute
+    bottom: 941px
+    height: 360px
+    width: 100%
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, $black 100%)
+      

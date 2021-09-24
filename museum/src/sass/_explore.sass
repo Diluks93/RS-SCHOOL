@@ -1,18 +1,59 @@
 .explore
-  max-height: 865px
+  height: 865px
   padding-top: 90px
   padding-bottom: 75px
   color: $white
   background-color: $blackBg
+  user-select: none
   &__block
-    width: 658px
-    column-gap: 60px
-    &:last-child
-      width: 720px
+    position: relative
+    width: 100%
+    height: 100%
+    overflow: hidden
+    &_before
+      position: absolute
+      left: 0
+      top: 0
+      height: 100%
+      width: 50%
+      overflow: hidden
+    &_change
+      position: absolute
+      left: 50%
+      top: 50%
+      transform: translate(-50%, -50%)
+      width: 39px
+      height: 39px
+      border-radius: 50%
+      z-index: 9
+      cursor: ew-resize
+      border: 5px $white solid
+      &::before
+        content: ''
+        position: absolute
+        width: 5px
+        height: 331px
+        background-color: white
+        left: 12px
+        top: 33px
+      &::after
+        content: ''
+        position: absolute
+        width: 5px
+        height: 331px
+        background-color: white
+        left: 12px
+        bottom: 33px
+  &__img
+    display: block
+    vertical-align: middle
+    width: 720px
+    height: 700px
+    object-fit: cover
   .container
-    display: flex
-    justify-content: space-between
-    //margin-left: 241px //test
+    display: grid
+    grid-template-columns: 658px 720px
+    column-gap: 60px
   &__title
     @include title
     margin-top: -15px
@@ -31,9 +72,3 @@
       color: $gold
     &:nth-child(n + 2):nth-child(-n + 3)
       margin-top: 76px
-  &__img
-    display: none
-    width: 720px
-    height: 700px
-  .active
-    display: inline

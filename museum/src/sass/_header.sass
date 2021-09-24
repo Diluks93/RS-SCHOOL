@@ -13,24 +13,25 @@
     font-family: $forum
     text-align: right
     text-transform: uppercase
-    background-image: url("../assets/svg/logo.svg")
-    background-size: 25%
-    background-position: calc(7% - 10px) calc(77% - 9px)
-    background-repeat: no-repeat
     color: $white
     text-decoration: none
-    transition: 0.5s
     h1
+      position: relative
       font-size: 28px
       line-height: 50px
       font-weight: 400
       letter-spacing: 5px
-    &:hover
-      background-image: url("../assets/svg/logoGold.svg")
-      color: $gold
-    &:active
-      background-image: url("../assets/svg/logoGold.svg")
-      color: $gold
+      transition: 0.5s
+      &::before
+        content: url("../assets/svg/logo.svg")
+        position: absolute
+        left: -50%
+        transform: translateX(-50%)
+        top: 0
+      &:hover
+        filter: invert(57%) sepia(6%) saturate(1845%) hue-rotate(356deg) brightness(94%) contrast(84%)
+      &:active
+        filter: invert(57%) sepia(6%) saturate(1845%) hue-rotate(356deg) brightness(94%) contrast(84%)        
   &__items
     display: flex
     justify-content: space-between

@@ -27,7 +27,6 @@
     position: relative
     z-index: 1
     margin-top: 75px
-    height: 100%
     width: 100%
     max-height: 735px
     overflow: hidden
@@ -52,10 +51,10 @@
           fill: $gold
   &__video.play
     display: block
-    width: 100%
-    height: 100%
   &__video
     display: none
+    width: 100%
+    height: 100%
   &__controls //style control panel
     position: absolute
     display: flex
@@ -83,7 +82,7 @@
     #progress,
     #volume //style progress bar associated with JS
       position: absolute
-      left: 8%
+      left: 6.5%
       width: 65%
       height: 8px
       background: linear-gradient(to right, #710707 0%, #710707 0%, #C4C4C4 0%, #C4C4C4 100%)
@@ -93,7 +92,7 @@
       border: none
       cursor: pointer
     #volume
-      left: 80%
+      left: 81.5%
       width: 11%
       background: linear-gradient(to right, #710707 0%, #710707 100%, #C4C4C4 100%, #C4C4C4 100%)
     &_progress::-webkit-slider-thumb 
@@ -112,7 +111,7 @@
   #mute,
   #fullscreen
     position: absolute
-    left: 40px
+    left: 28px
     top: 50%
     transform: translateY(-50%)
     background: none
@@ -129,47 +128,28 @@
       &:active
         fill: $gold 
   #mute
-    left: 76%
+    left: 75.1%
     .icon
       width: 40px
   #fullscreen
-    left: 94.6%
+    left: 94.9%
     .icon
       width: 50px
       height: 36px
   &__slider
-    position: relative
     display: flex
     justify-content: space-between
+    flex-wrap: wrap
     margin-top: 40px
     column-gap: 42px
     width: 100%
-    overflow: hidden
-    button
-      position: absolute
-      z-index: 2
-      left: 13%
-      top: 50%
-      transform: translateY(-50%)
-      background: none
-      border: none
-      padding: 0
-      cursor: pointer
-      width: 68px
-      height: 48px
-      .icon
-        width: 100%
-        height: 100%
-      &:nth-child(2)
-        left: 48.4%
-      &:nth-child(3n)
-        left: 82.8%
-  &__img
-    width: 31.4%
-    height: 100%
-    display: none
-  &__img.active
-    display: block
+    iframe
+      display: none
+    iframe.active
+      width: 452px
+      height: 254px
+      display: block
+
   &__dots
     margin: 40px auto 0
     display: flex
@@ -185,7 +165,7 @@
       &:first-child
         transform: rotateY(180deg)
       &:hover
-        fill: $black
+        fill: $red
       &:active
         fill: $gold
   &__dot
@@ -200,3 +180,7 @@
       background: $gold
   &__dot.active
     background: $black
+    &:hover
+      background: $red
+    &:active
+      background: $gold
