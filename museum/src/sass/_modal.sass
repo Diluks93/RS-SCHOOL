@@ -1,0 +1,196 @@
+.modal
+  display: none
+  &.active
+    display: block
+    position: fixed
+    top: 0
+    background-color: rgba(255, 255, 255, 0.5)
+    z-index: 99
+    width: 100%
+    height: 100vh
+    &::after
+      content: "\00D7"
+      position: absolute
+      right: 14.41%
+      top: 11.8%
+      transform: scale3d(4, 4, 4)
+  &__form
+    display: grid
+    grid-template-columns: 400px 530px
+    column-gap: 40px
+    grid-template-rows: 663px
+    background-color: $white
+    margin-top: 5%
+    padding: 91px 235px
+  &__title
+    @include title
+    font-size: 47px
+    line-height: 55px
+    color: $gold
+    position: relative
+    padding-top: 41px
+    letter-spacing: 2px
+    &::before
+      content: url("../assets/svg/logo.svg")
+      position: absolute
+      left: 8px
+      top: -2%
+      transform: scale3d(1.2, 1, 1)
+      filter: invert(57%) sepia(6%) saturate(1845%) hue-rotate(356deg) brightness(94%) contrast(84%)
+  &__text
+    font-family: $roboto
+    font-style: normal
+    font-weight: 300
+    font-size: 18px
+    line-height: 21px
+    color: $red
+    margin-top: 14px
+  &__wrap
+    display: grid
+    grid-template-columns: repeat(2, 190px)
+    column-gap: 20px
+    .date,
+    .time
+      display: flex
+      justify-content: space-between
+      padding: 0
+      #date1,
+      #date2,
+      #time1,
+      #time2
+        width: 50%
+        border: none
+  &__entry
+    border: 1px solid $black
+    hr
+      @include hr
+      margin-top: 6px
+      border: none
+      height: 1px
+.form
+  &__block
+    display: grid
+    &:nth-child(2)
+      border: 1px solid $black
+    &:first-child
+      grid-template-rows: 143px 20px repeat(5, 45px) 135px
+      row-gap: 20px
+  &__header
+    hr
+      @include hr
+      height: 3px
+      margin-top: 8px
+      border: none
+  &__subtitle
+    font-family: $forum
+    font-style: normal
+    font-weight: 300
+    font-size: 18px
+    line-height: 20px
+    text-transform: capitalize
+    color: $gold
+    margin-top: 2px
+  &__box_label
+    display: grid
+    grid-template-columns: 142px 105px
+    column-gap: 123px
+    grid-template-rows: 25px
+    font-family: $roboto
+    font-style: normal
+    font-weight: normal
+    font-size: 18px
+    line-height: 21px
+    color: $blackBg
+    margin-top: 17px
+    align-items: center
+    div
+      display: grid
+      grid-template-columns: repeat(3, 35px)
+      button
+        background-color: $blackBg
+        color: $white
+        border: none
+      input
+        border: none
+        border-top: 1px solid $black
+        border-bottom: 1px solid $black
+        background-color: $white
+        text-align: center
+input,
+select,
+fieldset
+  border: 1px solid $black
+  &:hover,
+  &:focus
+    outline: none
+#date1,
+#time1,
+#name,
+#email,
+#phone,
+#ticket
+  font-family: $roboto
+  font-style: normal
+  font-weight: 300
+  font-size: 18px
+  line-height: 21px
+  padding-left: 43px
+  width: 100%
+.date,
+.time,
+.name,
+.email,
+.phone,
+.ticket
+  position: relative
+  input,
+  select
+    height: 100%
+  .icon
+    position: absolute
+    left: 15px
+    top: 14px
+    width: 15px
+    height: 15px
+.name
+  .icon
+    top: 15px
+    left: 16px
+    width: 13px
+.email
+  .icon
+    top: 17px
+    height: 13px
+.phone
+  .icon
+    width: 14px
+    height: 23px
+    top: 10px
+    left: 16px
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator
+    color: rgba(0, 0, 0, 0)
+    opacity: 1
+    display: block
+    background: url("../assets/svg/arrow.svg") no-repeat
+    width: 17px
+    height: 17px
+    position: absolute
+    right: 7px
+    top: 50%
+    transform: translateY(-50%)
+/* временнное решение на соответствие макету*/
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field, 
+input[type="date"]::-webkit-datetime-edit-year-field,
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="time"]::-webkit-datetime-edit-text,
+input[type="time"]::-webkit-datetime-edit-hour-field,
+input[type="time"]::-webkit-datetime-edit-minute-field 
+  display: none
+select 
+  -webkit-appearance: none 
+  background: url("../assets/svg/arrow.svg") no-repeat right
+input::-webkit-input-placeholder
+  color: $blackBg
+  font-weight: normal

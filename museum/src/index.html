@@ -353,51 +353,130 @@
     <div class="container">
       <form action="#" class="modal__form">
         <div class="form__block">
-          <h2 class="modal__title">Booking tickets</h2>
-          <h3 class="modal__subtitle">tour to Louvre</h3>
-          <hr>
-          <div class="modal__wrap">
-            <input type="date" name="date" id="date">
-            <input type="time" name="time" id="time">
+          <div class="form__header">
+            <h2 class="modal__title">Booking tickets</h2>
+            <h3 class="modal__text">Tour to Louvre</h3>
+            <hr>
           </div>
-          <input type="text" name="name" id="name">
-          <input type="email" name="email" id="email">
-          <input type="tel" name="phone" id="phone">
-          <p>
+          <div></div>
+          <div class="modal__wrap">
+            <fieldset class="date">
+              <label for="date1">
+                <svg class="icon">
+                  <use xlink:href="./assets/svg/sprite.svg#date"></use>
+                </svg>
+              </label>
+              <input type="text" placeholder="Date" id="date1" readonly >
+              <input type="date" name="date" id="date2">
+            </fieldset>
+            <fieldset class="time">
+              <label for="time1">
+                <svg class="icon">
+                  <use xlink:href="./assets/svg/sprite.svg#time"></use>
+                </svg>
+              </label>
+              <input type="text" placeholder="Time" id="time1" readonly>
+              <input type="time" name="time" id="time2">
+            </fieldset>
+          </div>
+          <div class="name">
+            <label for="name">
+              <svg class="icon">
+                <use xlink:href="./assets/svg/sprite.svg#name"></use>
+              </svg>
+            </label>
+            <input type="text" name="name" id="name" placeholder="Name">
+          </div>
+          <div class="email">
+            <label for="email">
+              <svg class="icon">
+                <use xlink:href="./assets/svg/sprite.svg#email"></use>
+              </svg>
+            </label>
+            <input type="email" name="email" id="email" placeholder="E-mail">
+          </div>
+          <div class="phone">
+            <label for="phone">
+              <svg class="icon">
+                <use xlink:href="./assets/svg/sprite.svg#tel"></use>
+              </svg>
+            </label>
+            <input type="tel" name="phone" id="phone" placeholder="Phone">
+          </div>
+          <div class="ticket">
+            <label for="ticket">
+              <svg class="icon">
+                <use xlink:href="./assets/svg/sprite.svg#ballot"></use>
+              </svg>
+            </label>
             <select name="ticket" size="1" id="ticket">
-              <option value="s1">Ticket type</option>
-              <option value="s2">Permanent exhibition</option>
-              <option value="s3">Temporary exhibition</option>
-              <option value="s4">Combined admission</option>
+              <option value="none" selected disabled>Ticket type</option>
+              <option value="Permanent exhibition">Permanent exhibition</option>
+              <option value="Temporary exhibition">Temporary exhibition</option>
+              <option value="Combined admission">Combined admission</option>
             </select>
-          </p>
-          <fieldset>
+          </div>
+          <fieldset class="modal__entry">
             <h4 class="form__subtitle">Entry ticket</h4>
             <hr>
-            <div class="form__box_label">Basic 18+<br>
+            <div class="form__box_label">
+              <label>Basic 18+ (20 &#8364;)</label>
               <div>
-                <button type="button" onclick="this.nextElementSibling.stepDown()">&#8211;</button><input type="number" min="0" max="100" value="1"   readonly class="form__box_input"><button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                <button type="button" onclick="this.nextElementSibling.stepDown()">&#8211;</button><input type="number" min="0" max="100" value="2" readonly class="form__box_input"><button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
               </div>
             </div>
-            <div class="form__box_label">Senior 65+<br>
+            <div class="form__box_label">
+              <label>Senior 65+ (10 &#8364;)</label>
               <div>
-                <button type="button" onclick="this.nextElementSibling.stepDown()">&#8211;</button><input type="number" min="0" max="100" value="1"   readonly class="form__box_input"><button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                <button type="button" onclick="this.nextElementSibling.stepDown()">&#8211;</button><input type="number" min="0" max="100" value="2" readonly class="form__box_input"><button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
               </div>
             </div>
           </fieldset>
         </div>
         <div class="form__block">
-          <h3>Overview</h3>
-          <p>Tour to Louvre</p>
-          <ul>
-            <li>Friday, August 19</li>
-            <li>16:30</li>
-            <li>Ticket type</li>
-          </ul>
-          <img src="./assets/img/welcome.jpg" alt="">
-        </div>
-
-        
+          <div class="form__output">
+            <h3>Overview</h3>
+            <p>Tour to Louvre</p>
+            <ul class="form__items">
+              <li class="form__item">Friday, August 19</li>
+              <li class="form__item">16:30</li>
+              <li class="form__item">Ticket type</li>
+            </ul>
+          </div>         
+          <input type="image" src="./assets/img/welcome.jpg" alt="main facade" width="150" height="120" id="img">
+          <div class="form__offer">
+            <div>
+              <span class="number">2</span>
+              <p class="text">Basic (20 &#8364;)</p>
+              <span class="price">40 &#8364;</span>
+            </div>
+            <div>
+              <span class="number">2</span>
+              <p class="text">Senior (10 &#8364;)</p>
+              <span class="price">20 &#8364;</span>
+            </div>
+          </div>
+          <hr>
+          <div class="form__offer">
+            <span class="totalText">Total:</span><span class="total">60 &#8364;</span>
+          </div>
+          <fieldset>
+            <label for="cardNumber">Card number</label>
+            <input type="text" name="cardNumber" id="cardNumber">
+            <label for="month">Expiration date</label>
+            <input type="number" name="month" value="03" min="01" max="12" id="month">
+            <input type="number" name="year" value="2024" min="2021" max="2031" id="year">
+            <label for="cardholderName">Cardholder name</label>
+            <input type="text" name="cardholderName" id="cardholderName">
+          </fieldset>
+          <fieldset>
+            <div class="bg"></div>
+            <label for="cvc">Cvc/cvv</label>
+            <input type="text" name="cvc" pattern="\d{3|4}" id="cvc">
+            <label>The last 3 or 4 digits on back of the card</label>
+          </fieldset>
+          <input type="submit" value="Book">
+        </div>      
       </form>
     </div>
   </div>
