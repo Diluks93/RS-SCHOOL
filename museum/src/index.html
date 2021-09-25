@@ -41,11 +41,29 @@
   </header>
   <main class="main"><!--MAIN-->
     <section class="welcome" id="welcome"><!--WELCOME-->
-      <div class="container">
+      <div class="container welcome__container">
         <div class="welcome__wrapper">
           <h2 class="welcome__title">Welcome <br>to the Louvre</h2>
           <p class="welcome__text">From the castle to the museum</p>
           <a href="https://www.google.com/maps/@48.8618159,2.3366818,3a,75y,81.55h,73.4t/data=!3m7!1e1!3m5!1sAF1QipOVxZQuSy3Bx9T_HpH_7FtBHDTXvI6SF-A10ocT!2e10!3e12!7i5472!8i2736" class="welcome__btn">Discover the Louvre</a>
+        </div>
+        <div class="welcome__block slider">
+          <div class="welcome__block-counter">
+            <div class="current">01</div>
+            <div class="divider">|</div>
+            <div class="all">05</div>
+          </div>
+          <ul class="welcome__block-cubs">
+            <li class="cub"></li>
+            <li class="cub"></li>
+            <li class="cub"></li>
+            <li class="cub"></li>
+            <li class="cub"></li>
+          </ul>
+          <div class="welcome__block-arrows">
+            <svg class="icon"><use xlink:href="assets/svg/sprite.svg#arrow"></use></svg>
+            <svg class="icon"><use xlink:href="assets/svg/sprite.svg#arrow"></use></svg>
+          </div>
         </div>
       </div>
     </section>
@@ -333,5 +351,6 @@
   </footer>
   <script src="js/comparisons.js"></script>
   <script src="js/video.js"></script>
+  <script src="js/slider.js"></script>
 </body>
 </html>

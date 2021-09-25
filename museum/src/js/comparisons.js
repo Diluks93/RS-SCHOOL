@@ -1,4 +1,4 @@
-const slider = document.querySelector('.slider'),
+const slider = document.querySelector('.explore__block.slider'),
   before = slider.querySelector('.explore__block_before'),
   beforeImage = before.querySelector('.explore__img'),
   change = slider.querySelector('.explore__block_change'),
