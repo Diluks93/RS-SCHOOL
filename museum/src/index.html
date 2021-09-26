@@ -244,7 +244,7 @@
                 </div>
               </div>
               <label class="tickets__box_total">Total €<input type="text" value="220" class="tickets__box_input"></label>
-              <button class="tickets__box_btn">Buy Now</button>
+              <button class="tickets__box_btn" id="btn">Buy Now</button>
             </div>
           </div>
         </div>
@@ -349,7 +349,7 @@
       </div>
     </div>
   </footer>
-  <div class="modal active">
+  <div class="modal">
     <div class="container">
       <form action="#" class="modal__form">
         <div class="form__block">
@@ -444,8 +444,8 @@
               <p>Tour to Louvre</p>
               <ul class="form__items">
                 <li class="form__item">Friday, August 19</li>
-                <li class="form__item">16:30</li>
-                <li class="form__item">Ticket type</li>
+                <li class="form__item">16 : 30</li>
+                <li class="form__item">Temporary exhibition</li>
               </ul>
             </div>         
             <input type="image" src="./assets/img/welcome.jpg" alt="main facade" id="img">
@@ -485,8 +485,8 @@
                   </div>
                 </div>
                 <div class="column">
-                  <input type="image" src="./assets/png/visa.png" alt="visa">
-                  <input type="image" src="./assets/png/mastercard.png" alt="mastercard">
+                  <input type="image" src="./assets/svg/visa.svg" alt="visa">
+                  <input type="image" src="./assets/svg/mastercard.svg" alt="mastercard">
                 </div>
                 <div class="cardholderName">
                   <label for="cardholderName">Cardholder name</label>
@@ -496,12 +496,14 @@
             </fieldset>
             <fieldset>
               <div class="bg"></div>
-              <label for="cvc">Cvc/cvv</label>
-              <input type="text" name="cvc" pattern="\d{3|4}" id="cvc">
-              <label>The last 3 or 4 digits on back of the card</label>
+              <div class="cvc">
+                <label for="cvc">Cvc/cvv</label>
+                <input type="text" name="cvc" pattern="\d{3|4}" id="cvc">
+                <label>The last<br>3 or 4 digits<br>on back<br>of the card</label>
+              </div>
             </fieldset>
           </div>
-          <input type="submit" value="Book">
+          <input type="submit" value="Book" id="submit">
         </div>      
       </form>
     </div>
@@ -509,5 +511,6 @@
   <script src="js/comparisons.js"></script>
   <script src="js/video.js"></script>
   <script src="js/slider.js"></script>
+  <script src="js/modal.js"></script>
 </body>
 </html>
