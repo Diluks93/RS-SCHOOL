@@ -2,32 +2,38 @@ input[type="number"]
   text-align: center
 
 .modal
-  display: none
   display: block
   position: fixed
   top: 0
   background-color: rgba(255, 255, 255, 0.5)
   z-index: 99
   width: 100%
-  height: 100vh
+  height: 100%
   transform: translateX(-1000%)
-  transition: transform 1s ease
+  transition: transform 1.5s ease
   &.open
     transform: translateX(0)
-  &::after
-    content: "\00D7"
-    position: absolute
-    right: 14.41%
-    top: 11.8%
-    transform: scale3d(4, 4, 4)
   &__form
+    position: relative
     display: grid
     grid-template-columns: 400px 530px
     column-gap: 40px
-    grid-template-rows: 663px
+    grid-template-rows: 663px 1px
     background-color: $white
-    margin-top: 5%
     padding: 91px 235px
+    margin-top: 5%
+    #close
+      position: absolute
+      right: 2.45%
+      top: 4%
+      transform: scale3d(2, 2, 2)
+      cursor: pointer
+      color: $blackBg
+      transition: all 0.5 linear
+      &:hover
+        color: $gold
+      &:active
+        color: $red
   &__title
     @include title
     font-size: 47px

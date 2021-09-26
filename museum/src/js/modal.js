@@ -1,6 +1,15 @@
-const btn = document.getElementById('btn');
-const modal = document.querySelector('.modal');
+export default function modal(){
 
-btn.addEventListener('click', function () {
-  modal.classList.toggle('open');
-});
+  const btn = document.getElementById('btn'),
+        modal = document.querySelector('.modal'),
+        close = document.getElementById('close');
+
+  btn.addEventListener('click', function () {
+    modal.classList.toggle('open');
+  });
+
+  close.addEventListener('click', function () {
+    modal.classList.toggle('open');
+  });
+
+}

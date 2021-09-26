@@ -1,3 +1,6 @@
+input[type="number"]
+  text-align: center
+  
 .tickets
   max-height: 893px
   padding-top: 75px
@@ -9,7 +12,7 @@
     @include hr
     height: 3px
     margin-top: 25px
-    border: 0.5px solid $red
+    border: none
   &__wrapper
     display: flex
     justify-content: space-between
@@ -31,11 +34,8 @@
       font-size: 28px
       line-height: 33px
     &_label //style this checkmark
-      position: relative
-      display: block      
       width: 270px
       margin-top: 51px
-      padding-left: 40px
       font-size: 22px
       user-select: none
       font-family: $roboto
@@ -43,26 +43,47 @@
       line-height: 26px
       cursor: pointer
       &:nth-child(n+3):nth-child(-n+4)
-        margin-top: 49px
+        margin-top: 25px
       &:hover input ~ .tickets__block_checkmark 
         background-color: $white
       input:checked ~ .tickets__block_checkmark 
         background-color: $white
-      input:checked ~ .tickets__block_checkmark:after 
-        display: block
-      input 
-        position: absolute
-        opacity: 0
-        cursor: pointer
-    &_checkmark 
-      position: absolute
-      top: 3px
-      left: 0
+    &_checkmark
+      padding-left: 18px
+    input[type='radio'],
+    label 
+      cursor: pointer
+    input[type='radio'] 
+      position: relative
       height: 17px
       width: 17px
-      background-color: $black
-      border: 2px solid $black
+      border-radius: 100%
+      -webkit-appearance: none
+      -moz-appearance: none
+      appearance: none
+      outline: none
+    input[type='radio']::before 
+      content: ''
+      position: absolute
+      top: 50%
+      left: 50%
+      width: 15px
+      height: 15px
       border-radius: 50%
+      transform: translate(-50%, -50%)
+      background-color: white
+      border: 2px solid $black
+    input[type='radio']:checked::after 
+      content: ''
+      position: absolute
+      top: 50%
+      left: 50%
+      width: 8px
+      height: 8px
+      border-radius: 50%
+      background-color: $black
+      transform: translate(-50%, -50%)
+      visibility: visible
   &__box
     &_wrap
       display: flex
@@ -76,13 +97,13 @@
       line-height: 33px
       text-align: right
     &_label //style this input type="number"
-      margin-top: 11px
+      margin-top: 26px
       font-family: $roboto
       font-weight: 300
       font-size: 22px
       line-height: 26px
       &:nth-child(3)
-        margin-top: 35px
+        margin-top: 11px
       div
         display: flex
         align-items: flex-end
@@ -146,19 +167,22 @@
     &_btn
       width: 175px
       height: 50px
-      margin-top: 43px
+      margin-top: 54px
       font-family: $roboto
       font-weight: 300
       font-size: 22px
       line-height: 26px
       letter-spacing: 2px
-      background: $white
+      background: $black
       border: none
       border-radius: 2px
-      transition: all 0.5s
+      transition: all 0.5s linear
       cursor: pointer
+      color: $white
       &:hover
         background-color: $gold
+        color: $black
       &:active
         background-color: $gold
+        color: $white
         

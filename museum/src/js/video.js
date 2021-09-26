@@ -1,3 +1,4 @@
+export default function customVideoPlayer(){
 //todo подумать над функциональным подходом, убрать лишние переменные и символы если они есть.
 
 //give object
@@ -188,4 +189,5 @@ tabs,dots.addEventListener('click', event => {
 
 function changeVideo(num) {
   return video.paused ? currentVideo = num : currentVideo;
+}
 }
