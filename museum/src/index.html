@@ -349,7 +349,7 @@
       </div>
     </div>
   </footer>
-  <div class="modal">
+  <div class="modal active">
     <div class="container">
       <form action="#" class="modal__form">
         <div class="form__block">
@@ -422,59 +422,85 @@
             <div class="form__box_label">
               <label>Basic 18+ (20 &#8364;)</label>
               <div>
-                <button type="button" onclick="this.nextElementSibling.stepDown()">&#8211;</button><input type="number" min="0" max="100" value="2" readonly class="form__box_input"><button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                <button type="button" onclick="this.nextElementSibling.stepDown()">&#8211;</button>
+                <input type="number" min="0" max="100" value="2" readonly class="form__box_input">
+                <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
               </div>
             </div>
             <div class="form__box_label">
               <label>Senior 65+ (10 &#8364;)</label>
               <div>
-                <button type="button" onclick="this.nextElementSibling.stepDown()">&#8211;</button><input type="number" min="0" max="100" value="2" readonly class="form__box_input"><button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                <button type="button" onclick="this.nextElementSibling.stepDown()">&#8211;</button>
+                <input type="number" min="0" max="100" value="2" readonly class="form__box_input">
+                <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
               </div>
             </div>
           </fieldset>
         </div>
         <div class="form__block">
-          <div class="form__output">
-            <h3>Overview</h3>
-            <p>Tour to Louvre</p>
-            <ul class="form__items">
-              <li class="form__item">Friday, August 19</li>
-              <li class="form__item">16:30</li>
-              <li class="form__item">Ticket type</li>
-            </ul>
-          </div>         
-          <input type="image" src="./assets/img/welcome.jpg" alt="main facade" width="150" height="120" id="img">
+          <div class="form__wrap">
+            <div class="form__output">
+              <h3>Overview</h3>
+              <p>Tour to Louvre</p>
+              <ul class="form__items">
+                <li class="form__item">Friday, August 19</li>
+                <li class="form__item">16:30</li>
+                <li class="form__item">Ticket type</li>
+              </ul>
+            </div>         
+            <input type="image" src="./assets/img/welcome.jpg" alt="main facade" id="img">
+          </div>
           <div class="form__offer">
             <div>
-              <span class="number">2</span>
-              <p class="text">Basic (20 &#8364;)</p>
+              <p class="text"><span class="number">2</span>Basic (20 &#8364;)</p>
               <span class="price">40 &#8364;</span>
             </div>
             <div>
-              <span class="number">2</span>
-              <p class="text">Senior (10 &#8364;)</p>
+              <p class="text"><span class="number">2</span>Senior (10 &#8364;)</p>
               <span class="price">20 &#8364;</span>
             </div>
+            <hr>
+            <div class="form__offer">
+              <span class="totalText">Total:</span><span class="total">60 &#8364;</span>
+            </div>
           </div>
-          <hr>
-          <div class="form__offer">
-            <span class="totalText">Total:</span><span class="total">60 &#8364;</span>
+          <div class="form__credit">
+            <fieldset>
+              <div class="row">
+                <div class="column">
+                  <label for="cardNumber">Card number</label>
+                  <input type="text" name="cardNumber" id="cardNumber">
+                  <label for="month">Expiration date</label>
+                  <div>
+                    <div class="month">
+                      <input type="number" name="month" value="03" min="01" max="12" id="month" readonly>
+                      <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">&#9660;</button>
+                      <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">&#9650;</button>
+                    </div>
+                    <div class="year">
+                      <input type="number" name="year" value="2024" min="2021" max="2031" id="year" readonly>
+                      <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">&#9660;</button>
+                      <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">&#9650;</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="column">
+                  <input type="image" src="./assets/png/visa.png" alt="visa">
+                  <input type="image" src="./assets/png/mastercard.png" alt="mastercard">
+                </div>
+                <div class="cardholderName">
+                  <label for="cardholderName">Cardholder name</label>
+                  <input type="text" name="cardholderName" id="cardholderName">
+                </div>
+              </div>
+            </fieldset>
+            <fieldset>
+              <div class="bg"></div>
+              <label for="cvc">Cvc/cvv</label>
+              <input type="text" name="cvc" pattern="\d{3|4}" id="cvc">
+              <label>The last 3 or 4 digits on back of the card</label>
+            </fieldset>
           </div>
-          <fieldset>
-            <label for="cardNumber">Card number</label>
-            <input type="text" name="cardNumber" id="cardNumber">
-            <label for="month">Expiration date</label>
-            <input type="number" name="month" value="03" min="01" max="12" id="month">
-            <input type="number" name="year" value="2024" min="2021" max="2031" id="year">
-            <label for="cardholderName">Cardholder name</label>
-            <input type="text" name="cardholderName" id="cardholderName">
-          </fieldset>
-          <fieldset>
-            <div class="bg"></div>
-            <label for="cvc">Cvc/cvv</label>
-            <input type="text" name="cvc" pattern="\d{3|4}" id="cvc">
-            <label>The last 3 or 4 digits on back of the card</label>
-          </fieldset>
           <input type="submit" value="Book">
         </div>      
       </form>
