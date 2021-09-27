@@ -2,7 +2,10 @@ input[type="number"]
   text-align: center
 
 .modal
-  display: block
+  display: flex
+  flex-flow: column nowrap
+  justify-content: center
+  align-items: center
   position: fixed
   top: 0
   background-color: rgba(255, 255, 255, 0.5)
@@ -10,9 +13,14 @@ input[type="number"]
   width: 100%
   height: 100%
   transform: translateX(-1000%)
-  transition: transform 1.5s ease
+  transition: transform 1.5s ease 0s, opacity 0.15s ease 0s
+  overflow: hidden
+  overflow-y: auto
+  -webkit-overflow-scrolling: touch
   &.open
     transform: translateX(0)
+    visibility: visible
+    opacity: 1
   &__form
     position: relative
     display: grid
@@ -21,7 +29,10 @@ input[type="number"]
     grid-template-rows: 663px 1px
     background-color: $white
     padding: 91px 235px
-    margin-top: 5%
+    overflow: visible
+    flex-shrink: 0
+    flex-grow: 0
+    transition: transform 0.2s ease 0s, opacity 0.2s ease 0s
     #close
       position: absolute
       right: 2.45%
@@ -359,7 +370,11 @@ input[type="number"]
   font-weight: normal
   font-size: 22px
   line-height: 26px
-  margin-left: 250px      
+  margin-left: 250px
+  overflow: hidden
+  z-index: 250
+  cursor: pointer
+
 #img
   width: 150px
   height: 120px
@@ -437,10 +452,17 @@ input[type="time"]::-webkit-datetime-edit-hour-field,
 input[type="time"]::-webkit-datetime-edit-minute-field 
   display: none
 select 
+  text-transform: capitalize
   -webkit-appearance: none 
-  background: url("../assets/svg/arrow.svg") no-repeat right
+  background: url("../assets/svg/arrow.svg") no-repeat 365px
+  font-weight: 500
+  option
+    font-size: 18px
+    line-height: 21px
+    &:nth-child(n+2):nth-child(-n+4)
+      text-transform: none
+    &:nth-child(2n)
+      background-color: #E7E7E7
 input::-webkit-input-placeholder
   color: $blackBg
   font-weight: normal
-
-

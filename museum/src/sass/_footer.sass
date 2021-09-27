@@ -115,6 +115,7 @@
     line-height: 22px
     letter-spacing: 2px
     color: $white
+    transition: all 0.5s linear
   &__year
     position: relative
     margin-left: 26px
@@ -127,5 +128,15 @@
     text-decoration: none
     text-align: center
     margin-left: 18px
+    &:hover
+      color: $gold
+    &:active
+      color: $gold
   &__username
+    text-transform: capitalize
+    text-decoration: none
     text-align: end
+    &:hover
+      color: $gold
+    &:active
+      color: $gold
