@@ -2,10 +2,13 @@ import customVideoPlayer from './video.js';
 import slider from './slider.js'
 import comparisons from './comparisons.js';
 import modal from './modal.js';
+import changeItemGallery from './gallery.js';
 comparisons();
 slider();
 customVideoPlayer();
 modal();
+
+changeItemGallery();
 
 console.log(`
   Ваша оценка - 145.5 баллов 
