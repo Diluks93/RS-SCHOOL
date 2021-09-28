@@ -2,18 +2,19 @@ import customVideoPlayer from './video.js';
 import slider from './slider.js'
 import comparisons from './comparisons.js';
 import modal from './modal.js';
+import changeItemGallery from './gallery.js';
 comparisons();
 slider();
 customVideoPlayer();
 modal();
+
+changeItemGallery();
 
 console.log(`
   Ваша оценка - 145.5 баллов 
 Отзыв по пунктам ТЗ:
 Не выполненные/не засчитанные пункты:
 1) кнопке "Book" в форме покупки билетов добавлен ripple-эффект. Демо: https://50projects50days.com/projects/button-ripple-effect/ 
-
-2) при перезагрузке (обновлении) страницы картины в блоке Galery отображаются в рандомном порядке 
 
 Частично выполненные пункты:
 1) при кликам по кнопке Discover the Louvre и карточкам секции Visiting открываются полноэкранные панорамы Google Street View встроенные в страницы вашего сайта при помощи iframe 
