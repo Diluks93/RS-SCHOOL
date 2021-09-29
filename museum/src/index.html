@@ -171,13 +171,52 @@
             </button>
           </div>
         </div>
+
+        <!-- !решаем проблемы с оптимизацией 
+         ! https://www.youtube.com/watch?v=4JS70KB9GS0 -->
+
+         
         <div class="video__slider">
-          <iframe class="noactive" src="https://www.youtube.com/embed/zp1BXPX8jcU" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <a href="https://www.youtube.com/embed/zp1BXPX8jcU" class="video__link">
+            <picture>
+              <source srcset="https://i.ytimg.com/vi_webp/zp1BXPX8jcU/maxresdefault.webp">
+              <img src="https://i.ytimg.com/vi/zp1BXPX8jcU/maxresdefault.jpg" alt="#" class="noactive"> <!-- TODO Посмотреть документацию you tube maxresdefault-->
+            </picture>
+          </a>
+          <a href="https://www.youtube.com/embed/aWmJ5DgyWPI" class="video__link">
+            <picture>
+              <source srcset="https://i.ytimg.com/vi_webp/aWmJ5DgyWPI/maxresdefault.webp">
+              <img src="https://i.ytimg.com/vi/aWmJ5DgyWPI/maxresdefault.jpg" alt="#" class="active"> 
+            </picture>
+          </a>
+          <a href="https://www.youtube.com/embed/Vi5D6FKhRmo" class="video__link">
+            <picture>
+              <source srcset="https://i.ytimg.com/vi_webp/Vi5D6FKhRmo/maxresdefault.webp">
+              <img src="https://i.ytimg.com/vi/Vi5D6FKhRmo/maxresdefault.jpg" alt="#" class="active"> 
+            </picture>
+          </a>
+          <a href="https://www.youtube.com/embed/NOhDysLnTvY" class="video__link">
+            <picture>
+              <source srcset="https://i.ytimg.com/vi_webp/NOhDysLnTvY/maxresdefault.webp">
+              <img src="https://i.ytimg.com/vi/NOhDysLnTvY/maxresdefault.jpg" alt="#" class="active"> 
+            </picture>
+          </a>
+          <a href="https://www.youtube.com/embed/2OR0OCr6uRE" class="video__link">
+            <picture>
+              <source srcset="https://i.ytimg.com/vi_webp/2OR0OCr6uRE/maxresdefault.webp">
+              <img src="https://i.ytimg.com/vi/2OR0OCr6uRE/maxresdefault.jpg" alt="#" class="noactive"> 
+            </picture>
+          </a>
+          <!-- <iframe class="noactive" src="https://www.youtube.com/embed/zp1BXPX8jcU" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <iframe class="active" src="https://www.youtube.com/embed/aWmJ5DgyWPI" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <iframe class="active" src="https://www.youtube.com/embed/Vi5D6FKhRmo" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <iframe class="active" src="https://www.youtube.com/embed/NOhDysLnTvY" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <iframe class="noactive" src="https://www.youtube.com/embed/2OR0OCr6uRE" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe class="noactive" src="https://www.youtube.com/embed/2OR0OCr6uRE" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
         </div>
+
+
+
+
         <div class="video__dots">
           <svg class="icon"><use xlink:href="./assets/svg/sprite.svg#shevron"></use></svg>
           <div class="video__dot active"></div>
@@ -238,12 +277,12 @@
               <h3 class="tickets__box_title">Amount</h3>
               <div class="tickets__box_label">Basic 18+<br>
                 <div>
-                  <button type="button" onclick="this.nextElementSibling.stepDown()">&#8211;</button><input type="number" min="0" max="100" value="1" readonly class="tickets__box_input"><button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                  <button type="button" onclick="this.nextElementSibling.stepDown()">&#8211;</button><input type="number" min="0" max="20" value="1" readonly class="tickets__box_input"><button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
                 </div>
               </div>
               <div class="tickets__box_label">Senior 65+<br>
                 <div>
-                  <button type="button" onclick="this.nextElementSibling.stepDown()">&#8211;</button><input type="number" min="0" max="100" value="1" readonly class="tickets__box_input"><button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                  <button type="button" onclick="this.nextElementSibling.stepDown()">&#8211;</button><input type="number" min="0" max="20" value="1" readonly class="tickets__box_input"><button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
                 </div>
               </div>
               <label class="tickets__box_total">Total €<input type="text" value="220" class="tickets__box_input"></label>
