@@ -1,0 +1,188 @@
+input[type="number"]
+  text-align: center
+  
+.tickets
+  max-height: 893px
+  padding-top: 75px
+  padding-bottom: 75px
+  &__title
+    @include title
+    color: $black
+  hr
+    @include hr
+    height: 3px
+    margin-top: 25px
+    border: none
+  &__wrapper
+    display: flex
+    justify-content: space-between
+    margin-top: 75px
+    color: $black
+  &__img
+    width: 720px
+    height: 550px
+  &__block
+    display: flex
+    justify-content: space-between
+    width: 660px
+    &_wrap
+      display: flex
+      flex-direction: column
+    &_title
+      font-family: $roboto
+      font-weight: 900
+      font-size: 28px
+      line-height: 33px
+    &_label //style this checkmark
+      width: 270px
+      margin-top: 51px
+      font-size: 22px
+      user-select: none
+      font-family: $roboto
+      font-weight: 300
+      line-height: 26px
+      cursor: pointer
+      &:nth-child(n+3):nth-child(-n+4)
+        margin-top: 25px
+      &:hover input ~ .tickets__block_checkmark 
+        background-color: $white
+      input:checked ~ .tickets__block_checkmark 
+        background-color: $white
+    &_checkmark
+      padding-left: 18px
+    input[type='radio'],
+    label 
+      cursor: pointer
+    input[type='radio'] 
+      position: relative
+      height: 17px
+      width: 17px
+      border-radius: 100%
+      -webkit-appearance: none
+      -moz-appearance: none
+      appearance: none
+      outline: none
+    input[type='radio']::before 
+      content: ''
+      position: absolute
+      top: 50%
+      left: 50%
+      width: 15px
+      height: 15px
+      border-radius: 50%
+      transform: translate(-50%, -50%)
+      background-color: white
+      border: 2px solid $black
+    input[type='radio']:checked::after 
+      content: ''
+      position: absolute
+      top: 50%
+      left: 50%
+      width: 8px
+      height: 8px
+      border-radius: 50%
+      background-color: $black
+      transform: translate(-50%, -50%)
+      visibility: visible
+  &__box
+    &_wrap
+      display: flex
+      flex-direction: column
+      align-items: flex-end
+      width: 175px
+    &_title
+      font-family: $roboto
+      font-weight: 900
+      font-size: 28px
+      line-height: 33px
+      text-align: right
+    &_label //style this input type="number"
+      margin-top: 26px
+      font-family: $roboto
+      font-weight: 300
+      font-size: 22px
+      line-height: 26px
+      &:nth-child(3)
+        margin-top: 11px
+      div
+        display: flex
+        align-items: flex-end
+        justify-content: space-between
+        width: 149px
+        button
+          width: 25%
+          height: 50px
+          margin-top: 14px
+          padding: 0
+          color: $black
+          border: 3px solid $black
+          background-color: $white
+          font-family: $roboto
+          font-weight: 400
+          font-size: 32px
+          line-height: 37px
+          text-align: center
+          &:nth-child(1)
+            border-right: none
+            padding-left: 4px
+          &:last-child
+            border-right: 3px solid $black
+            border-left: none
+            padding-right: 5px
+    &_input
+      width: 50%
+      height: 50px
+      padding: 0
+      font-family: $roboto
+      font-weight: 300
+      font-size: 22px
+      line-height: 26px
+      letter-spacing: -1px
+      text-align: center
+      background-color: $white
+      border: none
+      border-bottom: 3px solid $black
+      border-top: 3px solid $black
+      color: $black
+    &_total
+      margin-top: 41px
+      margin-left: 16px
+      font-family: $roboto
+      font-weight: 900
+      font-size: 28px
+      line-height: 33px
+      letter-spacing: 1.65px
+      .tickets__box_input
+        width: 52px
+        height: 50px
+        padding: 0
+        font-family: $roboto
+        font-weight: 900
+        font-size: 28px
+        line-height: 33px
+        letter-spacing: 1.65px
+        background-color: $white
+        border: none
+        color: $black
+    &_btn
+      width: 175px
+      height: 50px
+      margin-top: 54px
+      font-family: $roboto
+      font-weight: 300
+      font-size: 22px
+      line-height: 26px
+      letter-spacing: 2px
+      background: $black
+      border: none
+      border-radius: 2px
+      transition: all 0.5s linear
+      cursor: pointer
+      color: $white
+      &:hover
+        background-color: $gold
+        color: $black
+      &:active
+        background-color: $gold
+        color: $white
+        

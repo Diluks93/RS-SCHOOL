@@ -1,0 +1,55 @@
+.header
+  min-height: 150px
+  background-color: $blackBg
+  &__wrapper
+    padding-top: 62px
+    display: grid
+    grid-template-columns: 199px 775px
+    column-gap: 466px
+  &__logo
+    font-family: $forum
+    text-align: right
+    text-transform: uppercase
+    color: $white
+    text-decoration: none
+    h1
+      position: relative
+      font-size: 28px
+      font-weight: 400
+      letter-spacing: 5px
+      transition: 0.5s
+      margin: 0
+      &::before
+        content: url("../assets/svg/logo.svg")
+        position: absolute
+        left: -5%
+        top: -30%
+        transform: translateX(-50%)
+        transform: scale(0.7)
+      &:hover
+        filter: invert(57%) sepia(6%) saturate(1845%) hue-rotate(356deg) brightness(94%) contrast(84%)
+      &:active
+        filter: invert(57%) sepia(6%) saturate(1845%) hue-rotate(356deg) brightness(94%) contrast(84%)        
+  &__items
+    display: flex
+    justify-content: space-between
+    align-items: center
+    max-width: 775px
+    padding: 0
+    list-style: none
+  &__link
+    max-height: 50px
+    font-family: $roboto 
+    font-size: 22px
+    line-height: 26px
+    letter-spacing: 2px
+    font-weight: 100
+    text-decoration: none
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+    color: $white
+    transition: color 0.6s linear
+    &:hover
+      color: $gold
+    &:active
+      color: $active
+
