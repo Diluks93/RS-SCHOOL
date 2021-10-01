@@ -4,6 +4,7 @@ import comparisons from './comparisons.js';
 import modal from './modal.js';
 import changeItemGallery from './gallery.js';
 import changeIframe from './changeIframe.js';
+import showSidepanel from './hamburger.js';
 
 comparisons();
 slider();
@@ -11,6 +12,7 @@ customVideoPlayer();
 modal();
 changeItemGallery();
 changeIframe();
+showSidepanel();
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGlsdWtzIiwiYSI6ImNrdTFxc3ZmODBuazAyb28xcTdtYTZmMGUifQ.oH3L-MEDH588UW1NMgorKg';
 var map = new mapboxgl.Map({
