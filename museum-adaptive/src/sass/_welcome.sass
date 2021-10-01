@@ -1,5 +1,5 @@
 .welcome
-  min-height: 842px
+  max-height: 842px
   background-color: $blackBg
   background-image: url("../assets/img/welcome-slider/1.jpg")
   background-repeat: no-repeat
@@ -10,23 +10,32 @@
     grid-template-columns: 598px 600px
     grid-template-rows: 538px 120px
     column-gap: 242px
-    row-gap: 152px
+    row-gap: 150px
+  .sidepanel
+    display: none
+    &__block
+      display: none
+    &.show
+      display: block
+      position: absolute
   &__title
     @include title
   &__wrapper
     position: relative
     max-width: 598px
-    min-height: 750px
-    padding-top: 150px
+    max-height: 750px
+    padding-top: 148px
     z-index: 10
+    &.hide
+      display: none
     &::after
       content: ''
       position: absolute
-      right: -440px
+      right: -72.92%
       top: 0
       width: 100%
-      height: 100%
-      background: linear-gradient(90deg, $blackBg 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%)
+      height: 140%
+      background: linear-gradient(90deg, $blackBg 0%, rgba(0, 0, 0, 0.5) 20.19%, rgba(0, 0, 0, 0) 39.73%)
       z-index: -1
   &__text
     margin-top: 26px
@@ -40,7 +49,7 @@
     display: block
     width: 360px
     height: 75px
-    margin-top: 76px
+    margin-top: 74px
     padding: 24px 66px
     font-family: $roboto
     font-size: 22px
@@ -64,8 +73,8 @@
     &.slider
       display: grid
       padding: 40px 75px 40px 75px
-      grid-template-columns: 76px 180px 80px
-      column-gap: 57px
+      grid-template-columns: 76px 182px 80px
+      column-gap: 55px
     &-counter
       display: flex
       flex-direction: row
@@ -100,15 +109,227 @@
       justify-content: space-between
       align-items: center
       fill: $white
-      .icon
-        width: 30px
-        height: 8px
-        transition: fill 0.5s linear
+      button
+        background: $blackBg
+        border: none
+        padding: 0
         &:last-child
           transform: rotate(180deg)
-        &:hover
-          fill: $gold
-          cursor: pointer
-        &:active
-          fill: $gold
+          margin-top: 5px
+        .icon
+          width: 30px
+          height: 8px
+          transition: fill 0.5s linear
+          &:hover
+            fill: $gold
+            cursor: pointer
+          &:active
+            fill: $gold
 
+@media (max-width: 1024px)
+  .welcome
+    max-height: 585px
+    background-size: 700px 525px
+    background-position: calc(50% + 141px) 0
+    padding-bottom: 30px
+    &__title
+      @include title1024
+      line-height: 90px
+      margin-top: 50px
+    &__text
+      font-size: 24px
+      line-height: 28px
+      margin-top: 25px
+    &__btn
+      width: 300px
+      height: 60px
+      margin-top: 50px
+      padding: 20px 45px
+      font-size: 20px
+      line-height: 23px
+    &__wrapper
+      padding-top: 0
+      &::after
+        height: 100%
+        right: -283px
+    &__block
+      &.slider
+        width: 700px
+        grid-column: -3/-1
+        margin-left: 35.42%
+        padding: 40px 75px 40px 224px
+        grid-template-columns: 71px 160px 80px
+        column-gap: 45px
+      &-counter
+        font-size: 20px
+      &-cubs
+        .cub
+          width: 12px
+          height: 12px
+      &-arrows
+        button
+          margin-top: -1px
+          &:last-child
+            margin-top: 0
+    &__container.container
+      grid-template-rows: 465px 120px
+      grid-template-columns: 398px 401px
+      row-gap: 0
+      column-gap: 0
+    .sidepanel
+      &::after
+        content: ''
+        position: absolute
+        left: 219.08%
+        top: 0
+        width: 165%
+        height: 155%
+        background: linear-gradient(90deg, $blackBg 0%, rgba(0, 0, 0, 0.5) 20.19%, rgba(0, 0, 0, 0) 39.73%)
+        z-index: 0
+      &__items
+        display: flex
+        flex-direction: column
+        margin-top: 13px
+        padding-left: 35px
+      &__item
+        position: relative
+        margin-top: 25px
+        font-size: 20px
+        line-height: 23px
+        letter-spacing: 2px
+        list-style: none
+        &::after
+          position: absolute
+          content: ">"
+          color: $white
+          right: -28px
+          transform: scaleX(0.5)
+
+@media (max-width: 768px)
+  .welcome
+    max-height: 861px
+    background-size: 728px 546px
+    background-position: calc(50%) 215px
+    &__title
+      @include title768
+      margin-top: 0
+    &__text
+      font-size: 20px
+      line-height: 23px
+      margin-top: 25px
+      text-align: center
+    &__btn
+      display: none
+    &__container.container
+      grid-template-rows: 165px 40px
+      row-gap: 626px
+    &__block
+      height: 100%
+      &.slider
+        padding: 0 164px
+        width: 93%
+        grid-column: 0
+        margin-left: 0
+    .sidepanel,
+    &__wrapper
+      max-width: 728px
+      grid-column: 1 / 3
+      &::after
+        display: none
+    .sidepanel
+      background-color: $blackBg
+      height: 861px
+      width: 728px
+      z-index: 100
+      &__item
+        margin-top: 24px
+        font-size: 20px
+        line-height: 23px
+        letter-spacing: 2px
+        list-style: none
+        &::after
+          left: -88px
+      &__block
+        display: block
+        padding-left: 35px
+        padding-right: 35px
+        margin-top: 37px
+      &__imgs
+        display: flex
+        flex-direction: column
+        gap: 18px
+        flex-wrap: wrap
+        .picture
+          display: flex
+          justify-content: space-between
+      hr
+        margin-top: 29px
+        height: 0
+        border: 1px solid rgba(255, 255, 255, 0.5)
+      .footer__social
+        margin: 0 auto
+        margin-top: 34px
+          
+@media (max-width: 420px)
+  .welcome
+    max-height: 544px
+    background-size: 380px 285px
+    background-position: calc(50%) 179px
+    padding-top: 6px
+    &__title
+      @include title420
+    &__text
+      font-size: 16px
+      line-height: 19px
+    &__container.container
+      grid-template-rows: 124px 40px
+      row-gap: 355px
+    &__wrapper
+      max-width: 380px
+    &__block
+      &.slider
+        padding-left: 75px
+        padding-right: 93px
+        width: 50%
+        grid-template-columns: 50px 75px 55px
+        column-gap: 25px
+      &-counter
+        font-size: 16px
+        line-height: 40px
+      &-cubs
+        .cub
+          width: 7px
+          height: 7px
+      &-arrows
+        button .icon
+          width: 20px
+    .sidepanel
+      max-height: 530px
+      max-width: 380px
+      &__block
+        padding-right: 30px
+        hr
+          margin-top: 15px
+        .footer__social
+          margin: 0 auto
+          margin-top: 24px
+          &_items
+            justify-content: center
+            column-gap: 5px
+            padding-right: 20px
+      &__items
+        margin-top: 7px
+      &__item
+        &::after
+          left: 25px
+      &__imgs
+        width: 100%
+        flex-direction: row
+        column-gap: 12
+        justify-content: space-between
+        picture img
+          width: 95px
+          height: 95px
+          object-fit: cover
+        .picture
+          column-gap: 12px
