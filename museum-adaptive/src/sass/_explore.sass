@@ -1,5 +1,5 @@
 .explore
-  height: 865px
+  max-height: 865px
   padding-top: 90px
   padding-bottom: 75px
   color: $white
@@ -15,11 +15,11 @@
       left: 0
       top: 0
       height: 100%
-      width: 50%
+      width: 61.5%
       overflow: hidden
     &_change
       position: absolute
-      left: 50%
+      left: 61.5%
       top: 50%
       transform: translate(-50%, -50%)
       width: 39px
@@ -67,7 +67,103 @@
     font-size: 22px
     line-height: 38px
     font-weight: 300
-    span
+    mark
       color: $gold
+      background-color: $blackBg
     &:nth-child(n + 2):nth-child(-n + 3)
       margin-top: 76px
+
+@media (max-width: 1024px) 
+  .explore
+    max-height: 1149px
+    padding-top: 74px
+    padding-bottom: 60px
+    &__block
+      &_before
+        width: 44.5%
+      &_change
+        left: 44.5%
+      &.slider
+        left: 63.5%
+        transform: translateX(-50%)
+        margin-top: 60px
+    .container
+      display: block
+    &__title
+      @include title1024
+      margin-top: -15px
+    hr
+      margin-top: 22px
+    &__text
+      margin-top: -2px
+      font-size: 20px
+      &:nth-child(n + 2):nth-child(-n + 3)
+        margin-top: 59px
+      &:nth-child(5)
+        display: none
+
+@media (max-width: 768px)
+  .explore
+    max-height: 908px
+    padding-top: 40px
+    padding-bottom: 40px
+    &__text
+      display: none        
+    &__block
+      &_before
+        width: 60.5%
+      &_change
+        top: 51.5%
+        left: 60.5%
+        width: 20px
+        height: 20px
+        border: 2px $white solid
+        &::before
+          height: 331px
+          width: 2px
+        &::after
+          height: 345px
+          width: 2px
+      &.slider
+        left: 50%
+        transform: translateX(-50%)
+        margin-top: 41px
+    &__img
+      width: 728px
+      height: 705px
+    &__title
+      @include title768
+      margin-top: 0
+      text-align: left
+    hr
+      margin-top: 20px
+
+@media (max-width: 420px) 
+  .explore
+    max-height: 551px
+    &__block
+      &_before
+        width: 60.5%
+      &_change
+        top: 51.5%
+        left: 60.5%
+        &::before
+          height: 168px
+          left: 7px
+          top: 18px
+        &::after
+          height: 180px
+          left: 7px
+          bottom: 18px
+      &.slider
+        left: 50%
+        transform: translateX(-50%)
+        margin-top: 41px
+    &__img
+      width: 380px
+      height: 368px
+    &__title
+      @include title420
+      text-align: left
+    hr
+      margin-top: 20px
