@@ -1,9 +1,17 @@
 .gallery
+  position: relative
   max-height: 2200px
   padding-top: 75px
   color: $white
   background-color: $blackBg
   overflow: hidden
+  &::after
+    position: absolute
+    content: ""
+    height: 360px
+    width: 100%
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, $black 100%)
+    bottom: 0
   &__title
     @include title
   &__wrapper
@@ -20,10 +28,11 @@
       width: 0
       order: 2
   &__img
-    width: 456px
+    max-width: 456px
     margin-bottom: 24px
     display: block
-    &:first-child,
+    object-fit: cover
+    &:nth-child(1),
     &:nth-child(3)
       padding-top: 45px
     &:nth-child(3n + 1) 
@@ -32,10 +41,66 @@
       order: 2
     &:nth-child(3n)
       order: 3
-  &__gradient
-    position: absolute
-    bottom: 1539px
-    height: 360px
-    width: 100%
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, $black 100%)
+    img
+      max-width: 100%    
       
+@media (max-width: 1024px) 
+  .gallery
+    max-height: 1460px
+    padding-top: 61px
+    &::after
+      height: 239px
+    &__title
+      @include title1024
+    &__wrapper
+      margin-top: 60px
+      &::before,
+      &::after
+        content: ""
+        flex-basis: 100%
+        width: 0
+        order: 2
+    &__img
+      max-width: 304px
+      &:nth-child(1),
+      &:nth-child(3)
+        padding-top: 50px
+
+@media (max-width: 768px) 
+  .gallery
+    max-height: 1220px
+    padding-top: 40px
+    &::after
+      height: 235px
+    &__title
+      @include title768
+      text-align: left
+    &__wrapper
+      margin-top: 40px
+      &::before,
+      &::after
+        display: none
+    &__img
+      max-width: 352px
+      &:nth-child(3)
+        padding-top: 0
+      &:nth-child(2n + 1) 
+        order: 1
+      &:nth-child(2n)
+        order: 2
+
+@media (max-width: 420px) 
+  .gallery
+    max-height: 757px
+    &::after
+      height: 112px
+    &__title
+      @include title420
+    &__wrapper
+      height: 1900px
+    &__img
+      max-width: 178px
+      &:nth-child(2n + 1) 
+        order: 1
+      &:nth-child(2n)
+        order: 2
