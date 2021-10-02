@@ -1,4 +1,4 @@
-import customVideoPlayer from './video.js';
+// import customVideoPlayer from './video.js';
 import slider from './slider.js'
 import comparisons from './comparisons.js';
 import modal from './modal.js';
@@ -8,14 +8,14 @@ import showSidepanel from './hamburger.js';
 
 comparisons();
 slider();
-customVideoPlayer();
+// customVideoPlayer();
 modal();
 changeItemGallery();
 changeIframe();
 showSidepanel();
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiZGlsdWtzIiwiYSI6ImNrdTFxc3ZmODBuazAyb28xcTdtYTZmMGUifQ.oH3L-MEDH588UW1NMgorKg';
-var map = new mapboxgl.Map({
-  container: 'map',
-  style: 'mapbox://styles/diluks/cku5sv2ux2ws417o5hnw2bhu7'
-});
+// mapboxgl.accessToken = 'pk.eyJ1IjoiZGlsdWtzIiwiYSI6ImNrdTFxc3ZmODBuazAyb28xcTdtYTZmMGUifQ.oH3L-MEDH588UW1NMgorKg';
+// var map = new mapboxgl.Map({
+//   container: 'map',
+//   style: 'mapbox://styles/diluks/cku5sv2ux2ws417o5hnw2bhu7'
+// });

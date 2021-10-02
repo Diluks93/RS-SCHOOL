@@ -26,15 +26,15 @@ export default function comparisons(){
 
   body.addEventListener('mousedown', () => {
     isActive = true;
-  });
+  }, {passive: true});
 
   body.addEventListener('mouseup', () => {
     isActive = false;
-  });
+  }, {passive: true});
 
   body.addEventListener('mouseleave', () => {
     isActive = false;
-  });
+  }, {passive: true});
 
   body.addEventListener('mousemove', (e) => {
     if (!isActive) return;
@@ -42,19 +42,19 @@ export default function comparisons(){
     let x = e.pageX;
     x -= slider.getBoundingClientRect().left;
     beforeAfterSlider(x);
-  });
+  }, {passive: true});
 
   body.addEventListener('touchstart', () => {
     isActive = true;
-  });
+  }, {passive: true});
 
   body.addEventListener('touchend', () => {
     isActive = false;
-  });
+  }, {passive: true});
 
   body.addEventListener('touchcancel', () => {
     isActive = false;
-  });
+  }, {passive: true});
 
   body.addEventListener('touchmove', (e) => {
     if (!isActive) return;
@@ -67,5 +67,5 @@ export default function comparisons(){
     x -= slider.getBoundingClientRect().left;
     beforeAfterSlider(x);
     pauseEvents(e);
-  });
+  }, {passive: true});
 }
