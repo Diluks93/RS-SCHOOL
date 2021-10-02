@@ -22,10 +22,11 @@
       font-weight: 400
       letter-spacing: 5px
       transition: 0.5s
+      padding-left: 1px
       &::before
         content: url("../assets/svg/logo.svg")
         position: absolute
-        left: -67%
+        left: -68.6%
         transform: translateX(-50%)
         transform: scale(0.65)
         top: 0
@@ -33,14 +34,17 @@
         filter: invert(57%) sepia(6%) saturate(1845%) hue-rotate(356deg) brightness(94%) contrast(84%)
       &:active
         filter: invert(57%) sepia(6%) saturate(1845%) hue-rotate(356deg) brightness(94%) contrast(84%) 
+  &__wrap
+    display: flex
+    justify-content: space-between
+    width: 100%
   &__items
     display: flex
     flex-direction: column
     flex-wrap: wrap
     justify-content: space-between
-    width: 366px
+    min-width: 366px
     height: 150px
-    margin-right: 398px
     margin-top: 2px
     padding-left: 0
     column-gap: 166px
@@ -60,7 +64,7 @@
       &:active
         color: $gold
   &__social
-    width: 336px
+    width: 340px
     height: 48px
     margin-top: 88px
     margin-bottom: 55px
@@ -70,6 +74,7 @@
       justify-content: space-between
       padding-left: 0
       list-style: none
+      column-gap: 25px
     &_item
       width: 48px
       height: 48px
@@ -140,3 +145,136 @@
       color: $gold
     &:active
       color: $gold
+
+@media (max-width: 1024px) 
+  .footer
+    max-height: 368px
+    padding-top: 60px
+    padding-bottom: 50px
+    &__title
+      margin-right: 45px
+      padding-left: 73px
+      h5
+        line-height: 35px
+        &::before
+          top: -7px
+    &__items
+      min-width: 313px
+      height: 127px
+      margin-right: 92px
+      margin-top: 6px
+      column-gap: 114px
+    &__item
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(5),
+      &:nth-child(6)
+        margin-top: 24px      
+      &_link
+        line-height: 26px
+    &__social
+      margin-top: 85px
+      margin-bottom: 50px
+    &__wrapper
+      margin-top: 50px
+
+@media (max-width: 768px) 
+  .footer
+    max-height: 411px
+    padding-top: 48px
+    padding-bottom: 40px
+    .container
+      column-gap: 57px
+    &__title
+      h5
+        line-height: 35px
+        &::before
+          top: -7px
+    &__wrap
+      flex-direction: column
+      column-gap: 0
+    &__items
+      min-width: 393px
+      height: 114px
+      margin-top: 10px
+      column-gap: 134px
+    &__item
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(5),
+      &:nth-child(6)
+        margin-top: 25px      
+      &_link
+        font-size: 18px
+        line-height: 21px
+    &__social
+      margin-top: 49px
+      margin-bottom: 38px
+    &__wrapper
+      margin-top: 40px
+
+@media (max-width: 420px) 
+  .footer
+    max-height: 400px
+    padding-top: 42px
+    .container
+      flex-direction: column
+      column-gap: 0
+    &__title
+      width: 132px
+      padding-left: 47px
+      h5
+        font-size: 16px
+        line-height: 18px
+        padding-left: 2px
+        &::before
+          top: -14px
+          left: -80.8%
+          transform: scale(0.4)
+    &__wrap
+      margin-top: 0
+      width: 100%
+    &__items
+      flex-direction: row
+      margin-top: 9px
+      min-width: 382px
+      height: 96px
+      column-gap: 52px
+    &__item
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(5),
+      &:nth-child(6)
+        margin-top: 0  
+      &:nth-child(2)
+        order: 4
+      &:nth-child(4)
+        order: 5
+      &:nth-child(5)
+        order: 3
+      &:nth-child(3)
+        order: 2
+      &:nth-child(6)
+        order: 6
+      &:nth-child(5)
+        padding-right: 15px
+      &:nth-child(4)
+        padding-left: 12px
+      &_link
+        font-size: 16px
+        line-height: 19px
+        letter-spacing: 2px
+    &__social
+      margin-top: 11px
+      margin-bottom: 40px
+      &_items
+        padding-left: 39px
+        column-gap: 5px
+        justify-content: center
+    &__wrapper
+      .footer__link
+        display: none
+    &__year,
+    &__username
+      font-size: 16px
+      line-height: 22px
