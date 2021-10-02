@@ -43,7 +43,100 @@
         color: $grey
       &:active
         color: $gold
-  &__img
+  &__map
     width: 960px
     height: 620px
 
+@media (max-width: 1024px) 
+  .contacts
+    max-height: 734px
+    padding-top: 61px
+    padding-bottom: 60px
+    &__title
+      @include title1024
+    hr
+      margin-top: 19px
+      height: 3px
+    &__wrap
+      padding-top: 60px
+    &__block
+      width: 282px
+      &_title
+        line-height: 28px
+        font-size: 24px
+      &_items
+        margin-top: 35px
+      &_item
+        margin-top: 15px
+        &:first-child
+          margin-top: 0
+      &_item,
+      &_link
+        font-size: 20px
+        line-height: 23px
+    &__map
+      width: 694px
+      height: 454px
+
+@media (max-width: 768px) 
+  .contacts
+    max-height: 925px
+    padding-top: 40px
+    padding-bottom: 67px
+    &__title
+      @include title768
+      text-align: left
+    hr
+      margin-top: 20px
+    &__wrap
+      flex-direction: column
+      width: 100%
+      padding-top: 40px
+    &__block
+      width: 234px
+      &_title
+        line-height: 23px
+        font-size: 20px
+      &_items
+        margin-top: 43px
+      &_item
+        margin-top: 14px
+        &:nth-child(2)
+          margin-left: -2px
+      &_item,
+      &_link
+        font-size: 18px
+        line-height: 21px
+    &__map
+      width: 728px
+      height: 476px
+      margin-top: 40px
+
+@media (max-width: 420px)
+  .contacts
+    max-height: 636px
+    padding-bottom: 40px
+    &__title
+      @include title420
+    hr
+      margin-top: 17px
+    &__wrap
+      padding-top: 42px
+    &__block
+      width: 208px
+      &_title
+        line-height: 19px
+        font-size: 16px
+      &_items
+        margin-top: 40px
+      &_item
+        margin-top: 15px
+        &:nth-child(2)
+          margin-left: 0
+      &_item,
+      &_link
+        font-size: 16px
+        line-height: 19px
+    &__map
+      width: 380px
+      height: 248px
