@@ -10,7 +10,9 @@ export default function showSidepanel() {
     welcomeBlock.classList.toggle('hide');
   });
 
-  window.onclick = function (event) {
+  //todo при клике по ссылке в адаптивном меню, или при клике по любому месту сайта, кроме самого адаптивного меню, меню закрывается
+  
+  welcomeSection.onclick = function (event) {
     if (event.target == welcomeSection) {
       sidepanel.classList.remove('show');
       hamburger.classList.remove('hamburger_active');

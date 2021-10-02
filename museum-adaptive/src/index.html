@@ -21,7 +21,7 @@
   <title>Museum</title>
 </head>
 <body>
-  <header class="header" id="header">
+  <!-- <header class="header" id="header">
     <div class="container">
       <div class="header__wrapper">
         <a href="#" class="header__logo">
@@ -44,9 +44,9 @@
         </nav>
       </div>
     </div>
-  </header>
+  </header> -->
   <main class="main">
-    <section class="welcome" id="welcome">
+    <!-- <section class="welcome" id="welcome">
       <div class="container welcome__container">
         <aside class="sidepanel">
           <nav>
@@ -145,8 +145,8 @@
           </div>
         </div>
       </div>
-    </section>
-    <section class="visiting" id="visiting">
+    </section> -->
+    <!-- <section class="visiting" id="visiting">
       <div class="container">
         <h2 class="visiting__title">Virtual tour</h2>
         <hr>
@@ -213,8 +213,8 @@
           </a>
         </div>
       </div>
-    </section>
-    <section class="explore" id="explore">
+    </section> -->
+    <!-- <section class="explore" id="explore">
       <div class="container">
         <div class="explore__block">
           <h2 class="explore__title">Picture explore</h2>
@@ -239,8 +239,8 @@
           <div class="explore__block_change"></div>
         </div>
       </div>
-    </section>
-    <section class="video" id="video">
+    </section> -->
+    <!-- <section class="video" id="video">
       <div class="container">
         <div class="video__wrapper">
           <h2 class="video__title">Video journey</h2>
@@ -354,8 +354,8 @@
           <svg class="icon"><use xlink:href="./assets/svg/sprite.svg#shevron"></use></svg>
         </div>
       </div>
-    </section>
-    <section class="gallery" id="gallery">
+    </section>-->
+    <!-- <section class="gallery" id="gallery">
       <div class="container">
         <h2 class="gallery__title">Art gallery</h2>
         <div class="gallery__wrapper">
@@ -421,13 +421,16 @@
           </picture>
         </div>
       </div>
-    </section>
+    </section> -->
     <section class="tickets" id="tickets">
       <div class="container">
         <h2 class="tickets__title">Buy tickets</h2>
         <hr>
         <div class="tickets__wrapper">
-          <img src="./assets/img/tickets.jpg" alt="picture" class="tickets__img">
+          <picture>
+            <source srcset="./assets/img/tickets.webp">
+            <img src="./assets/img/tickets.jpg" alt="picture" class="tickets__img">
+          </picture>
           <div class="tickets__block">
             <div class="tickets__block_wrap">
               <h3 class="tickets__block_title">Ticket Type</h3>
@@ -448,12 +451,16 @@
               <h3 class="tickets__box_title">Amount</h3>
               <div class="tickets__box_label">Basic 18+<br>
                 <div>
-                  <button type="button" onclick="this.nextElementSibling.stepDown()">&#8211;</button><input type="number" min="0" max="20" value="1" readonly class="tickets__box_input"><button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                  <button type="button" onclick="this.nextElementSibling.stepDown()">&#8211;</button>
+                  <input type="number" min="0" max="20" value="1" readonly class="tickets__box_input">
+                  <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
                 </div>
               </div>
               <div class="tickets__box_label">Senior 65+<br>
                 <div>
-                  <button type="button" onclick="this.nextElementSibling.stepDown()">&#8211;</button><input type="number" min="0" max="20" value="1" readonly class="tickets__box_input"><button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                  <button type="button" onclick="this.nextElementSibling.stepDown()">&#8211;</button>
+                  <input type="number" min="0" max="20" value="1" readonly class="tickets__box_input">
+                  <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
                 </div>
               </div>
               <label class="tickets__box_total">Total €<input type="text" value="220" class="tickets__box_input"></label>
@@ -463,8 +470,8 @@
         </div>
       </div>
     </section>
-    <div class="parallax"></div>
-    <section class="contacts" id="contacts">
+    <!-- <div class="parallax"></div> -->
+    <!-- <section class="contacts" id="contacts">
       <div class="container">
         <h2 class="contacts__title">Contacts</h2>
         <hr>
@@ -486,9 +493,9 @@
           <div id='map' class="contacts__img"></div>
         </div>
       </div>
-    </section>
+    </section> -->
   </main>
-  <footer class="footer">
+  <!-- <footer class="footer">
     <div class="container">
       <a href="#header" class="footer__title"><h5>Louvre</h5></a>
       <nav>
@@ -561,8 +568,8 @@
         <a href="https://github.com/Diluks93" class="footer__username" target="_blank">Diluks93</a>
       </div>
     </div>
-  </footer>
-  <div class="modal">
+  </footer> -->
+  <!-- <div class="modal">
     <div class="container">
       <form action="#" class="modal__form">
         <div class="form__block">
@@ -721,7 +728,7 @@
         </div>      
       </form>
     </div>
-  </div>
-  <script type="module" src="./js/script.js"></script>
+  </div> -->
+  <!-- <script type="module" src="./js/script.js"></script> -->
 </body>
 </html>
