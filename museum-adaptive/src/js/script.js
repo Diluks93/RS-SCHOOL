@@ -1,4 +1,4 @@
-// import customVideoPlayer from './video.js';
+import customVideoPlayer from './video.js';
 import slider from './slider.js'
 import comparisons from './comparisons.js';
 import modal from './modal.js';
@@ -8,7 +8,7 @@ import showSidepanel from './hamburger.js';
 
 comparisons();
 slider();
-// customVideoPlayer();
+customVideoPlayer();
 modal();
 changeItemGallery();
 changeIframe();

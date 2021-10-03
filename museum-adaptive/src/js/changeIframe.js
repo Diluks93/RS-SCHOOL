@@ -8,16 +8,18 @@ export default function changeIframe() {
   }
 
   function setupVideo(video) {
-    let link = video.querySelector('.video__link');
-    let media = video.querySelector('.video__media');
-    let button = video.querySelector('.video__item_button');
-    let id = parseMediaURL(media);
+    let link = video.querySelector('.video__link'),
+      media = video.querySelector('.video__media'),
+      button = video.querySelector('.video__item_button'),
+      description = video.querySelector('.video__item_descr'),
+      id = parseMediaURL(media);
 
     video.addEventListener('click', () => {
       let iframe = createIframe(id);
 
       link.remove();
       button.remove();
+      description.remove();
       video.appendChild(iframe);
     });
 

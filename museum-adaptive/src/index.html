@@ -8,12 +8,14 @@
   <meta name="keywords" content="museum, gallery, paintings, art, Louvre">
   <meta name="author" content="Dzmitry Iliukovich @diluks93">
   <link rel="stylesheet" href="./css/style.css">
+
   <link rel="shortcut icon" href="./assets/favicon/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
   <link rel="manifest" href="./assets/favicon/site.webmanifest">
   <link rel="mask-icon" href="./assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
   <!-- <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
@@ -240,19 +242,19 @@
         </div>
       </div>
     </section>
-    <!-- <section class="video" id="video">
+    <section class="video" id="video">
       <div class="container">
         <div class="video__wrapper">
           <h2 class="video__title">Video journey</h2>
           <p class="video__descr">Enter and visit one of the most famous museums in the world and enjoy masterpieces such as Mona Lisa or Hammurabi's Code</p>
         </div>
         <div class="video__player">
-          <video class="video__video play" poster="./assets/img/video/poster0.jpg" src="./assets/video/video0.mp4"></video>
-          <video class="video__video" poster="./assets/img/video/poster1.jpg" src="./assets/video/video1.mp4"></video>
-          <video class="video__video" poster="./assets/img/video/poster2.jpg" src="./assets/video/video2.mp4"></video>
-          <video class="video__video" poster="./assets/img/video/poster3.jpg" src="./assets/video/video3.mp4"></video>
-          <video class="video__video" poster="./assets/img/video/poster4.jpg" src="./assets/video/video4.mp4"></video>
-          <button>
+          <video class="video__video play" poster="./assets/img/video/poster0.webp" src="./assets/video/video0.mp4"></video>
+          <video class="video__video" poster="./assets/img/video/poster1.webp" src="./assets/video/video1.mp4"></video>
+          <video class="video__video" poster="./assets/img/video/poster2.webp" src="./assets/video/video2.mp4"></video>
+          <video class="video__video" poster="./assets/img/video/poster3.webp" src="./assets/video/video3.mp4"></video>
+          <video class="video__video" poster="./assets/img/video/poster4.webp" src="./assets/video/video4.mp4"></video>
+          <button id="button">
               <svg class="icon"><use xlink:href="./assets/svg/sprite.svg#play"></use></svg>
           </button>
           <div class="video__controls">
@@ -261,7 +263,6 @@
             </button>
             <div class="video__controls_progress" id="progress">
               <div class="video__controls_progress-filled" id="progress-filled"></div>
-              <input type="range" value="100" min="0" max="100" step="1" class="video__controls_progress" style="display: none;">
             </div>
             <button class="video__btn" id="mute">
               <svg class="icon"><use xlink:href="./assets/svg/sprite.svg#sound"></use></svg>
@@ -273,7 +274,7 @@
           </div>
         </div>
         <div class="video__slider">
-          <div class="video__item noactive" aria-label="launch video">
+          <!-- <div class="video__item noactive" aria-label="launch video">
             <a href="https://www.youtube.com/embed/zp1BXPX8jcU" class="video__link ">
               <picture>
                 <source srcset="https://i.ytimg.com/vi_webp/zp1BXPX8jcU/mqdefault.webp">
@@ -286,8 +287,16 @@
                 <path class="video__item_button-icon" d="M 45,24 27,14 27,34"></path>
               </svg>
             </button>
-          </div>
+          </div> -->
           <div class="video__item active">
+            <div class="video__item_descr">
+              <picture>
+                <source srcset="./assets/img/video/avatar.webp">
+                <img src="./assets/img/video/avatar.jpg" alt="avatar">
+              </picture>
+              <p class="video__item_descr_text">Exposition - Le Corps et l’Ame. De Dona...</p>
+              <p class="video__item_descr_dots">&#10998;</p>
+            </div>
             <a href="https://www.youtube.com/embed/aWmJ5DgyWPI" class="video__link">
               <picture>
                 <source srcset="https://i.ytimg.com/vi_webp/aWmJ5DgyWPI/mqdefault.webp">
@@ -302,6 +311,14 @@
             </button>
           </div>
           <div class="video__item active">
+            <div class="video__item_descr">
+              <picture>
+                <source srcset="./assets/img/video/avatar.webp">
+                <img src="./assets/img/video/avatar.jpg" alt="avatar">
+              </picture>
+              <p class="video__item_descr_text">Au Louvre ! La Venus de Milo</p>
+              <p class="video__item_descr_dots">&#10998;</p>
+            </div>
             <a href="https://www.youtube.com/embed/Vi5D6FKhRmo" class="video__link">
               <picture>
                 <source srcset="https://i.ytimg.com/vi_webp/Vi5D6FKhRmo/mqdefault.webp">
@@ -315,7 +332,15 @@
               </svg>
             </button>
           </div>
-            <div class="video__item active">
+          <div class="video__item active">
+            <div class="video__item_descr">
+              <picture>
+                <source srcset="./assets/img/video/avatar.webp">
+                <img src="./assets/img/video/avatar.jpg" alt="avatar">
+              </picture>
+              <p class="video__item_descr_text">Promenade dans les collections mesop...</p>
+              <p class="video__item_descr_dots">&#10998;</p>
+            </div>
             <a href="https://www.youtube.com/embed/NOhDysLnTvY" class="video__link">
               <picture>
                 <source srcset="https://i.ytimg.com/vi_webp/NOhDysLnTvY/mqdefault.webp">
@@ -329,7 +354,7 @@
               </svg>
             </button>
           </div>
-          <div class="video__item noactive">
+          <!-- <div class="video__item noactive">
             <a href="https://www.youtube.com/embed/2OR0OCr6uRE" class="video__link">
               <picture>
                 <source srcset="https://i.ytimg.com/vi_webp/2OR0OCr6uRE/mqdefault.webp">
@@ -341,7 +366,7 @@
                 <path class="video__button-shape" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z"></path>
                 <path class="video__item_button-icon" d="M 45,24 27,14 27,34"></path>
               </svg>
-            </button>
+            </button> -->
           </div>
         </div>
         <div class="video__dots">
@@ -354,7 +379,7 @@
           <svg class="icon"><use xlink:href="./assets/svg/sprite.svg#shevron"></use></svg>
         </div>
       </div>
-    </section> -->
+    </section>
     <section class="gallery" id="gallery">
       <div class="container">
         <h2 class="gallery__title">Art gallery</h2>
@@ -736,6 +761,6 @@
       </form>
     </div>
   </div>
-  <script type="module" src="./js/main.js"></script>
+  <script type="module" src="./js/script.js"></script>
 </body>
 </html>

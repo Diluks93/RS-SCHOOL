@@ -1,10 +1,3 @@
-/* VIDEO STYLE -------------------------- */
-
-.container
-  display: block
-  max-width: 1440px
-  margin: 0 auto
-  
 .video
   max-height: 1396px
   padding-top: 75px
@@ -27,7 +20,6 @@
     position: relative
     z-index: 1
     margin-top: 75px
-    width: 100%
     max-height: 735px
     overflow: hidden
     button //style to play.svg
@@ -51,10 +43,10 @@
           fill: $gold
   &__video.play
     display: block
+    object-fit: cover
   &__video
     display: none
     width: 100%
-    height: 100%
   &__controls //style control panel
     position: absolute
     display: flex
@@ -165,6 +157,7 @@
       z-index: 100
       outline: none
       display: none
+      cursor: pointer
       &:focus
         .video__button-shape
           fill: #f00
@@ -174,6 +167,26 @@
         fill-opacity: 0.8
       &-icon
         fill: #ffffff
+  &__item_descr
+    position: absolute
+    left: 10px
+    top: 16px
+    display: flex
+    justify-content: space-between
+    width: 89.82%
+    picture img
+      border-radius: 50%
+    &_text,
+    &_dots
+      font-family: $roboto
+      font-weight: 300
+      font-size: 18px
+      line-height: 38px
+      color: $white
+    &_text
+      padding-right: 17px
+    &_dots
+      font-weight: bold
   &__media
     border: none
     width: 100%
@@ -182,7 +195,7 @@
     margin: 40px auto 0
     display: flex
     justify-content: space-between
-    width: 13.89%
+    width: 10.89%
     .icon
       width: 16px
       height: 12px
@@ -214,3 +227,212 @@
 .video__item.show
   .video__item_button
     display: block
+
+@media (max-width: 1024px) 
+  .video
+    max-height: 1001px
+    padding-top: 60px
+    padding-bottom: 60px
+    &__wrapper
+      justify-content: flex-start
+    &__title
+      width: 405px
+      @include title1024
+    &__descr
+      display: none
+    &__video
+      height: 504px
+    &__player
+      margin-top: 40px
+      max-height: 984px
+      button //style to play.svg
+        left: calc(50% - 77px)
+        top: 44.5%
+        .icon
+          width: 152px
+          height: 152px
+    &__controls //style control panel
+      height: 60px
+      padding: 0 25px
+      &_progress-filled
+        width: 13px
+        height: 13px
+      #progress,
+      #volume //style progress bar associated with JS
+        left: 9.5%
+        width: 57.2%
+        height: 5px
+      #volume
+        left: 75.5%
+        width: 15%
+      &_progress::-webkit-slider-thumb 
+        width: 13px
+        height: 13px
+    #play,
+    #mute,
+    #fullscreen
+      left: 39px
+      top: 54%
+      transform: translateY(-50%)
+      .icon
+        width: 23px
+        height: 30px 
+    #mute
+      left: 69.9%
+      .icon
+        width: 26px
+        height: 20px
+    #fullscreen
+      left: 93.2%
+      .icon
+        width: 26px
+        height: 26px
+    &__slider
+      grid-template-columns: repeat(3, 300px)
+      grid-template-rows: 170px
+      column-gap: 41px
+    &__item_descr
+      left: 10px
+      top: 11px
+      width: 84.82%
+      &_text
+        overflow: hidden
+        white-space: nowrap
+        width: 193px
+        text-overflow: ellipsis
+        padding-right: 0
+    &__dots
+      width: 19.89%
+      .icon
+        width: 10px
+        height: 12px
+    &__dot
+      width: 12px
+
+@media (max-width: 768px) 
+  .video
+    max-height: 841px
+    padding-top: 40px
+    padding-bottom: 40px
+    &__title
+      @include title768
+      text-align: left
+    &__video
+      height: 386px
+    &__player
+      margin-top: 20px
+      max-height: 386px
+      button //style to play.svg
+        left: calc(50% - 40px)
+        top: 43.5%
+        .icon
+          width: 80px
+          height: 80px
+    &__controls //style control panel
+      height: 57px
+      #progress,
+      #volume //style progress bar associated with JS
+        left: 0
+        width: 100%
+        top: -2px
+      #volume
+        left: 20.5%
+        width: 67%
+        top: 50%
+      &_progress::-webkit-slider-thumb 
+        width: 13px
+        height: 13px
+    #play,
+    #mute,
+    #fullscreen
+      left: 30px
+    #mute
+      left: 12.2%
+    #fullscreen
+      left: 92.2%
+    &__slider
+      grid-template-columns: repeat(3, 354px)
+      grid-template-rows: 199px
+      column-gap: 20px
+      margin-top: 20px
+      overflow: hidden
+    &__item_descr
+      left: 10px
+      top: 11px
+      width: 84.82%
+      &_text
+        width: 193px
+        padding-right: 0
+    &__dots
+      width: 24.89%
+      margin-top: 20px
+    &__dot
+      width: 10px
+      height: 10px
+
+@media (max-width: 420px) 
+  .video
+    max-height: 553px
+    padding-top: 36px
+    &__title
+      @include title420
+    &__video
+      height: 226px
+    &__player
+      max-height: 226px
+      button //style to play.svg
+        left: calc(50% - 25px)
+        top: 39.5%
+        .icon
+          width: 50px
+          height: 50px
+    &__controls //style control panel
+      height: 55px
+      &_progress-filled
+        width: 10px
+        height: 10px
+      #progress,
+      #volume //style progress bar associated with JS
+        top: 0
+      #volume
+        left: 29.5%
+        width: 53%
+        top: 50%
+      &_progress::-webkit-slider-thumb 
+        width: 10px
+        height: 10px
+    #play,
+    #mute,
+    #fullscreen
+      left: 18px
+      top: 50%
+      transform: translateY(-36%)
+      .icon
+        width: 19px
+        height: 19px 
+    #mute
+      left: 16.6%
+    #fullscreen
+      left: 90.1%
+    &__slider
+      grid-template-columns: repeat(3, 180px)
+      grid-template-rows: 101px
+      margin-top: 40px
+    &__item_descr
+      left: 10px
+      top: 11px
+      width: 84.82%
+      &_text
+        width: 193px
+        padding-right: 0
+      &_dots
+        display: none
+    &__dots
+      width: 41.89%
+      margin-top: 40px
+      .icon
+        width: 8px
+        height: 8px
+    &__dot
+      width: 8px
+      height: 8px

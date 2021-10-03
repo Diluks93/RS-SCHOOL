@@ -6,7 +6,7 @@ const
   player = document.querySelector('.video__player'),
   video = document.querySelector('.video__video'),
   videos = document.querySelectorAll('.video__video'),
-  play = document.querySelector('button'),
+  play = document.getElementById('button'),
   toggle = document.querySelector('.toggle-play'),
   progress = document.getElementById('progress'),
   progressBar = document.getElementById('progress-filled'),
