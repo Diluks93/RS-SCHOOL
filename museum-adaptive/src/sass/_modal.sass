@@ -26,7 +26,7 @@ input[type="number"]
     display: grid
     grid-template-columns: 400px 530px
     column-gap: 40px
-    grid-template-rows: 663px 1px
+    grid-template-rows: 663px
     background-color: $white
     padding: 91px 235px
     overflow: visible
@@ -96,7 +96,7 @@ input[type="number"]
     &:nth-child(2)
       border: 1px solid $black
       padding: 25px 30px 26px
-      grid-template-rows: 151px 117px 250px 45px
+      grid-template-rows: 156px 117px 250px 45px
       align-content: space-between
     &:first-child
       grid-template-rows: 143px 20px repeat(5, 45px) 135px
@@ -119,7 +119,7 @@ input[type="number"]
   &__box_label
     display: grid
     grid-template-columns: 142px 105px
-    column-gap: 123px
+    justify-content: space-between
     grid-template-rows: 25px
     font-family: $roboto
     font-style: normal
@@ -161,6 +161,7 @@ input[type="number"]
       font-size: 22px
       line-height: 26px
       color: #740C11
+      opacity: 0.9
   &__items
     font-size: 18px
     line-height: 21px
@@ -466,3 +467,131 @@ select
 input::-webkit-input-placeholder
   color: $blackBg
   font-weight: normal
+
+@media (max-width: 1024px) 
+  .modal
+    &__form
+      grid-template-rows: 663px
+      padding: 75px 27px 30px
+      #close
+        right: 3.45%
+        top: 5%
+        height: 25px
+        width: inherit
+    &__title
+      @include title1024
+      line-height: 55px
+      letter-spacing: 0
+    &__entry
+      hr
+        @include hr
+        margin-top: 5px
+        height: 1px
+  .form
+    &__subtitle
+      margin-top: 2px
+    &__offer
+      .price
+        height: 20px
+        width: 10%
+      .total
+        width: 78px
+        height: 25px
+      .totalText
+        height: 25px
+
+@media (max-width: 768px) 
+  .modal
+    &__form
+      grid-template-rows: 643px 665px
+      grid-template-columns: 530px
+      column-gap: 0
+      row-gap: 51px
+      padding: 80px 30px 40px
+      #close
+        right: 6.45%
+        top: 2.5%
+        height: 25px
+    &__wrap
+      grid-template-columns: repeat(2, 251px)
+      column-gap: 28px
+    &__title
+      font-size: 50px
+  .form
+    &__block
+      &:first-child
+        grid-template-rows: 143px 1px repeat(5, 45px) 135px
+      &:nth-child(2)
+        padding: 25px 16px 26px
+    &__offer
+      .price
+        width: 9%
+      .total
+        width: 74px
+      .totalText
+        height: 25px
+  select 
+    background-position: 496px
+  #submit
+    margin-left: 277px
+
+@media (max-width: 420px) 
+  .modal
+    &__text
+      margin-top: 15px
+    &__form
+      grid-template-rows: 689px 885px
+      grid-template-columns: 360px
+      row-gap: 49px
+      padding: 80px 30px 50px
+      #close
+        right: 6.45%
+        top: 2.5%
+        height: 25px
+    &__wrap
+      grid-template-columns: 360px
+      column-gap: 0
+      grid-template-rows: repeat(2, 45px)
+      row-gap: 22px
+      grid-row-start: 2
+      grid-row-end: 3
+    &__title
+      font-size: 32px
+      line-height: 35px
+  .form
+    &__block
+      &:first-child
+        grid-template-rows: 145px 47px repeat(5, 45px) 135px
+      &:nth-child(2)
+        padding: 25px 15px 25px
+        align-content: start
+        row-gap: 16px
+        grid-template-rows: 159px 117px 465px 45px
+    &__wrap
+      grid-template-columns: 207px 126px
+    &__offer
+      .price
+        width: 14%
+      .total
+        width: 81px
+      .totalText
+        height: 25px
+    &__credit
+      fieldset
+        width: 100%
+        &:nth-child(2)
+          top: 231px
+          right: 0
+          .cvc
+            margin-left: 238px    
+      .cardholderName
+        margin-top: 6px
+        input[type="text"]
+          height: 38px
+  select 
+    background-position: 329px
+  #submit
+    margin-left: 111px
+  #img
+    width: 124px
+    height: 97px
