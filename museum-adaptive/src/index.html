@@ -9,6 +9,9 @@
   <meta name="author" content="Dzmitry Iliukovich @diluks93">
   <link rel="stylesheet" href="./css/style.css">
 
+  <link rel="preconnect" href="https://rolling-scopes-school.github.io/diluks93-JSFE2021Q3/museum/" />
+  <link rel="dns-prefetch" href="https://rolling-scopes-school.github.io/diluks93-JSFE2021Q3/museum/" />
+
   <link rel="shortcut icon" href="./assets/favicon/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
@@ -49,102 +52,112 @@
   </header>
   <main class="main">
     <section class="welcome" id="welcome">
-      <div class="container welcome__container">
-        <aside class="sidepanel">
-          <nav>
-            <ul class="sidepanel__items">
-              <li class="sidepanel__item"><a class="header__link" href="#visiting">Visiting</a></li>
-              <li class="sidepanel__item"><a class="header__link" href="#explore">Explore</a></li>
-              <li class="sidepanel__item"><a class="header__link" href="#video">Video</a></li>
-              <li class="sidepanel__item"><a class="header__link" href="#gallery">Gallery</a></li>
-              <li class="sidepanel__item"><a class="header__link" href="#tickets">Tickets</a></li>
-              <li class="sidepanel__item"><a class="header__link" href="#contacts">Contacts</a></li>
-            </ul>
-          </nav>
-          <div class="sidepanel__block">
-            <div class="sidepanel__imgs">
-              <picture>
-                <source srcset="./assets/img/menu/menu1.webp">
-                <img src="./assets/img/menu/menu1.jpg" alt="image1" class="slidepanel__img">
-              </picture>
-              <div class="picture">
+      <div class="container">
+        <div class="welcome__container">
+          <aside class="sidepanel">
+            <nav>
+              <ul class="sidepanel__items">
+                <li class="sidepanel__item"><a class="header__link" href="#visiting">Visiting</a></li>
+                <li class="sidepanel__item"><a class="header__link" href="#explore">Explore</a></li>
+                <li class="sidepanel__item"><a class="header__link" href="#video">Video</a></li>
+                <li class="sidepanel__item"><a class="header__link" href="#gallery">Gallery</a></li>
+                <li class="sidepanel__item"><a class="header__link" href="#tickets">Tickets</a></li>
+                <li class="sidepanel__item"><a class="header__link" href="#contacts">Contacts</a></li>
+              </ul>
+            </nav>
+            <div class="sidepanel__block">
+              <div class="sidepanel__imgs">
                 <picture>
-                  <source srcset="./assets/img/menu/menu2.webp">
-                  <img src="./assets/img/menu/menu2.jpg" alt="" class="slidepanel__img">
+                  <source srcset="./assets/img/menu/menu1.webp">
+                  <img src="./assets/img/menu/menu1.jpg" alt="image1" class="slidepanel__img" loading="lazy">
                 </picture>
-                <picture>
-                  <source srcset="./assets/img/menu/menu3.webp">
-                  <img src="./assets/img/menu/menu3.jpg" alt="" class="slidepanel__img">
-                </picture>
+                <div class="picture">
+                  <picture>
+                    <source srcset="./assets/img/menu/menu2.webp">
+                    <img src="./assets/img/menu/menu2.jpg" alt="image2" class="slidepanel__img" loading="lazy">
+                  </picture>
+                  <picture>
+                    <source srcset="./assets/img/menu/menu3.webp">
+                    <img src="./assets/img/menu/menu3.jpg" alt="image3" class="slidepanel__img" loading="lazy">
+                  </picture>
+                </div>
+              </div>
+              <hr>
+              <div class="footer__social">
+                <ul class="footer__social_items">
+                <li class="footer__social_item">
+                  <a href="https://www.youtube.com/user/louvre" class="footer__social_link">
+                    <svg class="icon">
+                      <use xlink:href="./assets/svg/sprite.svg#youtube"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="footer__social_item">
+                  <a href="https://www.instagram.com/museelouvre/" class="footer__social_link">
+                    <svg class="icon">
+                      <use xlink:href="./assets/svg/sprite.svg#instagram"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="footer__social_item">
+                  <a href="https://www.facebook.com/museedulouvre" class="footer__social_link">
+                    <svg class="icon">
+                      <use xlink:href="./assets/svg/sprite.svg#facebook"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="footer__social_item">
+                  <a href="http://twitter.com/museelouvre" class="footer__social_link">
+                    <svg class="icon">
+                      <use xlink:href="./assets/svg/sprite.svg#twitter"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="footer__social_item">
+                  <a href="https://www.pinterest.fr/museedulouvre/" class="footer__social_link">
+                    <svg class="icon">
+                      <use xlink:href="./assets/svg/sprite.svg#pinterest"></use>
+                    </svg>
+                  </a>
+                </li>
+                </ul>
               </div>
             </div>
-            <hr>
-            <div class="footer__social">
-              <ul class="footer__social_items">
-              <li class="footer__social_item">
-                <a href="https://www.youtube.com/user/louvre" class="footer__social_link">
-                  <svg class="icon">
-                    <use xlink:href="./assets/svg/sprite.svg#youtube"></use>
-                  </svg>
-                </a>
-              </li>
-              <li class="footer__social_item">
-                <a href="https://www.instagram.com/museelouvre/" class="footer__social_link">
-                  <svg class="icon">
-                    <use xlink:href="./assets/svg/sprite.svg#instagram"></use>
-                  </svg>
-                </a>
-              </li>
-              <li class="footer__social_item">
-                <a href="https://www.facebook.com/museedulouvre" class="footer__social_link">
-                  <svg class="icon">
-                    <use xlink:href="./assets/svg/sprite.svg#facebook"></use>
-                  </svg>
-                </a>
-              </li>
-              <li class="footer__social_item">
-                <a href="http://twitter.com/museelouvre" class="footer__social_link">
-                  <svg class="icon">
-                    <use xlink:href="./assets/svg/sprite.svg#twitter"></use>
-                  </svg>
-                </a>
-              </li>
-              <li class="footer__social_item">
-                <a href="https://www.pinterest.fr/museedulouvre/" class="footer__social_link">
-                  <svg class="icon">
-                    <use xlink:href="./assets/svg/sprite.svg#pinterest"></use>
-                  </svg>
-                </a>
-              </li>
-              </ul>
+          </aside>
+          <div class="welcome__wrapper">
+            <h2 class="welcome__title">Welcome <br>to the Louvre</h2>
+            <p class="welcome__text">From the castle to the museum</p>
+            <a href="./html/discover.html" class="welcome__btn" target="_blank">Discover the Louvre</a>
+          </div>
+          <div class="welcome__block">
+            <div class="slider">
+              <picture>
+                <source srcset="./assets/img/welcome-slider/1.webp">
+                <img src="./assets/img/welcome-slider/1.jpg" alt="preview" class="welcome__img">
+              </picture>
+              <div class="slider__control">
+                <div class="slider-counter">
+                  <div class="current">01</div>
+                  <div class="divider">|</div>
+                  <div class="all">05</div>
+                </div>
+                <ul class="slider-cubs">
+                  <li class="cub"></li>
+                  <li class="cub"></li>
+                  <li class="cub"></li>
+                  <li class="cub"></li>
+                  <li class="cub"></li>
+                </ul>
+                <div class="slider-arrows">
+                  <button>
+                    <svg class="icon"><use xlink:href="./assets/svg/sprite.svg#arrow"></use></svg>
+                  </button>
+                  <button>
+                    <svg class="icon"><use xlink:href="./assets/svg/sprite.svg#arrow"></use></svg>
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-        </aside>
-        <div class="welcome__wrapper">
-          <h2 class="welcome__title">Welcome <br>to the Louvre</h2>
-          <p class="welcome__text">From the castle to the museum</p>
-          <a href="./html/discover.html" class="welcome__btn" target="_blank">Discover the Louvre</a>
-        </div>
-        <div class="welcome__block slider">
-          <div class="welcome__block-counter">
-            <div class="current">01</div>
-            <div class="divider">|</div>
-            <div class="all">05</div>
-          </div>
-          <ul class="welcome__block-cubs">
-            <li class="cub"></li>
-            <li class="cub"></li>
-            <li class="cub"></li>
-            <li class="cub"></li>
-            <li class="cub"></li>
-          </ul>
-          <div class="welcome__block-arrows">
-            <button>
-              <svg class="icon"><use xlink:href="./assets/svg/sprite.svg#arrow"></use></svg>
-            </button>
-            <button>
-              <svg class="icon"><use xlink:href="./assets/svg/sprite.svg#arrow"></use></svg>
-            </button>
           </div>
         </div>
       </div>
@@ -275,11 +288,11 @@
           </div>
         </div>
         <div class="video__slider">
-          <!-- <div class="video__item noactive" aria-label="launch video">
+          <div class="video__item noactive" aria-label="launch video">
             <a href="https://www.youtube.com/embed/zp1BXPX8jcU" class="video__link ">
               <picture>
                 <source srcset="https://i.ytimg.com/vi_webp/zp1BXPX8jcU/mqdefault.webp">
-                <img src="https://i.ytimg.com/vi/zp1BXPX8jcU/mqdefault.jpg" alt="#" class="video__media">
+                <img src="https://i.ytimg.com/vi/zp1BXPX8jcU/mqdefault.jpg" alt="#" class="video__media" loading="lazy">
               </picture>
             </a>
             <button class="video__item_button" aria-label="launch video">
@@ -288,7 +301,7 @@
                 <path class="video__item_button-icon" d="M 45,24 27,14 27,34"></path>
               </svg>
             </button>
-          </div> -->
+          </div>
           <div class="video__item active">
             <div class="video__item_descr">
               <picture>
@@ -301,7 +314,7 @@
             <a href="https://www.youtube.com/embed/aWmJ5DgyWPI" class="video__link">
               <picture>
                 <source srcset="https://i.ytimg.com/vi_webp/aWmJ5DgyWPI/mqdefault.webp">
-                <img src="https://i.ytimg.com/vi/aWmJ5DgyWPI/mqdefault.jpg" alt="#" class="video__media"> 
+                <img src="https://i.ytimg.com/vi/aWmJ5DgyWPI/mqdefault.jpg" alt="#" class="video__media" loading="lazy"> 
               </picture>
             </a>
             <button class="video__item_button" aria-label="launch video">
@@ -323,7 +336,7 @@
             <a href="https://www.youtube.com/embed/Vi5D6FKhRmo" class="video__link">
               <picture>
                 <source srcset="https://i.ytimg.com/vi_webp/Vi5D6FKhRmo/mqdefault.webp">
-                <img src="https://i.ytimg.com/vi/Vi5D6FKhRmo/mqdefault.jpg" alt="#" class="video__media"> 
+                <img src="https://i.ytimg.com/vi/Vi5D6FKhRmo/mqdefault.jpg" alt="#" class="video__media" loading="lazy"> 
               </picture>
             </a>
             <button class="video__item_button" aria-label="launch video">
@@ -345,7 +358,7 @@
             <a href="https://www.youtube.com/embed/NOhDysLnTvY" class="video__link">
               <picture>
                 <source srcset="https://i.ytimg.com/vi_webp/NOhDysLnTvY/mqdefault.webp">
-                <img src="https://i.ytimg.com/vi/NOhDysLnTvY/mqdefault.jpg" alt="#" class="video__media"> 
+                <img src="https://i.ytimg.com/vi/NOhDysLnTvY/mqdefault.jpg" alt="#" class="video__media" loading="lazy"> 
               </picture>
             </a>
             <button class="video__item_button" aria-label="launch video">
@@ -355,11 +368,11 @@
               </svg>
             </button>
           </div>
-          <!-- <div class="video__item noactive">
+          <div class="video__item noactive">
             <a href="https://www.youtube.com/embed/2OR0OCr6uRE" class="video__link">
               <picture>
                 <source srcset="https://i.ytimg.com/vi_webp/2OR0OCr6uRE/mqdefault.webp">
-                <img src="https://i.ytimg.com/vi/2OR0OCr6uRE/mqdefault.jpg" alt="#" class="video__media"> 
+                <img src="https://i.ytimg.com/vi/2OR0OCr6uRE/mqdefault.jpg" alt="#" class="video__media" loading="lazy"> 
               </picture>
             </a>
             <button class="video__item_button" aria-label="launch video">
@@ -367,7 +380,7 @@
                 <path class="video__button-shape" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z"></path>
                 <path class="video__item_button-icon" d="M 45,24 27,14 27,34"></path>
               </svg>
-            </button> -->
+            </button>
           </div>
         </div>
         <div class="video__dots">
@@ -379,7 +392,7 @@
           <div class="video__dot"></div>
           <svg class="icon"><use xlink:href="./assets/svg/sprite.svg#shevron"></use></svg>
         </div>
-      <!-- </div> -->
+      </div>
     </section>
     <section class="gallery" id="gallery">
       <div class="container">

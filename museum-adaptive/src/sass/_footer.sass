@@ -146,7 +146,7 @@
     &:active
       color: $gold
 
-@media (max-width: 1024px) 
+@media (max-width: 1200px) 
   .footer
     max-height: 368px
     padding-top: 60px
@@ -178,7 +178,7 @@
     &__wrapper
       margin-top: 50px
 
-@media (max-width: 768px) 
+@media (max-width: 1000px) 
   .footer
     max-height: 411px
     padding-top: 48px
@@ -214,7 +214,11 @@
     &__wrapper
       margin-top: 40px
 
-@media (max-width: 420px) 
+@media (max-width: 700px)
+  .footer .container
+    column-gap: 0
+
+@media (max-width: 650px) 
   .footer
     max-height: 400px
     padding-top: 42px
@@ -238,7 +242,7 @@
     &__items
       flex-direction: row
       margin-top: 9px
-      min-width: 382px
+      min-width: 0
       height: 96px
       column-gap: 52px
     &__item
@@ -279,3 +283,11 @@
     &__username
       font-size: 16px
       line-height: 22px
+
+@media (max-width: 360px) 
+  .footer__items
+    column-gap: 0
+  .footer__social
+    width: 100%
+    &_items
+      padding: 0

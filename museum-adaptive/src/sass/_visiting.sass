@@ -12,7 +12,6 @@
     display: flex
     justify-content: space-between
     flex-wrap: wrap
-    column-gap: 60px
   &__card
     position: relative
     margin-top: 75px
@@ -52,7 +51,7 @@
         font-size: 18px
         line-height: 21px
 
-@media (max-width: 1024px) 
+@media (max-width: 1500px) 
   .visiting
     max-height: 1435px
     padding: 60px 0 68px 
@@ -77,7 +76,7 @@
       &:nth-child(6)
         margin-top: 73px
       &_img
-        width: 330px
+        max-width: 330px
         height: 215px
       &_subtitle
         margin-top: 18px
@@ -90,6 +89,10 @@
           margin-top: 10px
           font-size: 16px
           line-height: 19px
+
+@media (max-width: 900px)
+  .visiting__wrapper
+    padding: 0 50px
 
 @media (max-width: 768px) 
   .visiting
@@ -126,6 +129,17 @@
         span
           margin-top: 8px
 
+@media (max-width: 680px)
+  .visiting
+    &__wrapper
+      padding: 0 20px 
+      column-gap: 0 
+    &__card
+      width: 42%
+      &_img
+        max-width: 100%
+
+
 @media (max-width: 420px) 
   .visiting
     max-height: 2153px
@@ -137,6 +151,7 @@
       padding: 0 50px
       column-gap: 0
     &__card
+      width: 100%
       margin-top: 40px
       &::after
         bottom: 47px
@@ -151,6 +166,7 @@
         margin-top: 51px
       &_img
         height: 180px
+        width: 100%
       &_subtitle
         margin-top: 19px
         line-height: 20px

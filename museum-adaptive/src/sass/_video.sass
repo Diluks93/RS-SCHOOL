@@ -176,6 +176,8 @@
     width: 89.82%
     picture img
       border-radius: 50%
+      width: 100%
+      height: auto
     &_text,
     &_dots
       font-family: $roboto
@@ -195,7 +197,7 @@
     margin: 40px auto 0
     display: flex
     justify-content: space-between
-    width: 10.89%
+    width: 14.89%
     .icon
       width: 16px
       height: 12px
@@ -227,6 +229,36 @@
 .video__item.show
   .video__item_button
     display: block
+
+@media ( max-width: 1500px )
+  .video
+    &__slider
+      grid-template-columns: repeat(3, 300px)
+      grid-template-rows: 170px
+      justify-content: space-between
+    &__item_descr
+      left: 10px
+      top: 11px
+      width: 84.82%
+      &_text
+        overflow: hidden
+        white-space: nowrap
+        width: 193px
+        text-overflow: ellipsis
+        padding-right: 0
+    &__dots
+      width: 19.89%
+      .icon
+        width: 10px
+        height: 12px
+    &__dot
+      width: 12px
+
+@media (max-width: 1200px)
+  .video
+    &__title
+      width: 405px
+      @include title1024
 
 @media (max-width: 1024px) 
   .video
@@ -290,7 +322,6 @@
     &__slider
       grid-template-columns: repeat(3, 300px)
       grid-template-rows: 170px
-      column-gap: 41px
     &__item_descr
       left: 10px
       top: 11px
@@ -309,11 +340,21 @@
     &__dot
       width: 12px
 
+@media (max-width: 1000px)
+  .video
+    &__slider
+      grid-template-columns: repeat(3, 250px)
+
+@media (max-width: 900px)
+  .video
+    &__slider
+      grid-template-columns: repeat(3, 230px)
+
 @media (max-width: 768px) 
   .video
     max-height: 841px
     padding-top: 40px
-    padding-bottom: 40px
+    padding-bottom: 80px
     &__title
       @include title768
       text-align: left
@@ -428,7 +469,7 @@
       &_dots
         display: none
     &__dots
-      width: 41.89%
+      width: 45.89%
       margin-top: 40px
       .icon
         width: 8px

@@ -112,11 +112,15 @@
         font-size: 18px
         line-height: 21px
     &__map
-      width: 728px
+      max-width: 728px
       height: 476px
       margin-top: 40px
 
-@media (max-width: 420px)
+@media (max-width: 700px)
+  .contacts__map
+    max-width: 100%
+
+@media (max-width: 480px)
   .contacts
     max-height: 636px
     padding-bottom: 40px
@@ -142,5 +146,5 @@
         font-size: 16px
         line-height: 19px
     &__map
-      width: 380px
+      max-width: 100%
       height: 248px
