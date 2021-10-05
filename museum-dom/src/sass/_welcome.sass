@@ -1,0 +1,376 @@
+.welcome
+  height: 810px
+  background-color: $blackBg
+  &__container
+    position: relative
+    .sidepanel
+      position: absolute
+      transition: all 1s linear
+      left: -920px
+      &.show
+        left: 20px
+        z-index: 20
+      &.to-left
+        transform: translateX(-150%)
+        animation: left 1s forwards
+      &.to-right
+        transform: translateY(0)
+        animation: right 1s forwards
+      &__block
+        display: none
+  &__img
+    position: relative
+    width: 1000px
+    height: 750px
+  &__wrapper
+    position: absolute
+    max-width: 598px
+    max-height: 750px
+    margin-top: 148px
+    z-index: 11
+    &.hide
+      animation: hide 1s forwards
+    &.visible
+      animation: visible 1s forwards
+  &__title
+    @include title
+  &__text
+    margin-top: 26px
+    font-family: $roboto
+    font-size: 28px
+    line-height: 33px
+    letter-spacing: 2px
+    font-weight: 300
+    color: $white 
+  &__btn
+    display: block
+    width: 360px
+    height: 75px
+    margin-top: 74px
+    padding: 24px 67px
+    font-family: $roboto
+    font-size: 22px
+    line-height: 25px
+    letter-spacing: 2px
+    font-weight: 100
+    text-decoration: none
+    color: $white
+    background-color: $red
+    border-radius: 10px
+    transition: background-color 0.6s linear
+    &:hover
+      background-color: $gold
+  &__block
+    position: absolute
+    background-color: $blackBg
+    right: 0
+  .slider
+    position: relative
+    picture
+      position: relative
+      display: block
+      &::before
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        width: 45%
+        height: 100%
+        background: linear-gradient(90deg, #030303 0%, rgba(0,0,0,0.5) 22.19%, rgba(0,0,0,0) 71.73%)
+        z-index: 10
+    &__control
+      position: absolute
+      bottom: 0
+      transform: translateY(44%)
+      right: 0
+      height: 120px
+      display: grid
+      padding: 40px 77px 40px 75px
+      grid-template-columns: 76px 182px 80px
+      column-gap: 55px
+      background-color: $blackBg
+    &-counter
+      display: flex
+      flex-direction: row
+      justify-content: space-between
+      align-items: center
+      color: $white
+      font-family: $roboto
+      font-style: normal
+      font-weight: 300
+      font-size: 22px
+      line-height: 40px
+    &-cubs
+      display: flex
+      justify-content: space-between
+      align-items: center
+      list-style: none
+      padding: 0
+      li
+        width: 16px
+        height: 16px
+        background-color: $white
+        transition: background-color 0.5s linear
+        &:first-child
+          background-color: #D2B183
+        &:hover
+          background-color: $gold
+          cursor: pointer
+        &:active
+          background-color: $gold
+    &-arrows
+      display: flex
+      justify-content: space-between
+      align-items: center
+      fill: $white
+      button
+        background: $blackBg
+        border: none
+        padding: 0
+        &:last-child
+          transform: rotate(180deg)
+          margin-top: 5px
+        .icon
+          width: 30px
+          height: 8px
+          transition: fill 0.5s linear
+          &:hover
+            fill: $gold
+            cursor: pointer
+          &:active
+            fill: $gold
+
+@media (max-width: 1024px)
+  .welcome
+    max-height: 585px
+    &__wrapper
+      margin-top: 50px
+    &__title
+      @include title1024
+      line-height: 90px
+    &__text
+      font-size: 24px
+      line-height: 28px
+      margin-top: 25px
+    &__btn
+      width: 300px
+      height: 60px
+      margin-top: 49px
+      padding: 20px 45px
+      padding-left: 46px
+      font-size: 20px
+      line-height: 23px
+    &__img
+      position: relative
+      max-width: 700px
+      max-height: 525px
+    .slider
+      &__control
+        width: 100%
+        padding: 40px 74px 40px 221px
+        column-gap: 33px
+        z-index: 10
+        transform: translateY(46%)
+      &-counter
+        font-weight: 300
+        font-size: 20px
+        justify-content: space-around
+      &-cubs
+        justify-content: space-around
+        li
+          width: 12px
+          height: 12px
+    .sidepanel
+      &__items
+        display: flex
+        flex-direction: column
+        margin-top: 7px
+        padding-left: 35px
+      &__item
+        position: relative
+        margin-top: 26px
+        font-size: 20px
+        line-height: 23px
+        letter-spacing: 2px
+        list-style: none
+        &:nth-child(1)
+          margin-top: 26px
+        &::after
+          position: absolute
+          content: ">"
+          color: $white
+          right: -28px
+          transform: scaleX(0.5)
+
+@media (max-width: 768px)
+  .welcome
+    height: 861px
+    max-height: 861px
+    &__title
+      @include title768
+      margin-top: 0
+    &__text
+      font-size: 20px
+      line-height: 23px
+      margin-top: 25px
+      text-align: center
+    &__btn
+      display: none
+    &__container
+      position: static
+      display: flex
+      flex-direction: column
+      align-items: center
+    &__block
+      height: 100%
+      position: static
+    .slider
+      margin-top: 215px
+      position: static
+      picture
+        position: static
+        &::before
+          display: none
+      &__control
+        padding: 25px 74px 30px 161px
+        transform: translateY(0)
+        position: static
+        height: 95px
+    &__img
+      max-width: 100%
+      max-height: 546px
+    .sidepanel,
+    &__wrapper
+      max-width: 728px
+      margin-top: 0
+    .sidepanel
+      background-color: $blackBg
+      height: 861px
+      width: 728px
+      z-index: 100
+      &__item
+        margin-top: 24px
+        font-size: 20px
+        line-height: 23px
+        letter-spacing: 2px
+        list-style: none
+        &::after
+          left: -88px
+      &__block
+        display: block
+        padding-left: 35px
+        padding-right: 35px
+        margin-top: 37px
+      &__imgs
+        display: flex
+        flex-direction: column
+        gap: 18px
+        flex-wrap: wrap
+        .picture
+          display: flex
+          justify-content: space-between
+      hr
+        margin-top: 29px
+        height: 0
+        border: 1px solid rgba(255, 255, 255, 0.5)
+      .footer__social
+        margin: 0 auto
+        margin-top: 34px
+
+@media (max-width: 650px)
+  .welcome__block
+    max-width: 100%  
+  .welcome
+    .slider
+      display: flex
+      flex-direction: column
+      align-items: center
+      &__control
+        grid-template-columns: 50px 75px 55px
+        padding: 13px 0
+        column-gap: 25px
+        height: 74px
+        width: 42%
+        &-counter
+          justify-content: space-between
+          font-size: 16px
+          line-height: 40px
+        &-cubs
+          justify-content: space-between
+
+@media (max-width: 420px)
+  .welcome
+    max-height: 544px
+    height: 544px
+    padding-top: 6px
+    &__title
+      @include title420
+    &__text
+      font-size: 16px
+      line-height: 19px
+    &__wrapper
+      max-width: 380px
+    &__block
+      .slider
+        margin-top: 173px
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        align-items: center
+        picture
+          text-align: center
+        &__control
+          grid-template-columns: 50px 75px 55px
+          padding: 13px 0
+          column-gap: 25px
+          height: 74px
+          width: 61%
+        &-counter
+          justify-content: space-between
+          font-size: 16px
+          line-height: 40px
+        &-cubs
+          justify-content: space-between
+          .cub
+            width: 7px
+            height: 7px
+        &-arrows
+          button 
+            .icon
+              width: 20px
+            &:last-child
+              margin-top: 3px
+    &__img
+      max-width: 100%
+      max-height: 285px
+    .sidepanel
+      max-height: 530px
+      max-width: 380px
+      &__block
+        padding-right: 30px
+        hr
+          margin-top: 15px
+        .footer__social
+          margin: 0 auto
+          margin-top: 24px
+          &_items
+            justify-content: center
+            column-gap: 5px
+            padding-right: 29px
+            padding-left: 0
+      &__items
+        margin-top: 7px
+      &__item
+        &::after
+          left: 25px
+      &__imgs
+        width: 100%
+        flex-direction: row
+        column-gap: 12
+        justify-content: space-between
+        picture img
+          width: 95px
+          height: 95px
+          object-fit: cover
+        .picture
+          column-gap: 12px

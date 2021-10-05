@@ -1,0 +1,128 @@
+.header
+  min-height: 150px
+  background-color: $blackBg
+  &__wrapper
+    padding-top: 62px
+    display: grid
+    grid-template-columns: 199px 775px
+    justify-content: space-between
+  &__logo
+    font-family: $forum
+    text-align: right
+    text-transform: uppercase
+    color: $white
+    text-decoration: none
+    h1
+      position: relative
+      font-size: 28px
+      font-weight: 400
+      letter-spacing: 5px
+      transition: 0.5s
+      margin: 0
+      &::before
+        content: url("../assets/svg/logo.svg")
+        position: absolute
+        left: -5%
+        top: -30%
+        transform: translateX(-50%)
+        transform: scale(0.7)
+      &:hover
+        filter: invert(57%) sepia(6%) saturate(1845%) hue-rotate(356deg) brightness(94%) contrast(84%)
+      &:active
+        filter: invert(57%) sepia(6%) saturate(1845%) hue-rotate(356deg) brightness(94%) contrast(84%)        
+  &__items
+    display: flex
+    justify-content: space-between
+    align-items: center
+    max-width: 775px
+    padding: 0
+    list-style: none
+  &__link
+    max-height: 50px
+    font-family: $roboto 
+    font-size: 22px
+    line-height: 26px
+    letter-spacing: 2px
+    font-weight: 100
+    text-decoration: none
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+    color: $white
+    transition: color 0.6s linear
+    &:hover
+      color: $gold
+    &:active
+      color: $active
+.hamburger
+  display: none
+  cursor: pointer
+
+@media (max-width: 1024px) 
+  .header
+    min-height: 130px
+    &__wrapper
+      grid-template-columns: 198px 32px
+      padding-top: 50px
+    &__items
+      display: none
+    &__link
+      max-height: 50px
+      font-family: $roboto 
+      font-size: 20px
+      line-height: 23px
+    &__logo h1
+      &::before
+        left: -6%
+  .hamburger
+    display: block
+    position: absolute
+    right: 20px
+    top: 48px
+    transform: translateY(50%)
+    width: 32px
+    height: 18px
+    span 
+      display: block
+      height: 2px
+      width: 100%
+      background-color: $white
+      margin-bottom: 6px
+      transition: 0.5s all
+  &.hamburger_active span 
+    margin-bottom: -6px
+  &.hamburger_active span:nth-child(1) 
+    transform: translateY(4px) rotate(-45deg)
+  &.hamburger_active span:nth-child(2) 
+    display: none
+  &.hamburger_active span:nth-child(3) 
+    transform: translateY(8px) rotate(45deg)
+
+@media (max-width: 768px) 
+  .header
+    min-height: 110px
+    .hamburger
+      top: 36px
+    &__wrapper
+      grid-template-columns: 199px 32px
+      padding-top: 35px
+    &__logo h1
+      font-size: 28px
+      line-height: 50px
+      &::before
+        top: -1%
+
+@media (max-width: 420px) 
+  .header
+    min-height: 90px
+    .hamburger
+      top: 27px
+    &__wrapper
+      grid-template-columns: 138px 32px
+    &__logo h1
+      font-size: 16px
+      line-height: 23px
+      &::before
+        top: -55%
+        left: -15%
+        transform: scale(0.4)
+
+

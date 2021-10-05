@@ -1,0 +1,179 @@
+.visiting
+  max-height: 1265px
+  padding: 75px 0
+  &__title
+    display: block
+    @include title
+    height: 91px
+    color: $gold
+  hr
+    @include hr
+  &__wrapper
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+  &__card
+    position: relative
+    margin-top: 75px
+    margin-bottom: 1px
+    font-family: $roboto
+    font-weight: 100
+    font-size: 22px
+    line-height: 26px
+    text-decoration: none
+    color: $black
+    &::after
+      content: ""
+      position: absolute
+      bottom: 68px
+      width: 300px
+      height: 2px
+      background-color: $red
+      transition: width 0.6s linear
+    &:hover
+      &::after
+        content: ""
+        width: 100%
+    &_img
+      width: 440px
+      height: 285px
+    &_subtitle
+      @include title
+      margin-top: 18px
+      font-size: 32px
+      line-height: 35px
+      color: $black     
+    &_descr
+      margin-top: 22px
+      span
+        display: block
+        margin-top: 10px
+        font-size: 18px
+        line-height: 21px
+
+@media (max-width: 1500px) 
+  .visiting
+    max-height: 1435px
+    padding: 60px 0 68px 
+    &__title
+      @include title1024
+      height: 75px
+    hr
+      margin-top: 20px
+    &__wrapper
+      padding: 0 108px
+    &__card
+      margin-top: 58px
+      font-size: 20px
+      line-height: 23px
+      &::after
+        bottom: 50px
+        width: 150px
+      &:nth-child(3),
+      &:nth-child(4)
+        margin-top: 71px
+      &:nth-child(5),
+      &:nth-child(6)
+        margin-top: 73px
+      &_img
+        max-width: 330px
+        height: 215px
+      &_subtitle
+        margin-top: 18px
+        line-height: 31px
+        font-size: 28px
+        letter-spacing: 3px
+      &_descr
+        margin-top: 22px
+        span
+          margin-top: 10px
+          font-size: 16px
+          line-height: 19px
+
+@media (max-width: 900px)
+  .visiting__wrapper
+    padding: 0 50px
+
+@media (max-width: 768px) 
+  .visiting
+    max-height: 1225px
+    padding: 40px 0 86px
+    &__title
+      @include title768
+      height: 60px
+      text-align: left
+    &__wrapper
+      padding: 0 56px
+      column-gap: 56px
+    &__card
+      margin-top: 36px
+      font-size: 22px
+      line-height: 24px
+      &::after
+        bottom: 51px
+      &:nth-child(3),
+      &:nth-child(4)
+        margin-top: 48px
+      &:nth-child(5),
+      &:nth-child(6)
+        margin-top: 45px
+      &_img
+        width: 280px
+        height: 185px
+      &_subtitle
+        margin-top: 17px
+        line-height: 24px
+        font-size: 22px
+      &_descr
+        font-size: 18px
+        span
+          margin-top: 8px
+
+@media (max-width: 680px)
+  .visiting
+    &__wrapper
+      padding: 0 20px 
+      column-gap: 0 
+    &__card
+      width: 42%
+      &_img
+        max-width: 100%
+
+
+@media (max-width: 420px) 
+  .visiting
+    max-height: 2153px
+    &__title
+      @include title420
+      height: 39px
+      text-align: left
+    &__wrapper
+      padding: 0 50px
+      column-gap: 0
+    &__card
+      width: 100%
+      margin-top: 40px
+      &::after
+        bottom: 47px
+      &:nth-child(2)
+        margin-top: 50px
+      &:nth-child(3)
+        margin-top: 53px
+      &:nth-child(4)
+        margin-top: 49px
+      &:nth-child(5),
+      &:nth-child(6)
+        margin-top: 51px
+      &_img
+        height: 180px
+        width: 100%
+      &_subtitle
+        margin-top: 19px
+        line-height: 20px
+        font-size: 18px
+        letter-spacing: 5px
+      &_descr
+        font-size: 16px
+        margin-top: 21px
+        span
+          margin-top: 6px
