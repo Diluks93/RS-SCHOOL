@@ -20,8 +20,7 @@
         display: none
   &__img
     position: relative
-    width: 1000px
-    height: 750px
+    width: 100%
   &__wrapper
     position: absolute
     max-width: 598px
@@ -64,23 +63,33 @@
     position: absolute
     background-color: $blackBg
     right: 0
+    height: 100%
   .slider
     position: relative
-    picture
+    z-index: 1
+    &::before
+      content: ''
+      position: absolute
+      width: 45%
+      height: 100%
+      background: linear-gradient(90deg, #030303 0%, rgba(0,0,0,0.5) 22.19%, rgba(0,0,0,0) 71.73%)
+      z-index: 10
+    .slides
       position: relative
-      display: block
-      &::before
-        content: ''
-        position: absolute
-        top: 0
-        left: 0
-        width: 45%
-        height: 100%
-        background: linear-gradient(90deg, #030303 0%, rgba(0,0,0,0.5) 22.19%, rgba(0,0,0,0) 71.73%)
-        z-index: 10
+      overflow: hidden
+      .slide
+        cursor: pointer
+        display: none
+        position: relative
+        animation: 0.2s linear
+        transform: translateX(-100%)
+        transition: all 0.5s linear 
+        &.active
+          display: block
+          transform: translateX(0)
     &__control
       position: absolute
-      bottom: 0
+      top: 635px
       transform: translateY(44%)
       right: 0
       height: 120px
@@ -89,6 +98,7 @@
       grid-template-columns: 76px 182px 80px
       column-gap: 55px
       background-color: $blackBg
+      z-index: 100
     &-counter
       display: flex
       flex-direction: row
@@ -106,12 +116,12 @@
       align-items: center
       list-style: none
       padding: 0
-      li
+      .cub
         width: 16px
         height: 16px
         background-color: $white
-        transition: background-color 0.5s linear
-        &:first-child
+        transition: background-color 0.5s ease-in-out
+        &.active
           background-color: #D2B183
         &:hover
           background-color: $gold
@@ -171,6 +181,7 @@
         column-gap: 33px
         z-index: 10
         transform: translateY(46%)
+        top: 408px
       &-counter
         font-weight: 300
         font-size: 20px
@@ -227,10 +238,8 @@
     .slider
       margin-top: 215px
       position: static
-      picture
-        position: static
-        &::before
-          display: none
+      &::before
+        display: none
       &__control
         padding: 25px 74px 30px 161px
         transform: translateY(0)
