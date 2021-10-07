@@ -36,10 +36,8 @@ export default function activitySectionGallery(){
         // scroll way through the image
         const slideInAt =
           window.scrollY + window.innerHeight - +/\d+/.exec(image.height) / 2;
-          console.log(`slideInAt: ${slideInAt}`)
         // bottom ob the image
         const imageBottom = image.offsetTop + +/\d+/.exec(image.height) + 3900;
-        console.log(`imageBottom: ${imageBottom}, image.offsetTop: ${image.offsetTop} window.scrolly: ${window.scrollY}`);
         const isHalfShown = slideInAt > image.offsetTop;
         const isNotScrolledPast = window.scrollY < imageBottom;
         if(isHalfShown && isNotScrolledPast) {
