@@ -6,15 +6,12 @@ export default function showSidepanel() {
 
   hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('hamburger_active');
-    if (sidepanel.classList.contains('to-left')) {
-      sidepanel.classList.remove('to-left');
-      sidepanel.classList.add('to-right');
-    } else {
-      sidepanel.classList.add('to-left');
-      sidepanel.classList.remove('to-right');
-    }
 
-    sidepanel.classList.toggle('show');
+    if(sidepanel.classList.contains('show')){
+      sidepanel.classList.remove('show');
+    } else {
+      sidepanel.classList.add('show');
+    }
 
     if (welcomeBlock.classList.contains('hide')) {
       welcomeBlock.classList.remove('hide');
