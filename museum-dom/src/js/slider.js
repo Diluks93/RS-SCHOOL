@@ -55,7 +55,7 @@ export default function slider(){
   next.addEventListener('click', nextSlide);
   prev.addEventListener('click', prevSlide);
 
-  //setInterval(nextSlide, 5000);
+  setInterval(nextSlide, 5000);
 
   const swipeMove = (el) => {
     let surface = el,
