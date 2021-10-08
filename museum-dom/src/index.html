@@ -491,36 +491,36 @@
           <div class="tickets__block">
             <div class="tickets__block_wrap">
               <h3 class="tickets__block_title">Ticket Type</h3>
-              <p class="tickets__block_label">
-                <input type="radio" checked="checked" name="radio" id="answer1" value="Permanent exhibition" class="tickets__block_input">
+              <div class="tickets__block_label">
+                <input type="radio" checked="checked" name="radio" value="20" class="tickets__block_input radio">
                 <label for="answer1" class="tickets__block_checkmark">Permanent exhibition</label>
-              </p>
-              <p class="tickets__block_label">
-                <input type="radio" name="radio" id="answer2" value="Temporary exhibition" class="tickets__block_input">
+              </div>
+              <div class="tickets__block_label">
+                <input type="radio" name="radio" value="25" class="tickets__block_input radio">
                 <label for="answer2" class="tickets__block_checkmark">Temporary exhibition</label>
-              </p>
-              <p class="tickets__block_label">
-                <input type="radio" name="radio" id="answer3" value="Combined Admission" class="tickets__block_input">
+              </div>
+              <div class="tickets__block_label">
+                <input type="radio" name="radio" value="40" class="tickets__block_input radio">
                 <label for="answer3" class="tickets__block_checkmark">Combined Admission</label>
-              </p>
+              </div>
             </div>
             <div class="tickets__box_wrap">
               <h3 class="tickets__box_title">Amount</h3>
               <div class="tickets__box_label">Basic 18+<br>
                 <div>
-                  <button type="button" onclick="this.nextElementSibling.stepDown()">&#8211;</button>
-                  <input type="number" min="0" max="20" value="1" readonly class="tickets__box_input">
-                  <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                  <button type="button" onclick="this.nextElementSibling.stepDown()" class="minus">&#8211;</button>
+                  <input type="number" min="0" max="20" value="1" readonly class="tickets__box_input" id="basic">
+                  <button type="button" onclick="this.previousElementSibling.stepUp()" class="plus">+</button>
                 </div>
               </div>
               <div class="tickets__box_label">Senior 65+<br>
                 <div>
-                  <button type="button" onclick="this.nextElementSibling.stepDown()">&#8211;</button>
-                  <input type="number" min="0" max="20" value="1" readonly class="tickets__box_input">
-                  <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                  <button type="button" onclick="this.nextElementSibling.stepDown()" class="minus">&#8211;</button>
+                  <input type="number" min="0" max="20" value="1" readonly class="tickets__box_input" id="senior">
+                  <button type="button" onclick="this.previousElementSibling.stepUp()" class="plus">+</button>
                 </div>
               </div>
-              <label class="tickets__box_total">Total €<input type="text" value="220" class="tickets__box_input"></label>
+              <div class="tickets__box_total">Total €<span class="tickets__box_input">30</span></div>
               <button class="tickets__box_btn" id="btn">Buy Now</button>
             </div>
           </div>

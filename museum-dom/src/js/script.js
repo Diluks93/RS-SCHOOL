@@ -6,6 +6,7 @@ import activitySectionGallery from './gallery.js';
 import changeIframe from './changeIframe.js';
 import showSidepanel from './hamburger.js';
 import useMapbox from './mapbox.js'
+import calculateTickets from './calculate.js'
 
 comparisons();
 slider();
@@ -15,3 +16,4 @@ activitySectionGallery();
 changeIframe();
 showSidepanel();
 useMapbox();
+calculateTickets();
