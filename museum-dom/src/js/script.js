@@ -5,6 +5,7 @@ import modal from './modal.js';
 import activitySectionGallery from './gallery.js';
 import changeIframe from './changeIframe.js';
 import showSidepanel from './hamburger.js';
+import useMapbox from './mapbox.js'
 
 comparisons();
 slider();
@@ -13,9 +14,4 @@ modal();
 activitySectionGallery();
 changeIframe();
 showSidepanel();
-
-mapboxgl.accessToken = 'pk.eyJ1IjoiZGlsdWtzIiwiYSI6ImNrdTFxc3ZmODBuazAyb28xcTdtYTZmMGUifQ.oH3L-MEDH588UW1NMgorKg';
-var map = new mapboxgl.Map({
-  container: 'map',
-  style: 'mapbox://styles/diluks/cku5sv2ux2ws417o5hnw2bhu7'
-});
+useMapbox();
