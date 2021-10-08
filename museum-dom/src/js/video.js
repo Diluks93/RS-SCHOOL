@@ -94,12 +94,20 @@ function togglePlaybackRate(value) {
 
 fullscreen.addEventListener('click', toggleFullscreen);
 
+play.addEventListener('click', togglePlay)
+
 videos.forEach( (video) => video.addEventListener('click', togglePlay) );
 videos.forEach( (video) => video.addEventListener('play', updateButton) );
 videos.forEach( (video) => video.addEventListener('pause', updateButton) );
 videos.forEach( (video) => video.addEventListener('timeupdate', handleProgress) );
 
 progress.addEventListener('click', scrub);
+
+/* let mousedown = false;
+progress.addEventListener('mousemove', (e) => mousedown && scrub(e))
+progress.addEventListener('mousedown', () => mousedown = true)
+progress.addEventListener('mouseup', () => mousedown = false) */
+
 volume.addEventListener('change', videoChangeVolume);
 mute.addEventListener('click', videoMute);
 
@@ -126,10 +134,10 @@ function interactionKeyboard(event) {
       videos[currentVideo].currentTime += 10;
       break;
     case 'Comma':
-      togglePlaybackRate(-0.25);
+      if (event.shiftKey) togglePlaybackRate(-0.25);
       break;
     case 'Period':
-      togglePlaybackRate(0.25);
+      if (event.shiftKey) togglePlaybackRate(0.25);
       break;
     case 'Digit0':
     case 'Digit1':
