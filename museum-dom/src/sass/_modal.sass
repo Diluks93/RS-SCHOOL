@@ -388,8 +388,6 @@ fieldset
   &:hover,
   &:focus
     outline: none
-#date1,
-#time1,
 #name,
 #email,
 #phone,
@@ -401,8 +399,9 @@ fieldset
   line-height: 21px
   padding-left: 43px
   width: 100%
-.date,
-.time,
+  &:invalid
+    &:not(:placeholder-shown)
+      outline: $red 2px solid
 .name,
 .email,
 .phone,
@@ -432,27 +431,6 @@ fieldset
     height: 23px
     top: 10px
     left: 16px
-input[type="date"]::-webkit-calendar-picker-indicator,
-input[type="time"]::-webkit-calendar-picker-indicator
-    color: rgba(0, 0, 0, 0)
-    opacity: 1
-    display: block
-    background: url("../assets/svg/arrow.svg") no-repeat
-    width: 17px
-    height: 17px
-    position: absolute
-    right: 7px
-    top: 50%
-    transform: translateY(-50%)
-/* временнное решение на соответствие макету*/
-input[type="date"]::-webkit-datetime-edit-month-field,
-input[type="date"]::-webkit-datetime-edit-day-field, 
-input[type="date"]::-webkit-datetime-edit-year-field,
-input[type="date"]::-webkit-datetime-edit-text,
-input[type="time"]::-webkit-datetime-edit-text,
-input[type="time"]::-webkit-datetime-edit-hour-field,
-input[type="time"]::-webkit-datetime-edit-minute-field 
-  display: none
 select 
   text-transform: capitalize
   -webkit-appearance: none 
@@ -468,6 +446,61 @@ select
 input::-webkit-input-placeholder
   color: $blackBg
   font-weight: normal
+
+.date-time 
+  max-width: 190px
+  width: 100%
+  height: 100%
+  display: flex
+  border: 1px solid #000
+.date-inp,
+.time-inp
+  border: none
+  width: 100%
+
+.left-data__item-date 
+  background: url(../assets/svg/date.svg) 14px no-repeat
+  padding-left: 44px
+  padding-right: 9px
+
+.left-data__item-time 
+  background: url(../assets/svg/time.svg) 14px no-repeat
+  padding-left: 44px
+  padding-right: 10px
+
+.left-data__item-date input::before,
+.left-data__item-time input::before 
+  width: 61%
+  color: $black
+  content: attr(placeholder)
+  font-family: $roboto
+
+.left-data__item-date input,
+.left-data__item-time input 
+  color: $white
+
+.left-data__item-date input::-webkit-datetime-edit 
+  font-size: 15px
+  font-family: $roboto
+
+.left-data__item-date input:focus,
+.left-data__item-date input:valid,
+.left-data__item-time input:focus,
+.left-data__item-time input:valid 
+  color: $black
+
+.left-data__item-date input:focus::before,
+.left-data__item-date input:valid::before,
+.left-data__item-time input:focus::before,
+.left-data__item-time input:valid::before 
+  content: "" !important
+  display: none
+
+.left-data__item-date input::-webkit-calendar-picker-indicator,
+.left-data__item-time input::-webkit-calendar-picker-indicator 
+  background: url(../assets/svg/arrow.svg) center no-repeat
+
+
 
 @media (max-width: 1024px) 
   .modal

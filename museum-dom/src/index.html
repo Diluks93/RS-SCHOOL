@@ -493,15 +493,15 @@
               <h3 class="tickets__block_title">Ticket Type</h3>
               <div class="tickets__block_label">
                 <input type="radio" checked="checked" name="radio" value="20" class="tickets__block_input radio">
-                <label for="answer1" class="tickets__block_checkmark">Permanent exhibition</label>
+                <label class="tickets__block_checkmark">Permanent exhibition</label>
               </div>
               <div class="tickets__block_label">
                 <input type="radio" name="radio" value="25" class="tickets__block_input radio">
-                <label for="answer2" class="tickets__block_checkmark">Temporary exhibition</label>
+                <label class="tickets__block_checkmark">Temporary exhibition</label>
               </div>
               <div class="tickets__block_label">
                 <input type="radio" name="radio" value="40" class="tickets__block_input radio">
-                <label for="answer3" class="tickets__block_checkmark">Combined Admission</label>
+                <label class="tickets__block_checkmark">Combined Admission</label>
               </div>
             </div>
             <div class="tickets__box_wrap">
@@ -635,34 +635,43 @@
       </div>
     </div>
   </footer>
-  <div class="modal">
-    <form action="#" class="modal__form">
+  <div class="modal open">
+    <form action="./result" class="modal__form" method="POST" name="louvre" id="buyTickets">
       <div class="form__block">
         <div class="form__header">
-          <legend class="modal__title">Booking tickets</legend>
+          <div class="modal__title">Booking tickets</div>
           <h3 class="modal__text">Tour to Louvre</h3>
           <hr>
         </div>
         <div></div>
         <div class="modal__wrap">
-          <fieldset class="date">
-            <label for="date1">
-              <svg class="icon">
-                <use xlink:href="./assets/svg/sprite.svg#date"></use>
-              </svg>
-            </label>
-            <input type="text" placeholder="Date" id="date1" readonly >
-            <input type="date" name="date" id="date2">
-          </fieldset>
-          <fieldset class="time">
-            <label for="time1">
-              <svg class="icon">
-                <use xlink:href="./assets/svg/sprite.svg#time"></use>
-              </svg>
-            </label>
-            <input type="text" placeholder="Time" id="time1" readonly>
-            <input type="time" name="time" id="time2">
-          </fieldset>
+          <div class="left-data__item-date date-time">
+            <input class="date-inp" type="date" name="date" max="2050-12-31" id="date" required>
+          </div>
+          <div class="left-data__item-time date-time">
+            <input class="time-inp" type="time" name="time" list="time-list" id="time" required>
+            <datalist id="time-list">
+              <option value="09:00">
+              <option value="09:30">
+              <option value="10:00">
+              <option value="10:30">
+              <option value="11:00">
+              <option value="11:30">
+              <option value="12:00">
+              <option value="12:30">
+              <option value="13:00">
+              <option value="13:30">
+              <option value="14:00">
+              <option value="14:30">
+              <option value="15:00">
+              <option value="15:30">
+              <option value="16:00">
+              <option value="16:30">
+              <option value="17:00">
+              <option value="17:30">
+              <option value="18:00">
+            </datalist>
+          </div>
         </div>
         <div class="name">
           <label for="name">
@@ -670,7 +679,7 @@
               <use xlink:href="./assets/svg/sprite.svg#name"></use>
             </svg>
           </label>
-          <input type="text" name="name" id="name" placeholder="Name">
+          <input type="text" name="name" id="name" placeholder="Name" pattern="^([a-zA-Z ]{3,15}|[а-яёА-Я ]{3,15})$" title="The user name must contain from 3 to 15 characters, as characters, letters of the English or Russian alphabet in lowercase or uppercase and spaces can be used example: Name Female" required>
         </div>
         <div class="email">
           <label for="email">
@@ -678,7 +687,7 @@
               <use xlink:href="./assets/svg/sprite.svg#email"></use>
             </svg>
           </label>
-          <input type="email" name="email" id="email" placeholder="E-mail">
+          <input type="email" name="email" id="email" placeholder="E-mail" pattern="^(([a-z0-9_-]{3,15})@([a-z]{4,}\.)([a-z]{2,}))$" title="example: username@example.com, where: username - user name, must contain from 3 to 15 characters (letters, numbers, underscores, hyphens), must not contain spaces; @ - dog symbol; example - first-level domain consists of at least 4 Latin letters; com - top-level domain, separated from the first-level domain by a dot and consists of at least 2 Latin letters" required>
         </div>
         <div class="phone">
           <label for="phone">
@@ -686,7 +695,7 @@
               <use xlink:href="./assets/svg/sprite.svg#tel"></use>
             </svg>
           </label>
-          <input type="tel" name="phone" id="phone" placeholder="Phone">
+          <input type="tel" name="phone" id="phone" placeholder="Phone" pattern="^([0-9- ]{0,10})$" title="the number contains only digits; without division or with division into two or three digits; the division of digits can be separated by a hyphen or a space; with a limit on the number of digits no more than 10 digits" required>
         </div>
         <div class="ticket">
           <label for="ticket">
@@ -728,9 +737,9 @@
             <h3>Overview</h3>
             <p>Tour to Louvre</p>
             <ul class="form__items">
-              <li class="form__item">Friday, August 19</li>
-              <li class="form__item">16 : 30</li>
-              <li class="form__item">Temporary exhibition</li>
+              <li class="form__item" id="output-date">Friday, August 19</li>
+              <li class="form__item" id="output-time">16 : 30</li>
+              <li class="form__item" id="output-type-tickets">Temporary exhibition</li>
             </ul>
           </div>         
           <input type="image" src="./assets/img/welcome.webp" alt="main facade" id="img">
@@ -758,12 +767,12 @@
                 <label for="month">Expiration date</label>
                 <div>
                   <div class="month">
-                    <input type="number" name="month" value="03" min="01" max="12" id="month" readonly>
+                    <input type="number" name="month" value="03" min="01" max="12" id="month">
                     <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">&#9660;</button>
                     <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">&#9650;</button>
                   </div>
                   <div class="year">
-                    <input type="number" name="year" value="2024" min="2021" max="2031" id="year" readonly>
+                    <input type="number" name="year" value="2024" min="2021" max="2031" id="year">
                     <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">&#9660;</button>
                     <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">&#9650;</button>
                   </div>
@@ -783,7 +792,7 @@
             <div class="bg"></div>
             <div class="cvc">
               <label for="cvc">Cvc/cvv</label>
-              <input type="text" name="cvc" pattern="\d{3|4}" id="cvc">
+              <input type="text" name="cvc" id="cvc">
               <label>The last<br>3 or 4 digits<br>on back<br>of the card</label>
             </div>
           </fieldset>

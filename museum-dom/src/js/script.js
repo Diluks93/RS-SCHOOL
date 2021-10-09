@@ -8,6 +8,7 @@ import changeIframe from './changeIframe.js';
 import showSidepanel from './hamburger.js';
 import useMapbox from './mapbox.js'
 import calculateTickets from './calculate.js'
+import getFormValidate from './validation.js';
 
 addRipple()
 comparisons();
@@ -19,3 +20,10 @@ changeIframe();
 showSidepanel();
 useMapbox();
 calculateTickets();
+getFormValidate();
+
+
+const dateInp = document.querySelector('.date-inp');
+dateInp.setAttribute('placeholder', 'Date');
+const timeInp = document.querySelector('.time-inp');
+timeInp.setAttribute('placeholder', 'Time');
