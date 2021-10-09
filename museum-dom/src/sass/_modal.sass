@@ -446,6 +446,14 @@ select
 input::-webkit-input-placeholder
   color: $blackBg
   font-weight: normal
+.form__error
+  color: $red
+  text-align: left
+  font-size: 10px
+  margin-top: 3px
+  display: none
+input:invalid:not(:placeholder-shown) + .form__error
+  display: block
 
 .date-time 
   max-width: 190px
