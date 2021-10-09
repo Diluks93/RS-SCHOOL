@@ -3,11 +3,13 @@ export default function slider(){
   const prev = document.getElementById('prev'),
     next = document.getElementById('next'),
     slides = document.querySelectorAll('.slide'),
+    figures = document.querySelectorAll('.figure'),
     cubs = document.querySelectorAll('.cub'),
     cur = document.getElementById('current'),
     isEnabled = true;
 
-  let index = 0;
+  let index = 0,
+    currentFigure = 0;
 
   const activeSlide = (n) => {
     for (let slide of slides) {
@@ -55,7 +57,26 @@ export default function slider(){
   next.addEventListener('click', nextSlide);
   prev.addEventListener('click', prevSlide);
 
+
+  const nextFigure = () => {
+    if (currentFigure === figures.length - 1) {
+      currentFigure = 0;
+      activeFigure(currentFigure);
+    } else {
+      currentFigure++;
+      activeFigure(currentFigure);
+    }
+  };
+
+  const activeFigure = (n) => {
+    for (let figure of figures) {
+      figure.classList.remove('active');
+    }
+    figures[n].classList.add('active');
+  };
+
   setInterval(nextSlide, 5000);
+  setInterval(nextFigure, 3000);
 
   const swipeMove = (el) => {
     let surface = el,

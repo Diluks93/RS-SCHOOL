@@ -1,0 +1,25 @@
+.figure
+  display: none
+  position: relative
+  transition: transform 0.5s linear
+  &:hover
+    transform: scale(1.1)
+    figcaption
+      opacity: 0.8
+  figcaption
+    opacity: 0
+    position: absolute
+    width: 100%
+    height: 10%
+    background-color: $gold
+    font-family: $roboto
+    left: 50%
+    bottom: 0
+    transform: translateX(-50%)
+    transition: opacity 0.5s ease-in-out
+    display: flex
+    align-items: flex-start
+    justify-content: space-around
+    padding-top: 5px
+  &.active
+    display: block
