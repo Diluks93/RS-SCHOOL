@@ -544,16 +544,19 @@
             <div class="tickets__block_wrap">
               <h3 class="tickets__block_title">Ticket Type</h3>
               <div class="tickets__block_label">
-                <input type="radio" checked="checked" name="radio" value="20" class="tickets__block_input radio">
-                <label class="tickets__block_checkmark">Permanent exhibition</label>
+                <label class="tickets__block_checkmark">
+                  <input type="radio" checked="checked" name="radio" value="20" class="tickets__block_input radio">Permanent exhibition
+                </label>
               </div>
               <div class="tickets__block_label">
-                <input type="radio" name="radio" value="25" class="tickets__block_input radio">
-                <label class="tickets__block_checkmark">Temporary exhibition</label>
+                <label class="tickets__block_checkmark">
+                  <input type="radio" name="radio" value="25" class="tickets__block_input radio">Temporary exhibition
+                </label>
               </div>
               <div class="tickets__block_label">
-                <input type="radio" name="radio" value="40" class="tickets__block_input radio">
-                <label class="tickets__block_checkmark">Combined Admission</label>
+                <label class="tickets__block_checkmark">
+                  <input type="radio" name="radio" value="40" class="tickets__block_input radio">Combined Admission
+                </label>
               </div>
             </div>
             <div class="tickets__box_wrap">
@@ -769,19 +772,19 @@
           <h4 class="form__subtitle">Entry ticket</h4>
           <hr>
           <div class="form__box_label">
-            <label>Basic 18+ (20 &#8364;)</label>
+            <label id="basicform">Basic 18+ (20 &#8364;)</label>
             <div>
-              <button type="button" onclick="this.nextElementSibling.stepDown()">&#8211;</button>
-              <input type="number" min="0" max="100" value="2" readonly class="form__box_input">
-              <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+              <button class="plus" type="button" onclick="this.nextElementSibling.stepDown()">&#8211;</button>
+              <input type="number" min="0" max="20" value="2" readonly class="form__box_input basic">
+              <button class="minus" type="button" onclick="this.previousElementSibling.stepUp()">+</button>
             </div>
           </div>
           <div class="form__box_label">
-            <label>Senior 65+ (10 &#8364;)</label>
+            <label id="seniorform">Senior 65+ (10 &#8364;)</label>
             <div>
-              <button type="button" onclick="this.nextElementSibling.stepDown()">&#8211;</button>
-              <input type="number" min="0" max="100" value="2" readonly class="form__box_input">
-              <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+              <button class="plus" type="button" onclick="this.nextElementSibling.stepDown()">&#8211;</button>
+              <input type="number" min="0" max="20" value="2" readonly class="form__box_input senior">
+              <button class="minus" type="button" onclick="this.previousElementSibling.stepUp()">+</button>
             </div>
           </div>
         </fieldset>
@@ -801,12 +804,12 @@
         </div>
         <div class="form__offer">
           <div>
-            <p class="text"><span class="number">2</span>Basic (20 &#8364;)</p>
-            <span class="price">40 &#8364;</span>
+            <p class="text"><span class="number" id="numBasic">2</span>Basic (20 &#8364;)</p>
+            <span class="price" id="priceBasic">40 &#8364;</span>
           </div>
           <div>
-            <p class="text"><span class="number">2</span>Senior (10 &#8364;)</p>
-            <span class="price">20 &#8364;</span>
+            <p class="text"><span class="number" id="numSenior">2</span>Senior (10 &#8364;)</p>
+            <span class="price" id="priceSenior">20 &#8364;</span>
           </div>
           <hr>
           <div class="form__offer">

@@ -9,6 +9,7 @@ import showSidepanel from './hamburger.js';
 import useMapbox from './mapbox.js'
 import calculateTickets from './calculate.js'
 import getFormValidate from './validation.js';
+import calculateModal from './changeModalValue.js';
 
 addRipple()
 comparisons();
@@ -21,6 +22,7 @@ showSidepanel();
 useMapbox();
 calculateTickets();
 getFormValidate();
+calculateModal();
 
 
 const dateInp = document.querySelector('.date-inp');
@@ -28,6 +30,57 @@ dateInp.setAttribute('placeholder', 'Date');
 const timeInp = document.querySelector('.time-inp');
 timeInp.setAttribute('placeholder', 'Time');
 
+function debounce(func, wait = 20, immediate = true) {
+    let timeout;
+    return function(){
+      let context = this, args = arguments;
+      let later = function(){
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      let callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  };
+function showSections() {
+  const visiting = document.querySelector('.visiting'),
+   explore = document.querySelector('.explore'),
+   video = document.querySelector('.video'),
+   gallery = document.querySelector('.gallery'),
+   tickets = document.querySelector('.tickets'),
+   contacts = document.querySelector('.contacts'),
+   footer = document.querySelector('.footer');
+
+  const SECTIONSIMAGES = [
+    visiting,
+    explore,
+    video,
+    gallery,
+    tickets,
+    contacts,
+    footer
+  ];
+
+  function checkSections(e) {
+    SECTIONSIMAGES.forEach((image) => {
+      // scroll way through the image
+      const slideInAt =
+        window.scrollY + window.innerHeight;
+      // bottom ob the image
+      const imageBottom = image.offsetTop + image.offsetHeight;
+      const isHalfShown = slideInAt > image.offsetTop;
+      const isNotScrolledPast = window.scrollY < imageBottom;
+      if (isHalfShown && isNotScrolledPast) {
+        image.classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', debounce(checkSections), 100);
+}
+showSections();
 console.log(`
 Ваша оценка - 119 баллов 
 Отзыв по пунктам ТЗ:

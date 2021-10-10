@@ -14,7 +14,7 @@ export default function calculateTickets(){
       }
     })
   }
-  
+
   const getTotalPrice = () => {
     let amountBasicValue = +document.getElementById('basic').value;
     let amountSeniorValue = +document.getElementById('senior').value;
@@ -27,7 +27,7 @@ export default function calculateTickets(){
       'amountSeniorValue',
       document.getElementById('senior').value
     );
-    
+
     let totalPriceValue = ticketsPrice * amountBasicValue + (ticketsPrice / 2) * amountSeniorValue
     totalPrice.innerText = `Total € ${totalPriceValue}`;
 
@@ -53,37 +53,45 @@ export default function calculateTickets(){
     localStorage.getItem('amountBasicValue') &&
     localStorage.getItem('amountSeniorValue') &&
     localStorage.getItem('totalPrice')
-  ) {
-    let iRadio = localStorage.getItem('ticketType');
-    document
+    ) {
+      let iRadio = localStorage.getItem('ticketType');
+      document
       .querySelector('input[name="radio"][value="' + iRadio + '"]')
       .setAttribute('checked', 'checked');
 
-    let iBasic = localStorage.getItem('amountBasicValue');
-    document.getElementById('basic').setAttribute('value', `${iBasic}`)
-    let iSenior = localStorage.getItem('amountSeniorValue');
-    document.getElementById('senior').setAttribute('value', `${iSenior}`)
-    let iTotal = localStorage.getItem('totalPrice');
-    totalPrice.innerText = `Total € ${iTotal}`;
-  }
-  
+      let iBasic = localStorage.getItem('amountBasicValue');
+      document.getElementById('basic').setAttribute('value', `${iBasic}`)
+      document.querySelector('.basic').setAttribute('value', `${iBasic}`)
+      let iSenior = localStorage.getItem('amountSeniorValue');
+      document.getElementById('senior').setAttribute('value', `${iSenior}`)
+      document.querySelector('.senior').setAttribute('value', `${iSenior}`)
+      let iTotal = localStorage.getItem('totalPrice');
+      totalPrice.innerText = `Total € ${iTotal}`;
+      document.querySelector('.form__offer').innerHTML = `
+      <div>
+        <p class="text"><span class="number" id="numBasic">${iBasic}</span>Basic (${iRadio} &#8364;)</p>
+        <span class="price" id="priceBasic">${iRadio * iBasic} &#8364;</span>
+      </div>
+      <div>
+        <p class="text"><span class="number" id="numSenior">${iSenior}</span>Senior (${iRadio / 2} &#8364;)</p>
+        <span class="price" id="priceSenior">${(iRadio / 2) * iSenior} &#8364;</span>
+      </div>
+      <hr>
+      <div class="form__offer">
+        <span class="totalText">Total:</span><span class="total">${iTotal} &#8364;</span>
+      </div>`;
+    };
+  radiosCheckboxes.forEach((radioCheckbox) =>
+    radioCheckbox.addEventListener('click', function() {
+      let result = document.getElementById('output-type-tickets');
+      switch(this.value){
+        case('20'):
+          return result.innerText = `Permanent exhibition`;
+        case('25'):
+          return result.innerText = `Temporary exhibition`;
+        case('40'):
+          return result.innerText = `Combined admission`;
+      }
+    })
+  );
 }
-
-
-
-{/* <select id="fruit">
-    <option value="0">1</option>
-    <option value="1">2</option>
-    <option value="2">3</option>
-    <option value="3">4</option>
-</select>
-
-<script>
-document.getElementById("fruit").onchange = function() {
-    localStorage.setItem('fruit', document.getElementById("fruit").value);
-}
-
-if (localStorage.getItem('fruit')) {
-    document.getElementById("fruit").options[localStorage.getItem('fruit')].selected = true;
-}
-</script> */}

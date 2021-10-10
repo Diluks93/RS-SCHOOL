@@ -36,6 +36,20 @@ $forum : Forum, cursive
   margin: 0
   scroll-behavior: smooth
 
+.visiting,
+.explore,
+.video,
+.gallery,
+.tickets,
+.contacts,
+.footer
+  opacity: 0
+  transition: all 1s
+  transform: translateY(30%) scale(0.95)
+  &.active
+    opacity: 1
+    transform: translateY(0) scale(1)
+
 .container
   display: block
   max-width: 1440px
