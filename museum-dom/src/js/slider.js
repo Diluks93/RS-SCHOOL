@@ -1,165 +1,157 @@
 export default function slider(){
 
-  const prev = document.getElementById('prev'),
+  const slider = document.getElementById('slider'),
+    sliderItems = document.getElementById('slides'),
+    prev = document.getElementById('prev'),
     next = document.getElementById('next'),
-    slides = document.querySelectorAll('.slide'),
-    figures = document.querySelectorAll('.figure'),
     cubs = document.querySelectorAll('.cub'),
-    cur = document.getElementById('current'),
-    isEnabled = true;
+    cur = document.getElementById('current');
 
-  let index = 0,
-    currentFigure = 0;
+  function slide(wrapper, items, prev, next) {
+    let posX1 = 0,
+      posX2 = 0,
+      posInitial,
+      posFinal,
+      threshold = 300,
+      slides = items.getElementsByClassName('slide'),
+      slidesLength = slides.length,
+      slideSize = items.getElementsByClassName('slide')[0].offsetWidth,
+      firstSlide = slides[0],
+      lastSlide = slides[slidesLength - 1],
+      cloneFirst = firstSlide.cloneNode(true),
+      cloneLast = lastSlide.cloneNode(true),
+      index = 0,
+      allowShift = true;
 
-  const activeSlide = (n) => {
-    for (let slide of slides) {
-      slide.classList.remove('active');
-    }
-    slides[n].classList.add('active');
-  };
-  const activeBullet = (n) => {
-    for (let cub of cubs) {
-      cub.classList.remove('active');
-    }
-    cubs[n].classList.add('active');
-  };
-  const prepareCurrentSlide = (ind) => {
-    activeSlide(ind);
-    activeBullet(ind);
-    cur.innerHTML = `0${ind + 1}`;
-  };
-  const nextSlide = () => {
-    if (index === slides.length - 1) {
-      index = 0;
-      prepareCurrentSlide(index);
-    } else {
-      index++;
-      prepareCurrentSlide(index);
-    }
-  };
-  const prevSlide = () => {
-    if (index === 0) {
-      index = slides.length - 1;
-      prepareCurrentSlide(index);
-    } else {
-      index--;
-      prepareCurrentSlide(index);
-    }
-  };
+    // Clone first and last slide
+    items.appendChild(cloneFirst);
+    items.insertBefore(cloneLast, firstSlide);
+    wrapper.classList.add('loaded');
 
-  cubs.forEach((item, indexDot) => {
-    item.addEventListener('click', () => {
-      index = indexDot;
-      prepareCurrentSlide(index);
+    // Mouse events
+    items.onmousedown = dragStart;
+
+    // Touch events
+    items.addEventListener('touchstart', dragStart);
+    items.addEventListener('touchend', dragEnd);
+    items.addEventListener('touchmove', dragAction);
+
+    // Click events
+    prev.addEventListener('click', function () {
+      shiftSlide(-1);
     });
-  });
+    next.addEventListener('click', function () {
+      shiftSlide(1);
+    });
 
-  next.addEventListener('click', nextSlide);
-  prev.addEventListener('click', prevSlide);
+    // Transition events
+    items.addEventListener('transitionend', checkIndex);
 
-
-  const nextFigure = () => {
-    if (currentFigure === figures.length - 1) {
-      currentFigure = 0;
-      activeFigure(currentFigure);
-    } else {
-      currentFigure++;
-      activeFigure(currentFigure);
-    }
-  };
-
-  const activeFigure = (n) => {
-    for (let figure of figures) {
-      figure.classList.remove('active');
-    }
-    figures[n].classList.add('active');
-  };
-
-  setInterval(nextSlide, 5000);
-  setInterval(nextFigure, 3000);
-
-  const swipeMove = (el) => {
-    let surface = el,
-      startX = 0,
-      startY = 0,
-      distX = 0,
-      distY = 0,
-      startTime = 0,
-      elapsedTime = 0;
-
-    let threshold = 150,
-      restraint = 100,
-      allowedTime = 300;
-
-    surface.addEventListener('mousedown', function(e){
-      startX = e.pageX;
-      startY = e.pageY;
-      startTime = new Date().getTime();
-      e.preventDefault()
-    }, false);
-
-    surface.addEventListener('mouseup', function(e) {
-      distX = e.pageX - startX;
-      distY = e.pageY - startY;
-      elapsedTime = new Date().getTime() - startTime;
-      if(elapsedTime <= allowedTime){
-        if(Math.abs(distX) >= threshold && Math.abs(distY) <= restraint){
-          if(distX > 0) {
-            if (isEnabled) {
-              prevSlide(index);
-            }
-          } else {
-            if (isEnabled) {
-              nextSlide(index);
-            }
-          }
-        }
-      }
+    function dragStart(e) {
+      e = e || window.event;
       e.preventDefault();
-    }, false)
+      posInitial = items.offsetLeft;
 
-    surface.addEventListener('touchstart', function(e){
-      if (e.target.classList.contains('prev')){
-        if(isEnabled) {
-          prevSlide(index);
-        }
+      if (e.type == 'touchstart') {
+        posX1 = e.touches[0].clientX;
       } else {
-        if(isEnabled) {
-          nextSlide(index);
+        posX1 = e.clientX;
+        document.onmouseup = dragEnd;
+        document.onmousemove = dragAction;
+      }
+    }
+
+    function dragAction(e) {
+      e = e || window.event;
+
+      if (e.type == 'touchmove') {
+        posX2 = posX1 - e.touches[0].clientX;
+        posX1 = e.touches[0].clientX;
+      } else {
+        posX2 = posX1 - e.clientX;
+        posX1 = e.clientX;
+      }
+      items.style.left = items.offsetLeft - posX2 + 'px';
+    }
+
+    function dragEnd(e) {
+      posFinal = items.offsetLeft;
+      if (posFinal - posInitial < -threshold) {
+        shiftSlide(1, 'drag');
+      } else if (posFinal - posInitial > threshold) {
+        shiftSlide(-1, 'drag');
+      } else {
+        items.style.left = posInitial + 'px';
+      }
+
+      document.onmouseup = null;
+      document.onmousemove = null;
+    }
+
+    function shiftSlide(dir, action) {
+      items.classList.add('active');
+      if (allowShift) {
+        if (!action) {
+          posInitial = items.offsetLeft;
+        }
+        if (dir == 1) {
+          items.style.left = posInitial - slideSize + 'px';
+          index++;
+        } else if (dir == -1) {
+          items.style.left = posInitial + slideSize + 'px';
+          index--;
         }
       }
-      let touchobj = e.changedTouches[0];
-      startX = touchobj.pageX;
-      startY = touchobj.pageY;
-      startTime = new Date().getTime();
-      e.preventDefault();
-    }, false);
-
-    surface.addEventListener('touchmove', function(e){
-      e.preventDefault();
-    }, false);
-
-    surface.addEventListener('touchend', function(e){
-      let touchobj = e.changedTouches[0];
-      distX = touchobj.pageX - startX;
-      distY = touchobj.pageY - startY;
-      elapsedTime = new Date().getTime() - startTime;
-      if (elapsedTime <= allowedTime){
-        if(Math.abs(distX) >= threshold && Math.abs(distY) <= restraint){
-          if(distX > 0){
-            if(isEnabled){
-              prevSlide(index);
-            } 
-          } else {
-            if (isEnabled){
-              nextSlide(index);
-            }
-          }
-        }
+      allowShift = false;
+    }
+    
+    function checkIndex() {
+      items.classList.remove('active');
+      if (index == -1) {
+        items.style.left = -(slidesLength * slideSize) + 'px';
+        index = slidesLength - 1;
       }
-      e.preventDefault();
-    }, false)
+      if (index == slidesLength) {
+        items.style.left = -(1 * slideSize) + 'px';
+        index = 0;
+      }
+      activeBullet(index);
+      cur.innerHTML = `0${index + 1}`;
+      allowShift = true;
+    }
+
+    const activeBullet = (n) => {
+      for (let cub of cubs) {
+        cub.classList.remove('active');
+      }
+      cubs[n].classList.add('active');
+    };
+
+    cubs.forEach((item, indexDot) => {
+      item.addEventListener('click', () => {
+        index = indexDot;
+        cur.innerHTML = `0${index + 1}`;
+        activeBullet(index);
+        switch(index){
+          case(0):
+            items.style.left = -1000 + 'px';
+          break;
+          case(1):
+            items.style.left = -2000 + 'px';
+          break;
+          case(2):
+            items.style.left = -3000 + 'px';
+          break;
+          case(3):
+            items.style.left = -4000 + 'px';
+          break;
+          case(4):
+            items.style.left = -5000 + 'px';
+          break;
+        }
+      });
+    });
   }
-  let el = document.getElementById('slider');
-  swipeMove(el);
+
+  slide(slider, sliderItems, prev, next);
 }
