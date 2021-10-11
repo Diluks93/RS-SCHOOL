@@ -41,12 +41,24 @@
           fill: $smoke
         &:active
           fill: $gold
-  &__video.play
-    display: block
-    object-fit: cover
+    .items-container
+      position: relative
+      width: 100%
+      overflow: hidden
   &__video
+    &.play,
+    &.next
+      display: block
+      object-fit: cover
+    .next
+      position: absolute
+      top: 0
+      width: 100%
+  &__video
+    position: relative
     display: none
     width: 100%
+    animation: 0.5s ease-in-out
   &__controls //style control panel
     position: absolute
     display: flex
@@ -477,3 +489,20 @@
     &__dot
       width: 8px
       height: 8px
+
+.to-left 
+  animation-name: left
+
+
+.from-right 
+  animation-name: right
+
+
+.to-right 
+  animation-name: right
+  animation-direction: reverse
+
+
+.from-left 
+  animation-name: left
+  animation-direction: reverse

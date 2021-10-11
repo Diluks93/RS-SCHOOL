@@ -13,10 +13,12 @@ const
   volume = document.getElementById('volume'),
   mute = document.getElementById('mute'),
   fullscreen = document.getElementById('fullscreen'),
-  tabs = document.querySelector('.video__slider'),
-  dots = document.querySelector('.video__dots');
-
-let currentVideo = 0;
+  dots = document.querySelectorAll('.video__dot'),
+  items = document.querySelectorAll('.video__player .video__video');
+  
+  
+let currentVideo = 0,
+  isEnabled = true;
 
 // change button play or pause
 function togglePlay() {
@@ -103,10 +105,10 @@ videos.forEach( (video) => video.addEventListener('timeupdate', handleProgress) 
 
 progress.addEventListener('click', scrub);
 
-/* let mousedown = false;
+let mousedown = false;
 progress.addEventListener('mousemove', (e) => mousedown && scrub(e))
 progress.addEventListener('mousedown', () => mousedown = true)
-progress.addEventListener('mouseup', () => mousedown = false) */
+progress.addEventListener('mouseup', () => mousedown = false)
 
 volume.addEventListener('change', videoChangeVolume);
 mute.addEventListener('click', videoMute);
@@ -176,26 +178,59 @@ volume.addEventListener('input', function () {
 
 // tabs // 
 
-const changeClass = element => {
-  for (let i = 1; i < dots.children.length - 1; i++) {
-    dots.children[i].classList.remove('active');
-  }
-  element.classList.add('active');
-};
-
-tabs,dots.addEventListener('click', event => {
-  const currentTab = event.target.dataset.btn;
-  changeClass(event.target);
-  for ( let i = 0; i < videos.length; i++) {
-    videos[i].classList.remove('play');
-    if (videos[i].dataset.content === currentTab) {
-      videos[i].classList.add('play');
-      changeVideo(i);
-    }
-  }
-});
-
 function changeVideo(num) {
   return video.paused ? currentVideo = num : currentVideo;
 }
+
+function changeCurrentItem(n) {
+  currentVideo = (n + items.length) % items.length;
+}
+
+dots.forEach(dot => dot.addEventListener('click', function changeDot() {
+  dots.forEach(dot => dot.classList.remove('active'))
+  dot.classList.add('active');
+  currentVideo = dot;
+}))
+
+function hideItem(direction) {
+  isEnabled = false;
+  items[currentVideo].classList.add(direction);
+  items[currentVideo].addEventListener('animationend', function () {
+    this.classList.remove('play', direction);
+  });
+}
+
+function showItem(direction) {
+  items[currentVideo].classList.add('next', direction);
+  items[currentVideo].addEventListener('animationend', function () {
+    this.classList.remove('next', direction);
+    this.classList.add('play');
+    isEnabled = true;
+  });
+}
+
+function nextItem(n) {
+  hideItem('to-left');
+  changeCurrentItem(n + 1);
+  showItem('from-right');
+}
+
+function previousItem(n) {
+  hideItem('to-right');
+  changeCurrentItem(n - 1);
+  showItem('from-left');
+}
+
+document.querySelector('.control.left').addEventListener('click', function () {
+  if (isEnabled) {
+    previousItem(currentVideo);
+  }
+});
+
+document.querySelector('.control.right').addEventListener('click', function () {
+  if (isEnabled) {
+    nextItem(currentVideo);
+  }
+});
+
 }

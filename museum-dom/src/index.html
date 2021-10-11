@@ -266,11 +266,13 @@
           <p class="video__descr">Enter and visit one of the most famous museums in the world and enjoy masterpieces such as Mona Lisa or Hammurabi's Code</p>
         </div>
         <div class="video__player">
-          <video class="video__video play" poster="./assets/img/video/poster0.webp" src="./assets/video/video0.mp4"></video>
-          <video class="video__video" poster="./assets/img/video/poster1.webp" src="./assets/video/video1.mp4"></video>
-          <video class="video__video" poster="./assets/img/video/poster2.webp" src="./assets/video/video2.mp4"></video>
-          <video class="video__video" poster="./assets/img/video/poster3.webp" src="./assets/video/video3.mp4"></video>
-          <video class="video__video" poster="./assets/img/video/poster4.webp" src="./assets/video/video4.mp4"></video>
+          <div class="items-container">
+            <video class="video__video play" poster="./assets/img/video/poster0.webp" src="./assets/video/video0.mp4"></video>
+            <video class="video__video" poster="./assets/img/video/poster1.webp" src="./assets/video/video1.mp4"></video>
+            <video class="video__video" poster="./assets/img/video/poster2.webp" src="./assets/video/video2.mp4"></video>
+            <video class="video__video" poster="./assets/img/video/poster3.webp" src="./assets/video/video3.mp4"></video>
+            <video class="video__video" poster="./assets/img/video/poster4.webp" src="./assets/video/video4.mp4"></video>
+          </div>
           <button id="button">
               <svg class="icon"><use xlink:href="./assets/svg/sprite.svg#play"></use></svg>
           </button>
@@ -387,13 +389,13 @@
           </div>
         </div>
         <div class="video__dots">
-          <svg class="icon"><use xlink:href="./assets/svg/sprite.svg#shevron"></use></svg>
+          <svg class="icon control left"><use xlink:href="./assets/svg/sprite.svg#shevron"></use></svg>
           <div class="video__dot active"></div>
           <div class="video__dot"></div>
           <div class="video__dot"></div>
           <div class="video__dot"></div>
           <div class="video__dot"></div>
-          <svg class="icon"><use xlink:href="./assets/svg/sprite.svg#shevron"></use></svg>
+          <svg class="icon control right"><use xlink:href="./assets/svg/sprite.svg#shevron"></use></svg>
         </div>
       </div>
     </section>
@@ -469,62 +471,66 @@
         <h2 class="tickets__title">Buy tickets</h2>
         <hr>
         <div class="tickets__wrapper">
-            <figure class="figure active">
-              <picture>
-                <source srcset="./assets/img/tickets/tickets0.webp">
-                <img src="./assets/img/tickets/tickets0.jpg" alt="picture" class="tickets__img" loading="lazy">
-              </picture>
-              <figcaption>"Venus giving Aeneas armor made by Vulcan" 1748</figcaption>
+          <div id="captioned-gallery">
+            <figure class="hide-show">
+              <figure class="figure active">
+                <picture>
+                  <source srcset="./assets/img/tickets/tickets0.webp">
+                  <img src="./assets/img/tickets/tickets0.jpg" alt="picture" class="tickets__img" loading="lazy">
+                </picture>
+                <figcaption>"Venus giving Aeneas armor made by Vulcan" 1748</figcaption>
+              </figure>
+              <figure class="figure">
+                <picture>
+                  <source srcset="./assets/img/tickets/tickets1.webp">
+                  <img src="./assets/img/tickets/tickets1.webp" alt="picture" class="tickets__img" loading="lazy">
+                </picture>
+                <figcaption>"Elisabeth-Louise Viger-Lebrun - Peace and Plenty" 1780</figcaption>
+              </figure>
+              <figure class="figure">
+                <picture>
+                  <source srcset="./assets/img/tickets/tickets2.webp">
+                  <img src="./assets/img/tickets/tickets2.jfif" alt="picture" class="tickets__img" loading="lazy">
+                </picture>
+                <figcaption>"The death of Socrates, work of Jean-Baptiste Alizard" 1762</figcaption>
+              </figure>
+              <figure class="figure">
+                <picture>
+                  <source srcset="./assets/img/tickets/tickets3.webp">
+                  <img src="./assets/img/tickets/tickets3.jpg" alt="picture" class="tickets__img" loading="lazy">
+                </picture>
+                <figcaption>"Jacques Louis David The Oath of the Horatii" 1784</figcaption>
+              </figure>
+              <figure class="figure">
+                <picture>
+                  <source srcset="./assets/img/welcome-slider/2.webp">
+                  <img src="./assets/img/welcome-slider/2.jpg" alt="picture" class="tickets__img" loading="lazy">
+                </picture>
+                <figcaption>"Eugene Delacroix "Freedom on the barricades" 1830</figcaption>
+              </figure>
+              <figure class="figure">
+                <picture>
+                  <source srcset="./assets/img/welcome-slider/1.webp">
+                  <img src="./assets/img/welcome-slider/1.jpg" alt="picture" class="tickets__img" loading="lazy">
+                </picture>
+                <figcaption>"Leonardo da Vinci "Portrait of Mrs. Lisa del Giocondo" 1503</figcaption>
+              </figure>
+              <figure class="figure">
+                <picture>
+                  <source srcset="./assets/img/welcome-slider/3.webp">
+                  <img src="./assets/img/welcome-slider/3.jpg" alt="picture" class="tickets__img" loading="lazy">
+                </picture>
+                <figcaption>"Leonardo da Vinci's "The Beautiful Ferroniere" 1490</figcaption>
+              </figure>
+              <figure class="figure">
+                <picture>
+                  <source srcset="./assets/img/welcome-slider/4.webp">
+                  <img src="./assets/img/welcome-slider/4.jpg" alt="picture" class="tickets__img" loading="lazy">
+                </picture>
+                <figcaption>"Theodora Gericault "The Medusa Raft" 1816</figcaption>
+              </figure>
             </figure>
-            <figure class="figure">
-              <picture>
-                <source srcset="./assets/img/tickets/tickets1.webp">
-                <img src="./assets/img/tickets/tickets1.webp" alt="picture" class="tickets__img" loading="lazy">
-              </picture>
-              <figcaption>"Elisabeth-Louise Viger-Lebrun - Peace and Plenty" 1780</figcaption>
-            </figure>
-            <figure class="figure">
-              <picture>
-                <source srcset="./assets/img/tickets/tickets2.webp">
-                <img src="./assets/img/tickets/tickets2.jfif" alt="picture" class="tickets__img" loading="lazy">
-              </picture>
-              <figcaption>"The death of Socrates, work of Jean-Baptiste Alizard" 1762</figcaption>
-            </figure>
-            <figure class="figure">
-              <picture>
-                <source srcset="./assets/img/tickets/tickets3.webp">
-                <img src="./assets/img/tickets/tickets3.jpg" alt="picture" class="tickets__img" loading="lazy">
-              </picture>
-              <figcaption>"Jacques Louis David The Oath of the Horatii" 1784</figcaption>
-            </figure>
-            <figure class="figure">
-              <picture>
-                <source srcset="./assets/img/welcome-slider/2.webp">
-                <img src="./assets/img/welcome-slider/2.jpg" alt="picture" class="tickets__img" loading="lazy">
-              </picture>
-              <figcaption>"Eugene Delacroix "Freedom on the barricades" 1830</figcaption>
-            </figure>
-            <figure class="figure">
-              <picture>
-                <source srcset="./assets/img/welcome-slider/1.webp">
-                <img src="./assets/img/welcome-slider/1.jpg" alt="picture" class="tickets__img" loading="lazy">
-              </picture>
-              <figcaption>"Leonardo da Vinci "Portrait of Mrs. Lisa del Giocondo" 1503</figcaption>
-            </figure>
-            <figure class="figure">
-              <picture>
-                <source srcset="./assets/img/welcome-slider/3.webp">
-                <img src="./assets/img/welcome-slider/3.jpg" alt="picture" class="tickets__img" loading="lazy">
-              </picture>
-              <figcaption>"Leonardo da Vinci's "The Beautiful Ferroniere" 1490</figcaption>
-            </figure>
-            <figure class="figure">
-              <picture>
-                <source srcset="./assets/img/welcome-slider/4.webp">
-                <img src="./assets/img/welcome-slider/4.jpg" alt="picture" class="tickets__img" loading="lazy">
-              </picture>
-              <figcaption>"Theodora Gericault "The Medusa Raft" 1816</figcaption>
-            </figure>
+          </div>
           <div class="tickets__block">
             <div class="tickets__block_wrap">
               <h3 class="tickets__block_title">Ticket Type</h3>
