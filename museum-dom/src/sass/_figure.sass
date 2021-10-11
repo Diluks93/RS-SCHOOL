@@ -1,5 +1,4 @@
 .figure
-  display: none
   position: relative
   transition: transform 0.5s linear
   &:hover
@@ -21,5 +20,18 @@
     align-items: flex-start
     justify-content: space-around
     padding-top: 5px
-  &.active
-    display: block
+div#captioned-gallery 
+  width: 50%
+  overflow: hidden 
+  height: 550px
+figure.hide-show  
+  position: relative
+  display: flex
+  width: 800%
+  animation: 35s slidy infinite
+figure.hide-show figure 
+  width: 20%
+  display: inline-block
+  position: inherit
+figure.hide-show picture 
+  width: 100%
