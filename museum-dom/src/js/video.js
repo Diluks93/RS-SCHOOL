@@ -1,5 +1,4 @@
 export default function customVideoPlayer(){
-//todo подумать над функциональным подходом, убрать лишние переменные и символы если они есть.
 
 //give object
 const 
@@ -14,7 +13,8 @@ const
   mute = document.getElementById('mute'),
   fullscreen = document.getElementById('fullscreen'),
   dots = document.querySelectorAll('.video__dot'),
-  items = document.querySelectorAll('.video__player .video__video');
+  items = document.querySelectorAll('.video__player .video__video'),
+  elements = document.querySelectorAll('.video__item');
   
   
 let currentVideo = 0,
@@ -186,11 +186,35 @@ function changeCurrentItem(n) {
   currentVideo = (n + items.length) % items.length;
 }
 
-dots.forEach(dot => dot.addEventListener('click', function changeDot() {
-  dots.forEach(dot => dot.classList.remove('active'))
-  dot.classList.add('active');
-  currentVideo = dot;
+dots.forEach((dot, ind) => dot.addEventListener('click', function changeDot() {
+  items[currentVideo].classList.add('to-left');
+  items[currentVideo].remove('play', 'to-left');
+  changeCurrentItem(ind);
+  items[currentVideo].classList.add('next', 'from-right');
+  items[currentVideo].addEventListener('animationend', function () {
+    this.classList.remove('next', 'from-right');
+    this.classList.add('play');
+    isEnabled = true;
+  });
+  activeDots(ind);
+  changeElement(ind)
 }))
+
+function changeElement(n){
+  for(let element of elements) {
+    element.classList.remove('active')
+  }
+  elements[n].classList.add('active');
+  elements[n].nextElementSibling.classList.add('active');
+  elements[n].previousElementSibling.classList.add('active');
+}
+
+const activeDots = (n) => {
+  for (let dot of dots) {
+    dot.classList.remove('active');
+  }
+  dots[n].classList.add('active');
+};
 
 function hideItem(direction) {
   isEnabled = false;
@@ -224,12 +248,14 @@ function previousItem(n) {
 document.querySelector('.control.left').addEventListener('click', function () {
   if (isEnabled) {
     previousItem(currentVideo);
+    activeDots(currentVideo);
   }
 });
 
 document.querySelector('.control.right').addEventListener('click', function () {
   if (isEnabled) {
     nextItem(currentVideo);
+    activeDots(currentVideo);
   }
 });
 
