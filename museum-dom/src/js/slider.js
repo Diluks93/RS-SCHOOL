@@ -4,10 +4,8 @@ export default function slider(){
     sliderItems = document.getElementById('slides'),
     prev = document.getElementById('prev'),
     next = document.getElementById('next'),
-    figures = document.querySelectorAll('.figure'),
     cubs = document.querySelectorAll('.cub'),
     cur = document.getElementById('current');
-  let currentFigure = 0;
 
   function slide(wrapper, items, prev, next) {
     let posX1 = 0,
@@ -154,4 +152,5 @@ export default function slider(){
       });
     });
   }
+  slide(slider, sliderItems, prev, next);
 }
