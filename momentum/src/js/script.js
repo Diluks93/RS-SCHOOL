@@ -1,3 +1,5 @@
-import getTime from "./getTime.js";
+import getTime from './getTime.js';
+import getGreeting from './getGreeting.js';
 
-getTime()
+getTime();
+getGreeting();
