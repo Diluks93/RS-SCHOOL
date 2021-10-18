@@ -1,26 +1,30 @@
-export default function getTime(){
-  const TIME = document.querySelector('.time'),
-    DATE = document.querySelector('.date');
-    
-  function showTime(){
-    const date = new Date(),
-      currentTime = date.toLocaleTimeString();
+import { getTimeOfDay } from './getGreeting.js'
 
-    TIME.textContent = `${currentTime}`;
-    showDate();
-    setTimeout(showTime, 1000);
-  }
+const TIME = document.querySelector('.time'),
+  DATE = document.querySelector('.date');
+  
+function showTime(){
+  const date = new Date(),
+    currentTime = date.toLocaleTimeString();
 
-  function showDate(){
-    const date = new Date(),
-      options = { 
-        weekday: 'long', 
-        month: 'long', 
-        day: 'numeric' 
-      },
-      currentDate = date.toLocaleDateString('en-US', options);
+  TIME.textContent = `${currentTime}`;
+  showDate();
+  getTimeOfDay();
+  setTimeout(showTime, 1000);
+}
 
-    DATE.textContent = `${currentDate}`;
-  }
-  showTime();
+function showDate(){
+  const date = new Date(),
+    options = { 
+      weekday: 'long', 
+      month: 'long', 
+      day: 'numeric' 
+    },
+    currentDate = date.toLocaleDateString('en-US', options);
+
+  DATE.textContent = `${currentDate}`;
+}
+
+export {
+  showTime, showDate
 }

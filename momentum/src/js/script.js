@@ -1,5 +1,10 @@
-import getTime from './getTime.js';
-import getGreeting from './getGreeting.js';
+import { showTime, showDate } from './getTime.js';
+import { getHours, getTimeOfDay, setLocalStorage, getLocalStorage } from './getGreeting.js'
 
-getTime();
-getGreeting();
+showTime();
+showDate();
+getHours();
+getTimeOfDay();
+
+window.addEventListener('beforeunload', setLocalStorage);
+window.addEventListener('load', getLocalStorage);
