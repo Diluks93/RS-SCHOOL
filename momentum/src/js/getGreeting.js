@@ -1,3 +1,5 @@
+import {CITY} from './vidjetWether.js'
+
 const GREETING = document.querySelector('.greeting'),
   NAME = document.querySelector('.name');
 
@@ -27,11 +29,15 @@ function getTimeOfDay(){
 
 function setLocalStorage() {
   localStorage.setItem('name', NAME.value);
+  localStorage.setItem('city', CITY.value);
 }
 
 function getLocalStorage() {
   if (localStorage.getItem('name')) {
     NAME.value = localStorage.getItem('name');
+  }
+  if (localStorage.getItem('city')) {
+    CITY.value = localStorage.getItem('city');
   }
 }
 
