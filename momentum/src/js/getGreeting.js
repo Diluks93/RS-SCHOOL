@@ -9,23 +9,17 @@ function getHours(){
 }
 
 function getTimeOfDay(){
-  let timeOfDay = '';
   const hours = getHours();
-  switch (true) {
-    case hours >= 0 && hours <= 5:
-      timeOfDay = 'night';
-      break;
-    case hours >= 6 && hours <= 11:
-      timeOfDay = 'morning';
-      break;
-    case hours >= 12 && hours <= 17:
-      timeOfDay = 'afternoon';
-      break;
-    case hours >= 18 && hours <= 23:
-      timeOfDay = 'evening';
-      break;
-  }
-
+  let timeOfDay =
+    hours >= 0 && hours <= 5
+      ? 'night'
+      : hours >= 6 && hours <= 11
+      ? 'morning'
+      : hours >= 12 && hours <= 17
+      ? 'afternoon'
+      : hours >= 18 && hours <= 23 
+      ? 'evening' 
+      : null
   GREETING.textContent = `Good ${timeOfDay}`;
 
   return timeOfDay;

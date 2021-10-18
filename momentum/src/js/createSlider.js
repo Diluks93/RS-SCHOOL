@@ -7,9 +7,10 @@ const BODY = document.querySelector('body'),
 let num = getRandomNum(1, 20);
 
 function setBg(){
-  let timeOfDay = getTimeOfDay(),
-    img = new Image();
-    if(typeof num !== 'string') num = 10; 
+  let timeOfDay = getTimeOfDay();
+  let img = new Image();
+  if(typeof num !== 'string') num = 10; 
+  if(timeOfDay === 'afternoon') timeOfDay = 'day';
   let string = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${num}.jpg`;
     img.src = string;
     img.onload = () => {
