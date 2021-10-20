@@ -29,7 +29,10 @@ function getTimeOfDay(){
 
 function setLocalStorage() {
   localStorage.setItem('name', NAME.value);
-  localStorage.setItem('city', CITY.value);
+  if(!localStorage.getItem('city'))
+    localStorage.setItem('city', 'Minsk');
+  else
+    localStorage.setItem('city', CITY.value);
 }
 
 function getLocalStorage() {
