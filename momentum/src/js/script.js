@@ -3,6 +3,7 @@ import { getHours, getTimeOfDay, setLocalStorage, getLocalStorage } from './getG
 import { setBg } from './createSlider.js';
 import { getWeather } from './vidjetWether.js';
 import { getQuotes } from './getQuotes.js'
+import { playAudio, pauseAudio } from './audioPlayer.js'
 
 showTime();
 showDate();
