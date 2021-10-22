@@ -1,6 +1,6 @@
 import { showTime, showDate } from './getTime.js';
 import { getHours, getTimeOfDay, setLocalStorage, getLocalStorage } from './getGreeting.js';
-import { setBg } from './createSlider.js';
+import { getLinkToImageUnsplash /*setBg*/ /* getLinkToImageFlickr */ } from './createSlider.js';
 import { getWeather } from './vidjetWether.js';
 import { getQuotes } from './getQuotes.js'
 import { playAudio, pauseAudio } from './player.js'
@@ -11,7 +11,9 @@ showTime();
 showDate();
 getHours();
 getTimeOfDay();
-setBg();
+//setBg();
+getLinkToImageUnsplash();
+//getLinkToImageFlickr();
 getWeather();
 getQuotes();
 

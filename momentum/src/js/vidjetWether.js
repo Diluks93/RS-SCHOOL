@@ -1,4 +1,3 @@
-import { getLocalStorage } from './getGreeting.js'
 import { LANG } from './script.js';
 
 const WEATHER_ICON = document.querySelector('.weather-icon'),

@@ -81,7 +81,6 @@ BTNS.forEach(BTN => BTN.addEventListener('click', () => {
   setInterval(function() {
         let audioTime = Math.round(audio.currentTime);
         let audioLength = Math.round(audio.duration);
-        // CURRENT_TIME.textContent = `00:00\ `;
         PROGRESS.style.width = (audioTime * 100) / audioLength + '%';
     }, 1000)
 }));

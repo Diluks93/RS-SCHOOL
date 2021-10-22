@@ -31,17 +31,46 @@ function checkTimeOfDay(){
   return timeOfDay;
 }
 
-function setBg(){
-  let img = new Image();
-  if(typeof num !== 'string') num = 10;
+// function setBg(){
+//   let img = new Image();
+//   if(typeof num !== 'string') num = 10;
+//   let timeOfDay = checkTimeOfDay();
+//   let string = `https://raw.githubusercontent.com/Diluks93/stage1-tasks/assets/images/${timeOfDay}/${num}.webp`;
+//     img.src = string;
+//     img.onload = () => {
+//       BODY.style.backgroundImage = `url(${string})`;
+//     }
+//   setTimeout(getSlideNext, 5000);
+// }
+
+async function getLinkToImageUnsplash() {
   let timeOfDay = checkTimeOfDay();
-  let string = `https://raw.githubusercontent.com/Diluks93/stage1-tasks/assets/images/${timeOfDay}/${num}.webp`;
-    img.src = string;
-    img.onload = () => {
-      BODY.style.backgroundImage = `url(${string})`;
-    }
-  setTimeout(getSlideNext, 5000);
+  let img = new Image();
+  const url =
+    `https://api.unsplash.com/photos/random?orientation=landscape&query=${timeOfDay}&client_id=ZbU_eUZ1Awpdf0cKgjD_1ZsZ72zRBfUTlkW516emWag`;
+  const res = await fetch(url);
+  const data = await res.json();
+  img.src = data.urls.regular;
+  img.onload = () => {
+    BODY.style.backgroundImage = `url(${data.urls.regular})`;
+  };
+  setTimeout(getSlideNext, 72000);
 }
+
+// async function getLinkToImageFlickr() {
+//   let timeOfDay = checkTimeOfDay();
+//   let img = new Image();
+//   const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=de95f1f528e787b36321dc4a8604ad75&tags=${timeOfDay}&extras=url_l&format=json&nojsoncallback=1`;
+//   const res = await fetch(url);
+//   const data = await res.json();
+//   img.src = data.photos.photo[Math.ceil(Math.random() * 100)].url_l;
+//   img.onload = () => {
+//     BODY.style.backgroundImage = `url(${
+//       data.photos.photo[Math.ceil(Math.random() * 100)].url_l
+//     })`;
+//   };
+//   setTimeout(getSlideNext, 72000);
+// }
 
 function getRandomNum(min, max) {
   min = Math.ceil(min);
@@ -51,24 +80,26 @@ function getRandomNum(min, max) {
 }
 
 function getSlideNext(){
-  num++;  
+  num++;
   if (num === 21) num = 1;
   num = num.toString().padStart(2, '0');
-  setBg();
-
+  //setBg();
+  getLinkToImageUnsplash();
+  // getLinkToImageFlickr();
   return num;
 }
 
 function getSlidePrev(){
-  num--;  
+  num--;
   if (num === 0) num = 20;
   num = num.toString().padStart(2, '0');
-  setBg();
-
+  //setBg();
+  getLinkToImageUnsplash();
+  // getLinkToImageFlickr();
   return num;
 }
 
 NEXT.addEventListener('click', getSlideNext);
 PREV.addEventListener('click', getSlidePrev);
 
-export { setBg, getRandomNum };
+export { getLinkToImageUnsplash /*setBg*/ /*getLinkToImageFlickr*/, getRandomNum };
