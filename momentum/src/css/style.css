@@ -401,10 +401,23 @@ body {
 
 .quote {
   min-height: 32px;
+  transform: translateY(50%);
+  transition: transform 0.3s linear;
 }
 
 .author {
   min-height: 20px;
+  opacity: 0;
+  transform: translateY(-20%);
+  transition: all 0.5s linear;
+}
+.footer > div:hover .quote {
+  transform: translateY(0);
+}
+
+.footer > div:hover .author  {
+  opacity: 1;
+  transform: translateY(0)
 }
 
 @media (max-width: 768px) {

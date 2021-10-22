@@ -1,14 +1,16 @@
 import { getRandomNum } from './createSlider.js'
+import { LANG } from './script.js';
+
 
 const QUOTE = document.querySelector('.quote'),
   AUTHOR = document.querySelector('.author'),
   BUTTON = document.querySelector('.change-quote');
 
 async function getQuotes() {
-  const quotes = './assets/data.json',
+  const quotes = `./assets/json/data_${LANG}.json`,
     res = await fetch(quotes),
     data = await res.json();
-  let num = getRandomNum(1, 102);
+  let num = getRandomNum(1, 100);
 
   QUOTE.textContent = `"${data[num].quote}"`;
   AUTHOR.textContent = data[num].author;

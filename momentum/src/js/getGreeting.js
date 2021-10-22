@@ -1,4 +1,44 @@
-import {CITY} from './vidjetWether.js'
+import {CITY} from './vidjetWether.js';
+import { LANG } from './script.js';
+
+const greetingTranslation = {
+  en: [
+    'en',
+    'Good ',
+    'night',
+    'morning',
+    'afternoon',
+    'evening',
+    '[Enter your Name]',
+    'en-US',
+    'Audioplayer',
+    'Minsk',
+  ],
+  ru: [
+    'ru',
+    'Добр',
+    'ой ночи',
+    'ое утро',
+    'ый день',
+    'ый вечер',
+    '[Введите Ваше имя]',
+    'ru-RU',
+    'Аудиоплеер',
+    'Минск',
+  ],
+  by: [
+    'by',
+    'Дабр',
+    'анач',
+    'ай раніцы',
+    'ы дзень',
+    'ы вечар',
+    '[Калі ласка, увядзіце ваша імя]',
+    'be-Be',
+    'Аўдыяплэер',
+    'Мінск',
+  ],
+};
 
 const GREETING = document.querySelector('.greeting'),
   NAME = document.querySelector('.name');
@@ -14,25 +54,27 @@ function getTimeOfDay(){
   const hours = getHours();
   let timeOfDay =
     hours >= 0 && hours <= 5
-      ? 'night'
+      ? greetingTranslation[LANG][2]
       : hours >= 6 && hours <= 11
-      ? 'morning'
+      ? greetingTranslation[LANG][3]
       : hours >= 12 && hours <= 17
-      ? 'afternoon'
-      : hours >= 18 && hours <= 23 
-      ? 'evening' 
-      : null
-  GREETING.textContent = `Good ${timeOfDay}`;
+      ? greetingTranslation[LANG][4]
+      : hours >= 18 && hours <= 23
+      ? greetingTranslation[LANG][5]
+      : null;
+  GREETING.textContent = `${greetingTranslation[LANG][1] + timeOfDay}`;
 
   return timeOfDay;
 }
 
 function setLocalStorage() {
-  localStorage.setItem('name', NAME.value);
-  if(!localStorage.getItem('city'))
-    localStorage.setItem('city', 'Minsk');
-  else
-    localStorage.setItem('city', CITY.value);
+  if (!localStorage.getItem('name'))
+    localStorage.setItem('name', greetingTranslation[LANG][6]);
+  else localStorage.setItem('name', NAME.value);
+
+  if (!localStorage.getItem('city')) 
+    localStorage.setItem('city', greetingTranslation[LANG][9]);
+  else localStorage.setItem('city', CITY.value);
 }
 
 function getLocalStorage() {
@@ -44,4 +86,4 @@ function getLocalStorage() {
   }
 }
 
-export { getHours, getTimeOfDay, setLocalStorage, getLocalStorage };
+export { getHours, getTimeOfDay, setLocalStorage, getLocalStorage, greetingTranslation };

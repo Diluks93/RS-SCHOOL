@@ -6,11 +6,35 @@ const BODY = document.querySelector('body'),
 
 let num = getRandomNum(1, 20);
 
-function setBg(){
+function checkTimeOfDay(){
   let timeOfDay = getTimeOfDay();
+  switch (timeOfDay) {
+    case 'afternoon':
+    case 'день':
+    case 'ы дзень':
+      timeOfDay = 'day';
+      break;
+    case 'ой ночи':
+    case 'анач':
+      timeOfDay = 'night';
+      break;
+    case 'ое утро':
+    case 'ай раніцы':
+      timeOfDay = 'morning';
+      break;
+    case 'ый вечер':
+    case 'ы вечар':
+      timeOfDay = 'evening';
+      break;
+  }
+
+  return timeOfDay;
+}
+
+function setBg(){
   let img = new Image();
   if(typeof num !== 'string') num = 10;
-  if (timeOfDay === 'afternoon') timeOfDay = 'day';
+  let timeOfDay = checkTimeOfDay();
   let string = `https://raw.githubusercontent.com/Diluks93/stage1-tasks/assets/images/${timeOfDay}/${num}.webp`;
     img.src = string;
     img.onload = () => {

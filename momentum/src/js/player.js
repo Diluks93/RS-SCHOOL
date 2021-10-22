@@ -1,8 +1,7 @@
+import { greetingTranslation } from './getGreeting.js';
 import playList from './playList.js';
 
-
-//todo volume progres не работает должным образом подключить прогресс бар и громкость из музея и костомизовать оттуда же
-
+//todo volume progress не работает должным образом подключить прогресс бар и громкость из музея и костомизовать оттуда же
 
 const BTNS = document.querySelectorAll('.play'),
   BTN_PREV = document.querySelector('.play-prev'),
@@ -23,7 +22,7 @@ const BTNS = document.querySelectorAll('.play'),
 let isPlay = false,
   playNum = 0,
   li;
-
+  
 function playAudio() {
   isPlay = true;
   audio.src = playList[playNum].src;
@@ -112,8 +111,6 @@ AUDIO_PLAYER_BTN.addEventListener('click', () => {
 })
 audio.addEventListener('ended', playNext);
 
-export { playAudio, pauseAudio };
-
 audio.addEventListener(
   "loadeddata",
   () => {
@@ -159,7 +156,21 @@ function getTimeCodeFromNum(num) {
   minutes -= hours * 60;
 
   if (hours === 0) return `${minutes}:${String(seconds % 60).padStart(2, 0)}`;
-  return `${String(hours).padStart(2, 0)}:${minutes}:${String(
-    seconds % 60
-  ).padStart(2, 0)}`;
+  return `${String(hours)
+    .padStart(2, 0)}:${minutes}:${String(seconds % 60)
+    .padStart(2, 0)}`;
 }
+
+switch(document.querySelector('html').getAttribute('lang')){
+  case 'en':
+    AUDIO_PLAYER_BTN.textContent = greetingTranslation.en[8];
+    break;
+  case 'ru':
+    AUDIO_PLAYER_BTN.textContent = greetingTranslation.ru[8];
+    break;
+  case 'by':
+    AUDIO_PLAYER_BTN.textContent = greetingTranslation.by[8];
+    break;
+}
+
+export { playAudio, pauseAudio };

@@ -1,4 +1,6 @@
 import { getTimeOfDay } from './getGreeting.js'
+import { LANG } from './script.js';
+import { greetingTranslation } from './getGreeting.js';
 
 const TIME = document.querySelector('.time'),
   DATE = document.querySelector('.date');
@@ -15,12 +17,15 @@ function showTime(){
 
 function showDate(){
   const date = new Date(),
-    options = { 
-      weekday: 'long', 
-      month: 'long', 
-      day: 'numeric' 
+    options = {
+      weekday: 'long',
+      month: 'long',
+      day: 'numeric',
     },
-    currentDate = date.toLocaleDateString('en-US', options);
+    currentDate = date.toLocaleDateString(
+      `${greetingTranslation[LANG][7]}`,
+      options
+    );
 
   DATE.textContent = `${currentDate}`;
 }
