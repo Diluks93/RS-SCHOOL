@@ -26,7 +26,6 @@ function playAudio() {
   DURATION.textContent = `${playList[playNum].duration}`;
   PLAY_NAME.textContent = playList[playNum].title;
   audio.currentTime = 0; 
-  console.log(audio.currentTime)
   if(isPlay) audio.play();
 }
 

@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Arial-MT';
-  src: url("../assets/fonts/Arial-MT.woff"); /* Путь к файлу со шрифтом */
+  src: url("../assets/fonts/Arial-MT.woff");
  }
 :root{
   --main-color: #C5B358;
@@ -353,7 +353,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  opacity: 0;
+  opacity: 1;
 }
 
 .slider-icon {
@@ -476,7 +476,7 @@ progress::-webkit-progress-value {
 }
 
 .pomodoro {
- opacity: 1;
+ opacity: 0;
 }
 
 .timer {

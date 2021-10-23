@@ -4,7 +4,10 @@ const BODY = document.querySelector('body'),
   NEXT = document.querySelector('.slide-next'),
   PREV = document.querySelector('.slide-prev');
 
-let num = getRandomNum(1, 20);
+let num = getRandomNum(1, 20),
+  isUnsplash = false,
+  isGithub = false,
+  isFlickr = true;
 
 function checkTimeOfDay(){
   let timeOfDay = getTimeOfDay();
@@ -31,46 +34,40 @@ function checkTimeOfDay(){
   return timeOfDay;
 }
 
-// function setBg(){
-//   let img = new Image();
-//   if(typeof num !== 'string') num = 10;
-//   let timeOfDay = checkTimeOfDay();
-//   let string = `https://raw.githubusercontent.com/Diluks93/stage1-tasks/assets/images/${timeOfDay}/${num}.webp`;
-//     img.src = string;
-//     img.onload = () => {
-//       BODY.style.backgroundImage = `url(${string})`;
-//     }
-//   setTimeout(getSlideNext, 5000);
-// }
-
-async function getLinkToImageUnsplash() {
-  let timeOfDay = checkTimeOfDay();
+function setBg(value){
   let img = new Image();
-  const url =
-    `https://api.unsplash.com/photos/random?orientation=landscape&query=${timeOfDay}&client_id=ZbU_eUZ1Awpdf0cKgjD_1ZsZ72zRBfUTlkW516emWag`;
-  const res = await fetch(url);
-  const data = await res.json();
-  img.src = data.urls.regular;
+  img.src = value;
   img.onload = () => {
-    BODY.style.backgroundImage = `url(${data.urls.regular})`;
-  };
-  setTimeout(getSlideNext, 72000);
+    BODY.style.backgroundImage = `url(${value})`;
+  }
+
+  setTimeout(getSlideNext, 150000);
 }
 
-// async function getLinkToImageFlickr() {
-//   let timeOfDay = checkTimeOfDay();
-//   let img = new Image();
-//   const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=de95f1f528e787b36321dc4a8604ad75&tags=${timeOfDay}&extras=url_l&format=json&nojsoncallback=1`;
-//   const res = await fetch(url);
-//   const data = await res.json();
-//   img.src = data.photos.photo[Math.ceil(Math.random() * 100)].url_l;
-//   img.onload = () => {
-//     BODY.style.backgroundImage = `url(${
-//       data.photos.photo[Math.ceil(Math.random() * 100)].url_l
-//     })`;
-//   };
-//   setTimeout(getSlideNext, 72000);
-// }
+async function getLinkToImage(){
+  let timeOfDay = checkTimeOfDay(),
+    value;
+
+  if (isGithub) {
+    if (typeof num !== 'string') num = 10;
+    let timeOfDay = checkTimeOfDay();
+    value = `https://raw.githubusercontent.com/Diluks93/stage1-tasks/assets/images/${timeOfDay}/${num}.webp`;
+  } else if (isUnsplash){
+    const url = `https://api.unsplash.com/photos/random?orientation=landscape&query=${timeOfDay}&client_id=ZbU_eUZ1Awpdf0cKgjD_1ZsZ72zRBfUTlkW516emWag`,
+      res = await fetch(url),
+      data = await res.json();
+
+    value = data.urls.regular;
+  } else if (isFlickr){
+    const url = `https://www.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=de95f1f528e787b36321dc4a8604ad75&gallery_id=72157715186109466&extras=url_h&format=json&nojsoncallback=1`,
+      res = await fetch(url),
+      data = await res.json();
+
+    value = data.photos.photo[getRandomNum(1, 400)].url_h;
+  }
+
+  setBg(value)
+}
 
 function getRandomNum(min, max) {
   min = Math.ceil(min);
@@ -83,9 +80,8 @@ function getSlideNext(){
   num++;
   if (num === 21) num = 1;
   num = num.toString().padStart(2, '0');
-  //setBg();
-  getLinkToImageUnsplash();
-  // getLinkToImageFlickr();
+  getLinkToImage();
+
   return num;
 }
 
@@ -93,13 +89,12 @@ function getSlidePrev(){
   num--;
   if (num === 0) num = 20;
   num = num.toString().padStart(2, '0');
-  //setBg();
-  getLinkToImageUnsplash();
-  // getLinkToImageFlickr();
+  getLinkToImage();
+
   return num;
 }
 
 NEXT.addEventListener('click', getSlideNext);
 PREV.addEventListener('click', getSlidePrev);
 
-export { getLinkToImageUnsplash /*setBg*/ /*getLinkToImageFlickr*/, getRandomNum };
+export { getLinkToImage, getRandomNum };
