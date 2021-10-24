@@ -5,6 +5,7 @@ import { getWeather } from './vidjetWether.js';
 import { getQuotes } from './getQuotes.js';
 import { playAudio, pauseAudio } from './player.js';
 import { SETTING_BTN } from './setting.js';
+import { TODO_BTN } from './todo.js'
 
 showTime();
 showDate();
@@ -20,7 +21,9 @@ document.addEventListener('DOMContentLoaded', getWeather);
 
 console.log(`
 
-//todo почистить все файлы от закомментированного кода и console.log
+//todo 2. слишком частое обновление фона, подумать.
+//todo 4. допилить настройки
+
 Ваша оценка - 149 балла 
 Отзыв по пунктам ТЗ:
 
@@ -33,6 +36,7 @@ console.log(`
  * реализован TODO лист, доступен сразу при загрузке страницы
  * релизован pomodoro таймер, доступен при переключении в настройках
  * добавлена игра Simon's, доступна при включении в настройках
+6. можно менять цвет используемый в приложении
 
 Пока не выполненные/не засчитанные пункты:
 1) переводятся настройки приложения, при переключении языка приложения в настройках, язык настроек тоже меняется 
