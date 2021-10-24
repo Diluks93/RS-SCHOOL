@@ -1,12 +1,10 @@
-import { getTimeOfDay } from './getGreeting.js'
-// import { LANG } from './script.js';
+import { getTimeOfDay } from './getGreeting.js';
 import { LANG } from './setting.js';
-
 import { greetingTranslation } from './getGreeting.js';
 
 const TIME = document.querySelector('.time'),
   DATE = document.querySelector('.date');
-  
+
 function showTime(){
   const date = new Date(),
     currentTime = date.toLocaleTimeString();
@@ -15,7 +13,7 @@ function showTime(){
   showDate();
   getTimeOfDay();
   setTimeout(showTime, 1000);
-}
+};
 
 function showDate(){
   const date = new Date(),
@@ -30,8 +28,6 @@ function showDate(){
     );
 
   DATE.textContent = `${currentDate}`;
-}
+};
 
-export {
-  showTime, showDate
-}
+export { showTime, showDate };

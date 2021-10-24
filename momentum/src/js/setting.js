@@ -1,12 +1,12 @@
 //import {LANG} from './script.js';
 import { getQuotes } from './getQuotes.js';
-import {AUDIO_PLAYER_BTN} from './player.js'
+import {AUDIO_PLAYER_BTN} from './player.js';
 import {
   greetingTranslation,
   setLocalStorage,
   getLocalStorage,
 } from './getGreeting.js';
-import {getWeather} from './vidjetWether.js'
+import {getWeather} from './vidjetWether.js';
 import { getLinkToImage } from './createSlider.js';
 
 const SETTING_BTN = document.querySelector('.settings-btn'),
@@ -16,8 +16,8 @@ const SETTING_BTN = document.querySelector('.settings-btn'),
 
 let LANG = 'en',
   isUnsplash = false,
-  isGithub = false,
-  isFlickr = true;
+  isGithub = true,
+  isFlickr = false;
 
 function changeColor() {
   let mainValue = COLORS[0].value,
@@ -46,7 +46,7 @@ function changeLanguage () {
     languageRu.checked = false;
     LANG = 'by';
   }
-}
+};
 
 function changeBackground() {
   let photoGH = INPUTS[10],
@@ -71,7 +71,7 @@ function changeBackground() {
     isFlickr = true;
     isUnsplash = false;
   }
-}
+};
 
 function showTime() {
   let time = INPUTS[13];
@@ -80,7 +80,7 @@ function showTime() {
   } else {
     document.querySelector('.time').style.opacity = 1;
   }
-}
+};
 
 function showDate() {
   let date = INPUTS[14];
@@ -89,7 +89,7 @@ function showDate() {
   } else {
     document.querySelector('.date').style.opacity = 1;
   }
-}
+};
 
 function showGreeting() {
   let greeting = INPUTS[15];
@@ -98,7 +98,7 @@ function showGreeting() {
   } else {
     document.querySelector('.greeting-container').style.opacity = 1;
   }
-}
+};
 
 function showQuotes() {
   let quotes = INPUTS[16];
@@ -107,7 +107,7 @@ function showQuotes() {
   } else {
     document.querySelector('.quotes').style.opacity = 1;
   }
-}
+};
 
 function showWeather() {
   let weather = INPUTS[17];
@@ -116,7 +116,7 @@ function showWeather() {
   } else {
     document.querySelector('.weather').style.opacity = 1;
   }
-}
+};
 
 function showAudioplayer() {
   let audioplayer = INPUTS[18];
@@ -125,29 +125,29 @@ function showAudioplayer() {
   } else {
     document.querySelector('.player').style.opacity = 1;
   }
-}
+};
 
 COLORS.forEach(COLOR => {COLOR.addEventListener('change', changeColor)});
 
 //todo происходит очистка всего хранилища, надо, чтобы введенные значения пользователя оставались, наверно условие
 
-INPUTS.forEach(INPUT => INPUT.addEventListener('click', ()=>{
-  changeLanguage();
-  getQuotes();
-  AUDIO_PLAYER_BTN.textContent = greetingTranslation[LANG][8];
-  localStorage.clear();
-  setLocalStorage();
-  getWeather()
-  getLocalStorage();
-  changeBackground();
-  getLinkToImage();
-  showTime();
-  showDate();
-  showGreeting();
-  showQuotes();
-  showWeather();
-  showAudioplayer();
-}))
+// INPUTS.forEach(INPUT => INPUT.addEventListener('click', ()=>{
+//   changeLanguage();
+//   getQuotes();
+//   AUDIO_PLAYER_BTN.textContent = greetingTranslation[LANG][8];
+//   localStorage.clear();
+//   setLocalStorage();
+//   getWeather()
+//   getLocalStorage();
+//   changeBackground();
+//   getLinkToImage();
+//   showTime();
+//   showDate();
+//   showGreeting();
+//   showQuotes();
+//   showWeather();
+//   showAudioplayer();
+// }));
 
 SETTING_BTN.addEventListener('click', () => {
   document.querySelector('.setting').classList.toggle('open');

@@ -1,7 +1,6 @@
 import {CITY} from './vidjetWether.js';
 import { LANG } from './setting.js';
 
-
 const greetingTranslation = {
   en: [
     'en',
@@ -49,7 +48,7 @@ function getHours(){
     hours = date.getHours();
 
   return hours;
-}
+};
 
 function getTimeOfDay(){
   const hours = getHours();
@@ -66,7 +65,7 @@ function getTimeOfDay(){
   GREETING.textContent = `${greetingTranslation[LANG][1] + timeOfDay}`;
 
   return timeOfDay;
-}
+};
 
 function setLocalStorage() {
   if (!localStorage.getItem('name'))
@@ -76,7 +75,7 @@ function setLocalStorage() {
   if (!localStorage.getItem('city')) 
     localStorage.setItem('city', greetingTranslation[LANG][9]);
   else localStorage.setItem('city', CITY.value);
-}
+};
 
 function getLocalStorage() {
   if (localStorage.getItem('name')) {
@@ -85,6 +84,6 @@ function getLocalStorage() {
   if (localStorage.getItem('city')) {
     CITY.value = localStorage.getItem('city');
   }
-}
+};
 
 export { getHours, getTimeOfDay, setLocalStorage, getLocalStorage, greetingTranslation };
