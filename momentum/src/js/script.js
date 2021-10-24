@@ -5,7 +5,8 @@ import { getWeather } from './vidjetWether.js';
 import { getQuotes } from './getQuotes.js';
 import { playAudio, pauseAudio } from './player.js';
 import { SETTING_BTN } from './setting.js';
-import { TODO_BTN } from './todo.js'
+import { TODO_BTN } from './todo.js';
+import { updateClock } from './pomodoro.js'
 
 showTime();
 showDate();
@@ -35,7 +36,6 @@ console.log(`
 5. из дополнительного функционала:
  * реализован TODO лист, доступен сразу при загрузке страницы
  * релизован pomodoro таймер, доступен при переключении в настройках
- * добавлена игра Simon's, доступна при включении в настройках
 6. можно менять цвет используемый в приложении
 
 Пока не выполненные/не засчитанные пункты:
