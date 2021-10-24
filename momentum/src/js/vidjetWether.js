@@ -1,4 +1,7 @@
-import { LANG } from './script.js';
+// import { LANG } from './script.js';
+
+import { LANG } from './setting.js';
+
 
 const WEATHER_ICON = document.querySelector('.weather-icon'),
   TEMPERATURE = document.querySelector('.temperature'),

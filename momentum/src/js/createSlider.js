@@ -1,13 +1,13 @@
-import {getTimeOfDay} from './getGreeting.js'
+import {getTimeOfDay} from './getGreeting.js';
+import {isUnsplash,
+  isGithub,
+  isFlickr} from './setting.js'
 
 const BODY = document.querySelector('body'),
   NEXT = document.querySelector('.slide-next'),
   PREV = document.querySelector('.slide-prev');
 
-let num = getRandomNum(1, 20),
-  isUnsplash = false,
-  isGithub = false,
-  isFlickr = true;
+let num = getRandomNum(1, 20);
 
 function checkTimeOfDay(){
   let timeOfDay = getTimeOfDay();

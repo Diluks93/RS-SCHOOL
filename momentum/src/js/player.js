@@ -1,4 +1,3 @@
-import { greetingTranslation } from './getGreeting.js';
 import playList from './playList.js';
 
 const BTNS = document.querySelectorAll('.play'),
@@ -184,16 +183,4 @@ function getTimeCodeFromNum(num) {
     .padStart(2, 0)}`;
 }
 
-switch(document.querySelector('html').getAttribute('lang')){
-  case 'en':
-    AUDIO_PLAYER_BTN.textContent = greetingTranslation.en[8];
-    break;
-  case 'ru':
-    AUDIO_PLAYER_BTN.textContent = greetingTranslation.ru[8];
-    break;
-  case 'by':
-    AUDIO_PLAYER_BTN.textContent = greetingTranslation.by[8];
-    break;
-}
-
-export { playAudio, pauseAudio };
+export { playAudio, pauseAudio, AUDIO_PLAYER_BTN };

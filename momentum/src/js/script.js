@@ -2,10 +2,11 @@ import { showTime, showDate } from './getTime.js';
 import { getHours, getTimeOfDay, setLocalStorage, getLocalStorage } from './getGreeting.js';
 import { getLinkToImage } from './createSlider.js';
 import { getWeather } from './vidjetWether.js';
-import { getQuotes } from './getQuotes.js'
-import { playAudio, pauseAudio } from './player.js'
+import { getQuotes } from './getQuotes.js';
+import { playAudio, pauseAudio } from './player.js';
+import { SETTING_BTN } from './setting.js';
 
-const LANG = document.querySelector('html').getAttribute('lang');
+//var LANG = document.querySelector('html').getAttribute('lang');
 
 showTime();
 showDate();
@@ -19,4 +20,4 @@ window.addEventListener('beforeunload', setLocalStorage);
 window.addEventListener('load', getLocalStorage);
 document.addEventListener('DOMContentLoaded', getWeather);
 
-export {LANG}
+//export {LANG}

@@ -1,5 +1,7 @@
 import { getTimeOfDay } from './getGreeting.js'
-import { LANG } from './script.js';
+// import { LANG } from './script.js';
+import { LANG } from './setting.js';
+
 import { greetingTranslation } from './getGreeting.js';
 
 const TIME = document.querySelector('.time'),

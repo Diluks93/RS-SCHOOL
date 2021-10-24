@@ -1,6 +1,6 @@
 import { getRandomNum } from './createSlider.js'
-import { LANG } from './script.js';
-
+// import { LANG } from './script.js';
+import { LANG } from './setting.js';
 
 const QUOTE = document.querySelector('.quote'),
   AUTHOR = document.querySelector('.author'),

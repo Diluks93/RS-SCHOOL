@@ -1,5 +1,6 @@
 import {CITY} from './vidjetWether.js';
-import { LANG } from './script.js';
+import { LANG } from './setting.js';
+
 
 const greetingTranslation = {
   en: [

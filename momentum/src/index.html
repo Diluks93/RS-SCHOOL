@@ -15,7 +15,7 @@
         <button class="play player-icon"></button>
         <div class="player-wrap">
           <div class="audio-track"><div class="progress"></div></div>
-          <p class="player-title"></p>
+          <p class="player-title">Audioplayer</p>
           <div class="audioplayer">
             <div class="audioplayer-wrap">
               <div class="controls">
@@ -113,10 +113,94 @@
     </div>
   </main>
   <footer class="footer">
-    <button class="change-quote"></button>
-    <div>
+    <div class="quotes">
+      <button class="change-quote"></button>
       <div class="quote"></div>
       <div class="author"></div>
+    </div>
+    <div class="footer-wrap">
+      <img src="./assets/svg/wheel.svg" alt="settings" class="settings-btn">
+      <div class="setting open">
+        <div>
+          <p class="color">Color sitting</p>
+          <label for="main">Select main color</label>
+          <input type="color" name="main-color" id="main" value="#C5B358">
+          <label for="bg">Select background color</label>
+          <input type="color" name="bg-color" id="bg" value="#c4c4c4">
+          <label for="text">Select text color</label>
+          <input type="color" name="text-color" id="text" value="#ffffff">
+        </div>
+        <div>
+          <p class="language">Language</p>
+          <div>
+            <label for="RU">Русский</label>
+            <input type="checkbox" name="RU" id="RU">
+          </div>
+          <div>
+            <label for="BY">Белорусский</label>
+            <input type="checkbox" name="BY" id="BY">
+          </div>
+          <div>
+            <label for="EN">English</label>
+            <input type="checkbox" name="EN" id="EN" checked>
+          </div>
+        </div>
+        <div>
+          <p class="photo">Background-image</p>
+          <div>
+            <label for="github">GitHub</label>
+            <input type="checkbox" name="github" id="github" checked>
+          </div>
+          <div>
+            <label for="unsplash">Unsplash</label>
+            <input type="checkbox" name="unsplash" id="unsplash">
+          </div>
+          <div>
+            <label for="flickr">Flickr</label>
+            <input type="checkbox" name="flickr" id="flickr">
+          </div>
+        </div>
+        <div>
+          <label for="time">Time</label>
+          <input type="checkbox" name="time" id="time" checked>
+        </div>
+        <div>
+          <label for="date">Date</label>
+          <input type="checkbox" name="date" id="date" checked>
+        </div>
+        <div>
+          <label for="greeting">Greeting</label>
+          <input type="checkbox" name="greeting" id="greeting" checked>
+        </div>
+        <div>
+          <label for="quotes">Quotes</label>
+          <input type="checkbox" name="quotes" id="quotes" checked>
+        </div>
+        <div>
+          <label for="weather">Weather</label>
+          <input type="checkbox" name="weather" id="weather" checked>
+        </div>
+        <div>
+          <label for="audioplayer">Audioplayer</label>
+          <input type="checkbox" name="audioplayer" id="audioplayer" checked>
+        </div>
+        <div>
+          <label for="todo">TODO</label>
+          <input type="checkbox" name="todo" id="todo" checked>
+        </div>
+        <div>
+          <label for="pomodoro">Pomodoro</label>
+          <input type="checkbox" name="pomodoro" id="pomodoro">
+        </div>
+        <div>
+          <label for="game">Simon game</label>
+          <input type="checkbox" name="game" id="game">
+        </div>
+      </div>
+      <div>
+        <a href="https://github.com/Diluks93" class="creator">Diluks93</a>
+        <a href="https://rs.school/js/" class="school"><img src="./assets/svg/rs_school_js.svg" alt="Rolling Scope School"></a>
+      </div>
     </div>
   </footer>
   <script type="module" src="./js/script.js"></script>
