@@ -1,7 +1,7 @@
 import {getTimeOfDay} from './getGreeting.js';
 import {isUnsplash,
   isGithub,
-  isFlickr} from './setting.js'
+  isFlickr} from './setting.js';
 
 const BODY = document.querySelector('body'),
   NEXT = document.querySelector('.slide-next'),
@@ -32,7 +32,7 @@ function checkTimeOfDay(){
   }
 
   return timeOfDay;
-}
+};
 
 function setBg(value){
   let img = new Image();
@@ -42,7 +42,7 @@ function setBg(value){
   }
 
   setTimeout(getSlideNext, 150000);
-}
+};
 
 async function getLinkToImage(){
   let timeOfDay = checkTimeOfDay(),
@@ -67,14 +67,14 @@ async function getLinkToImage(){
   }
 
   setBg(value)
-}
+};
 
 function getRandomNum(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
 
   return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+};
 
 function getSlideNext(){
   num++;
@@ -83,7 +83,7 @@ function getSlideNext(){
   getLinkToImage();
 
   return num;
-}
+};
 
 function getSlidePrev(){
   num--;
@@ -92,7 +92,7 @@ function getSlidePrev(){
   getLinkToImage();
 
   return num;
-}
+};
 
 NEXT.addEventListener('click', getSlideNext);
 PREV.addEventListener('click', getSlidePrev);

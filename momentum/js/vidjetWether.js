@@ -1,7 +1,4 @@
-// import { LANG } from './script.js';
-
 import { LANG } from './setting.js';
-
 
 const WEATHER_ICON = document.querySelector('.weather-icon'),
   TEMPERATURE = document.querySelector('.temperature'),
@@ -14,7 +11,7 @@ const WEATHER_ICON = document.querySelector('.weather-icon'),
 if (!CITY.value) {
   CITY.value = localStorage.getItem('city');
   if(CITY.value === 'Мінск') CITY.value = 'Минск';
-}
+};
 
 async function getWeather() {
   try {
@@ -62,7 +59,7 @@ async function getWeather() {
     HUMIDITY.textContent = '';
     WIND.textContent = '';
   }
-}
+};
 
 CITY.addEventListener('change', (event) => {
   localStorage.setItem('city', event.target.value);

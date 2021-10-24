@@ -1,5 +1,4 @@
-import { getRandomNum } from './createSlider.js'
-// import { LANG } from './script.js';
+import { getRandomNum } from './createSlider.js';
 import { LANG } from './setting.js';
 
 const QUOTE = document.querySelector('.quote'),
@@ -14,7 +13,8 @@ async function getQuotes() {
 
   QUOTE.textContent = `"${data[num].quote}"`;
   AUTHOR.textContent = data[num].author;
-}
+};
+
 BUTTON.addEventListener('click', getQuotes);
 
-export {getQuotes}
+export { getQuotes };

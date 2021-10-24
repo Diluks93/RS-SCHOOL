@@ -1,23 +1,36 @@
-//import {LANG} from './script.js';
 import { getQuotes } from './getQuotes.js';
-import {AUDIO_PLAYER_BTN} from './player.js'
+import {AUDIO_PLAYER_BTN} from './player.js';
 import {
   greetingTranslation,
   setLocalStorage,
   getLocalStorage,
+  NAME
 } from './getGreeting.js';
-import {getWeather} from './vidjetWether.js'
+import {getWeather} from './vidjetWether.js';
 import { getLinkToImage } from './createSlider.js';
 
 const SETTING_BTN = document.querySelector('.settings-btn'),
   HEAD = document.querySelector('head'),
   COLORS = document.querySelectorAll('input[type="color"]'),
-  INPUTS = document.querySelectorAll('input');
+  LANGUAGES = document.querySelectorAll(
+    'input[name=RU], input[name=BY], input[name=EN]'
+  ),
+  PHOTOS = document.querySelectorAll(
+    'input[name=github], input[name=unsplash], input[name=flickr]'
+  ),
+  TIME = document.querySelector('input[name=time]'),
+  DATE = document.querySelector('input[name=date]'),
+  GRT = document.querySelector('input[name=greeting]'),
+  QTS = document.querySelector('input[name=quotes]'),
+  WTHR = document.querySelector('input[name=weather]'),
+  PLR = document.querySelector('input[name=audioplayer]'),
+  TD = document.querySelector('input[name=todo]'),
+  POMODORO = document.querySelector('input[name=pomodoro]');
 
 let LANG = 'en',
   isUnsplash = false,
-  isGithub = false,
-  isFlickr = true;
+  isGithub = true,
+  isFlickr = false;
 
 function changeColor() {
   let mainValue = COLORS[0].value,
@@ -30,9 +43,9 @@ function changeColor() {
 }
 
 function changeLanguage () {
-  let languageRu = INPUTS[7],
-    languageBy = INPUTS[8],
-    languageEn = INPUTS[9];
+  let languageRu = LANGUAGES[0],
+    languageBy = LANGUAGES[1],
+    languageEn = LANGUAGES[2];
   if(languageEn.checked) {
     languageRu.checked = false;
     languageBy.checked = false;
@@ -46,12 +59,13 @@ function changeLanguage () {
     languageRu.checked = false;
     LANG = 'by';
   }
-}
+  getQuotes();
+};
 
 function changeBackground() {
-  let photoGH = INPUTS[10],
-    photoU = INPUTS[11],
-    photoF = INPUTS[12];
+  let photoGH = PHOTOS[0],
+    photoU = PHOTOS[1],
+    photoF = PHOTOS[2];
   if (photoGH.checked) {
     photoU.checked = false;
     photoF.checked = false;
@@ -71,86 +85,132 @@ function changeBackground() {
     isFlickr = true;
     isUnsplash = false;
   }
-}
+};
 
 function showTime() {
-  let time = INPUTS[13];
-  if (!time.checked) {
+  if (!TIME.checked) {
     document.querySelector('.time').style.opacity = 0;
   } else {
     document.querySelector('.time').style.opacity = 1;
   }
-}
+};
 
 function showDate() {
-  let date = INPUTS[14];
-  if (!date.checked) {
+  if (!DATE.checked) {
     document.querySelector('.date').style.opacity = 0;
   } else {
     document.querySelector('.date').style.opacity = 1;
   }
-}
+};
 
 function showGreeting() {
-  let greeting = INPUTS[15];
-  if (!greeting.checked) {
+  if (!GRT.checked) {
     document.querySelector('.greeting-container').style.opacity = 0;
   } else {
     document.querySelector('.greeting-container').style.opacity = 1;
   }
-}
+};
 
 function showQuotes() {
-  let quotes = INPUTS[16];
-  if (!quotes.checked) {
+  if (!QTS.checked) {
     document.querySelector('.quotes').style.opacity = 0;
   } else {
     document.querySelector('.quotes').style.opacity = 1;
   }
-}
+};
 
 function showWeather() {
-  let weather = INPUTS[17];
-  if (!weather.checked) {
+  if (!WTHR.checked) {
     document.querySelector('.weather').style.opacity = 0;
   } else {
     document.querySelector('.weather').style.opacity = 1;
   }
-}
+};
 
 function showAudioplayer() {
-  let audioplayer = INPUTS[18];
-  if (!audioplayer.checked) {
+  if (!PLR.checked) {
     document.querySelector('.player').style.opacity = 0;
   } else {
     document.querySelector('.player').style.opacity = 1;
   }
-}
+};
+
+function showTodo() {
+  if (!TD.checked) {
+    document.querySelector('.todo-title').style.opacity = 0;
+  } else {
+    document.querySelector('.todo-title').style.opacity = 1;
+  }
+};
+
+function showPomodoro() {
+  if (!POMODORO.checked) {
+    TIME.checked = true;
+    DATE.checked = true;
+    GRT.checked = true;
+    QTS.checked = true;
+    document.querySelector('.pomodoro').style.opacity = 0;
+  } else {
+    TIME.checked = false;
+    DATE.checked = false;
+    GRT.checked = false;
+    QTS.checked = false;
+    document.querySelector('.pomodoro').style.opacity = 1;
+  }
+};
 
 COLORS.forEach(COLOR => {COLOR.addEventListener('change', changeColor)});
-
-//todo происходит очистка всего хранилища, надо, чтобы введенные значения пользователя оставались, наверно условие
-
-INPUTS.forEach(INPUT => INPUT.addEventListener('click', ()=>{
+LANGUAGES.forEach(LANGUAGE => {LANGUAGE.
+  addEventListener('change', (event) =>{
+    console.log(event.target)
   changeLanguage();
-  getQuotes();
   AUDIO_PLAYER_BTN.textContent = greetingTranslation[LANG][8];
-  localStorage.clear();
-  setLocalStorage();
-  getWeather()
-  getLocalStorage();
-  changeBackground();
-  getLinkToImage();
+  getWeather();
+  if (localStorage.getItem('name') !== greetingTranslation[LANG][6])
+    localStorage.setItem('name', greetingTranslation[LANG][6]);
+  else localStorage.setItem('name', NAME.value);
+  NAME.placeholder = localStorage.getItem('name');
+})});
+PHOTOS.forEach(PHOTO => {PHOTO.addEventListener('change', (event) => {
+  if(event.target.checked){
+    changeBackground();
+    getLinkToImage();
+  }
+})});
+TIME.addEventListener('change', showTime);
+DATE.addEventListener('change', showDate);
+GRT.addEventListener('change', showGreeting);
+QTS.addEventListener('change', showQuotes);
+WTHR.addEventListener('change', showWeather);
+PLR.addEventListener('change', showAudioplayer);
+TD.addEventListener('change', showTodo);
+POMODORO.addEventListener('change', () => {
+  showPomodoro();
+  showQuotes();
   showTime();
   showDate();
   showGreeting();
-  showQuotes();
-  showWeather();
-  showAudioplayer();
-}))
+});
 
 SETTING_BTN.addEventListener('click', () => {
   document.querySelector('.setting').classList.toggle('open');
 });
 
-export { SETTING_BTN, LANG, isUnsplash, isGithub, isFlickr };
+export {
+  SETTING_BTN,
+  LANG,
+  isUnsplash,
+  isGithub,
+  isFlickr,
+  showPomodoro,
+  showQuotes,
+  showTime,
+  showDate,
+  showGreeting,
+  showTodo,
+  showAudioplayer,
+  showWeather,
+  changeBackground,
+  changeLanguage,
+  changeColor
+};

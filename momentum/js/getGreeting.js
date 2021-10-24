@@ -1,6 +1,19 @@
 import {CITY} from './vidjetWether.js';
 import { LANG } from './setting.js';
-
+import {
+  showPomodoro,
+  showQuotes,
+  showTime,
+  showDate,
+  showGreeting,
+  showTodo,
+  showAudioplayer,
+  showWeather,
+  changeBackground,
+  changeLanguage,
+  changeColor
+} from './setting.js';
+import { getLinkToImage } from './createSlider.js';
 
 const greetingTranslation = {
   en: [
@@ -49,7 +62,7 @@ function getHours(){
     hours = date.getHours();
 
   return hours;
-}
+};
 
 function getTimeOfDay(){
   const hours = getHours();
@@ -66,7 +79,7 @@ function getTimeOfDay(){
   GREETING.textContent = `${greetingTranslation[LANG][1] + timeOfDay}`;
 
   return timeOfDay;
-}
+};
 
 function setLocalStorage() {
   if (!localStorage.getItem('name'))
@@ -76,15 +89,59 @@ function setLocalStorage() {
   if (!localStorage.getItem('city')) 
     localStorage.setItem('city', greetingTranslation[LANG][9]);
   else localStorage.setItem('city', CITY.value);
-}
+
+  let list = document.querySelectorAll(
+    `[type*="checkbox"]`
+  );
+  list.forEach((el) => {
+    localStorage.setItem(el.id, el.checked);
+  });
+
+  let listColors = document.querySelectorAll(`[type*="color"]`);
+  listColors.forEach((el) => {
+    localStorage.setItem(el.id, el.value);
+  });
+
+};
 
 function getLocalStorage() {
-  if (localStorage.getItem('name')) {
+  if (localStorage.getItem('name') === greetingTranslation[LANG][6])
+    NAME.placeholder = localStorage.getItem('name');
+  else
     NAME.value = localStorage.getItem('name');
-  }
-  if (localStorage.getItem('city')) {
+  
+  if (localStorage.getItem('city'))
     CITY.value = localStorage.getItem('city');
-  }
-}
 
-export { getHours, getTimeOfDay, setLocalStorage, getLocalStorage, greetingTranslation };
+  let list = document.querySelectorAll(`[type*="checkbox"]`);
+  list.forEach((el) => {
+    let checked = JSON.parse(localStorage.getItem(el.id));
+    document.getElementById(el.id).checked = checked;
+      showQuotes();
+      showTime();
+      showDate();
+      showGreeting();
+      showTodo();
+      showAudioplayer();
+      showWeather();
+      changeBackground();
+      changeLanguage();
+      getLinkToImage();
+  });
+
+  let listColors = document.querySelectorAll(`[type*="color"]`);
+  listColors.forEach((el) => {
+    let valueColors = localStorage.getItem(el.id);
+    document.getElementById(el.id).value = valueColors;
+    changeColor();
+  });
+};
+
+export {
+  getHours,
+  getTimeOfDay,
+  setLocalStorage,
+  getLocalStorage,
+  greetingTranslation,
+  NAME,
+};

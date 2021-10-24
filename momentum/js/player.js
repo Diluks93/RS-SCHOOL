@@ -18,7 +18,7 @@ const BTNS = document.querySelectorAll('.play'),
 let isPlay = false,
   playNum = 0,
   li;
-  
+
 function playAudio() {
   isPlay = true;
   audio.src = playList[playNum].src;
@@ -26,18 +26,18 @@ function playAudio() {
   PLAY_NAME.textContent = playList[playNum].title;
   audio.currentTime = 0; 
   if(isPlay) audio.play();
-}
+};
 
 function pauseAudio() {
   isPlay = false;
   if(!isPlay) audio.pause();
-}
+};
 
 function toggleBtn() {
   BTNS.forEach(BTN => {BTN.classList.toggle('pause');})
   isPlay ? pauseAudio() : playAudio();
   PLAYLIST_CONTAINER.children[playNum].classList.add('item-active');
-}
+};
 
 function checkPauseAudio(){
   if (BTNS[0 | 1].contains === 'pause') {
@@ -47,7 +47,7 @@ function checkPauseAudio(){
     BTNS[0 | 1].classList.add('pause');
     playAudio();
   }
-}
+};
 
 function playPrev(){
   PLAYLIST_CONTAINER.children[playNum].classList.remove('item-active');
@@ -55,7 +55,7 @@ function playPrev(){
   if (playNum < 0) playNum = playList.length - 1;
   checkPauseAudio();
   PLAYLIST_CONTAINER.children[playNum].classList.add('item-active');
-}
+};
 
 function playNext(){
   PLAYLIST_CONTAINER.children[playNum].classList.remove('item-active');
@@ -63,7 +63,7 @@ function playNext(){
   if (playNum === playList.length) playNum = 0;
   checkPauseAudio();
   PLAYLIST_CONTAINER.children[playNum].classList.add('item-active');
-}
+};
 
 playList.forEach(el => {
   li = document.createElement('li');
@@ -91,7 +91,7 @@ function audioChangeVolume() {
     MUTE_BTN.classList.remove('audio-mute');
     MUTE_BTN.classList.add('audio-mute-false');
   }
-}
+};
 
 VOLUME_SCALE.addEventListener('change', (e)=>{
   audioChangeVolume();
@@ -107,12 +107,12 @@ MUTE_BTN.addEventListener('click', (e) => {
     VOLUME_SCALE.style.background = 'var(--background-color) 100%';
   else 
     VOLUME_SCALE.style.background = getPattern(value);
-})
+});
 BTN_PREV.addEventListener('click', playPrev);
 BTN_NEXT.addEventListener('click', playNext);
 AUDIO_PLAYER_BTN.addEventListener('click', () => {
   document.querySelector('.audioplayer').classList.toggle('open');
-})
+});
 audio.addEventListener('ended', playNext);
 
 audio.addEventListener(
@@ -133,7 +133,7 @@ function getPattern(value) {
     var(--background-color) ${value}%,
     var(--background-color) 100%
   )`;
-}
+};
 
 VOLUME_SLIDER.addEventListener(
   'click',
@@ -159,7 +159,7 @@ function liveSearchProgress() {
   const value = this.value;
   audio.currentTime = (value * audio.duration) / 100;
   this.style.background = getPattern(value);
-}
+};
 
 function updateProgressBar() {
   const position = (audio.currentTime / audio.duration) * 100;
@@ -168,7 +168,7 @@ function updateProgressBar() {
   getTimeCodeFromNum();
   AUDIO_PLAYER.querySelector('.duration-timer .current').textContent =
     getTimeCodeFromNum(audio.currentTime);
-}
+};
 
 function getTimeCodeFromNum(num) {
   let seconds = parseInt(num);
@@ -181,6 +181,6 @@ function getTimeCodeFromNum(num) {
   return `${String(hours)
     .padStart(2, 0)}:${minutes}:${String(seconds % 60)
     .padStart(2, 0)}`;
-}
+};
 
 export { playAudio, pauseAudio, AUDIO_PLAYER_BTN };
