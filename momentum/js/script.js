@@ -15,7 +15,7 @@ getTimeOfDay();
 getLinkToImage();
 getWeather();
 getQuotes();
-
+getLocalStorage();
 
 // window.addEventListener('load', () => {
 //   getLocalStorage();
@@ -35,7 +35,7 @@ alert(`УВАЖАЕМЫЙ ПРОВЕРЯЮЩИЙ. Я пробовал решит
 
 console.log(`
 
-Ваша оценка - 149 балла 
+Ваша оценка - 149 баллов 
 Отзыв по пунктам ТЗ:
 
 Обратите внимание:

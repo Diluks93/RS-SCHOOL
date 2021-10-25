@@ -2,8 +2,8 @@ import {CITY} from './vidjetWether.js';
 import { LANG, changeColor } from './setting.js';
 import {
   showQuotes,
-  showTime,
-  showDate,
+  showClock,
+  hideDate,
   showGreeting,
   showTodo,
   showAudioplayer,
@@ -167,8 +167,8 @@ function getLocalStorage() {
     let checked = JSON.parse(localStorage.getItem(el.id));
     document.getElementById(el.id).checked = checked;
       showQuotes();
-      showTime();
-      showDate();
+      showClock();
+      hideDate();
       showGreeting();
       showTodo();
       showAudioplayer();
