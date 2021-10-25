@@ -15,21 +15,22 @@ getTimeOfDay();
 getLinkToImage();
 getWeather();
 getQuotes();
-getLocalStorage();
+//getLocalStorage();
 
-// window.addEventListener('load', () => {
-//   getLocalStorage();
-//   getTranslate();
-// });
+window.addEventListener('beforeunload', () => {
+  setLocalStorage();
+  getLocalStorage();
+  getTranslate();
+});
 
 // document.addEventListener('DOMContentLoaded', getWeather);
 
-document.addEventListener('DOMContentLoaded', () => {
-  getLocalStorage();
-  getTranslate();
-  getWeather();
-})
-window.addEventListener('beforeunload', setLocalStorage);
+// document.addEventListener('DOMContentLoaded', () => {
+//   getLocalStorage();
+//   getTranslate();
+//   getWeather();
+// })
+// window.addEventListener('beforeunload', setLocalStorage);
 
 alert(`УВАЖАЕМЫЙ ПРОВЕРЯЮЩИЙ. Я пробовал решить проблему и делаю это досих пор. Если Вы видите это сообщение, значит проблема не решена. Пожалуйста нажмите влевом нижнем углу на настройки и поставьте всё что вы хотите отобразить. После перезагрузки проблема исчезнет. Я всё еще работаю над этим`)
 
@@ -52,7 +53,7 @@ console.log(`
 Пока не выполненные/не засчитанные пункты:
 1) можно запустить и остановить проигрывание трека кликом по кнопке Play/Pause рядом с ним в плейлисте  
 2) Если источником получения фото указан API, в настройках приложения можно указать тег, для которого API будет присылает фото 
-
+ТЕСТ 4
 Выполненные пункты:
 1) время выводится в 24-часовом формате, например: 21:01:00
 2) время обновляется каждую секунду - часы идут. Когда меняется одна из цифр, остальные при этом не меняют своё положение на странице (время не дёргается) 
@@ -79,7 +80,6 @@ console.log(`
 23) отображается текущее и общее время воспроизведения трека 
 24) есть кнопка звука при клике по которой можно включить/отключить звук 
 25) добавлен регулятор громкости, при перемещении ползунка регулятора громкости меняется громкость проигрывания звука 
- 
 27) переводится язык и меняется формат отображения даты 
 28) переводится приветствие 
 29) переводится прогноз погоды в т.ч описание погоды 
