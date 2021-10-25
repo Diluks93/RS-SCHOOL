@@ -79,6 +79,10 @@ body {
   cursor: pointer;
 }
 
+.todo-title {
+  width: 15rem;
+}
+
 .player-title:hover,
 .todo-title:hover {
   opacity: 1;
@@ -515,6 +519,11 @@ input[name="name"]::placeholder {
   align-items: center;
 }
 
+.setting > div:nth-child(2) > div {
+  display: flex;
+  align-items: center;
+}
+
 .setting > div:nth-child(-n+3) {
   padding-top: 0.3rem;
 }
@@ -569,6 +578,7 @@ input[name="name"]::placeholder {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  align-items: flex-end;
 }
 
 .creator {
@@ -820,6 +830,14 @@ input[name="todos"] {
   padding: 0.5rem;
   border-radius: 4px;
   border: 3px solid #333;
+}
+
+.signature {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 15rem;
+  flex-wrap: wrap;
 }
 
 @media (max-width: 768px) {
