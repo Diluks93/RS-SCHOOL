@@ -25,12 +25,12 @@ window.addEventListener('load', () => {
 
 // document.addEventListener('DOMContentLoaded', getWeather);
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   getLocalStorage();
-//   getTranslate();
-//   getWeather();
-// })
-// window.addEventListener('beforeunload', setLocalStorage);
+document.addEventListener('DOMContentLoaded', () => {
+  getLocalStorage();
+  getTranslate();
+  getWeather();
+})
+window.addEventListener('beforeunload', setLocalStorage);
 
 alert(`УВАЖАЕМЫЙ ПРОВЕРЯЮЩИЙ. Я пробовал решить проблему и делаю это досих пор. Если Вы видите это сообщение, значит проблема не решена. Пожалуйста нажмите влевом нижнем углу на настройки и поставьте всё что вы хотите отобразить. После перезагрузки проблема исчезнет. Я всё еще работаю над этим`)
 
@@ -53,7 +53,7 @@ console.log(`
 Пока не выполненные/не засчитанные пункты:
 1) можно запустить и остановить проигрывание трека кликом по кнопке Play/Pause рядом с ним в плейлисте  
 2) Если источником получения фото указан API, в настройках приложения можно указать тег, для которого API будет присылает фото 
-ТЕСТ 5
+ТЕСТ 6
 Выполненные пункты:
 1) время выводится в 24-часовом формате, например: 21:01:00
 2) время обновляется каждую секунду - часы идут. Когда меняется одна из цифр, остальные при этом не меняют своё положение на странице (время не дёргается) 
