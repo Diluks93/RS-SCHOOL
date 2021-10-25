@@ -50,6 +50,12 @@ body {
   margin-bottom: 28px;
 }
 
+.play-item span.play,
+.play-item span.pause {
+  width: 1rem;
+  height: 1rem;
+  background-size: 1rem 1rem;
+}
 
 .audio-track {
   width: 100%;
@@ -104,7 +110,7 @@ body {
   position: absolute;
   left: 16rem;
   top: 1rem;
-  height: 10rem;
+  height: 11rem;
   width: 25rem;
   background-color: rgba(0,0,0,0.5);
   box-shadow: 0 0 20px 0 #000a;
