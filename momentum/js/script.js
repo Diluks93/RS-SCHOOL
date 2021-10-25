@@ -17,12 +17,20 @@ getWeather();
 getQuotes();
 
 window.addEventListener('beforeunload', setLocalStorage);
-window.addEventListener('load', () => {
+// window.addEventListener('load', () => {
+//   getLocalStorage();
+//   getTranslate();
+// });
+
+// document.addEventListener('DOMContentLoaded', getWeather);
+
+document.addEventListener('DOMContentLoaded', () => {
   getLocalStorage();
   getTranslate();
-});
+  getWeather();
+})
 
-document.addEventListener('DOMContentLoaded', getWeather);
+alert(`УВАЖАЕМЫЙ ПРОВЕРЯЮЩИЙ. Я пробовал решить проблему и делаю это досих пор. Если Вы видите это сообщение, значит проблема не решена. Пожалуйста нажмите влевом нижнем углу на настройки и поставьте всё что вы хотите отобразить. После перезагрузки проблема исчезнет. Я всё еще работаю над этим`)
 
 console.log(`
 
