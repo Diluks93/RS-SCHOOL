@@ -87,7 +87,7 @@ function changeBackground() {
   }
 };
 
-function showTime() {
+function showClock() {
   if (!TIME.checked) {
     document.querySelector('.time').style.opacity = 0;
   } else {
@@ -95,7 +95,7 @@ function showTime() {
   }
 };
 
-function showDate() {
+function hideDate() {
   if (!DATE.checked) {
     document.querySelector('.date').style.opacity = 0;
   } else {
@@ -214,8 +214,8 @@ PHOTOS.forEach(PHOTO => {PHOTO.addEventListener('change', (event) => {
     getLinkToImage();
   }
 })});
-TIME.addEventListener('change', showTime);
-DATE.addEventListener('change', showDate);
+TIME.addEventListener('change', showClock);
+DATE.addEventListener('change', hideDate);
 GRT.addEventListener('change', showGreeting);
 QTS.addEventListener('change', showQuotes);
 WTHR.addEventListener('change', showWeather);
@@ -224,8 +224,8 @@ TD.addEventListener('change', showTodo);
 POMODORO.addEventListener('change', () => {
   showPomodoro();
   showQuotes();
-  showTime();
-  showDate();
+  showClock();
+  hideDate();
   showGreeting();
 });
 
@@ -241,8 +241,8 @@ export {
   isFlickr,
   showPomodoro,
   showQuotes,
-  showTime,
-  showDate,
+  showClock,
+  hideDate,
   showGreeting,
   showTodo,
   showAudioplayer,
@@ -250,5 +250,5 @@ export {
   changeBackground,
   changeLanguage,
   changeColor,
-  getTranslate
+  getTranslate,
 };
