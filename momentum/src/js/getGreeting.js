@@ -1,5 +1,5 @@
 import {CITY} from './vidjetWether.js';
-import { LANG } from './setting.js';
+import { LANG, changeColor } from './setting.js';
 import {
   showQuotes,
   showTime,
@@ -178,12 +178,12 @@ function getLocalStorage() {
       getLinkToImage();
   });
 
-  // let listColors = document.querySelectorAll(`[type*="color"]`);
-  // listColors.forEach((el) => {
-  //   let valueColors = localStorage.getItem(el.id);
-  //   document.getElementById(el.id).value = valueColors;
-  //   changeColor();
-  // });
+  let listColors = document.querySelectorAll(`[type*="color"]`);
+  listColors.forEach((el) => {
+    let valueColors = localStorage.getItem(el.id);
+    document.getElementById(el.id).value = valueColors;
+    changeColor();
+  });
 };
 
 export {
