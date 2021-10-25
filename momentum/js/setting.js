@@ -159,13 +159,50 @@ function showPomodoro() {
   }
 };
 
+function getTranslate(){
+  AUDIO_PLAYER_BTN.textContent = greetingTranslation[LANG][8];
+  document.querySelector('.color').textContent = greetingTranslation[LANG][10];
+  document.querySelector('label[for=main]').textContent =
+    greetingTranslation[LANG][11];
+  document.querySelector('label[for=bg]').textContent =
+    greetingTranslation[LANG][12];
+  document.querySelector('label[for=text]').textContent =
+    greetingTranslation[LANG][13];
+  document.querySelector('.language').textContent =
+    greetingTranslation[LANG][14];
+  document.querySelector('.photo').textContent = greetingTranslation[LANG][15];
+  document.querySelector('label[for=time]').textContent =
+    greetingTranslation[LANG][16];
+  document.querySelector('label[for=date]').textContent =
+    greetingTranslation[LANG][17];
+  document.querySelector('label[for=greeting]').textContent =
+    greetingTranslation[LANG][18];
+  document.querySelector('label[for=quotes]').textContent =
+    greetingTranslation[LANG][19];
+  document.querySelector('label[for=weather]').textContent =
+    greetingTranslation[LANG][20];
+  document.querySelector('label[for=audioplayer]').textContent =
+    greetingTranslation[LANG][8];
+  document.querySelector('#js-btn').textContent =
+    greetingTranslation[LANG][21];
+  document.querySelector('#js-short-break').textContent =
+    greetingTranslation[LANG][22];
+  document.querySelector('#js-long-break').textContent =
+    greetingTranslation[LANG][23];
+  document.querySelector('.empty-state__title').textContent =
+    greetingTranslation[LANG][24];
+  document.querySelector('.empty-state__description').textContent =
+    greetingTranslation[LANG][25];
+  document.querySelector('input[name=todos]').placeholder =
+    greetingTranslation[LANG][26];
+  getWeather();
+}
+
 COLORS.forEach(COLOR => {COLOR.addEventListener('change', changeColor)});
 LANGUAGES.forEach(LANGUAGE => {LANGUAGE.
-  addEventListener('change', (event) =>{
-    console.log(event.target)
+  addEventListener('change', () =>{
   changeLanguage();
-  AUDIO_PLAYER_BTN.textContent = greetingTranslation[LANG][8];
-  getWeather();
+  getTranslate()
   if (localStorage.getItem('name') !== greetingTranslation[LANG][6])
     localStorage.setItem('name', greetingTranslation[LANG][6]);
   else localStorage.setItem('name', NAME.value);
@@ -212,5 +249,6 @@ export {
   showWeather,
   changeBackground,
   changeLanguage,
-  changeColor
+  changeColor,
+  getTranslate
 };

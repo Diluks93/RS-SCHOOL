@@ -68,8 +68,21 @@ function playNext(){
 playList.forEach(el => {
   li = document.createElement('li');
   li.classList.add('play-item');
-  li.innerHTML = `<span>${el.title}</span><span>${el.duration}</span>`
+  li.innerHTML = `<span class="play"></span><span>${el.title}</span><span>${el.duration}</span>`
   PLAYLIST_CONTAINER.append(li);
+
+  document.querySelectorAll('span.play')
+    .forEach((item, index) => {item.addEventListener('click', (event) => {
+      playNum = index;
+      if (event.target.contains === 'pause') {
+        event.target.classList.remove('pause');
+        pauseAudio();
+      } else {
+        event.target.classList.add('pause');
+        playAudio();
+      }
+    })
+  })
 });
 
 BTNS.forEach(BTN => BTN.addEventListener('click', () => {

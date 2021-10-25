@@ -13,7 +13,7 @@ function checkTimeOfDay(){
   let timeOfDay = getTimeOfDay();
   switch (timeOfDay) {
     case 'afternoon':
-    case 'день':
+    case 'ый день':
     case 'ы дзень':
       timeOfDay = 'day';
       break;
@@ -28,7 +28,7 @@ function checkTimeOfDay(){
     case 'ый вечер':
     case 'ы вечар':
       timeOfDay = 'evening';
-      break;
+      break;  
   }
 
   return timeOfDay;
