@@ -16,7 +16,7 @@ getLinkToImage();
 getWeather();
 getQuotes();
 
-window.addEventListener('beforeunload', setLocalStorage);
+
 // window.addEventListener('load', () => {
 //   getLocalStorage();
 //   getTranslate();
@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   getTranslate();
   getWeather();
 })
+window.addEventListener('beforeunload', setLocalStorage);
 
 alert(`УВАЖАЕМЫЙ ПРОВЕРЯЮЩИЙ. Я пробовал решить проблему и делаю это досих пор. Если Вы видите это сообщение, значит проблема не решена. Пожалуйста нажмите влевом нижнем углу на настройки и поставьте всё что вы хотите отобразить. После перезагрузки проблема исчезнет. Я всё еще работаю над этим`)
 
