@@ -16,14 +16,15 @@ getLinkToImage();
 getWeather();
 getQuotes();
 
+document.addEventListener('load', setLocalStorage);
 document.addEventListener('DOMContentLoaded', () => {
   getLocalStorage();
   getTranslate();
   getWeather();
 })
 window.addEventListener('beforeunload', setLocalStorage);
-
-alert(`УВАЖАЕМЫЙ ПРОВЕРЯЮЩИЙ. Я пробовал решить проблему и делаю это досих пор. Если Вы видите это сообщение, значит проблема не решена. Пожалуйста нажмите влевом нижнем углу на настройки и поставьте всё что вы хотите отобразить. После перезагрузки проблема исчезнет. Я всё еще работаю над этим`)
+document.removeEventListener('load', setLocalStorage);
+// alert(`УВАЖАЕМЫЙ ПРОВЕРЯЮЩИЙ. Я пробовал решить проблему и делаю это досих пор. Если Вы видите это сообщение, значит проблема не решена. Пожалуйста нажмите влевом нижнем углу на настройки и поставьте всё что вы хотите отобразить. После перезагрузки проблема исчезнет. Я всё еще работаю над этим`)
 
 console.log(`
 
