@@ -89,72 +89,72 @@ function changeBackground() {
 
 function showClock() {
   if (!TIME.checked) {
-    document.querySelector('.time').style.opacity = 0;
-  } else {
     document.querySelector('.time').style.opacity = 1;
+  } else {
+    document.querySelector('.time').style.opacity = 0;
   }
 };
 
 function hideDate() {
   if (!DATE.checked) {
-    document.querySelector('.date').style.opacity = 0;
-  } else {
     document.querySelector('.date').style.opacity = 1;
+  } else {
+    document.querySelector('.date').style.opacity = 0;
   }
 };
 
 function showGreeting() {
   if (!GRT.checked) {
-    document.querySelector('.greeting-container').style.opacity = 0;
-  } else {
     document.querySelector('.greeting-container').style.opacity = 1;
+  } else {
+    document.querySelector('.greeting-container').style.opacity = 0;
   }
 };
 
 function showQuotes() {
   if (!QTS.checked) {
-    document.querySelector('.quotes').style.opacity = 0;
-  } else {
     document.querySelector('.quotes').style.opacity = 1;
+  } else {
+    document.querySelector('.quotes').style.opacity = 0;
   }
 };
 
 function showWeather() {
   if (!WTHR.checked) {
-    document.querySelector('.weather').style.opacity = 0;
-  } else {
     document.querySelector('.weather').style.opacity = 1;
+  } else {
+    document.querySelector('.weather').style.opacity = 0;
   }
 };
 
 function showAudioplayer() {
   if (!PLR.checked) {
-    document.querySelector('.player').style.opacity = 0;
-  } else {
     document.querySelector('.player').style.opacity = 1;
+  } else {
+    document.querySelector('.player').style.opacity = 0;
   }
 };
 
 function showTodo() {
   if (!TD.checked) {
-    document.querySelector('.todo-title').style.opacity = 0;
-  } else {
     document.querySelector('.todo-title').style.opacity = 1;
+  } else {
+    document.querySelector('.todo-title').style.opacity = 0;
   }
 };
 
 function showPomodoro() {
   if (!POMODORO.checked) {
-    TIME.checked = true;
-    DATE.checked = true;
-    GRT.checked = true;
-    QTS.checked = true;
-    document.querySelector('.pomodoro').style.opacity = 0;
-  } else {
     TIME.checked = false;
     DATE.checked = false;
     GRT.checked = false;
     QTS.checked = false;
+    document.querySelector('.pomodoro').style.opacity = 0;
+  } else {
+    TIME.checked = true;
+    DATE.checked = true;
+    GRT.checked = true;
+    QTS.checked = true;
     document.querySelector('.pomodoro').style.opacity = 1;
   }
 };
