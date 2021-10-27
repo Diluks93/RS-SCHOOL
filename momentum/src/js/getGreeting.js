@@ -178,12 +178,12 @@ function getLocalStorage() {
       getLinkToImage();
   });
 
-  // let listColors = document.querySelectorAll(`[type*="color"]`);
-  // listColors.forEach((el) => {
-  //   let valueColors = localStorage.getItem(el.id);
-  //   document.getElementById(el.id).value = valueColors;
-  //   changeColor();
-  // });
+  let listColors = document.querySelectorAll(`[type*="color"]`);
+  listColors.forEach((el) => {
+    let valueColors = localStorage.getItem(el.id);
+    document.getElementById(el.id).value = valueColors;
+    changeColor();
+  });
 };
 
 export {

@@ -41,7 +41,7 @@ function setBg(value){
     BODY.style.backgroundImage = `url(${value})`;
   }
 
-  //setTimeout(getSlideNext, 150000);
+  setTimeout(getSlideNext, 150000);
 };
 
 async function getLinkToImage(){
