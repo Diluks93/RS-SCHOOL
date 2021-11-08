@@ -1,0 +1,31 @@
+{
+  "name": "art-quiz",
+  "version": "1.0.0",
+  "description": "ArtQuiz is a quiz application on the knowledge of masterpieces of painting and their authors",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rolling-scopes-school/diluks93-JSFE2021Q3/art-quiz"
+  },
+  "keywords": [
+    "rsschool",
+    "quiz",
+    "pictures"
+  ],
+  "author": "Dzmitry Iliukovich <mr.ilyukovich@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.62.1",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.4.0"
+  },
+  "dependencies": {
+    "materialize-css": "^1.0.0"
+  }
+}
