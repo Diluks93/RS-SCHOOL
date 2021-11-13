@@ -1,0 +1,10 @@
+@import '../base/variables';
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+}

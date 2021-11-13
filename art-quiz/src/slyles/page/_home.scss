@@ -1,0 +1,12 @@
+.wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    flex-direction: column;
+    justify-content: center;
+  }
+}

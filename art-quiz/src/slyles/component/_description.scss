@@ -1,0 +1,28 @@
+.description {
+  font-weight: 700;
+  color: $main-color;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  margin: 0.5em;
+  transition: color 0.2s ease-in;
+}
+
+.home__descr span {
+  font-weight: normal;
+  font-size: 1em;
+}
+
+@media (max-width: 1024px) {
+  .home__descr {
+    position: absolute;
+    width: inherit;
+    bottom: 0;
+    transform: translateX(50%);
+  }
+}
+
+@media (max-width: 400px) {
+  .home__descr {
+    transform: translateX(25%);
+  }
+}

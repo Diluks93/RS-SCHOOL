@@ -1,0 +1,21 @@
+.btn {
+  margin-top: 1em;
+  padding: 0.5em 1em;
+  border: solid 1px $main-color;
+  border-radius: 1em;
+  transition: background-color 0.5s linear;
+  &:hover {
+    background-color: $hover-color;
+  }
+  &:active {
+    background-color: $active-color;
+  }
+}
+
+@media (max-width: 1024px) {
+  .btn {
+    margin-top: 0.2em;
+    padding: 0.5em 1em;
+    transform: scale(0.5);
+  }
+}

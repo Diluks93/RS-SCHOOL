@@ -1,0 +1,37 @@
+.img {
+  width: 184px;
+  height: 216px;
+}
+
+.home__img {
+  width: 25.7em;
+  height: 25.9em;
+  box-shadow: 5px 3px 10px 5px grey;
+  &:active {
+    box-shadow: 2px 1px 10px 5px grey;
+  }
+}
+
+.img-school {
+  width: 6em;
+}
+.img-title {
+  width: 7em;
+}
+
+@media (max-width: 1024px) {
+  .home__img {
+    width: 26em;
+    height: 16em;
+    object-fit: cover;
+  }
+  .img-title {
+    width: 5em;
+  }
+}
+
+@media (max-width: 400px) {
+  .home__img {
+    width: 20em;
+  }
+}
