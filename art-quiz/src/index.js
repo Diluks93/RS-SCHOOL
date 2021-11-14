@@ -1,5 +1,8 @@
 import './slyles/style.scss';
 import { bootstrap } from './framework/core/bootstrap'
 import { appModule } from './app/app.module'
+import { wfm } from './framework/index'
 
-bootstrap(appModule)
+wfm.delay().then(() => {
+  bootstrap(appModule)
+})
