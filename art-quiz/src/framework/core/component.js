@@ -1,3 +1,5 @@
+import { wfm } from "..";
+
 export class Component {
   #el;
   constructor (config) {
@@ -11,5 +13,20 @@ export class Component {
 
     if(!this.#el) throw new Error (`Component with selector ${this.selector} wasn't found`)
     this.#el.innerHTML = this.template;
+
+    this._initEvents()
+  }
+
+  _initEvents(){
+    if(wfm.isUndefined(this.events)) return;
+
+    let events = this.events();
+    Object.keys(events).forEach(key => {
+      let listener = key.split(' ');
+
+      this.#el
+        .querySelector(listener[1])
+        .addEventListener(listener[0], this[events[key]].bind(this))
+    })
   }
 }

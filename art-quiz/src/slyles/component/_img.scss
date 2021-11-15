@@ -1,15 +1,27 @@
 .img {
-  width: 184px;
-  height: 216px;
+  width: 100px;
 }
 
 .home__img {
-  width: 25.7em;
-  height: 25.9em;
   box-shadow: 5px 3px 10px 5px grey;
   &:active {
     box-shadow: 2px 1px 10px 5px grey;
   }
+}
+
+.setting__img {
+  background-color: #fff;
+  & div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.home__img,
+.setting__img {
+  width: 25.7em;
+  height: 25.9em;
 }
 
 .img-school {
@@ -27,6 +39,10 @@
   }
   .img-title {
     width: 5em;
+  }
+  .setting__img{
+    width: 20.7em;
+    height: 17.9em;
   }
 }
 

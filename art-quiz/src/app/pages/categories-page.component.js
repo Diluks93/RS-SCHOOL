@@ -15,9 +15,9 @@ export const categoriesPageComponent = new CategoriesPageComponent({
       </a>
     </h1>
     <div class="wrapper">
-      <a href="#" class="btn">Home</a>
-      <h2>Categories</h2>
-      <a href="#" class="btn">Score</a>
+      <a href="#" class="btn btn-categories">Home</a>
+      <h2 class="subtitle">Categories</h2>
+      <a href="#" class="btn btn-categories">Score</a>
     </div>
   `,
 });
