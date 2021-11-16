@@ -1,5 +1,4 @@
 .reverse-spinner {
-  position: absolute;
   top: 30%;
   left: 45%;
   width: 200px;
@@ -22,5 +21,17 @@
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1024px) {
+  .reverse-spinner {
+    left: 40%;
+  }
+}
+
+@media (max-width: 400px) {
+  .reverse-spinner {
+    left: 25%;
   }
 }

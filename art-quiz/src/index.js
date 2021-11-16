@@ -1,8 +1,5 @@
 import './slyles/style.scss';
-import { bootstrap } from './framework/core/bootstrap'
-import { appModule } from './app/app.module'
-import { wfm } from './framework/index'
 
-wfm.delay().then(() => {
-  bootstrap(appModule)
-})
+import { removeActive } from './module/addActive';
+import { start } from './module/start';
+import { save } from './module/localStorage';
