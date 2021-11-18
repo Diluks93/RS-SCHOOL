@@ -26,4 +26,4 @@ export function getLocalStorage() {
 getLocalStorage();
 
 RANGE.addEventListener('click', setLocalStorage);
-INPT_NUMBER.addEventListener('change', setLocalStorage);
+//INPT_NUMBER.addEventListener('change', setLocalStorage);
