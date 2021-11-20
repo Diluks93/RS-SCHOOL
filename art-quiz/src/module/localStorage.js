@@ -9,7 +9,7 @@ export function setLocalStorage() {
   localStorage.setItem('box', CHECKBOX.checked);
 
   localStorage.setItem('range', RANGE.value);
-  localStorage.setItem('number', INPT_NUMBER.value);
+  localStorage.setItem('number', INPT_NUMBER.getAttribute('value'));
 };
 
 export function getLocalStorage() {
@@ -31,6 +31,5 @@ DEFAULT.addEventListener('click', () => {
   CHECKBOX.checked = false;
   checkCheckbox();
   RANGE.value = '20';
-  INPT_NUMBER.value = '5';
   setLocalStorage();
 })
