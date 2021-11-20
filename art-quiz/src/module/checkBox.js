@@ -1,4 +1,4 @@
-import { setLocalStorage } from "./localStorage";
+import { setLocalStorage } from './localStorage';
 
 export const CHECKBOX = document.getElementById('checkbox'),
   NUMBER = document.querySelector('.number');

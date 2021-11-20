@@ -2,4 +2,8 @@
   display: flex;
   justify-content: flex-end;
   max-height: fit-content;
+  opacity: 0;
+  &.active {
+    opacity: 1;
+  }
 }

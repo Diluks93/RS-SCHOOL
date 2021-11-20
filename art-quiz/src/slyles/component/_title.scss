@@ -1,4 +1,8 @@
 .title {
+  opacity: 0;
+  &.active {
+    opacity: 1;
+  }
   &__cart {
     display: flex;
     justify-content: space-evenly;
