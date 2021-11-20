@@ -6,14 +6,43 @@
   transform: translateX(-100vw);
   transition: all 0.5s ease-in-out;
   position: fixed;
-  &.active {
-    opacity: 1;
-    transform: translate(0);
-  }
+  margin-top: 1em;
 }
 
 .home-page,
 .categories,
 .settings {
   width: 100%;
+  &.active {
+    opacity: 1;
+    transform: translate(0);
+    position: static;
+  }
+}
+
+.reverse-spinner {
+  &.active {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+.container {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    flex-direction: column;
+    justify-content: center;
+  }
 }

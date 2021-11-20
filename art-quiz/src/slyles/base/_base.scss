@@ -3,14 +3,16 @@
   font-size: 1rem;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   width: 100vw;
-  height: 100vh;
-  background: #E0EAFC;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #CFDEF3, #E0EAFC);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #CFDEF3, #E0EAFC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #E0EAFC;
   background-repeat: no-repeat;
   font-family: $font-family;
+  overflow-x: hidden;
 }
 
 a {
@@ -26,6 +28,15 @@ a {
   }
 }
 
-h1, h2 {
+h1, h2, h4 {
   text-align: center;
+}
+
+h4 {
+  margin: 0.5em;
+}
+
+figure {
+  position: relative;
+  margin: 0em;
 }

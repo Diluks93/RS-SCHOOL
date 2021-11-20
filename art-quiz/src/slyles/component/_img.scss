@@ -31,6 +31,17 @@
   width: 7em;
 }
 
+.img-category {
+  display: block;
+  width: 11em;
+  height: 11em;
+  object-fit: cover;
+  filter: grayscale(1);
+  &.active {
+    filter: grayscale(0);
+  }
+}
+
 @media (max-width: 1024px) {
   .home__img {
     width: 26em;

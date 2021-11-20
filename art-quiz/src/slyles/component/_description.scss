@@ -12,6 +12,15 @@
   font-size: 1em;
 }
 
+.category__descr {
+  position: absolute;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+  &.active {
+    opacity: 1;
+  }
+}
+
 @media (max-width: 1024px) {
   .home__descr {
     position: absolute;

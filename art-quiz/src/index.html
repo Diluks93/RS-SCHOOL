@@ -10,73 +10,77 @@
   <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
-  <header id="header" class="header">
-    <a class="btn btn__header" href="#settings" id="setting">Settings</a>
-  </header>
-  <main class="main">
-    <h1 class="title">
-      <a href="#">
-        <img class="img-title logo" src="./assets/svg/logo.svg" alt="logo">
-      </a>
-    </h1>
-    <section class="reverse-spinner active" id="preloader"></section>
-    <section class="home-page">
-      <div class="wrapper">
-        <a href="#categories">
-          <figure class="cart home__cart" id="artists">
-            <picture>
-              <source srcset="./assets/img/artists-quiz.webp">
-              <img class="img home__img" src="./assets/img/artist-quiz.jpg" alt="artists">
-            </picture>
-            <figcaption class="description home__descr">Artist <span>Quiz</span></figcaption>
-          </figure>
+  <div class="container">
+    <header id="header" class="header">
+      <a class="btn btn__header" href="#settings" id="setting">Settings</a>
+    </header>
+    <main class="main">
+      <h1 class="title">
+        <a href="#">
+          <img class="img-title logo" src="./assets/svg/logo.svg" alt="logo">
         </a>
-        <a href="#categories">
-          <figure class="cart home__cart" id="pictures">
-            <picture>
-              <source srcset="./assets/img/pictures-quiz.webp">
-              <img class="img home__img" src="./assets/img/pictures-quiz.jpg" alt="pictures">
-            </picture>
-            <figcaption class="description home__descr">Pictures <span>Quiz</span></figcaption>
-          </figure>
-        </a>
-      </div>
-    </section>
-    <section class="categories">
-      <div class="wrapper">
-        <a href="#" class="btn btn-categories">Home</a>
-        <h2 class="subtitle">Categories</h2>
-        <a href="#" class="btn btn-categories">Score</a>
-      </div>
-      <div class="cards"></div>
-    </section>
-    <section class="settings">
-      <h2 class="subtitle">Settings</h2>
-      <div class="wrapper">
-        <div class="cart setting__img" id="artists">
-          <img class="img" src="./assets/svg/volume-on.svg" alt="artists">
-          <input value="20" type="range" min="0" max="100" step="1">
-          <div class="description setting__descr">Volume</div>
+      </h1>
+      <section class="reverse-spinner active" id="preloader"></section>
+      <section class="home-page">
+        <div class="wrapper">
+          <a href="#categories">
+            <figure class="cart home__cart" id="artists">
+              <picture>
+                <source srcset="./assets/img/artists-quiz.webp">
+                <img class="img home__img" src="./assets/img/artist-quiz.jpg" alt="artists">
+              </picture>
+              <figcaption class="description home__descr">Artist <span>Quiz</span></figcaption>
+            </figure>
+          </a>
+          <a href="#categories">
+            <figure class="cart home__cart" id="pictures">
+              <picture>
+                <source srcset="./assets/img/pictures-quiz.webp">
+                <img class="img home__img" src="./assets/img/pictures-quiz.jpg" alt="pictures">
+              </picture>
+              <figcaption class="description home__descr">Pictures <span>Quiz</span></figcaption>
+            </figure>
+          </a>
         </div>
-        <div class="cart setting__img" id="pictures">
-          <img class="img" src="./assets/svg/timer-picture.svg" alt="pictures">
-          <div>
-            <input type="checkbox" id="checkbox">
-            <label for="checkbox">On/Off</label>
-            <div class="number">
-              <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown();">-</button>
-              <input type="number" min="0" max="30" step="5" value="20" readonly>
-              <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp();">+</button>
-            </div>
+      </section>
+      <section class="categories">
+        <div class="wrapper">
+          <a href="#" class="btn btn-categories">Home</a>
+          <h2 class="subtitle">Categories</h2>
+          <a href="#" class="btn btn-categories">Score</a>
+        </div>
+        <div class="wrapper">
+          <div class="cards"></div>
+        </div>
+      </section>
+      <section class="settings">
+        <h2 class="subtitle">Settings</h2>
+        <div class="wrapper">
+          <div class="cart setting__img" id="artists">
+            <img class="img" src="./assets/svg/volume-on.svg" alt="artists">
+            <input value="20" type="range" min="0" max="100" step="1">
+            <div class="description setting__descr">Volume</div>
           </div>
-          <div class="description setting__descr">Time game</div>
+          <div class="cart setting__img" id="pictures">
+            <img class="img" src="./assets/svg/timer-picture.svg" alt="pictures">
+            <div>
+              <input type="checkbox" id="checkbox">
+              <label for="checkbox">On/Off</label>
+              <div class="number">
+                <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown();">-</button>
+                <input type="number" min="0" max="30" step="5" value="20" readonly>
+                <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp();">+</button>
+              </div>
+            </div>
+            <div class="description setting__descr">Time game</div>
+          </div>
         </div>
-      </div>
-    </section>
-  </main>
-  <footer class="footer">
-    <a class="link" href="https://rs.school/js/" target="_blank"><img class="img-school" src="./assets/svg/rs_school_js.svg" alt="school's logo"></a>
-    <a class="link" href="https://github.com/Diluks93" target="_blank"><span>App developer: Diluks93 <time>| 2021</time></span></a>
-  </footer>
+      </section>
+    </main>
+    <footer class="footer">
+      <a class="link" href="https://rs.school/js/" target="_blank"><img class="img-school" src="./assets/svg/rs_school_js.svg" alt="school's logo"></a>
+      <a class="link" href="https://github.com/Diluks93" target="_blank"><span>App developer: Diluks93 <time>| 2021</time></span></a>
+    </footer>
+  </div>
 </body>
 </html>

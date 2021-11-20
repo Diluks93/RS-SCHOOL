@@ -1,0 +1,7 @@
+.result {
+  opacity: 0;
+  font-weight: normal;
+  &.active {
+    opacity: 1;
+  }
+}
