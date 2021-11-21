@@ -1,33 +1,17 @@
-import { isPicture } from './addActive';
-import { getLinkToJSON } from './getImages';
-export const CARDS = document.querySelector('.cards');
+import { CATEGORIES_BTNS, HOME_PAGE_BTNS } from './addActive';
+import { createCards, CARDS } from './createPageCards';
 
-export async function createCards() {
-  const data = await getLinkToJSON();
-  let previewElement;
-  isPicture ? (previewElement = -1) : (previewElement = 12);
+export let isPicture = false;
 
-  for (let i = 1; i <= 12; i++) {
-    let li = document.createElement('li');
-    li.classList.add('cart', 'category__cart');
-
-    li.innerHTML = `
-      <a href="#round${i}">
-        <h4 class="title__cart">Round ${i} <span class="result">0/10</span></h4>
-        <figure>
-          <picture>
-              <source srcset="https://raw.githubusercontent.com/Diluks93/image-data/master/img/${
-                data[previewElement + i][0].imageNum + '.webp'
-              }">
-              <img class="img img-category" src="https://raw.githubusercontent.com/Diluks93/image-data/master/img/${
-                data[previewElement + i][0].imageNum + '.jpg'
-              }" alt="preview category">
-          </picture>
-          <figcaption class="category__descr">Play again</figcaption>
-        </figure>
-      </a>
-    `;
-
-    CARDS.append(li);
+CATEGORIES_BTNS.forEach((elem, index) => {
+  elem.onclick = () => {
+    index === 0 ? (isPicture = false) : (isPicture = true);
+    createCards();
   };
-};
+});
+
+HOME_PAGE_BTNS.forEach((elem) => {
+  elem.onclick = () => {
+    CARDS.innerHTML = '';
+  };
+});

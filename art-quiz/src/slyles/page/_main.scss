@@ -1,7 +1,8 @@
 .reverse-spinner,
 .home-page,
 .categories,
-.settings {
+.settings,
+.error {
   opacity: 0;
   transform: translateX(-100vw);
   transition: all 0.5s ease-in-out;
@@ -11,7 +12,8 @@
 
 .home-page,
 .categories,
-.settings {
+.settings,
+.error {
   width: 100%;
   &.active {
     opacity: 1;

@@ -1,5 +1,5 @@
 import { HOME_PAGE } from './addActive';
-import { createCards } from './createCards';
+import { createCards } from './createPageCards';
 
 window.addEventListener('hashchange', () => {
   localStorage.setItem('hash', window.location.hash.slice(1));
