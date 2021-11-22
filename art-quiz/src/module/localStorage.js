@@ -1,9 +1,5 @@
-import { CHECKBOX, checkCheckbox } from './checkBox';
-
-export const RANGE = document.querySelector('input[type="range"]'),
-  INPT_NUMBER = document.querySelector('input[type="number"]'),
-  DEFAULT = document.querySelector('.btn__default'),
-  SAVE = document.querySelector('.btn__save');
+import { checkCheckbox } from './checkBox';
+import { CHECKBOX, DEFAULT, INPT_NUMBER, RANGE, SAVE } from './variables';
 
 export function setLocalStorage() {
   localStorage.setItem('box', CHECKBOX.checked);
@@ -22,7 +18,7 @@ export function getLocalStorage() {
 
   let valueNumber = JSON.parse(localStorage.getItem('number'));
   INPT_NUMBER.value = valueNumber;
-}
+};
 
 getLocalStorage();
 
@@ -32,4 +28,4 @@ DEFAULT.addEventListener('click', () => {
   checkCheckbox();
   RANGE.value = '20';
   setLocalStorage();
-})
+});

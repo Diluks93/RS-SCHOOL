@@ -1,4 +1,5 @@
-import { addActive, ERROR, HOME_PAGE, removeActive, SECTIONS } from './addActive';
+import { addActive, removeActive } from './addActive';
+import { CARDS, ERROR, HOME_PAGE, SECTIONS } from './variables';
 
 window.addEventListener('hashchange', () => {
   let array = getArraySectionsName();
@@ -15,8 +16,8 @@ window.addEventListener('hashchange', () => {
     ERROR.classList.add('active')
   }
   addActive(document.querySelectorAll('a[href="#"]'), HOME_PAGE);
+  CARDS.innerHTML = '';
 });
-
 
 export function getArraySectionsName(){
   let sectionArray = [];

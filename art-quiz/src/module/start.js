@@ -1,15 +1,11 @@
-import { HOME_PAGE } from './addActive';
 import { createCards } from './createPageCards';
+import { FOOTER, H1, HEADER, HOME_PAGE, PRELOADER } from './variables';
 
 window.addEventListener('hashchange', () => {
   localStorage.setItem('hash', window.location.hash.slice(1));
 });
 
 export function start() { setTimeout(() => {
-  const PRELOADER = document.getElementById('preloader'),
-    HEADER = document.getElementById('header'),
-    H1 = document.querySelector('h1'),
-    FOOTER = document.querySelector('.footer');
   let array = [H1, HEADER, FOOTER],
     ELEMENT;
 

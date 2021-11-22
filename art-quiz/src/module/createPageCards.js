@@ -1,11 +1,12 @@
 import { isPicture } from './createCards';
+import { createQuiz } from './createPageQuestions';
 import { getLinkToJSON } from './getImages';
-export const CARDS = document.querySelector('.cards');
+import { CARDS } from './variables';
 
 export async function createCards() {
   const data = await getLinkToJSON();
   let previewElement;
-  isPicture ? (previewElement = -1) : (previewElement = 12);
+  isPicture ? (previewElement = -1) : (previewElement = +11);
 
   for (let i = 1; i <= 12; i++) {
     let li = document.createElement('li');
@@ -30,4 +31,5 @@ export async function createCards() {
 
     CARDS.append(li);
   };
+  createQuiz();
 };

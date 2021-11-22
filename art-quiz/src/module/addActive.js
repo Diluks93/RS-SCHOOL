@@ -1,12 +1,4 @@
-export const 
-  HOME_PAGE_BTNS = document.querySelectorAll('a[href="#"]'),
-  CATEGORIES_BTNS = document.querySelectorAll('a[href="#categories"]'),
-  SETTINGS_BTNS = document.querySelectorAll('a[href="#settings"]'),
-  SECTIONS = document.querySelectorAll('section'),
-  HOME_PAGE = document.querySelector('.home-page'),
-  CATEGORIES = document.querySelector('.categories'),
-  SETTINGS = document.querySelector('.settings'),
-  ERROR = document.querySelector('.error');
+import { CATEGORIES, CATEGORIES_BTNS, HOME_PAGE, HOME_PAGE_BTNS, SECTIONS, SETTINGS, SETTINGS_BTNS } from './variables';
 
 export function removeActive () {
   SECTIONS.forEach (section => {

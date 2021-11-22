@@ -7,4 +7,5 @@ import { checkCheckbox } from './module/checkBox';
 import { createCards } from './module/createPageCards';
 import { getLinkToJSON } from './module/getImages';
 
-import { } from './module/createPageError'
+import { getArraySectionsName } from './module/createPageError';
+import { CARDS } from './module/variables';

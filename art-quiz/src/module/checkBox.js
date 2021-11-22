@@ -1,7 +1,5 @@
 import { setLocalStorage } from './localStorage';
-
-export const CHECKBOX = document.getElementById('checkbox'),
-  NUMBER = document.querySelector('.number');
+import { CHECKBOX, NUMBER } from './variables';
 
 export function checkCheckbox() {
   if (CHECKBOX.checked) NUMBER.classList.add('active');

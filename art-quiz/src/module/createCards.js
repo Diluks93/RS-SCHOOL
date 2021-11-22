@@ -1,5 +1,5 @@
-import { CATEGORIES_BTNS, HOME_PAGE_BTNS } from './addActive';
-import { createCards, CARDS } from './createPageCards';
+import { CARDS, CATEGORIES_BTNS, HOME_PAGE_BTNS } from './variables';
+import { createCards } from './createPageCards';
 
 export let isPicture = false;
 
