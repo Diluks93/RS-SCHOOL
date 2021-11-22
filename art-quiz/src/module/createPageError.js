@@ -2,7 +2,7 @@ import { addActive, removeActive } from './addActive';
 import { CARDS, ERROR, HOME_PAGE, SECTIONS } from './variables';
 
 window.addEventListener('hashchange', () => {
-  let array = getArraySectionsName();
+  let array = addElementsArraySection();
   array.push('', 'round1')
 
   if (array.some((elem) => elem === window.location.hash.slice(1))) {
@@ -14,6 +14,7 @@ window.addEventListener('hashchange', () => {
       <a href="#">Back home page!</a>
     `;
     ERROR.classList.add('active')
+    QUIZ.innerHTML = '';
   }
   addActive(document.querySelectorAll('a[href="#"]'), HOME_PAGE);
   CARDS.innerHTML = '';

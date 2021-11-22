@@ -1,5 +1,4 @@
 import { isPicture } from './createCards';
-//import { createQuiz } from './createPageQuestions';
 import { getLinkToJSON } from './getImages';
 import { CARDS } from './variables';
 
@@ -13,7 +12,7 @@ export async function createCards() {
     li.classList.add('cart', 'category__cart');
 
     li.innerHTML = `
-      <a href="#round${i}">
+      <a href="#round${i}" data-action="templateQuiz()">
         <h4 class="title__cart">Round ${i} <span class="result">0/10</span></h4>
         <figure>
           <picture>
@@ -31,5 +30,4 @@ export async function createCards() {
 
     CARDS.append(li);
   };
-  createQuiz();
 };

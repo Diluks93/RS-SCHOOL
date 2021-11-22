@@ -19,6 +19,7 @@ export const [
   HEADER,
   H1,
   FOOTER,
+  QUIZ,
 ] = [
   document.querySelectorAll('a[href="#"]'),
   document.querySelectorAll('a[href="#categories"]'),
@@ -40,4 +41,5 @@ export const [
   document.getElementById('header'),
   document.querySelector('h1'),
   document.querySelector('.footer'),
+  document.querySelector('.quiz'),
 ]
