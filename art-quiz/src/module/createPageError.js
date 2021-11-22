@@ -2,8 +2,8 @@ import { addActive, removeActive } from './addActive';
 import { CARDS, ERROR, HOME_PAGE, SECTIONS } from './variables';
 
 window.addEventListener('hashchange', () => {
-  let array = getArraySectionsName();
-  array.push('')
+  let array = addElementsArraySection();
+  array.push('', 'round1')
 
   if (array.some((elem) => elem === window.location.hash.slice(1))) {
 
@@ -34,3 +34,10 @@ export function getArraySectionsName(){
 
   return sectionArray.slice(2);
 };
+
+function addElementsArraySection(array = getArraySectionsName()){
+  for(let i = 1; i < 13; i++) {
+    array.push(`round${i}`)
+  }
+  return array;
+}
