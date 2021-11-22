@@ -2,7 +2,7 @@ import { addActive, removeActive } from './addActive';
 import { CARDS, ERROR, HOME_PAGE, SECTIONS } from './variables';
 
 window.addEventListener('hashchange', () => {
-  let array = addElementsArraySection();
+  let array = getArraySectionsName();
   array.push('', 'round1')
 
   if (array.some((elem) => elem === window.location.hash.slice(1))) {

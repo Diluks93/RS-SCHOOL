@@ -10,4 +10,4 @@ import { getLinkToJSON } from './module/getImages';
 import { getArraySectionsName } from './module/createPageError';
 import { CARDS } from './module/variables';
 
-//import { showSelfAssessment } from './module/self-assessment'
+import { showSelfAssessment } from './module/self-assessment'

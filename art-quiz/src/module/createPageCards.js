@@ -1,5 +1,5 @@
 import { isPicture } from './createCards';
-import { createQuiz } from './createPageQuestions';
+//import { createQuiz } from './createPageQuestions';
 import { getLinkToJSON } from './getImages';
 import { CARDS } from './variables';
 
