@@ -1,9 +1,9 @@
 import AppController from '../controller/controller';
-import { AppView, DrawNews, DrawSources } from '../view/appView';
+import { AppView, DrawSources, PickDrawNews } from '../view/appView';
 
 interface ClassApp {
-  controller: AppController;
-  view: AppView;
+  controller: Partial<AppController>;
+  view: Partial<AppView>;
   start(): void;
 }
 class App implements ClassApp {
@@ -18,10 +18,10 @@ class App implements ClassApp {
 
   start(): void {
     (document.querySelector('.sources') as HTMLTemplateElement).addEventListener('click', (e: MouseEvent) =>
-      this.controller.getNews(e, (data: DrawSources | DrawNews) => this.view.drawNews(data))
+      this.controller.getNews(e, (data: DrawSources | PickDrawNews) => this.view.drawNews(data))
     );
 
-    this.controller.getSources((data: DrawSources | DrawNews) => this.view.drawSources(data));
+    this.controller.getSources((data: DrawSources | PickDrawNews) => this.view.drawSources(data));
   }
 }
 

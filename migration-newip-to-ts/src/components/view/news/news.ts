@@ -4,6 +4,18 @@ import './news.css';
 interface ClassNews {
   draw(data: Array<ObjectArticles>): void;
 }
+
+enum EnumNews {
+  item = '.news__item',
+  photo = '.news__meta-photo',
+  author = '.news__meta-author',
+  date = '.news__meta-date',
+  title = '.news__description-title',
+  source = '.news__description-source',
+  content = '.news__description-content',
+  more = '.news__read-more a',
+  news = '.news',
+}
 class News implements ClassNews {
   draw(data: Array<ObjectArticles>): void {
     const news: Array<ObjectArticles> =
@@ -16,30 +28,29 @@ class News implements ClassNews {
       const newsClone: HTMLTemplateElement = newsItemTemp.content.cloneNode(true) as HTMLTemplateElement;
 
       if (idx % 2) {
-        (newsClone.querySelector('.news__item') as HTMLTemplateElement).classList.add('alt');
+        (newsClone.querySelector(EnumNews.item) as HTMLTemplateElement).classList.add('alt');
       }
 
-      (newsClone.querySelector('.news__meta-photo') as HTMLTemplateElement).style.backgroundImage = `url(${
+      (newsClone.querySelector(EnumNews.photo) as HTMLTemplateElement).style.backgroundImage = `url(${
         item.urlToImage || 'img/news_placeholder.jpg'
       })`;
-      (newsClone.querySelector('.news__meta-author') as HTMLTemplateElement).textContent =
-        item.author || item.source.name;
-      (newsClone.querySelector('.news__meta-date') as HTMLTemplateElement).textContent = item.publishedAt
+      (newsClone.querySelector(EnumNews.author) as HTMLTemplateElement).textContent = item.author || item.source.name;
+      (newsClone.querySelector(EnumNews.date) as HTMLTemplateElement).textContent = item.publishedAt
         .slice(0, 10)
         .split('-')
         .reverse()
         .join('-');
-      //TODO enum
-      (newsClone.querySelector('.news__description-title') as HTMLTemplateElement).textContent = item.title;
-      (newsClone.querySelector('.news__description-source') as HTMLTemplateElement).textContent = item.source.name;
-      (newsClone.querySelector('.news__description-content') as HTMLTemplateElement).textContent = item.description;
-      (newsClone.querySelector('.news__read-more a') as HTMLTemplateElement).setAttribute('href', item.url);
+
+      (newsClone.querySelector(EnumNews.title) as HTMLTemplateElement).textContent = item.title;
+      (newsClone.querySelector(EnumNews.source) as HTMLTemplateElement).textContent = item.source.name;
+      (newsClone.querySelector(EnumNews.content) as HTMLTemplateElement).textContent = item.description;
+      (newsClone.querySelector(EnumNews.more) as HTMLTemplateElement).setAttribute('href', item.url);
 
       fragment.append(newsClone);
     });
 
-    (document.querySelector('.news') as HTMLTemplateElement).innerHTML = '';
-    (document.querySelector('.news') as HTMLTemplateElement).appendChild(fragment);
+    (document.querySelector(EnumNews.news) as HTMLTemplateElement).innerHTML = '';
+    (document.querySelector(EnumNews.news) as HTMLTemplateElement).appendChild(fragment);
   }
 }
 

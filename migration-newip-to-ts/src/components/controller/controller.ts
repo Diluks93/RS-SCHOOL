@@ -1,10 +1,16 @@
-import { DrawNews, DrawSources } from '../view/appView';
+import { DrawNews, DrawSources, PickDrawNews } from '../view/appView';
 import AppLoader from './appLoader';
 import { Callback } from './loader';
 
 interface ClassAppController {
   getSources(callback: Callback<DrawSources | DrawNews>): void;
   getNews(e: Event, callback: Callback<DrawSources | DrawNews>): void;
+}
+
+enum EnumSource {
+  item = 'source__item',
+  sourceId = 'data-source-id',
+  source = 'data-source',
 }
 class AppController extends AppLoader implements ClassAppController {
   getSources(callback: Callback<DrawSources | DrawNews>): void {
@@ -16,15 +22,15 @@ class AppController extends AppLoader implements ClassAppController {
     );
   }
 
-  getNews(e: Event, callback: Callback<DrawSources | DrawNews>): void {
+  getNews(e: Event, callback: Callback<DrawSources | PickDrawNews>): void {
     let target: HTMLElement = e.target as HTMLElement;
     const newsContainer = e.currentTarget as HTMLElement;
 
     while (target !== newsContainer) {
-      if (target.classList.contains('source__item')) {
-        const sourceId = target.getAttribute('data-source-id') as never;
-        if (newsContainer.getAttribute('data-source') !== sourceId) {
-          newsContainer.setAttribute('data-source', sourceId);
+      if (target.classList.contains(EnumSource.item)) {
+        const sourceId = target.getAttribute(EnumSource.sourceId) as never;
+        if (newsContainer.getAttribute(EnumSource.source) !== sourceId) {
+          newsContainer.setAttribute(EnumSource.source, sourceId);
           super.getResp(
             {
               endpoint: 'everything',

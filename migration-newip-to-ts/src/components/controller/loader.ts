@@ -12,19 +12,13 @@ export type GetResp = {
 
 export type Callback<T> = (data: T) => void;
 
-interface ClassLoader {
-  getResp(firstArgument: GetResp, callback: Callback<DrawSources | DrawNews>): void;
-  errorHandler(res: Response): Response;
-  makeUrl(options: Options, endpoint: GetResp['endpoint']): string;
-  load(method: string, endpoint: GetResp['endpoint'], callback: Callback<DrawSources | DrawNews>): void;
-}
-class Loader implements ClassLoader {
-  constructor(private baseLink: string, protected options: Options) {
+class Loader {
+  protected constructor(readonly baseLink: string, protected options: Options) {
     this.baseLink = baseLink;
     this.options = options;
   }
 
-  getResp(
+  protected getResp(
     { endpoint, options = {} }: GetResp,
     callback: Callback<DrawSources | DrawNews> = () => {
       console.error('No callback for GET response');
@@ -33,7 +27,7 @@ class Loader implements ClassLoader {
     this.load('GET', endpoint, callback, options);
   }
 
-  errorHandler(res: Response): Response {
+  private errorHandler(res: Response): Response {
     if (!res.ok) {
       if (res.status === 401 || res.status === 404)
         console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
@@ -43,7 +37,7 @@ class Loader implements ClassLoader {
     return res;
   }
 
-  makeUrl(options: Options, endpoint: string): string {
+  private makeUrl(options: Options, endpoint: string): string {
     const urlOptions: Options = { ...this.options, ...options };
     let url = `${this.baseLink}${endpoint}?`;
 
@@ -54,7 +48,7 @@ class Loader implements ClassLoader {
     return url.slice(0, -1);
   }
 
-  load(method: string, endpoint: string, callback: Callback<DrawSources | DrawNews>, options = {}): void {
+  private load(method: string, endpoint: string, callback: Callback<DrawSources | DrawNews>, options = {}): void {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
       .then((res) => res.json())

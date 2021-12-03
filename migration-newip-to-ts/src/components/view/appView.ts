@@ -20,6 +20,8 @@ export interface ObjectSource {
   id: string;
   name: string;
 }
+
+export type PickDrawNews = Pick<DrawNews, 'status'>;
 export interface DrawSources {
   sources?: Array<ObjectSources>;
   status: string;
@@ -32,8 +34,8 @@ export interface ObjectSources extends ObjectSource {
   url: string;
 }
 interface ClassAppView {
-  news: News;
-  sources: Sources;
+  news: Partial<News>;
+  sources: Partial<Sources>;
   drawNews(data: DrawNews): void;
   drawSources(data: DrawSources): void;
 }
