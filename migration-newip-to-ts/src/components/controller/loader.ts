@@ -1,16 +1,5 @@
-import { DrawNews, DrawSources } from '../view/appView';
-
-export type Options = {
-  apiKey?: string | undefined;
-  sources?: string;
-};
-
-export type GetResp = {
-  endpoint: string;
-  options?: Record<string, never>;
-};
-
-export type Callback<T> = (data: T) => void;
+import { DrawNews, DrawSources } from '../utils/interfaces';
+import { Callback, GetResp, Options } from '../utils/types';
 
 class Loader {
   protected constructor(readonly baseLink: string, protected options: Options) {

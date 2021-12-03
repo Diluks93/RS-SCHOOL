@@ -1,21 +1,7 @@
-import { ObjectArticles } from '../appView';
+import { EnumNews } from '../../utils/enums';
+import { ClassNews, ObjectArticles } from '../../utils/interfaces';
 import './news.css';
 
-interface ClassNews {
-  draw(data: Array<ObjectArticles>): void;
-}
-
-enum EnumNews {
-  item = '.news__item',
-  photo = '.news__meta-photo',
-  author = '.news__meta-author',
-  date = '.news__meta-date',
-  title = '.news__description-title',
-  source = '.news__description-source',
-  content = '.news__description-content',
-  more = '.news__read-more a',
-  news = '.news',
-}
 class News implements ClassNews {
   draw(data: Array<ObjectArticles>): void {
     const news: Array<ObjectArticles> =

@@ -1,44 +1,7 @@
+import { ClassAppView, DrawNews, DrawSources } from '../utils/interfaces';
 import News from './news/news';
 import Sources from './sources/sources';
 
-export interface DrawNews {
-  status: string;
-  totalResults?: number;
-  articles?: Array<ObjectArticles>;
-}
-export interface ObjectArticles {
-  author: string;
-  content: string;
-  description: string;
-  publishedAt: string;
-  source: ObjectSource;
-  title: string;
-  url: string;
-  urlToImage: string;
-}
-export interface ObjectSource {
-  id: string;
-  name: string;
-}
-
-export type PickDrawNews = Pick<DrawNews, 'status'>;
-export interface DrawSources {
-  sources?: Array<ObjectSources>;
-  status: string;
-}
-export interface ObjectSources extends ObjectSource {
-  category: string;
-  country: string;
-  description: string;
-  language: string;
-  url: string;
-}
-interface ClassAppView {
-  news: Partial<News>;
-  sources: Partial<Sources>;
-  drawNews(data: DrawNews): void;
-  drawSources(data: DrawSources): void;
-}
 export class AppView implements ClassAppView {
   news: News;
 

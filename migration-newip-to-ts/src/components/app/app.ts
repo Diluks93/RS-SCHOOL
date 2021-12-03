@@ -1,11 +1,8 @@
 import AppController from '../controller/controller';
-import { AppView, DrawSources, PickDrawNews } from '../view/appView';
+import { ClassApp, DrawSources } from '../utils/interfaces';
+import { PickDrawNews } from '../utils/types';
+import { AppView } from '../view/appView';
 
-interface ClassApp {
-  controller: Partial<AppController>;
-  view: Partial<AppView>;
-  start(): void;
-}
 class App implements ClassApp {
   controller: AppController;
 

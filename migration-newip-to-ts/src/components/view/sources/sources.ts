@@ -1,9 +1,6 @@
-import { ObjectSources } from '../appView';
+import { ClassSources, ObjectSources } from '../../utils/interfaces';
 import './sources.css';
 
-interface ClassSources {
-  draw(data: Array<ObjectSources>): void;
-}
 class Sources implements ClassSources {
   draw(data: Array<ObjectSources>): void {
     const fragment: DocumentFragment = document.createDocumentFragment();

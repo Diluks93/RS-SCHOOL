@@ -1,17 +1,8 @@
-import { DrawNews, DrawSources, PickDrawNews } from '../view/appView';
+import { EnumSource } from '../utils/enums';
+import { ClassAppController, DrawNews, DrawSources } from '../utils/interfaces';
+import { Callback, PickDrawNews } from '../utils/types';
 import AppLoader from './appLoader';
-import { Callback } from './loader';
 
-interface ClassAppController {
-  getSources(callback: Callback<DrawSources | DrawNews>): void;
-  getNews(e: Event, callback: Callback<DrawSources | DrawNews>): void;
-}
-
-enum EnumSource {
-  item = 'source__item',
-  sourceId = 'data-source-id',
-  source = 'data-source',
-}
 class AppController extends AppLoader implements ClassAppController {
   getSources(callback: Callback<DrawSources | DrawNews>): void {
     super.getResp(
