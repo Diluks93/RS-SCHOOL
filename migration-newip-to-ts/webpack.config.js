@@ -14,7 +14,7 @@ const baseConfig = {
                 use: ['style-loader', 'css-loader'],
             },
             {
-                test: /\.ts?$/,
+                test: /\.[tj]s?$/,
                 use: 'ts-loader',
                 exclude: /node_modules/,
             },
