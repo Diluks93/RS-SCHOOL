@@ -2,22 +2,30 @@ body {
   color: #fff;
   background: #17181c;
   font-family: sans-serif;
+  height: 100vh;
+  margin: 0;
+}
+main {
+  height: 80%;
 }
 
 header {
   padding: 10px 30px;
+  height: 10%;
 }
 
 header h1 {
   font-size: 40px;
   font-weight: 800;
+  margin: 0;
 }
 
 footer {
-  height: 100px;
+  margin-top: 10px;
+  height: 4%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: baseline;
+  justify-content: space-evenly;
 }
 footer .copyright {
   font-size: 14px;
@@ -30,6 +38,22 @@ footer .copyright a {
 footer .copyright a:hover {
   color: #555;
 }
-footer .copyright:before {
+footer .copyright:nth-child(3):before{
   content: '©';
+}
+footer .footer__icon {
+  width: 5%;
+  height: 30%;
+}
+
+@media (max-width: 320px) {
+
+  header {
+    padding: 5px 15px;
+  }
+
+  header h1 {
+    font-size: 20px;
+  }
+
 }

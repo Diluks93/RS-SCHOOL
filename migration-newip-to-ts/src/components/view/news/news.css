@@ -1,3 +1,9 @@
+.news {
+  margin-top: 10px;
+  overflow-x: hidden;
+  height: 70%;
+}
+
 .news__item {
   display: flex;
   flex-direction: column;
