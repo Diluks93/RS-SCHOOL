@@ -1,3 +1,4 @@
+import { EnumSource } from '../../utils/enums';
 import { ClassSources, ObjectSources } from '../../utils/interfaces';
 import './sources.css';
 
@@ -8,9 +9,9 @@ class Sources implements ClassSources {
 
     data.forEach((item: ObjectSources): void => {
       const sourceClone: HTMLTemplateElement = sourceItemTemp.content.cloneNode(true) as HTMLTemplateElement;
-      //TODO enum
+
       (sourceClone.querySelector('.source__item-name') as HTMLTemplateElement).textContent = item.name;
-      (sourceClone.querySelector('.source__item') as HTMLTemplateElement).setAttribute('data-source-id', item.id);
+      (sourceClone.querySelector('.source__item') as HTMLTemplateElement).setAttribute(EnumSource.sourceId, item.id);
 
       fragment.append(sourceClone);
     });
