@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "alwaysStrict": true,
+    "forceConsistentCasingInFileNames": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strict": true,
+    "noEmitOnError": false,
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es5",
+    "allowJs": true,
+    "sourceMap": true,
+    "lib": ["DOM", "ES6", "ScriptHost"]
+  },
+  "files": ["src/index.ts"],
+  "include": ["./src/**/*"],
+  "exclude": [
+    "node_modules",
+    "./dist"
+  ]
+}
