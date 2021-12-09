@@ -1,0 +1,23 @@
+@import '../../../../styles/variables.scss';
+
+.header,
+.footer {
+  width: 100%;
+  background-color: $main-color;
+  font-family: $Lobster;
+  position: relative;
+  top: 0;
+  & .nav {
+    width: 40%;
+    text-align: center;
+    & .item {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.footer {
+  bottom: 0;
+  top: auto;
+  position: absolute;
+}

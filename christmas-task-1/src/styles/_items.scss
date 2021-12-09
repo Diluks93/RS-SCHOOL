@@ -1,0 +1,19 @@
+.items {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  height: 4rem;
+  & .item {
+    text-decoration: none;
+    transition: all 0.5s linear;
+    cursor: pointer;
+    &:hover {
+      color: $hover-color;
+    }
+    & img {
+    height: 3rem;
+    }
+  }
+}
