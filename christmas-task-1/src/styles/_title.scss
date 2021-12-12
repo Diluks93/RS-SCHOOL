@@ -21,4 +21,16 @@
     z-index: 100;
     margin: 0;
   }
+  &__label {
+    flex: 100%;
+    font-weight: bold;
+  }
+  &__article {
+    flex: 100%;
+  }
+  &__card,
+  &__game {
+    font-size: 1.5em;
+    text-transform: uppercase;
+  }
 }

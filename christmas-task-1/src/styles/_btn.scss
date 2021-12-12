@@ -16,4 +16,15 @@
   text-decoration: none;
   font-size: 1.5em;
   letter-spacing: 2px;
+  cursor: pointer;
+  &__articles {
+    width: 8rem;
+    height: auto;
+    position: static;
+    transform: translate(0);
+    align-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: 1em;
+  }
 }

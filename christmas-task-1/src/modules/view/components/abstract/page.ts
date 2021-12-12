@@ -12,7 +12,7 @@ export default abstract class Page {
     this.container.id = id;
   }
 
-  protected createHeaderTitle(text: string): string |HTMLHeadElement {
+  protected createHeaderTitle(text: string): string | HTMLHeadElement {
     return text;
   }
 

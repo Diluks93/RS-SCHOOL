@@ -1,5 +1,5 @@
 import Page from '../components/abstract/page';
-import './settings.scss'
+import './settings.scss';
 
 export default class SettingsPage extends Page {
   static textObject = {
@@ -10,16 +10,26 @@ export default class SettingsPage extends Page {
     super(id)
   }
 
-  protected createHeaderTitle(text: string) {
-    const headerTitle = document.createElement('h2');
-    headerTitle.className = 'title title__card'
-    headerTitle.innerText = text;
-    return headerTitle;
+  // protected createHeaderTitle(text: string) {
+  //   const headerTitle = document.createElement('h2');
+  //   headerTitle.className = 'title title__card'
+  //   headerTitle.innerText = text;
+  //   return headerTitle;
+  // }
+
+  protected createTemplate(): void {
+    const xhr: XMLHttpRequest = new XMLHttpRequest();
+    xhr.open('GET', 'settings.html');
+    xhr.onload = (): void => {
+      this.container.innerHTML = xhr.response;
+    }
+    xhr.send();
   }
-  
+
   render() {
-    const title = this.createHeaderTitle(SettingsPage.textObject.titleContent);
-    this.container.append(title);
+    // const title = this.createHeaderTitle(SettingsPage.textObject.titleContent);
+    // this.container.append(title);
+    this.createTemplate()
     return this.container
   }
 }

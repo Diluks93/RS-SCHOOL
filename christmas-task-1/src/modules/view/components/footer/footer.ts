@@ -12,7 +12,7 @@ const Buttons: {
     text: '2021',
   },
   {
-    text: `<img src="https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/svg/rss.svg" alt="logo course">`,
+    text: `<img src="https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/svg/rsschool.svg" alt="logo course">`,
     url: 'https://rs.school/js/'
   }
 ]

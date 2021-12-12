@@ -26,11 +26,18 @@ export default class HomePage extends Page {
     return buttonStart;
   }
 
-  render() {
-    const title = this.createHeaderTitle(HomePage.textObject.titleContent),
+  protected createWrapper(): HTMLElement {
+    const div = document.createElement('div'),
+      title = this.createHeaderTitle(HomePage.textObject.titleContent),
       button = this.createButtonStart(HomePage.textObject.buttonContent);
-      this.container.append(title);
-      this.container.append(button);
+    div.append(title);
+    div.append(button);
+    return div;
+  }
+
+  render() {
+    const wrapper = this.createWrapper();
+    this.container.append(wrapper);
     return this.container;
   }
 }
