@@ -16,6 +16,12 @@
   }
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .footer {
   bottom: 0;
   top: auto;

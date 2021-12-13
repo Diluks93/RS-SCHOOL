@@ -14,7 +14,7 @@ export default class App {
   private header: HeaderComponent;
   private footer: FooterComponent;
 
-  static renderNewPage(idPage: string) {
+  static async renderNewPage(idPage: string): Promise<void> {
     const currentPageHTML = document.getElementById(`${App.defaultPageId}`);
     if(currentPageHTML) {
       currentPageHTML.remove();
@@ -32,29 +32,29 @@ export default class App {
     }
 
     if(page) {
-      const pageHTML = page.render();
+      const pageHTML: Awaited<HTMLElement> = await page.render();
       pageHTML.id = App.defaultPageId;
       App.container.append(pageHTML);
     }
   }
 
   constructor() {
-    this.initialPage = new HomePage('home-page');
+    this.initialPage = new HomePage(Pages.homePage);
     this.header = new HeaderComponent('header', 'header');
-    this.footer = new FooterComponent('footer', 'footer')
+    this.footer = new FooterComponent('footer', 'footer');
   }
 
   private enableRouteChange(): void {
     window.addEventListener('hashchange', () => {
       const hash = window.location.hash.slice(1);
-      App.renderNewPage(hash)
+      App.renderNewPage(hash);
     })
   }
 
-  start(): void {
+  async start() {
     App.container.append(this.header.render());
-    App.renderNewPage('home-page');
-    App.container.append(this.footer.render())
+    App.renderNewPage(/* Pages.homePage */ Pages.settingsPage);
+    App.container.append(this.footer.render());
     this.enableRouteChange();
   }
 }

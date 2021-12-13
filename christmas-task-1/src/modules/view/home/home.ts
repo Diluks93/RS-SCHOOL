@@ -8,21 +8,23 @@ export default class HomePage extends Page {
   }
 
   constructor(id: string){
-    super(id)
+    super(id);
   }
 
   protected createHeaderTitle(text: string) {
     const headerTitle = document.createElement('h1');
     headerTitle.className = 'title title__main';
     headerTitle.innerText = text;
+
     return headerTitle;
   }
 
-  protected createButtonStart(text: string) {
+  protected createButtonStart(text: string): HTMLAnchorElement {
     const buttonStart = document.createElement('a');
     buttonStart.href = `#${Pages.settingsPage}`;
     buttonStart.className = 'btn btn__main';
     buttonStart.innerText = text;
+
     return buttonStart;
   }
 
@@ -32,12 +34,14 @@ export default class HomePage extends Page {
       button = this.createButtonStart(HomePage.textObject.buttonContent);
     div.append(title);
     div.append(button);
+
     return div;
   }
 
   render() {
     const wrapper = this.createWrapper();
     this.container.append(wrapper);
+
     return this.container;
   }
 }

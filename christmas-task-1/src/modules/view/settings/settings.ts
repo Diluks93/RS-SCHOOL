@@ -1,36 +1,61 @@
+import { ClassNameWrap, TemplateArticle } from '../../utils/enums';
 import Page from '../components/abstract/page';
+import { Card } from '../components/card/card';
 import './settings.scss';
 
 export default class SettingsPage extends Page {
+  private card: Card;
+  
   static textObject = {
     titleContent: 'Toys'
   }
 
   constructor(id: string) {
-    super(id)
+    super(id);
+    this.card = new Card('main', 'main');
   }
 
-  // protected createHeaderTitle(text: string) {
-  //   const headerTitle = document.createElement('h2');
-  //   headerTitle.className = 'title title__card'
-  //   headerTitle.innerText = text;
-  //   return headerTitle;
-  // }
+  protected createElement(nameElement: string): HTMLElement {
+    const element = document.createElement(nameElement);
+    element.className = nameElement;
 
-  protected createTemplate(): void {
-    const xhr: XMLHttpRequest = new XMLHttpRequest();
-    xhr.open('GET', 'settings.html');
-    xhr.onload = (): void => {
-      this.container.innerHTML = xhr.response;
+    return element;
+  }
+
+  protected createRoundCornerElement(): HTMLElement {
+    const div = document.createElement('div');
+    div.className = 'round-corner';
+
+    return div;
+  }
+
+  protected createComponent(className: string, template: TemplateArticle): HTMLElement {
+    const component = document.createElement('div');
+    component.className = className;
+    component.innerHTML = template;
+
+    return component;
+  }
+
+  protected createArticle(): HTMLElement {
+    const article = this.createElement('article');
+    const [roundCorner, componentSearch, componentSort, componentCategories, componentType, componentRange, componentColors, componentSize, componentFavorite, componentButtons] = [this.createRoundCornerElement(), this.createComponent(ClassNameWrap.classSearch, TemplateArticle.componentSearch), this.createComponent(ClassNameWrap.classSort, TemplateArticle.componentSort), this.createComponent(ClassNameWrap.classCategories, TemplateArticle.componentCategories), this.createComponent(ClassNameWrap.classType, TemplateArticle.componentType), this.createComponent(ClassNameWrap.classRange, TemplateArticle.componentRange), this.createComponent(ClassNameWrap.classColors, TemplateArticle.componentColors), this.createComponent(ClassNameWrap.classSize, TemplateArticle.componentSize), this.createComponent(ClassNameWrap.classFavorite, TemplateArticle.componentFavorite), this.createComponent(ClassNameWrap.classButtons, TemplateArticle.componentButtons)];
+
+    const arrayElementsArticle: HTMLElement[] = [roundCorner, componentSearch, componentSort, componentCategories, componentType, componentRange, componentColors, componentSize, componentFavorite, componentButtons];
+
+    for (const item of arrayElementsArticle) {
+      article.append(item);
     }
-    xhr.send();
-  }
+    this.container.append(article);
 
-  render() {
-    // const title = this.createHeaderTitle(SettingsPage.textObject.titleContent);
-    // this.container.append(title);
-    this.createTemplate()
-    return this.container
+    return this.container;
+  }
+  
+  async render() {
+    this.createArticle();
+    this.container.append(await this.card.render());
+
+    return this.container;
   }
 }
 

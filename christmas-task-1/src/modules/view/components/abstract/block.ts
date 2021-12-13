@@ -1,4 +1,4 @@
-import './block.scss'
+import './block.scss';
 
 export default abstract class Block {
   protected container: HTMLElement;
@@ -8,10 +8,13 @@ export default abstract class Block {
     this.container.className = className;
   }
 
-  protected renderPageButtons(): void {}
+  protected renderPageButtons(): void {
+    console.log('Component working!');
+  }
 
   render(): HTMLElement {
-    this.renderPageButtons()
+    this.renderPageButtons();
+
     return this.container;
   }
 }

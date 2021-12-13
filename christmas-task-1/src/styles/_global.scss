@@ -3,10 +3,23 @@
   font-size: 16px;
   color: white;
   margin: 0;
+  &::-webkit-scrollbar {
+    width: 0.2em;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $hover-color;
+    border-radius: 5px;
+    border: 3px solid transparent;
+  }
 }
 
 .page {
   background-image: url("https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/bg.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
   margin: 0;
 }
 

@@ -1,6 +1,10 @@
-export default class AppLoader {
-  
-}
+// import Loader from "./loader";
+
+// export default class AppLoader extends Loader {
+//   constructor() {
+//     super("https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/data.json")
+//   }
+// }
 
 /* class AppLoader extends Loader {
   constructor() {

@@ -19,7 +19,7 @@ const Buttons: {
 
 export default class FooterComponent extends Block {
   constructor(tagName:string, className: string) {
-    super(tagName, className)
+    super(tagName, className);
   }
 
   renderPageButtons() {
@@ -41,6 +41,6 @@ export default class FooterComponent extends Block {
       buttonHTML.className = 'item';
       pageButtons.append(buttonHTML);
     })
-    this.container.append(pageButtons)
+    this.container.append(pageButtons);
   }
 }

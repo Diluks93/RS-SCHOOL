@@ -13,10 +13,12 @@ export default abstract class Page {
   }
 
   protected createHeaderTitle(text: string): string | HTMLHeadElement {
+
     return text;
   }
 
-  render(): HTMLHeadElement {
+  render(): HTMLHeadElement | Promise<HTMLElement> {
+
     return this.container;
   }
 }

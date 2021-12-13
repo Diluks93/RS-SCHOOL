@@ -1,6 +1,5 @@
 import { ErrorType } from '../../utils/enums';
 import Page from '../components/abstract/page';
-import './error.scss'
 
 export default class ErrorPage extends Page {
   private errorType: ErrorType | string;
@@ -16,7 +15,8 @@ export default class ErrorPage extends Page {
 
   render() {
     const title = this.createHeaderTitle(ErrorPage.textObject.titleContent);
-    this.container.append(title)
+    this.container.append(title);
+
     return this.container;
   }
 }

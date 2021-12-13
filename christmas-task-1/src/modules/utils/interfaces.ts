@@ -1,4 +1,4 @@
-export interface Data {
+export interface DataToys {
   num: number;
   name: string;
   count: number;
@@ -11,5 +11,5 @@ export interface Data {
 
 export interface TextObject {
   titleContent: string;
-  buttonContent?: string
+  buttonContent?: string;
 }

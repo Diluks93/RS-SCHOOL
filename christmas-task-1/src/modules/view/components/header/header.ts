@@ -25,7 +25,7 @@ const Buttons: {
 
 export default class HeaderComponent extends Block {
   constructor(tagName: string, className: string) {
-    super(tagName, className)
+    super(tagName, className);
   }
 
   renderPageButtons() {
@@ -34,7 +34,7 @@ export default class HeaderComponent extends Block {
     Buttons.forEach((button, ind) => {
       const buttonHTML = document.createElement('a');
       buttonHTML.href = `#${button.id}`;
-      buttonHTML.className = 'item'
+      buttonHTML.className = 'item';
       ind === 0 ? buttonHTML.innerHTML = `${button.text}` : buttonHTML.innerText = `${button.text}`;
       pageButtons.append(buttonHTML);
     })
