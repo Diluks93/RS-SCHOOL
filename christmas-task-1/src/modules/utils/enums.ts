@@ -31,7 +31,7 @@ export const enum TemplateArticle {
     </a>
     <div class="search">
       <form>
-        <input type="search" placeholder="Search..." autocomplete="off">
+        <input type="search" placeholder="Search..." autocomplete="off" autofocus>
         <button type="submit"></button>
       </form>
     </div>

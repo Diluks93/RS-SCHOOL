@@ -30,6 +30,8 @@ export default class HeaderComponent extends Block {
 
   renderPageButtons() {
     const pageButtons = document.createElement('nav');
+    const div = document.createElement('div');
+    div.className = 'favorite'
     pageButtons.className = 'nav items';
     Buttons.forEach((button, ind) => {
       const buttonHTML = document.createElement('a');
@@ -39,5 +41,6 @@ export default class HeaderComponent extends Block {
       pageButtons.append(buttonHTML);
     })
     this.container.append(pageButtons);
+    this.container.append(div);
   }
 }

@@ -7,6 +7,7 @@ export class Card {
   private static url = "https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/data.json";
   private loader: Loader;
   private textTitle = 'Choose toys';
+  private maxLengthFavorites = 20;
 
   constructor(id: string, className: string) {
     this.container = document.createElement('main');
@@ -46,34 +47,62 @@ export class Card {
     return picture;
   }
 
-  private async showFavorites(): Promise<HTMLElement> {
-    const data: Awaited<DataToys>[] = await this.loader.load(),
-      arrayFavorites: DataToys[] = data.filter(favorite => favorite.favorite),
+  private async sortData(): Promise<DataToys[]> {
+    const srcData: Awaited<DataToys>[] = await this.loader.load(),
+      data: DataToys[] = srcData.map(item => item)
+
+    return data;
+  }
+
+  private async showFavorites(data: DataToys[]): Promise<HTMLElement> {
+    const div: HTMLDivElement = document.querySelector('.favorite') as HTMLDivElement;
+    const  arrayFavorites: DataToys[] = data.filter(favorite => favorite.favorite),
       header: HTMLElement = document.querySelector('header') as HTMLElement,
       count: string = arrayFavorites.length + '';
 
-    const span = this.createTextElement('Favorites:', count, 'favorites'),
-      arrayChildren: Element[] = Array.from(header.children);
+    const span = this.createTextElement('Favorites:', count, 'favorites');
 
-    if(arrayChildren.length === 1) {
-      header.append(span);
-    }
+    div.innerHTML = '';
+    div.append(span);
+    header.append(div);
 
     return header;
   }
 
-  protected async createElements(): Promise<HTMLDivElement> {
-    const data: Awaited<DataToys>[] = await this.loader.load();
+  private addFavoriteElement(data: DataToys[], element: HTMLDivElement) {  
+    element.addEventListener('click', async (e: Event) => {
+      const  arrayFavorites: DataToys[] = data.filter(favorite => favorite.favorite);
+      const target: HTMLElement = e.target as HTMLElement;
+      let index = 0;
+      if(target.dataset.id) {
+        index = +target.dataset.id;
+      }
+      if(target.matches('.card') && arrayFavorites.length < this.maxLengthFavorites) {
+        
+        if(data[index].favorite) {
+          data[index].favorite = false;
+        } else {
+          data[index].favorite = true;
+        }
+        
+        const element = await this.createElements(data);
+        this.container.innerHTML = '';
+        this.container.append(element);
+        this.showFavorites(data);
+      } else if (arrayFavorites.length === this.maxLengthFavorites) {
+        //todo написать модалку;
+        alert('You have chosen the maximum of your favorite toys');
+      }
+    })
+  }
+
+  protected async createElements(data: DataToys[]) {
     const cards: HTMLDivElement = document.createElement('div');
     cards.className = 'cards';
 
-    // cards.addEventListener('click', e => { 
-    //     let target = e.currentTarget;
-    //     //target.classList.add('active')
-    //     console.log(target);
-    //   })
+    this.addFavoriteElement(data, cards)
 
-    data.forEach((card: DataToys) => {
+    data.forEach((card: DataToys, index: number) => {
       const div: HTMLDivElement = document.createElement('div'),
         descr: HTMLDivElement = document.createElement('div'),
         title: HTMLElement = this.createTitle('h3', 'title title__cards', card.name),
@@ -94,6 +123,8 @@ export class Card {
         div.className = 'card';
       }
 
+      div.dataset.id = index + '';
+
       div.append(title);
       div.append(picture);
 
@@ -113,10 +144,10 @@ export class Card {
 
   async render() {
     const title = this.createTitle('h2', 'title title__card', this.textTitle);
-    const element = await this.createElements();
+    const element = await this.createElements(await this.sortData());
     this.container.append(title);
     this.container.append(element);
-    this.showFavorites();
+    this.showFavorites(await this.sortData())
 
     return this.container;
   }
