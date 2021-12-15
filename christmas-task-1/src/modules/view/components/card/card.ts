@@ -8,6 +8,7 @@ export class Card {
   private loader: Loader;
   private textTitle = 'Choose toys';
   private maxLengthFavorites = 20;
+  isNotSorted = true; 
 
   constructor(id: string, className: string) {
     this.container = document.createElement('main');
@@ -47,9 +48,34 @@ export class Card {
     return picture;
   }
 
-  private async sortData(): Promise<DataToys[]> {
-    const srcData: Awaited<DataToys>[] = await this.loader.load(),
-      data: DataToys[] = srcData.map(item => item)
+  async sortData(value = ''): Promise<DataToys[]> {
+    const srcData: Awaited<DataToys>[] = await this.loader.load();
+    let data: DataToys[] = srcData.map(item => item);
+
+    switch(value) {
+      case(''): data;
+        break;
+      case('of A - Z'): {data = srcData.sort((a, b) => {
+        const x = a.name.toLowerCase(),
+          y = b.name.toLowerCase();
+          if(x < y) {return -1;}
+          if(x > y) {return 1;}
+          return 0;
+      })}
+        break;
+      case('of Z - A'): {data = srcData.sort((a, b) => {
+        const x = a.name.toLowerCase(),
+          y = b.name.toLowerCase();
+          if(x < y) {return 1;}
+          if(x > y) {return -1;}
+          return 0;
+      })}
+        break;
+      case('of years in ascending order'): {data = srcData.sort((a, b) => a.year - b.year)}
+        break;
+      case('of years in descending  order'): {data = srcData.sort((a, b) => b.year - a.year)}
+        break;
+    }
 
     return data;
   }
@@ -143,12 +169,20 @@ export class Card {
     return cards;
   }
 
-  async render() {
+  async render(sort = this.sortData()) {
     const title = this.createTitle('h2', 'title title__card', this.textTitle);
-    const element = await this.createElements(await this.sortData());
-    this.container.append(title);
-    this.container.append(element);
-    this.showFavorites(await this.sortData());
+    const element = await this.createElements(await sort);
+    if(this.isNotSorted) {
+      this.container.append(title);
+      this.container.append(element);
+      this.showFavorites(await sort);
+      this.isNotSorted = false;
+    } else {
+      this.container.innerHTML = '';
+      this.container.append(title);
+      this.container.append(element);
+      this.showFavorites(await sort);
+    }
 
     return this.container;
   }

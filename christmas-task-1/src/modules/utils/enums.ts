@@ -54,23 +54,23 @@ export const enum TemplateArticle {
   componentType = `
     <h3 class="title title__article">Types</h3>
     <div class="wrap wrap__row">
-      <figure class="wrapper wrap__col">
+      <figure class="wrapper wrap__col" data.types="bell">
         <img src="https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/svg/bell.svg" alt="bell" class="img img__type">
         <figcaption class="img__descr">Bell</figcaption>
       </figure>
-      <figure class="wrapper wrap__col">
+      <figure class="wrapper wrap__col" data.types="ball">
         <img src="https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/svg/ball.svg" alt="ball" class="img img__type">
         <figcaption class="img__descr">Ball</figcaption>
       </figure>
-      <figure class="wrapper wrap__col">
+      <figure class="wrapper wrap__col" data.types="pine">
         <img src="https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/svg/pine.svg" alt="pine" class="img img__type">
         <figcaption class="img__descr">Pine</figcaption>
       </figure>
-      <figure class="wrapper wrap__col">
+      <figure class="wrapper wrap__col" data.types="snowflake">
         <img src="https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/svg/snowflake.svg" alt="snowflake" class="img img__type">
         <figcaption class="img__descr">Snowflake</figcaption>
       </figure>
-      <figure class="wrapper wrap__col">
+      <figure class="wrapper wrap__col" data.types="figure">
         <img src="https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/svg/toy.svg" alt="figure" class="img img__type">
         <figcaption class="img__descr">Figure</figcaption>
       </figure>

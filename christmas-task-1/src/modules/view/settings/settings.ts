@@ -86,6 +86,8 @@ export default class SettingsPage extends Page {
       );
     this.container.append(article);
 
+    this.sortedData(componentSort)
+
     return this.container;
   }
 
@@ -149,6 +151,16 @@ export default class SettingsPage extends Page {
     slider.noUiSlider.on('update', function (values: string[], handle: number) {
       snapValues[handle].innerHTML = values[handle];
     });
+  }
+
+  private sortedData(component: HTMLElement) {
+    const sort: HTMLInputElement = component.querySelector('#sort') as HTMLInputElement;
+
+    sort?.addEventListener('change', () => {
+      const sortData = this.card.sortData(sort.value);
+      this.card.render(sortData);
+      sort.value = '';
+    })
   }
   
   async render() {
