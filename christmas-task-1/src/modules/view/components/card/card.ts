@@ -96,6 +96,7 @@ export class Card {
     })
   }
 
+
   protected async createElements(data: DataToys[]) {
     const cards: HTMLDivElement = document.createElement('div');
     cards.className = 'cards';
@@ -147,7 +148,7 @@ export class Card {
     const element = await this.createElements(await this.sortData());
     this.container.append(title);
     this.container.append(element);
-    this.showFavorites(await this.sortData())
+    this.showFavorites(await this.sortData());
 
     return this.container;
   }

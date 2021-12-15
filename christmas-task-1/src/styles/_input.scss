@@ -9,7 +9,7 @@ form {
   background: $main-color;
   & input {
     width: 100%;
-    height: 42px;
+    height: 2em;
     padding-left: 10px;
     border: 2px solid $hover-color;
     border-radius: 5px;
@@ -21,8 +21,8 @@ form {
     position: absolute; 
     top: 0;
     right: 0px;
-    width: 42px;
-    height: 42px;
+    width: 2em;
+    height: 2em;
     border: none;
     background: $hover-color;
     border-radius: 0 5px 5px 0;
@@ -62,7 +62,7 @@ form {
 .sort {
   flex: 100%;
   background: $main-color;
-  height: 42px;
+  height: 2em;
   padding-left: 10px;
   margin-top: 0.3em;
   border: 2px solid $hover-color;
@@ -121,8 +121,8 @@ form {
 }
 
 .color {
-  width: 2em;
-  height: 2em;
+  width: 1em;
+  height: 1em;
   border: none;
   -webkit-appearance: none;
   overflow: hidden;

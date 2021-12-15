@@ -13,3 +13,12 @@ export interface TextObject {
   titleContent: string;
   buttonContent?: string;
 }
+
+export interface ParamNoUiSlider {
+  selector: string;
+  startValue: number;
+  endValue: number;
+  step: number;
+  minValue: number;
+  maxValue: number;
+}

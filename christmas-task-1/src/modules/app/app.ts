@@ -51,7 +51,7 @@ export default class App {
     })
   }
 
-  async start() {
+  start() {
     App.container.append(this.header.render());
     App.renderNewPage(/* Pages.homePage */ Pages.settingsPage);
     App.container.append(this.footer.render());

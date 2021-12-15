@@ -14,10 +14,10 @@ export const enum ClassNameWrap {
   classSort = 'wrap comp__sort',
   classCategories = 'wrap comp__categories',
   classType = 'wrap comp__type',
-  classRange = 'wrap copm__range',
+  classRange = 'wrap comp__range',
   classColors = 'wrap comp__colors',
   classSize = 'wrap wrap__row comp__size',
-  classFavorite = 'wrap favorite',
+  classFavorite = 'wrap comp__favorite',
   classButtons = 'wrap wrap__row comp__buttons',
 }
 
@@ -48,7 +48,7 @@ export const enum TemplateArticle {
   `,
   componentCategories = `
     <h3 class="title title__article">Categories</h3>
-    <input type="checkbox" name="select-all" class="custom-checkbox" id="select-all" >
+    <input type="checkbox" name="select-all" class="custom-checkbox" id="select-all" checked>
     <label class="descr" for="select-all">Select all</label>
   `,
   componentType = `
@@ -77,10 +77,22 @@ export const enum TemplateArticle {
     </div>
   `,
   componentRange = `
-    <label class="title title__label" for="count">Number of instances</label>
-    <input type="range" name="count" id="count">
-    <label class="title title__label" for="year">Years</label>
-    <input type="range" name="year" id="year">
+    <div class="count">
+      <label class="title title__label" for="count">Number of instances</label>
+      <div id="count"></div>
+      <div class="wrap wrap__row">
+        <span id="slider-range-value-count-lower"></span>
+        <span id="slider-range-value-count-upper"></span>
+      </div>
+    </div>
+    <div class="year">
+      <label class="title title__label" for="year">Years</label>
+      <div id="year"></div>
+      <div class="wrap wrap__row">
+        <span id="slider-range-value-year-lower"></span>
+        <span id="slider-range-value-year-upper"></span>
+      </div>
+    </div>
   `,
   componentColors = `
     <label class="title title__label" for="color">Colors</label>

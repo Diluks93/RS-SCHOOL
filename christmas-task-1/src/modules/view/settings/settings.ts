@@ -1,13 +1,32 @@
 import { ClassNameWrap, TemplateArticle } from '../../utils/enums';
 import Page from '../components/abstract/page';
 import { Card } from '../components/card/card';
+import '../../../../node_modules/nouislider/dist/nouislider.css'
 import './settings.scss';
+import noUiSlider from '../../../../node_modules/nouislider/dist/nouislider.mjs';
+import { ParamNoUiSlider } from '../../utils/interfaces';
 
 export default class SettingsPage extends Page {
   private card: Card;
   
   static textObject = {
     titleContent: 'Toys'
+  }
+  static paramNoUiSliderCount: ParamNoUiSlider = {
+    selector: '#count',
+    startValue: 1,
+    endValue: 12,
+    step: 1,
+    minValue: 1,
+    maxValue: 12
+  }
+  static paramNoUiSliderYear: ParamNoUiSlider = {
+    selector: '#year',
+    startValue: 1940,
+    endValue: 2020,
+    step: 10,
+    minValue: 1940,
+    maxValue: 2020
   }
 
   constructor(id: string) {
@@ -46,9 +65,90 @@ export default class SettingsPage extends Page {
     for (const item of arrayElementsArticle) {
       article.append(item);
     }
+
+    this.useLibraryCount(
+      componentRange,
+      SettingsPage.paramNoUiSliderCount.selector,
+      SettingsPage.paramNoUiSliderCount.startValue,
+      SettingsPage.paramNoUiSliderCount.endValue,
+      SettingsPage.paramNoUiSliderCount.step,
+      SettingsPage.paramNoUiSliderCount.minValue,
+      SettingsPage.paramNoUiSliderCount.maxValue
+      );
+    this.useLibraryYear(
+      componentRange,
+      SettingsPage.paramNoUiSliderYear.selector,
+      SettingsPage.paramNoUiSliderYear.startValue,
+      SettingsPage.paramNoUiSliderYear.endValue,
+      SettingsPage.paramNoUiSliderYear.step,
+      SettingsPage.paramNoUiSliderYear.minValue,
+      SettingsPage.paramNoUiSliderYear.maxValue
+      );
     this.container.append(article);
 
     return this.container;
+  }
+
+  private useLibraryCount(component: HTMLElement, selector: string, start: number, finish: number, step: number, minValue: number, maxValue: number): void {
+    const slider: any = component.querySelector(selector) as Element;
+    noUiSlider.create(slider, {
+      start: [start, finish],
+      step: step,
+      connect: true,
+      range: {
+        'min': minValue,
+        'max': maxValue
+      },
+      tooltips: [true, true],
+      format: {
+        to: function (value: string) {
+          return Math.round(+value);
+        },
+        from: function (value: string) {
+          return Number(value);
+        }
+      }
+    });
+
+    const snapValues: HTMLElement[] = [
+      component.querySelector('#slider-range-value-count-lower') as HTMLElement,
+      component.querySelector('#slider-range-value-count-upper') as HTMLElement
+    ];
+
+    slider.noUiSlider.on('update', function (values: string[], handle: number) {
+      snapValues[handle].innerHTML = values[handle];
+    });
+  }
+
+  private useLibraryYear(component: HTMLElement, selector: string, start: number, finish: number, step: number, minValue: number, maxValue: number) {
+    const slider: any = component.querySelector(selector) as Element;
+    noUiSlider.create(slider, {
+      start: [start, finish],
+      tooltips: [true, true],
+      step: step,
+      connect: true,
+      range: {
+        'min': minValue,
+        'max': maxValue
+      },
+      format: {
+        to: function (value: string) {
+          return Math.round(+value);
+        },
+        from: function (value: string) {
+          return Number(value);
+        }
+      }
+    });
+
+    const snapValues: HTMLElement[] = [
+      component.querySelector('#slider-range-value-year-lower') as HTMLElement,
+      component.querySelector('#slider-range-value-year-upper') as HTMLElement
+    ];
+
+    slider.noUiSlider.on('update', function (values: string[], handle: number) {
+      snapValues[handle].innerHTML = values[handle];
+    });
   }
   
   async render() {
