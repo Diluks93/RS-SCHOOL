@@ -22,3 +22,10 @@ export interface ParamNoUiSlider {
   minValue: number;
   maxValue: number;
 }
+
+export interface Flakes {
+  x: number;
+  y: number;
+  r: number;
+  d: number;
+}

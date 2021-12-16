@@ -9,6 +9,7 @@
     text-decoration: none;
     transition: all 0.5s linear;
     cursor: pointer;
+    z-index: 1;
     &:hover {
       color: $hover-color;
     }

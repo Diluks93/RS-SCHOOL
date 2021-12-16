@@ -1,4 +1,4 @@
-import Loader from '../../../controller/loader';
+import Loader from '../../../loader/loader';
 import { DataToys } from '../../../utils/interfaces';
 import './cards.scss';
 
@@ -8,7 +8,7 @@ export class Card {
   private loader: Loader;
   private textTitle = 'Choose toys';
   private maxLengthFavorites = 20;
-  isNotSorted = true; 
+  private isNotSorted = true; 
 
   constructor(id: string, className: string) {
     this.container = document.createElement('main');
@@ -130,7 +130,6 @@ export class Card {
       }
     })
   }
-
 
   protected async createElements(data: DataToys[]) {
     const cards: HTMLDivElement = document.createElement('div');

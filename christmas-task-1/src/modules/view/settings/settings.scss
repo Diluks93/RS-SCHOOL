@@ -18,6 +18,7 @@
     flex: 2;
     &_link {
       padding: 0.3em;
+      z-index: 1;
     }
   }
   &__sort {
@@ -44,6 +45,7 @@
   }
   &__buttons {
     flex: 1;
+    z-index: 1;
     &.wrap__row {
       justify-content: space-around;
     }

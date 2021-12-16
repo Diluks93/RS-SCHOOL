@@ -23,6 +23,7 @@
   backdrop-filter: blur(4px);
   border-radius: 10px;
   padding: 1rem;
+  z-index: 1;
   cursor: pointer;
   transition: all 0.5s linear;
   // animation: showCards 1s ease-in-out;
