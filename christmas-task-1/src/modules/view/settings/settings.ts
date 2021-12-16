@@ -6,6 +6,16 @@ import './settings.scss';
 import noUiSlider from '../../../../node_modules/nouislider/dist/nouislider.mjs';
 import { ParamNoUiSlider } from '../../utils/interfaces';
 
+declare namespace noUiSlider {
+    interface noUiSlider {
+      on: (firstArgument: string, secondArgument: (values: string[], handle: number) => void) => void
+    }
+
+    interface Instance extends HTMLElement {
+        noUiSlider: noUiSlider
+    }
+}
+
 export default class SettingsPage extends Page {
   private card: Card;
   
@@ -92,7 +102,7 @@ export default class SettingsPage extends Page {
   }
 
   private useLibraryCount(component: HTMLElement, selector: string, start: number, finish: number, step: number, minValue: number, maxValue: number): void {
-    const slider: any = component.querySelector(selector) as Element;
+    const slider: noUiSlider.Instance = component.querySelector(selector) as noUiSlider.Instance;
     noUiSlider.create(slider, {
       start: [start, finish],
       step: step,
@@ -123,7 +133,7 @@ export default class SettingsPage extends Page {
   }
 
   private useLibraryYear(component: HTMLElement, selector: string, start: number, finish: number, step: number, minValue: number, maxValue: number) {
-    const slider: any = component.querySelector(selector) as Element;
+    const slider: noUiSlider.Instance = component.querySelector(selector) as noUiSlider.Instance;
     noUiSlider.create(slider, {
       start: [start, finish],
       tooltips: [true, true],

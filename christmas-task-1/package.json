@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/rolling-scopes-school/diluks93-JSFE2021Q3/tree/christmas-task#readme",
   "devDependencies": {
+    "@types/nouislider": "^15.0.0",
     "@typescript-eslint/eslint-plugin": "^5.6.0",
     "@typescript-eslint/parser": "^5.6.0",
     "@webpack-cli/generators": "^2.4.1",

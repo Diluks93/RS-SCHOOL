@@ -12,12 +12,13 @@
     "target": "es5",
     "allowJs": true,
     "sourceMap": true,
-    "lib": ["DOM", "ES6", "ScriptHost"]
+    "lib": ["DOM", "ES6", "ScriptHost"],
+    "outDir": "lib"
   },
   "files": ["src/index.ts"],
   "include": ["./src/**/*"],
   "exclude": [
     "node_modules",
-    "./dist"
+    "dist",
   ]
 }
