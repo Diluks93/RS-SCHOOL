@@ -80,6 +80,15 @@ export class Card {
     return data;
   }
 
+  async filterData(value: Array<number>, isCount: boolean): Promise<DataToys[]> {
+    const  data: DataToys[] = await this.sortData();
+    if(isCount) {
+      return data.filter(item => item.count >= value[0] && item.count <= value[1]);
+    } else {
+      return data.filter(item => item.year >= value[0] && item.year <= value[1])
+    }
+  }
+
   private async showFavorites(data: DataToys[]): Promise<HTMLElement> {
     const div: HTMLDivElement = document.querySelector('.favorite') as HTMLDivElement;
     const  arrayFavorites: DataToys[] = data.filter(favorite => favorite.favorite),

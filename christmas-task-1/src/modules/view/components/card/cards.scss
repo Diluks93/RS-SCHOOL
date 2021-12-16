@@ -3,10 +3,10 @@
 .cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-top: 1em;
   row-gap: 2em;
-  column-gap: 0.5em;
+  column-gap: 1.5em;
 }
 
 .card {

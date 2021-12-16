@@ -8,7 +8,9 @@ import { ParamNoUiSlider } from '../../utils/interfaces';
 
 declare namespace noUiSlider {
     interface noUiSlider {
-      on: (firstArgument: string, secondArgument: (values: string[], handle: number) => void) => void
+      on: (firstArgument: string, secondArgument: (values: string[], handle: number) => void) => void;
+      get: () => Array<number>;
+      set: (firstArgument: Array<number>) => void;
     }
 
     interface Instance extends HTMLElement {
@@ -102,7 +104,8 @@ export default class SettingsPage extends Page {
   }
 
   private useLibraryCount(component: HTMLElement, selector: string, start: number, finish: number, step: number, minValue: number, maxValue: number): void {
-    const slider: noUiSlider.Instance = component.querySelector(selector) as noUiSlider.Instance;
+    const slider: noUiSlider.Instance = component.querySelector(selector) as noUiSlider.Instance,
+      secondSlider: noUiSlider.Instance = slider.parentNode?.nextSibling?.nextSibling?.childNodes[2].nextSibling as noUiSlider.Instance;
     noUiSlider.create(slider, {
       start: [start, finish],
       step: step,
@@ -126,10 +129,18 @@ export default class SettingsPage extends Page {
     slider.noUiSlider.on('update', (values: string[], handle: number) => {
       snapValues[handle].innerHTML = values[handle];
     });
+
+    slider.addEventListener('mouseup', () => {
+      const filterData = this.card.filterData(slider.noUiSlider.get(), true);
+      secondSlider.noUiSlider.set([SettingsPage.paramNoUiSliderYear.startValue, SettingsPage.paramNoUiSliderYear.endValue])
+      this.card.render(filterData);
+    });
   }
 
   private useLibraryYear(component: HTMLElement, selector: string, start: number, finish: number, step: number, minValue: number, maxValue: number) {
-    const slider: noUiSlider.Instance = component.querySelector(selector) as noUiSlider.Instance;
+    const slider: noUiSlider.Instance = component.querySelector(selector) as noUiSlider.Instance,
+      secondSlider: noUiSlider.Instance = slider.parentNode?.previousSibling?.previousSibling?.childNodes[2].nextSibling as noUiSlider.Instance;
+
     noUiSlider.create(slider, {
       start: [start, finish],
       tooltips: [true, true],
@@ -152,6 +163,12 @@ export default class SettingsPage extends Page {
 
     slider.noUiSlider.on('update', (values: string[], handle: number) => {
       snapValues[handle].innerHTML = values[handle];
+    });
+
+    slider.addEventListener('mouseup', () => {
+      const filterData = this.card.filterData(slider.noUiSlider.get(), false);
+      secondSlider.noUiSlider.set([SettingsPage.paramNoUiSliderCount.startValue, SettingsPage.paramNoUiSliderCount.endValue])
+      this.card.render(filterData);
     });
   }
 
