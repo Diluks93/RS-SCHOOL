@@ -113,12 +113,8 @@ export default class SettingsPage extends Page {
       },
       tooltips: [true, true],
       format: {
-        to: function (value: string) {
-          return Math.round(+value);
-        },
-        from: function (value: string) {
-          return Number(value);
-        }
+        to: (value: string) => Math.round(+value),
+        from: (value: string) => Number(value)
       }
     });
 
@@ -127,7 +123,7 @@ export default class SettingsPage extends Page {
       component.querySelector('#slider-range-value-count-upper') as HTMLElement
     ];
 
-    slider.noUiSlider.on('update', function (values: string[], handle: number) {
+    slider.noUiSlider.on('update', (values: string[], handle: number) => {
       snapValues[handle].innerHTML = values[handle];
     });
   }
@@ -144,12 +140,8 @@ export default class SettingsPage extends Page {
         'max': maxValue
       },
       format: {
-        to: function (value: string) {
-          return Math.round(+value);
-        },
-        from: function (value: string) {
-          return Number(value);
-        }
+        to: (value: string) => Math.round(+value),
+        from: (value: string) => Number(value)
       }
     });
 
@@ -158,7 +150,7 @@ export default class SettingsPage extends Page {
       component.querySelector('#slider-range-value-year-upper') as HTMLElement
     ];
 
-    slider.noUiSlider.on('update', function (values: string[], handle: number) {
+    slider.noUiSlider.on('update', (values: string[], handle: number) => {
       snapValues[handle].innerHTML = values[handle];
     });
   }
