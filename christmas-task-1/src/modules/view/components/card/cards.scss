@@ -56,7 +56,9 @@
   }
 }
 
-.favorites {
-  padding-right: 1em;
-  font-size: 1.5em;
+.unique {
+  &__item {
+    padding-right: 1em;
+    font-size: 1.5em;
+  }
 }

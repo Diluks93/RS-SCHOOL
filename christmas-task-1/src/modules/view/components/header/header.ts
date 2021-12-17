@@ -31,7 +31,7 @@ export default class HeaderComponent extends Block {
   renderPageButtons() {
     const pageButtons = document.createElement('nav');
     const div = document.createElement('div');
-    div.className = 'favorite'
+    div.className = 'unique'
     pageButtons.className = 'nav items';
     Buttons.forEach((button, ind) => {
       const buttonHTML = document.createElement('a');

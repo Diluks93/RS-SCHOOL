@@ -7,7 +7,7 @@ export class Card {
   private static url = "https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/data.json";
   private loader: Loader;
   private textTitle = 'Choose toys';
-  private maxLengthFavorites = 20;
+  private MAX_LENGTH_UNIQUE = 20;
   private isNotSorted = true; 
 
   constructor(id: string, className: string) {
@@ -17,35 +17,22 @@ export class Card {
     this.container.className = className;
   }
 
-  private createTitle(tagName: string, className: string, text: string): HTMLElement {
-    const title: HTMLElement = document.createElement(tagName);
-    title.className = className;
-    title.innerHTML = text;
-
-    return title;
-  }
-  
-  private createTextElement(template: string, text: number | string, className = 'card__descr'): HTMLSpanElement {
-    const span: HTMLSpanElement = document.createElement('span');
-    span.className = className;
-    span.innerHTML = `${template} ${text}`;
-
-    return span;
-  }
-
-  private createImgElement(num: number): HTMLPictureElement {
-    const picture: HTMLPictureElement = document.createElement('picture'),
-      img: HTMLImageElement = document.createElement('img'),
-      source: HTMLSourceElement  = document.createElement('source');
-
-    source.srcset = `https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/toys/${num}.webp`;
-    img.alt = 'toy';
-    img.src = `https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/toys/${num}.png`;
-    img.className = 'img img__card';
-    picture.append(source);
-    picture.append(img);
-
-    return picture;
+  async render(sort = this.sortData()) {
+    const title = this.createTitle('h2', 'title title__card', this.textTitle);
+    const element = await this.createElements(await sort);
+    if(this.isNotSorted) {
+      this.container.append(title);
+      this.container.append(element);
+      this.showUnique(await sort);
+      this.isNotSorted = false;
+    } else {
+      this.container.innerHTML = '';
+      this.container.append(title);
+      this.container.append(element);
+      this.showUnique(await sort);
+    }
+    
+    return this.container;
   }
 
   async sortData(value = ''): Promise<DataToys[]> {
@@ -89,13 +76,43 @@ export class Card {
     }
   }
 
-  private async showFavorites(data: DataToys[]): Promise<HTMLElement> {
-    const div: HTMLDivElement = document.querySelector('.favorite') as HTMLDivElement;
-    const  arrayFavorites: DataToys[] = data.filter(favorite => favorite.favorite),
-      header: HTMLElement = document.querySelector('header') as HTMLElement,
-      count: string = arrayFavorites.length + '';
+  private createTitle(tagName: string, className: string, text: string): HTMLElement {
+    const title: HTMLElement = document.createElement(tagName);
+    title.className = className;
+    title.innerHTML = text;
 
-    const span = this.createTextElement('Favorites:', count, 'favorites');
+    return title;
+  }
+  
+  private createTextElement(template: string, text: number | string, className = 'card__descr'): HTMLSpanElement {
+    const span: HTMLSpanElement = document.createElement('span');
+    span.className = className;
+    span.innerHTML = `${template} ${text}`;
+
+    return span;
+  }
+
+  private createImgElement(num: number): HTMLPictureElement {
+    const picture: HTMLPictureElement = document.createElement('picture'),
+      img: HTMLImageElement = document.createElement('img'),
+      source: HTMLSourceElement  = document.createElement('source');
+
+    source.srcset = `https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/toys/${num}.webp`;
+    img.alt = 'toy';
+    img.src = `https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/toys/${num}.png`;
+    img.className = 'img img__card';
+    picture.append(source);
+    picture.append(img);
+
+    return picture;
+  }
+
+  private async showUnique(data: DataToys[]): Promise<HTMLElement> {
+    const div: HTMLDivElement = document.querySelector('.unique') as HTMLDivElement,
+      arrayUnique: DataToys[] = data.filter(item => item.unique),
+      header: HTMLElement = document.querySelector('header') as HTMLElement,
+      count: string = arrayUnique.length + '',
+      span: HTMLSpanElement = this.createTextElement('Your choose:', count, 'unique__item');
 
     div.innerHTML = '';
     div.append(span);
@@ -104,27 +121,22 @@ export class Card {
     return header;
   }
 
-  private addFavoriteElement(data: DataToys[], element: HTMLDivElement) {  
+  private addUniqueElement(data: DataToys[], element: HTMLDivElement) {  
     element.addEventListener('click', async (e: Event) => {
-      const  arrayFavorites: DataToys[] = data.filter(favorite => favorite.favorite);
-      const target: HTMLElement = e.target as HTMLElement;
-      let index = 0;
-      if(target.dataset.id) {
-        index = +target.dataset.id;
-      }
-      if(target.matches('.card') && arrayFavorites.length < this.maxLengthFavorites) {
+      const  arrayUnique: DataToys[] = data.filter(item => item.unique),
+        card: HTMLElement = e.target as HTMLElement,
+        index = card.dataset.id ? +card.dataset.id : 1;
+
+      if(card.matches('.card') && arrayUnique.length < this.MAX_LENGTH_UNIQUE) {
+        data[index].unique = true || false;
         
-        if(data[index].favorite) {
-          data[index].favorite = false;
-        } else {
-          data[index].favorite = true;
-        }
-        
-        const element = await this.createElements(data);
+        const element = await this.createElements(data),
+          title = this.createTitle('h2', 'title title__card', this.textTitle);
         this.container.innerHTML = '';
+        this.container.append(title);
         this.container.append(element);
-        this.showFavorites(data);
-      } else if (arrayFavorites.length === this.maxLengthFavorites) {
+        this.showUnique(data);
+      } else if (arrayUnique.length === this.MAX_LENGTH_UNIQUE) {
         //todo написать модалку;
         alert('You have chosen the maximum of your favorite toys');
       }
@@ -135,7 +147,7 @@ export class Card {
     const cards: HTMLDivElement = document.createElement('div');
     cards.className = 'cards';
 
-    this.addFavoriteElement(data, cards)
+    this.addUniqueElement(data, cards)
 
     data.forEach((card: DataToys, index: number) => {
       const div: HTMLDivElement = document.createElement('div'),
@@ -146,18 +158,11 @@ export class Card {
         year: HTMLSpanElement = this.createTextElement('Year of purchase:', card.year),
         type: HTMLSpanElement = this.createTextElement('Type toys:', card.shape),
         color: HTMLSpanElement = this.createTextElement('Color:', card.color),
-        size: HTMLSpanElement = this.createTextElement('Size:', card.size);
-      let favorite: HTMLSpanElement;
+        size: HTMLSpanElement = this.createTextElement('Size:', card.size),  
+        favorite: HTMLSpanElement = card.favorite ? this.createTextElement('Favorite:', 'yes') : this.createTextElement('Favorite:', 'no');
 
       descr.className = 'descr';
-      if(card.favorite) {
-        favorite = this.createTextElement('Favorite:', 'yes');
-        div.className = 'card active';
-      } else {
-        favorite = this.createTextElement('Favorite:', 'no');
-        div.className = 'card';
-      }
-
+      div.className = card.unique ? 'card active' : 'card'
       div.dataset.id = index + '';
 
       div.append(title);
@@ -177,21 +182,4 @@ export class Card {
     return cards;
   }
 
-  async render(sort = this.sortData()) {
-    const title = this.createTitle('h2', 'title title__card', this.textTitle);
-    const element = await this.createElements(await sort);
-    if(this.isNotSorted) {
-      this.container.append(title);
-      this.container.append(element);
-      this.showFavorites(await sort);
-      this.isNotSorted = false;
-    } else {
-      this.container.innerHTML = '';
-      this.container.append(title);
-      this.container.append(element);
-      this.showFavorites(await sort);
-    }
-
-    return this.container;
-  }
 }

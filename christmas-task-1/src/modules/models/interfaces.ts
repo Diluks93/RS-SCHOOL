@@ -7,6 +7,7 @@ export interface DataToys {
   color: string;
   size: string;
   favorite: boolean;
+  unique?: boolean;
 }
 
 export interface TextObject {
