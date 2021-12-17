@@ -19,7 +19,7 @@ class AppController extends AppLoader implements ClassAppController {
 
     while (buttonNews !== newsContainer) {
       if (buttonNews.classList.contains(EnumSource.item)) {
-        const sourceId = buttonNews.getAttribute(EnumSource.sourceId) as never;
+        const sourceId = buttonNews.getAttribute(EnumSource.sourceId) as string;
         if (newsContainer.getAttribute(EnumSource.source) !== sourceId) {
           newsContainer.setAttribute(EnumSource.source, sourceId);
           super.getResp(

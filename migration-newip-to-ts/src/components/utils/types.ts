@@ -7,7 +7,7 @@ export type Options = {
 
 export type GetResp = {
   endpoint: string;
-  options?: Record<string, never>;
+  options?: Record<string, string>;
 };
 
 export type Callback<T> = (data: T) => void;
