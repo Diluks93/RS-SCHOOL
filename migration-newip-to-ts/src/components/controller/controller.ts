@@ -14,12 +14,12 @@ class AppController extends AppLoader implements ClassAppController {
   }
 
   getNews(e: Event, callback: Callback<DrawSources | PickDrawNews>): void {
-    let target: HTMLElement = e.target as HTMLElement;
+    let buttonNews: HTMLElement = e.target as HTMLElement;
     const newsContainer = e.currentTarget as HTMLElement;
 
-    while (target !== newsContainer) {
-      if (target.classList.contains(EnumSource.item)) {
-        const sourceId = target.getAttribute(EnumSource.sourceId) as never;
+    while (buttonNews !== newsContainer) {
+      if (buttonNews.classList.contains(EnumSource.item)) {
+        const sourceId = buttonNews.getAttribute(EnumSource.sourceId) as never;
         if (newsContainer.getAttribute(EnumSource.source) !== sourceId) {
           newsContainer.setAttribute(EnumSource.source, sourceId);
           super.getResp(
@@ -34,7 +34,7 @@ class AppController extends AppLoader implements ClassAppController {
         }
         return;
       }
-      target = target.parentNode as HTMLElement;
+      buttonNews = buttonNews.parentNode as HTMLElement;
     }
   }
 }
