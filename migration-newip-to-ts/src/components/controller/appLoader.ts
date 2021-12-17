@@ -9,5 +9,3 @@ class AppLoader extends Loader {
 }
 
 export default AppLoader;
-//! https://nodenews.herokuapp.com/
-//! https://newsapi.org/v2/  было
