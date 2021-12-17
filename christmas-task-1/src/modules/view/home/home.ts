@@ -1,4 +1,4 @@
-import { Pages } from '../../utils/enums';
+import { Pages } from '../../models/enums';
 import Page from '../components/abstract/page';
 
 export default class HomePage extends Page {

@@ -1,4 +1,4 @@
-import { TextObject } from '../../../utils/interfaces';
+import { TextObject } from '../../../models/interfaces';
 
 export default abstract class Page {
   protected container: HTMLElement;

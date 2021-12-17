@@ -1,4 +1,4 @@
-import { Flakes } from '../../../utils/interfaces';
+import { Flakes } from '../../../models/interfaces';
 
 export class Snowflake {
 W: number;

@@ -1,4 +1,4 @@
-import { Pages } from '../../../utils/enums';
+import { Pages } from '../../../models/enums';
 import Block from '../abstract/block';
 
 const Buttons: { 

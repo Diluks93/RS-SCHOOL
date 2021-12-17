@@ -1,10 +1,10 @@
-import { ClassNameWrap, TemplateArticle } from '../../utils/enums';
+import { ClassNameWrap, TemplateArticle } from '../../models/enums';
 import Page from '../components/abstract/page';
 import { Card } from '../components/card/card';
 import '../../../../node_modules/nouislider/dist/nouislider.css'
 import './settings.scss';
 import noUiSlider from '../../../../node_modules/nouislider/dist/nouislider.mjs';
-import { ParamNoUiSlider } from '../../utils/interfaces';
+import { ParamNoUiSlider } from '../../models/interfaces';
 import { Snowflake } from '../components/snowflake/snowflake';
 
 declare namespace noUiSlider {

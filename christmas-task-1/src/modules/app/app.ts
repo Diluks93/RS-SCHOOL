@@ -1,4 +1,4 @@
-import { ErrorType, Pages } from '../utils/enums';
+import { ErrorType, Pages } from '../models/enums';
 import SettingsPage from '../view/settings/settings';
 import GamePage from '../view/game/game';
 import HomePage from '../view/home/home';

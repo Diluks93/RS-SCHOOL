@@ -1,5 +1,5 @@
 import Loader from '../../../loader/loader';
-import { DataToys } from '../../../utils/interfaces';
+import { DataToys } from '../../../models/interfaces';
 import './cards.scss';
 
 export class Card {

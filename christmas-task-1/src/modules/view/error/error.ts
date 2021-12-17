@@ -1,4 +1,4 @@
-import { ErrorType } from '../../utils/enums';
+import { ErrorType } from '../../models/enums';
 import Page from '../components/abstract/page';
 
 export default class ErrorPage extends Page {
