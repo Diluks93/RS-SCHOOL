@@ -50,6 +50,13 @@ export default class SettingsPage extends Page {
     this.snowflake = new Snowflake();
   }
 
+  async render() {
+    this.createArticle();
+    this.container.append(await this.card.render());
+
+    return this.container;
+  }
+
   protected createElement(nameElement: string): HTMLElement {
     const element = document.createElement(nameElement);
     element.className = nameElement;
@@ -204,10 +211,5 @@ export default class SettingsPage extends Page {
     })
   }
   
-  async render() {
-    this.createArticle();
-    this.container.append(await this.card.render());
-
-    return this.container;
-  }
+  
 }

@@ -7,14 +7,15 @@ export default abstract class Block {
     this.container = document.createElement(tagName);
     this.container.className = className;
   }
-
-  protected renderPageButtons(): void {
-    console.log('Component working!');
-  }
-
+  
   render(): HTMLElement {
     this.renderPageButtons();
 
     return this.container;
   }
+  
+  protected renderPageButtons(): void {
+    console.log('Component working!');
+  }
+
 }

@@ -44,6 +44,13 @@ export default class App {
     this.footer = new FooterComponent('footer', 'footer');
   }
 
+  start() {
+    App.container.append(this.header.render());
+    App.renderNewPage(/* Pages.homePage */ Pages.settingsPage);
+    App.container.append(this.footer.render());
+    this.enableRouteChange();
+  }
+  
   private enableRouteChange(): void {
     window.addEventListener('hashchange', () => {
       const hash = window.location.hash.slice(1);
@@ -51,10 +58,4 @@ export default class App {
     })
   }
 
-  start() {
-    App.container.append(this.header.render());
-    App.renderNewPage(/* Pages.homePage */ Pages.settingsPage);
-    App.container.append(this.footer.render());
-    this.enableRouteChange();
-  }
 }

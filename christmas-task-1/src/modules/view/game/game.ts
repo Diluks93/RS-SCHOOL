@@ -9,6 +9,13 @@ export default class GamePage extends Page {
     super(id);
   }
 
+  render() {
+    const title = this.createHeaderTitle(GamePage.textObject.titleContent);
+    this.container.append(title);
+
+    return this.container
+  }
+  
   protected createHeaderTitle(text: string) {
     const headerTitle = document.createElement('h2');
     headerTitle.className = 'title title__game';
@@ -17,10 +24,4 @@ export default class GamePage extends Page {
     return headerTitle;
   }
 
-  render() {
-    const title = this.createHeaderTitle(GamePage.textObject.titleContent);
-    this.container.append(title);
-
-    return this.container
-  }
 }

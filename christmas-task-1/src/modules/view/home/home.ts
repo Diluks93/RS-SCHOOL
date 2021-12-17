@@ -10,7 +10,14 @@ export default class HomePage extends Page {
   constructor(id: string){
     super(id);
   }
+  
+  render() {
+    const wrapper = this.createWrapper();
+    this.container.append(wrapper);
 
+    return this.container;
+  }
+  
   protected createHeaderTitle(text: string) {
     const headerTitle = document.createElement('h1');
     headerTitle.className = 'title title__main';
@@ -38,10 +45,4 @@ export default class HomePage extends Page {
     return div;
   }
 
-  render() {
-    const wrapper = this.createWrapper();
-    this.container.append(wrapper);
-
-    return this.container;
-  }
 }

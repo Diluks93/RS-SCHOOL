@@ -1,6 +1,6 @@
 import Block from '../abstract/block';
 
-const Buttons: {
+const buttons: {
   text: string;
   url?: string;
 }[] = [
@@ -25,7 +25,7 @@ export default class FooterComponent extends Block {
   renderPageButtons() {
     const pageButtons = document.createElement('ul');
     pageButtons.className = 'items';
-    Buttons.forEach((button, ind) => {
+    buttons.forEach((button, ind) => {
       let buttonHTML: HTMLAnchorElement | HTMLTimeElement;
       if(ind === 0 || ind === 2) {
         buttonHTML = document.createElement('a');
