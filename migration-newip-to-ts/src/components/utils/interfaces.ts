@@ -20,6 +20,7 @@ export interface DrawNews {
   totalResults?: number;
   articles?: Array<ObjectArticles>;
 }
+
 export interface ObjectArticles {
   author: string;
   content: string;
@@ -30,6 +31,7 @@ export interface ObjectArticles {
   url: string;
   urlToImage: string;
 }
+
 export interface ObjectSource {
   id: string;
   name: string;
@@ -39,6 +41,7 @@ export interface DrawSources {
   sources?: Array<ObjectSources>;
   status: string;
 }
+
 export interface ObjectSources extends ObjectSource {
   category: string;
   country: string;
