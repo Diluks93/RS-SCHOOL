@@ -9,6 +9,13 @@ export const enum ErrorType {
   error = 404,
 }
 
+export const enum SortName {
+  nameMax = 'sort-name-max',
+  nameMin = 'sort-name-min',
+  yearMax = 'sort-year-max',
+  yearMin = 'sort-year-min'
+}
+
 export const enum ClassNameWrap {
   classSearch = 'wrap wrap__row comp__search',
   classSort = 'wrap comp__sort',
@@ -35,16 +42,15 @@ export const enum TemplateArticle {
         <button type="submit"></button>
       </form>
     </div>
-    `,
+  `,
   componentSort = `
     <label class="title title__label" for="sort">Sort by:</label>
-      <input list="sortBy" id="sort" name="sort" class="sort" autocomplete="off" placeholder="Sort by">
-      <datalist id="sortBy" role="listbox">
-          <option value="of A - Z">
-          <option value="of Z - A">
-          <option value="of years in ascending order">
-          <option value="of years in descending  order">
-      </datalist> 
+    <select id="sort" class="sort">
+        <option value="sort-name-max">Name in ascending order</option>
+        <option value="sort-name-min">Name in descending order</option>
+        <option value="sort-year-max">Year in ascending order</option>
+        <option value="sort-year-min">Year in descending order</option>
+    </select>
   `,
   componentCategories = `
     <h3 class="title title__article">Categories</h3>

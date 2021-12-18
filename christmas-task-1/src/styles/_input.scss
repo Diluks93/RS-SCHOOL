@@ -61,6 +61,7 @@ form {
 }
 
 .sort {
+  appearance: none;
   flex: 100%;
   background: $main-color;
   height: 2em;
@@ -70,9 +71,16 @@ form {
   border-radius: 5px;
   outline: none;
   background: radial-gradient(118.88% 606.86% at 0% 0%, $main-color 0%, rgba(36, 197, 219, 0) 100%);
+  background-image: url("https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/svg/arrow-down.svg");
+  background-size: 1em;
+  background-repeat: no-repeat;
+  background-position: 95% center;
   color: white;
   font-family: $Lobster;
   z-index: 1;
+  & > option {
+    background-color: $main-color;
+  }
 }
 
 .custom-checkbox {

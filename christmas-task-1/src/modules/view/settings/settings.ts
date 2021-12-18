@@ -190,7 +190,6 @@ export default class SettingsPage extends Page {
     sort?.addEventListener('change', () => {
       const sortData = this.card.sortData(sort.value);
       this.card.render(sortData);
-      sort.value = '';
     })
   }
 
@@ -210,6 +209,4 @@ export default class SettingsPage extends Page {
       }
     })
   }
-  
-  
 }

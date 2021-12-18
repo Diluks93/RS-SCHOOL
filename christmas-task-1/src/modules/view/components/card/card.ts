@@ -1,10 +1,11 @@
 import Loader from '../../../loader/loader';
+import { SortName } from '../../../models/enums';
 import { DataToys } from '../../../models/interfaces';
 import './cards.scss';
 
 export class Card {
   protected container: HTMLElement;
-  private static url = "https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/data.json";
+  private static url = 'https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/data.json';
   private loader: Loader;
   private textTitle = 'Choose toys';
   private MAX_LENGTH_UNIQUE = 20;
@@ -42,7 +43,7 @@ export class Card {
     switch(value) {
       case(''): data;
         break;
-      case('of A - Z'): {data = srcData.sort((a, b) => {
+      case(SortName.nameMax): {data = srcData.sort((a, b) => {
         const x = a.name.toLowerCase(),
           y = b.name.toLowerCase();
           if(x < y) {return -1;}
@@ -50,7 +51,7 @@ export class Card {
           return 0;
       })}
         break;
-      case('of Z - A'): {data = srcData.sort((a, b) => {
+      case(SortName.nameMin): {data = srcData.sort((a, b) => {
         const x = a.name.toLowerCase(),
           y = b.name.toLowerCase();
           if(x < y) {return 1;}
@@ -58,9 +59,9 @@ export class Card {
           return 0;
       })}
         break;
-      case('of years in ascending order'): {data = srcData.sort((a, b) => a.year - b.year)}
+      case(SortName.yearMax): {data = srcData.sort((a, b) => a.year - b.year)}
         break;
-      case('of years in descending  order'): {data = srcData.sort((a, b) => b.year - a.year)}
+      case(SortName.yearMin): {data = srcData.sort((a, b) => b.year - a.year)}
         break;
     }
 
@@ -181,5 +182,4 @@ export class Card {
 
     return cards;
   }
-
 }
