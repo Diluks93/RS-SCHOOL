@@ -8,7 +8,8 @@ export class Card {
   private static url = 'https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/data.json';
   private loader: Loader;
   private textTitle = 'Choose toys';
-  private MAX_LENGTH_UNIQUE = 20;
+  private MAX_LENGTH_UNIQUE = 21;
+  private MIN_LENGTH_UNIQUE = 0;
   private isNotSorted = true; 
 
   constructor(id: string, className: string) {
@@ -24,15 +25,15 @@ export class Card {
     if(this.isNotSorted) {
       this.container.append(title);
       this.container.append(element);
-      this.showUnique(await sort);
       this.isNotSorted = false;
     } else {
       this.container.innerHTML = '';
       this.container.append(title);
       this.container.append(element);
-      this.showUnique(await sort);
     }
-    
+
+    this.showUnique();
+    this.addUniqueElement();
     return this.container;
   }
 
@@ -125,8 +126,6 @@ export class Card {
     const cards: HTMLDivElement = document.createElement('div');
     cards.className = 'cards';
 
-    this.addUniqueElement(data, cards)
-
     data.forEach((card: DataToys, index: number) => {
       const div: HTMLDivElement = document.createElement('div'),
         descr: HTMLDivElement = document.createElement('div'),
@@ -191,12 +190,10 @@ export class Card {
     return picture;
   }
 
-  private async showUnique(data: DataToys[]): Promise<HTMLElement> {
+  private showUnique(counter: number = this.MIN_LENGTH_UNIQUE): HTMLElement {
     const div: HTMLDivElement = document.querySelector('.unique') as HTMLDivElement,
-      arrayUnique: DataToys[] = data.filter(item => item.unique),
       header: HTMLElement = document.querySelector('header') as HTMLElement,
-      count: string = arrayUnique.length + '',
-      span: HTMLSpanElement = this.createTextElement('Your choose:', count, 'unique__item');
+      span: HTMLSpanElement = this.createTextElement('Your choose:', counter, 'unique__item');
 
     div.innerHTML = '';
     div.append(span);
@@ -205,24 +202,36 @@ export class Card {
     return header;
   }
 
-  private addUniqueElement(data: DataToys[], element: HTMLDivElement) {  
-    element.addEventListener('click', async (e: Event) => {
-      const  arrayUnique: DataToys[] = data.filter(item => item.unique),
-        card: HTMLElement = e.target as HTMLElement,
-        index = card.dataset.id ? +card.dataset.id : 1;
+  private async addUniqueElement() {  
+    const cards = this.getCards();
+    let counter = this.MIN_LENGTH_UNIQUE;
+    const srcData: Awaited<DataToys>[] = await this.loader.load();
 
-      if(card.matches('.card') && arrayUnique.length < this.MAX_LENGTH_UNIQUE) {
-        data[index].unique = false || true;
-        const element = await this.createElements(data),
-          title = this.createTitle('h2', 'title title__card', this.textTitle);
-        this.container.innerHTML = '';
-        this.container.append(title);
-        this.container.append(element);
-        this.showUnique(data);
-      } else if (arrayUnique.length === this.MAX_LENGTH_UNIQUE) {
-        //todo написать модалку;
-        alert('You have chosen the maximum of your favorite toys');
-      }
+    cards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const index: string = (card as HTMLElement).dataset.id as string
+        
+        if(card.matches('div.card.active')) {
+          card.classList.remove('active');
+          counter--;
+          srcData[+index].unique = false;
+          this.showUnique(counter);
+        } else {
+          card.classList.add('active');
+          counter++;
+          this.showUnique(counter);
+          srcData[+index].unique = true;
+        }
+        if(counter === this.MAX_LENGTH_UNIQUE) {
+
+      //todo написать модалку;
+          alert('You have chosen the maximum of your favorite toys');
+          counter--;
+          srcData[+index].unique = false;
+          this.showUnique(counter);
+          card.classList.remove('active');
+        }
+      })
     })
   }
 }
