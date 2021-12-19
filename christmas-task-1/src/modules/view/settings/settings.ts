@@ -86,8 +86,7 @@ export default class SettingsPage extends Page {
       SettingsPage.paramNoUiSliderYear.maxValue,
       );
     this.container.append(article);
-
-    this.sortedData(componentSort);
+    this.sortedCards(article)
     this.showMoveSnowflake(componentSearch);
 
     // const figureParentElement: HTMLElement = componentType.querySelector('.type') as HTMLElement;
@@ -238,10 +237,10 @@ export default class SettingsPage extends Page {
     });
 
     slider.addEventListener('mouseup', () => {
-      const filterRangeData = this.card.filterRangeData(slider.noUiSlider.get(), true);
+      // const filterRangeData = this.card.filterRangeData(slider.noUiSlider.get(), true);
       secondSlider.noUiSlider.set([SettingsPage.paramNoUiSliderYear.startValue, SettingsPage.paramNoUiSliderYear.endValue]);
       this.removeSelectCheckbox(component);
-      this.card.render(filterRangeData);
+      // this.card.render(filterRangeData);
     });
   }
 
@@ -274,19 +273,17 @@ export default class SettingsPage extends Page {
     });
 
     slider.addEventListener('mouseup', () => {
-      const filterRangeData = this.card.filterRangeData(slider.noUiSlider.get(), false);
+      // const filterRangeData = this.card.filterRangeData(slider.noUiSlider.get(), false);
       secondSlider.noUiSlider.set([SettingsPage.paramNoUiSliderCount.startValue, SettingsPage.paramNoUiSliderCount.endValue]);
       this.removeSelectCheckbox(component);
-      this.card.render(filterRangeData);
+      // this.card.render(filterRangeData);
     });
   }
 
-  private sortedData(component: HTMLElement) {
-    const sort: HTMLInputElement = component.querySelector('#sort') as HTMLInputElement;
-
+  private sortedCards(article: HTMLElement) {
+    const sort: HTMLInputElement = article.querySelector('#sort') as HTMLInputElement;
     sort?.addEventListener('change', () => {
-      const sortData = this.card.sortData(sort.value);
-      this.card.render(sortData);
+      this.card.sortCards(sort.value);
     })
   }
 

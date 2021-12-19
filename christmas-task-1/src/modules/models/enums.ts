@@ -10,6 +10,7 @@ export const enum ErrorType {
 }
 
 export const enum SortName {
+  noSorted = 'not-sorted',
   nameMax = 'sort-name-max',
   nameMin = 'sort-name-min',
   yearMax = 'sort-year-max',
@@ -46,6 +47,7 @@ export const enum TemplateArticle {
   componentSort = `
     <label class="title title__label" for="sort">Sort by:</label>
     <select id="sort" class="sort">
+        <option value="not-sorted">No sorted</option>
         <option value="sort-name-max">Name in ascending order</option>
         <option value="sort-name-min">Name in descending order</option>
         <option value="sort-year-max">Year in ascending order</option>
