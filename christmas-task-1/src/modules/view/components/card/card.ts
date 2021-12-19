@@ -68,13 +68,96 @@ export class Card {
     return data;
   }
 
-  async filterData(value: Array<number>, isCount: boolean): Promise<DataToys[]> {
+  async filterRangeData(value: Array<number>, isCount: boolean): Promise<DataToys[]> {
     const  data: DataToys[] = await this.sortData();
-    if(isCount) {
-      return data.filter(item => item.count >= value[0] && item.count <= value[1]);
-    } else {
-      return data.filter(item => item.year >= value[0] && item.year <= value[1])
+
+    return isCount 
+    ? data.filter(item => item.count >= value[0] && item.count <= value[1]) 
+    : data.filter(item => item.year >= value[0] && item.year <= value[1])
+  }
+
+  async filterTypeData(nameElement: string) {
+    let  data: DataToys[] = await this.sortData();
+
+    switch(nameElement) {
+      case('select-all'): data;
+        break;
+      case('bell'): data = data.filter(item => item.shape === 'bell');
+        break;
+      case('ball'): data = data.filter(item => item.shape === 'ball');
+        break;
+      case('pine'): data = data.filter(item => item.shape === 'cone');
+        break;
+      case('snowflake'): data = data.filter(item => item.shape === 'snowflake');
+        break;
+      case('figure'): data = data.filter(item => item.shape === 'figure');
+        break;
+      case('big'): data = data.filter(item => item.size === 'big');
+        break;
+      case('medium'): data = data.filter(item => item.size === 'medium');
+        break;
+      case('small'): data = data.filter(item => item.size === 'small');
+        break;
+      case('favorite'): data = data.filter(item => item.favorite);
+        break;
+      case('yellow'): data = data.filter(item => item.color === 'yellow');
+        break;
+      case('blue'): data = data.filter(item => item.color === 'blue');
+        break;
+      case('red'): data = data.filter(item => item.color === 'red');
+        break;
+      case('white'): data = data.filter(item => item.color === 'white');
+        break;
+      case('green'): data = data.filter(item => item.color === 'green');
+        break;
     }
+
+    return data;
+  }
+
+  getCards() {
+    const cards = this.container.querySelectorAll('.card');
+
+    return cards;
+  }
+
+  protected async createElements(data: DataToys[]) {
+    const cards: HTMLDivElement = document.createElement('div');
+    cards.className = 'cards';
+
+    this.addUniqueElement(data, cards)
+
+    data.forEach((card: DataToys, index: number) => {
+      const div: HTMLDivElement = document.createElement('div'),
+        descr: HTMLDivElement = document.createElement('div'),
+        title: HTMLElement = this.createTitle('h3', 'title title__cards', card.name),
+        picture: HTMLPictureElement = this.createImgElement(card.num),
+        count: HTMLSpanElement = this.createTextElement('Amount toys:', card.count),
+        year: HTMLSpanElement = this.createTextElement('Year of purchase:', card.year),
+        type: HTMLSpanElement = this.createTextElement('Type toys:', card.shape),
+        color: HTMLSpanElement = this.createTextElement('Color:', card.color),
+        size: HTMLSpanElement = this.createTextElement('Size:', card.size),  
+        favorite: HTMLSpanElement = card.favorite ? this.createTextElement('Favorite:', 'yes') : this.createTextElement('Favorite:', 'no');
+
+      descr.className = 'descr';
+      div.className = card.unique ? 'card active' : 'card'
+      div.dataset.id = index + '';
+
+      div.append(title);
+      div.append(picture);
+
+      descr.append(count);
+      descr.append(year);
+      descr.append(type);
+      descr.append(color);
+      descr.append(size);
+      descr.append(favorite);
+
+      div.append(descr);
+      cards.append(div);
+    });
+
+    return cards;
   }
 
   private createTitle(tagName: string, className: string, text: string): HTMLElement {
@@ -129,8 +212,7 @@ export class Card {
         index = card.dataset.id ? +card.dataset.id : 1;
 
       if(card.matches('.card') && arrayUnique.length < this.MAX_LENGTH_UNIQUE) {
-        data[index].unique = true || false;
-        
+        data[index].unique = false || true;
         const element = await this.createElements(data),
           title = this.createTitle('h2', 'title title__card', this.textTitle);
         this.container.innerHTML = '';
@@ -142,44 +224,5 @@ export class Card {
         alert('You have chosen the maximum of your favorite toys');
       }
     })
-  }
-
-  protected async createElements(data: DataToys[]) {
-    const cards: HTMLDivElement = document.createElement('div');
-    cards.className = 'cards';
-
-    this.addUniqueElement(data, cards)
-
-    data.forEach((card: DataToys, index: number) => {
-      const div: HTMLDivElement = document.createElement('div'),
-        descr: HTMLDivElement = document.createElement('div'),
-        title: HTMLElement = this.createTitle('h3', 'title title__cards', card.name),
-        picture: HTMLPictureElement = this.createImgElement(card.num),
-        count: HTMLSpanElement = this.createTextElement('Amount toys:', card.count),
-        year: HTMLSpanElement = this.createTextElement('Year of purchase:', card.year),
-        type: HTMLSpanElement = this.createTextElement('Type toys:', card.shape),
-        color: HTMLSpanElement = this.createTextElement('Color:', card.color),
-        size: HTMLSpanElement = this.createTextElement('Size:', card.size),  
-        favorite: HTMLSpanElement = card.favorite ? this.createTextElement('Favorite:', 'yes') : this.createTextElement('Favorite:', 'no');
-
-      descr.className = 'descr';
-      div.className = card.unique ? 'card active' : 'card'
-      div.dataset.id = index + '';
-
-      div.append(title);
-      div.append(picture);
-
-      descr.append(count);
-      descr.append(year);
-      descr.append(type);
-      descr.append(color);
-      descr.append(size);
-      descr.append(favorite);
-
-      div.append(descr);
-      cards.append(div);
-    });
-
-    return cards;
   }
 }

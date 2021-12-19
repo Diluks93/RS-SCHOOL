@@ -6,6 +6,9 @@
   &__descr {
     transition: all 0.5s linear;
     font-family: $Lobster;
+    &.active {
+      color: $hover-color;
+    }
   }
   &__card {
     width: 8em;
@@ -137,6 +140,9 @@
   & .noUi-tooltip {
     bottom: unset;
   }
+}
+.noUi-target {
+  border: none;
 }
 
 .noUi-connect {
