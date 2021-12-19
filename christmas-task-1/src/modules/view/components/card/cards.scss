@@ -26,20 +26,27 @@
   z-index: 1;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
-  // animation: showCards 1s ease-in-out;
-  // @keyframes showCards {
-  //   from {
-  //     transform: scale(0.5);
-  //   }
-  //   to {
-  //     transform: scale(1);
-  //   }
-  // }
+  animation: showCards 1s ease-in-out;
+  animation-duration: 2.5s;
+  @keyframes showCards {
+    from {
+      transform: scale(0) translateX(100%);
+    }
+    to {
+      transform: scale(1) translateX(0);
+    }
+  }
+  @media (max-width: 768px) {
+    width: 22%;
+  }
+  @media (max-width: 426px) {
+    width: 100%;
+  }
   &:hover {
     transform: scale(1.1);
   }
   &.active {
-    animation: neon-1 0.1s ease-in-out infinite alternate/* , showCards 1s ease-in-out */;
+    animation: neon-1 0.1s ease-in-out infinite alternate, showCards 1s ease-in-out;
     @keyframes neon-1 {
       from {
         box-shadow: 0 0 6px $hover-color, 0 0 1em black, 0 0 0.5em black, 0 0 1em $hover-color, 0 0 0.5em $hover-color, 0 0 1em $hover-color;

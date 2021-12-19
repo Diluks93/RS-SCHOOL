@@ -162,9 +162,9 @@ export default class SettingsPage extends Page {
 
 //todo написать модалку
 
-        elem.matches('div.card.none.hide') ?
-          article.style.transform = 'scale(0)' :
-          article.style.transform = 'scale(1)';
+        // elem.matches('div.card.none.hide') ?
+        //   article.style.transform = 'scale(0)' :
+        //   article.style.transform = 'scale(1)';
       })
     }
   }

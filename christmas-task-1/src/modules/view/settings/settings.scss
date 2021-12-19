@@ -13,29 +13,59 @@
   &__card {
     width: 8em;
     height: 8em;
+    @media (max-width: 1024px) {
+      width: 6em;
+      height: 6em;
+    }
   }
 }
 
 .comp {
   &__search {
-    flex: 2;
     &_link {
       padding: 0.3em;
       z-index: 1;
+      .img:hover {
+        transition: all 0.5s linear;
+        filter: invert(68%) sepia(82%) saturate(531%) hue-rotate(145deg) brightness(89%) contrast(93%);
+      }
     }
-  }
-  &__sort {
-    flex: 2;
-  }
-  &__categories {
-    flex: 1;
   }
   &__type,
   &__colors {
-    flex: 1;
     & .wrap__row {
       padding-top: 0.3em;
     }
+  }
+  &__buttons {
+    z-index: 1;
+    &.wrap__row {
+      justify-content: space-around;
+    }
+  }
+  &__search,
+  &__sort,
+  &__categories,
+  &__colors,
+  &__range,
+  &__buttons {
+    animation: showComponentRight 0.9s ease-in-out;
+    animation-duration: 4.9s;
+    flex: 2;
+  }
+  &__sort, 
+  &__type,
+  &__size,
+  &__favorite {
+    animation: showComponentLeft 0.9s ease-in-out;
+    animation-duration: 4.9s;
+  }
+  &__categories,
+  &__colors,
+  &__size,
+  &__buttons,
+  &__favorite {
+    flex: 1;
   }
   &__type {
     flex: 3;
@@ -43,18 +73,21 @@
   &__range {
     flex: 4;
   }
-  &__size {
-    flex: 1;
-  }
-  &__buttons {
-    flex: 1;
-    z-index: 1;
-    &.wrap__row {
-      justify-content: space-around;
+  @keyframes showComponentLeft {
+    from {
+      transform: translateX(-100%) scale(0);
+    }
+    to {
+      transform: translateY(0) scale(1);
     }
   }
-  &__favorite {
-    flex: 1;
+  @keyframes showComponentRight {
+    from {
+      transform: translateX(100%) scale(0);
+    }
+    to {
+      transform: translateY(0) scale(1);
+    }
   }
 }
 
@@ -84,6 +117,10 @@
   &:hover {
     .img__descr {
       color: $hover-color;
+    }
+    .img {
+      transition: all 0.5s linear;
+      filter: invert(68%) sepia(82%) saturate(531%) hue-rotate(145deg) brightness(89%) contrast(93%);
     }
   }
 }
@@ -116,7 +153,7 @@
 #year {
   height: 0.5em;
   margin: 0.5em 0;
-  padding: 0 8px;
+  padding: 0 0.5em;
 }
 
 .noUi-horizontal {
@@ -124,7 +161,7 @@
     width: 1em;
     height: 1em;
     right: 0;
-    transform: translateX(50%);
+    transform: translate(50%, 15%);
     &::before,
     &::after {
       height: 60%;

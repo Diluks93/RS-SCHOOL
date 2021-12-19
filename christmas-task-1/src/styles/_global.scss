@@ -14,6 +14,12 @@
     border-radius: 5px;
     border: 3px solid transparent;
   }
+  @media (max-width: 1024px) {
+    font-size: 14px;
+  }
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 }
 
 .page {
@@ -38,6 +44,15 @@
   height: 87%;
   display: flex;
   justify-content: center;
+  animation: showPage 1.9s ease-in-out;
+  @keyframes showPage {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
 }
 
 .article {
@@ -55,11 +70,34 @@
   align-content: center;
   position: relative;
   flex-basis: content;
+  animation: showArticle 0.9s ease-in-out;
+  animation-duration: 4s;
+  @media (max-width: 1920px) {
+    height: 85%;
+  }
+  @media (max-width: 1024px) {
+    height: 80%;
+  }
+  @media (max-width: 768px) {
+    flex-basis: none;
+    width: 50%;
+  }
+  @keyframes showArticle {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
 }
 
 .main {
   width: 80%;
   padding: 1em;
   overflow-x: hidden;
+  @media (max-width: 425px) {
+    width: 50%;
+  }
 }
 
