@@ -106,13 +106,30 @@ export class Card {
     return refElement.parentNode?.insertBefore(element, refElement.nextSibling);
   }
 
-  // async filterRangeData(value: Array<number>, isCount: boolean): Promise<DataToys[]> {
-  //   const  data: DataToys[] = await this.sortData();
+  filterRange(value: Array<number>, isCount: boolean, data: string): void {
+    const cards = this.container.querySelector('.cards');    
 
-  //   return isCount 
-  //   ? data.filter(item => item.count >= value[0] && item.count <= value[1]) 
-  //   : data.filter(item => item.year >= value[0] && item.year <= value[1])
-  // }
+    for(let i = 0; i < (cards?.childElementCount as number); i++) {
+      const checkDataset: Element = isCount ? cards?.children[i].lastChild?.firstChild as Element : cards?.children[i] as Element,
+        card = cards?.children[i] as Element,
+        year: string = checkDataset.getAttribute(data) as string;
+
+      card.classList.remove('hide');
+      if(value[0] > +year) {
+        this.transitionEnd(card);
+      }
+      if(value[1] < +year) {
+        this.transitionEnd(card);
+      }
+    }
+  }
+
+  private transitionEnd(card: Element) {
+    card.classList.add('hide');
+    card.addEventListener('transitionend', () => {
+      card.classList.add('none');
+    })
+  }
 
   // async filterTypeData(nameElement: string) {
   //   let  data: DataToys[] = await this.sortData();
@@ -181,6 +198,7 @@ export class Card {
       div.className = card.unique ? 'card active' : 'card';
       div.dataset.id = index + '';
       div.dataset.year = card.year + '';
+      count.dataset.count = card.count + '';
       div.append(title);
       div.append(picture);
 

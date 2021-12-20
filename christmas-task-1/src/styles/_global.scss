@@ -33,6 +33,15 @@
   position:absolute;
   top:0;
   left:0;
+  animation: showUp 4s linear;
+  @keyframes showUp {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
 }
 
 .root {
@@ -70,7 +79,7 @@
   align-content: center;
   position: relative;
   flex-basis: content;
-  animation: showArticle 0.9s ease-in-out;
+  animation: showUp 0.9s ease-in-out;
   animation-duration: 4s;
   @media (max-width: 1920px) {
     height: 85%;
@@ -82,7 +91,7 @@
     flex-basis: none;
     width: 50%;
   }
-  @keyframes showArticle {
+  @keyframes showUp {
     from {
       transform: translateY(-100%);
     }

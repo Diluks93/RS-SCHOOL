@@ -236,8 +236,8 @@ export default class SettingsPage extends Page {
       snapValues[handle].innerHTML = values[handle];
     });
 
-    slider.addEventListener('mouseup', () => {
-      // const filterRangeData = this.card.filterRangeData(slider.noUiSlider.get(), true);
+    slider.addEventListener('click', () => {
+      this.card.filterRange(slider.noUiSlider.get(), true, 'data-count');
       secondSlider.noUiSlider.set([SettingsPage.paramNoUiSliderYear.startValue, SettingsPage.paramNoUiSliderYear.endValue]);
       this.removeSelectCheckbox(component);
       // this.card.render(filterRangeData);
@@ -272,11 +272,10 @@ export default class SettingsPage extends Page {
       snapValues[handle].innerHTML = values[handle];
     });
 
-    slider.addEventListener('mouseup', () => {
-      // const filterRangeData = this.card.filterRangeData(slider.noUiSlider.get(), false);
+    slider.addEventListener('click', () => {
+      this.card.filterRange(slider.noUiSlider.get(), false, 'data-year');
       secondSlider.noUiSlider.set([SettingsPage.paramNoUiSliderCount.startValue, SettingsPage.paramNoUiSliderCount.endValue]);
       this.removeSelectCheckbox(component);
-      // this.card.render(filterRangeData);
     });
   }
 
