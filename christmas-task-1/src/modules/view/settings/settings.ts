@@ -90,8 +90,35 @@ export default class SettingsPage extends Page {
     this.showMoveSnowflake(componentSearch);
     this.settingFilter(article);
     this.liveSearch(article);
+    this.clearSettings(article);
 
     return this.container;
+  }
+
+  private clearSettings(article: HTMLElement) {
+    const reset = article.querySelector('#reset');
+    reset?.addEventListener('click', () => {
+      const figures = article.querySelectorAll('figure'),
+        inputs = article.querySelectorAll('input'),
+        sliderCount: noUiSlider.Instance = article.querySelector(SettingsPage.paramNoUiSliderCount.selector) as noUiSlider.Instance,
+        sliderYear: noUiSlider.Instance = article.querySelector(SettingsPage.paramNoUiSliderYear.selector) as noUiSlider.Instance,
+        cards = this.card.getCards();
+
+      figures.forEach(figure => {
+        if(figure.classList.contains('active')) {
+          figure.classList.remove('active');
+        }
+      })
+      inputs.forEach(input => {
+        input.checked = false;
+      })
+      sliderCount.noUiSlider.set([SettingsPage.paramNoUiSliderCount.startValue, SettingsPage.paramNoUiSliderCount.endValue]);
+      sliderYear.noUiSlider.set([SettingsPage.paramNoUiSliderYear.startValue, SettingsPage.paramNoUiSliderYear.endValue]);
+      cards.forEach(elem => {
+        elem.classList.remove('hide');
+        elem.classList.remove('none');
+      })
+    })
   }
 
   private settingFilter(article: HTMLElement): void {

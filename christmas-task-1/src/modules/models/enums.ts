@@ -56,7 +56,7 @@ export const enum TemplateArticle {
   `,
   componentCategories = `
     <h3 class="title title__article">Categories</h3>
-    <input type="checkbox" name="select-all" class="custom-checkbox" id="select-all" data-filter="select-all" checked>
+    <input type="checkbox" name="select-all" class="custom-checkbox" id="select-all" data-filter="select-all">
     <label class="descr" for="select-all">Show all</label>
   `,
   componentType = `
@@ -149,7 +149,7 @@ export const enum TemplateArticle {
     <label class="descr" for="favorite">Only favorite</label>
   `,
   componentButtons = `
-    <button class="btn btn__articles">Safe</button>
-    <button class="btn btn__articles">Reset</button>
+    <button class="btn btn__articles" id="safe">Safe</button>
+    <button class="btn btn__articles" id="reset">Reset</button>
   `
 }

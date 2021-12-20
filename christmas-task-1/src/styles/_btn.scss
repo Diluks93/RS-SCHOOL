@@ -17,6 +17,14 @@
   font-size: 1.5em;
   letter-spacing: 2px;
   cursor: pointer;
+  transition: all 0.5s linear;
+  &:hover {
+    background: $hover-color;
+  }
+  &:active {
+    transform: scale(1.1);
+    outline: 4px solid $hover-color;
+  }
   &__articles {
     width: 8rem;
     height: auto;
