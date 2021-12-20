@@ -6,6 +6,7 @@ import './settings.scss';
 import noUiSlider from '../../../../node_modules/nouislider/dist/nouislider.mjs';
 import { ParamNoUiSlider } from '../../models/interfaces';
 import { Snowflake } from '../components/snowflake/snowflake';
+import Modal from '../components/modal-window/modal';
 
 declare namespace noUiSlider {
     interface noUiSlider {
@@ -23,6 +24,7 @@ export default class SettingsPage extends Page {
   private card: Card;
   private snowflake: Snowflake;
   private isSnowMove = true;
+  private modal: Modal;
   
   static textObject = {
     titleContent: 'Toys'
@@ -48,6 +50,7 @@ export default class SettingsPage extends Page {
     super(id);
     this.card = new Card('main', 'main');
     this.snowflake = new Snowflake();
+    this.modal = new Modal('modal', 'modal');
   }
 
   async render() {
@@ -150,27 +153,22 @@ export default class SettingsPage extends Page {
     const stringSearch: HTMLInputElement = article.querySelector('#search') as HTMLInputElement,
       btnSearch: HTMLButtonElement = article.querySelector('.button') as HTMLButtonElement;
 
-      stringSearch.oninput = () => {
-        let value = stringSearch.value.trim().toLocaleLowerCase();
-        const cardItems = this.card.getCards();
+    stringSearch.oninput = () => {
+      let value = stringSearch.value.trim().toLocaleLowerCase();
+      const cardItems = this.card.getCards();
 
-        btnSearch.onclick = (e: Event) => {
-          e.preventDefault();
-          stringSearch.value = value = '';
-          btnSearch.classList.remove('close');
-          this.checkSearchEmpty(value, btnSearch, cardItems);
-        }
+      btnSearch.onclick = (e: Event) => {
+        e.preventDefault();
+        stringSearch.value = value = '';
+        btnSearch.classList.remove('close');
+        cardItems.forEach(elem => {
+          elem.classList.remove('none')
+        })
         this.checkSearchEmpty(value, btnSearch, cardItems);
-        
-      //const arrayCardItems = Array.from(cardItems)
-      //arrayCardItems.forEach(elem => {
-
-//todo написать модалку
-
-        // elem.matches('div.card.none.hide') ?
-        //   article.style.transform = 'scale(0)' :
-        //   article.style.transform = 'scale(1)';
-      //})
+      }
+      this.checkSearchEmpty(value, btnSearch, cardItems);
+      const checkCards = Array.from(cardItems).every(card => card.className === 'card not-find none')
+      checkCards ? this.container.append(this.modal.render('Sorry, no matches found')) : null;
     }
   }
 

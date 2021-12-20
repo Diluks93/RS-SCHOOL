@@ -1,6 +1,7 @@
 import Loader from '../../../loader/loader';
 import { SortName } from '../../../models/enums';
 import { DataToys } from '../../../models/interfaces';
+import Modal from '../modal-window/modal';
 import './cards.scss';
 
 export class Card {
@@ -11,12 +12,14 @@ export class Card {
   private MAX_LENGTH_UNIQUE = 21;
   private MIN_LENGTH_UNIQUE = 0;
   private MAX_CHILD_DESCR = 6;
+  private modal: Modal;
 
   constructor(id: string, className: string) {
     this.container = document.createElement('main');
     this.loader = new Loader(Card.url);
     this.container.id = id;
     this.container.className = className;
+    this.modal = new Modal('modal', 'modal');
   }
 
   async render() {
@@ -298,9 +301,7 @@ export class Card {
           srcData[+index].unique = true;
         }
         if(counter === this.MAX_LENGTH_UNIQUE) {
-
-      //todo написать модалку;
-          alert('You have chosen the maximum of your favorite toys');
+          this.container.append(this.modal.render('You have chosen the maximum of your favorite toys'));
           counter--;
           srcData[+index].unique = false;
           this.showUnique(counter);

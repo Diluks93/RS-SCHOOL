@@ -41,4 +41,11 @@
     text-align: center;
     font-size: 1.2em;
   }
+  &__modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 1.5em;
+  }
 }

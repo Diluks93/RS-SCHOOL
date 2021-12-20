@@ -6,7 +6,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "strict": true,
-    "noEmitOnError": false,
+    "noEmitOnError": true,
     "noImplicitAny": true,
     "module": "es6",
     "target": "es5",
