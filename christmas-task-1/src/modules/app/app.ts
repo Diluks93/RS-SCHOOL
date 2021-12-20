@@ -46,7 +46,7 @@ export default class App {
 
   start() {
     App.container.append(this.header.render());
-    App.renderNewPage(/* Pages.homePage */ Pages.settingsPage);
+    App.renderNewPage(Pages.homePage);
     App.container.append(this.footer.render());
     this.enableRouteChange();
   }
