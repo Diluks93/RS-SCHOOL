@@ -6,9 +6,6 @@
   &__descr {
     transition: all 0.5s linear;
     font-family: $Lobster;
-    &.active {
-      color: $hover-color;
-    }
   }
   &__card {
     width: 8em;
@@ -16,6 +13,14 @@
     @media (max-width: 1024px) {
       width: 6em;
       height: 6em;
+    }
+  }
+}
+figure {
+  &.wrapper.wrap__col {
+    &.active {
+      color: $hover-color;
+      filter: invert(68%) sepia(82%) saturate(531%) hue-rotate(145deg) brightness(89%) contrast(93%);
     }
   }
 }
@@ -27,7 +32,6 @@
       z-index: 1;
       .img:hover {
         transition: all 0.5s linear;
-        filter: invert(68%) sepia(82%) saturate(531%) hue-rotate(145deg) brightness(89%) contrast(93%);
       }
     }
   }

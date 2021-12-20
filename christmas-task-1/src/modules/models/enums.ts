@@ -56,7 +56,7 @@ export const enum TemplateArticle {
   `,
   componentCategories = `
     <h3 class="title title__article">Categories</h3>
-    <input type="checkbox" name="select-all" class="custom-checkbox" id="select-all" checked>
+    <input type="checkbox" name="select-all" class="custom-checkbox" id="select-all" data-filter="select-all" checked>
     <label class="descr" for="select-all">Show all</label>
   `,
   componentType = `
@@ -70,8 +70,8 @@ export const enum TemplateArticle {
         <img src="https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/svg/ball.svg" alt="ball" class="img img__type">
         <figcaption class="img__descr">Ball</figcaption>
       </figure>
-      <figure class="wrapper wrap__col" data-filter="pine">
-        <img src="https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/svg/pine.svg" alt="pine" class="img img__type">
+      <figure class="wrapper wrap__col" data-filter="cone">
+        <img src="https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/svg/pine.svg" alt="cone" class="img img__type">
         <figcaption class="img__descr">Pine</figcaption>
       </figure>
       <figure class="wrapper wrap__col" data-filter="snowflake">

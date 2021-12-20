@@ -10,6 +10,7 @@ export class Card {
   private textTitle = 'Choose toys';
   private MAX_LENGTH_UNIQUE = 21;
   private MIN_LENGTH_UNIQUE = 0;
+  private MAX_CHILD_DESCR = 6;
 
   constructor(id: string, className: string) {
     this.container = document.createElement('main');
@@ -131,44 +132,57 @@ export class Card {
     })
   }
 
-  // async filterTypeData(nameElement: string) {
-  //   let  data: DataToys[] = await this.sortData();
+  typeData(nameElement: string) {
+    switch(nameElement) {
+      case('select-all'): this.filterType(nameElement, 'all');
+        break;
+      case('bell'): this.filterType(nameElement, 'data-type');
+        break;
+      case('ball'): this.filterType(nameElement, 'data-type');
+        break;
+      case('cone'): this.filterType(nameElement, 'data-type');
+        break;
+      case('snowflake'): this.filterType(nameElement, 'data-type');
+        break;
+      case('figure'): this.filterType(nameElement, 'data-type');
+        break;
+      case('big'): this.filterType(nameElement, 'data-size');
+        break;
+      case('medium'): this.filterType(nameElement, 'data-size');
+        break;
+      case('small'): this.filterType(nameElement, 'data-size');
+        break;
+      case('favorite'): this.filterType(nameElement, 'data-favorite');
+        break;
+      case('yellow'): this.filterType(nameElement, 'data-color');
+        break;
+      case('blue'): this.filterType(nameElement, 'data-color');
+        break;
+      case('red'): this.filterType(nameElement, 'data-color');
+        break;
+      case('white'): this.filterType(nameElement, 'data-color');
+        break;
+      case('green'): this.filterType(nameElement, 'data-color');
+        break;
+    }
+  }
 
-  //   switch(nameElement) {
-  //     case('select-all'): data;
-  //       break;
-  //     case('bell'): data = data.filter(item => item.shape === 'bell');
-  //       break;
-  //     case('ball'): data = data.filter(item => item.shape === 'ball');
-  //       break;
-  //     case('pine'): data = data.filter(item => item.shape === 'cone');
-  //       break;
-  //     case('snowflake'): data = data.filter(item => item.shape === 'snowflake');
-  //       break;
-  //     case('figure'): data = data.filter(item => item.shape === 'figure');
-  //       break;
-  //     case('big'): data = data.filter(item => item.size === 'big');
-  //       break;
-  //     case('medium'): data = data.filter(item => item.size === 'medium');
-  //       break;
-  //     case('small'): data = data.filter(item => item.size === 'small');
-  //       break;
-  //     case('favorite'): data = data.filter(item => item.favorite);
-  //       break;
-  //     case('yellow'): data = data.filter(item => item.color === 'yellow');
-  //       break;
-  //     case('blue'): data = data.filter(item => item.color === 'blue');
-  //       break;
-  //     case('red'): data = data.filter(item => item.color === 'red');
-  //       break;
-  //     case('white'): data = data.filter(item => item.color === 'white');
-  //       break;
-  //     case('green'): data = data.filter(item => item.color === 'green');
-  //       break;
-  //   }
+  filterType(dataNameSetting: string, dataNameCard: string){
+    const cards = this.getCards();
 
-  //   return data;
-  // }
+    cards.forEach(elem => {
+      elem.classList.remove('hide');
+    })
+
+    for(let i = 0; i < cards.length; i++) {
+      for(let j = 0; j < this.MAX_CHILD_DESCR; j++) {
+        const dataSize = cards[i].children[2].children[j].getAttribute(dataNameCard);
+        if(dataSize !== dataNameSetting && dataSize) {
+          this.transitionEnd(cards[i]);
+        }
+      }
+    }
+  }
 
   getCards(): NodeListOf<Element> {
     const cards = this.container.querySelectorAll('.card');
@@ -196,9 +210,13 @@ export class Card {
 
       descr.className = 'descr';
       div.className = card.unique ? 'card active' : 'card';
-      div.dataset.id = index + '';
-      div.dataset.year = card.year + '';
-      count.dataset.count = card.count + '';
+      div.dataset.id = `${index}`;
+      color.dataset.color = `${card.color}`;
+      type.dataset.type = `${card.shape}`;
+      size.dataset.size = `${card.size}`;
+      favorite.dataset.favorite = `${card.favorite ? 'favorite' : 'no-favorite'}`
+      div.dataset.year = `${card.year}`;
+      count.dataset.count = `${card.count}`;
       div.append(title);
       div.append(picture);
 

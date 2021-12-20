@@ -88,83 +88,89 @@ export default class SettingsPage extends Page {
     this.container.append(article);
     this.sortedCards(article)
     this.showMoveSnowflake(componentSearch);
-
-    // const figureParentElement: HTMLElement = componentType.querySelector('.type') as HTMLElement;
-    // figureParentElement.addEventListener('click', (e: Event) => {
-    //   const figure = (e.target as HTMLElement).parentElement;
-    //   figure?.lastElementChild?.classList.toggle('active')
-    //   const filterTypeData = this.card.filterTypeData(figure?.dataset.filter as string);
-    //   this.card.render(filterTypeData);
-    //   this.removeSelectCheckbox(componentCategories);
-    // });
-
-    // const articleElements: NodeListOf<HTMLInputElement> = article.querySelectorAll('input') as NodeListOf<HTMLInputElement>;
-    // articleElements.forEach(elem => {
-    //   elem.addEventListener('click', (e: Event) => {
-    //     const elementInput: HTMLInputElement = e.target as HTMLInputElement;
-    //     if(elementInput.checked) {
-    //       const filterData = this.card.filterTypeData(elementInput.dataset.filter as string);
-    //       this.card.render(filterData);
-    //       this.removeSelectCheckbox;
-    //     }
-    //   })
-    // })
-
+    this.settingFilter(article);
     this.liveSearch(article);
 
     return this.container;
   }
 
-  private liveSearch(article: HTMLElement) {
+  private settingFilter(article: HTMLElement): void {
+    const figureParentElement: HTMLElement = article.querySelector('.type') as HTMLElement;
+    figureParentElement.addEventListener('click', (e: Event) => {
+      const figure = (e.target as HTMLElement).parentElement;
+      figure?.classList.toggle('active')
+      this.card.typeData(figure?.dataset.filter as string);
+    });
+
+    const articleElements: NodeListOf<HTMLInputElement> = article.querySelectorAll('input[type="checkbox"]') as NodeListOf<HTMLInputElement>;
+    articleElements.forEach(elem => {
+      elem.addEventListener('change', (e: Event) => {
+        const elementInput: HTMLInputElement = e.target as HTMLInputElement;
+        if(elementInput.checked) {
+          this.card.typeData(elementInput.dataset.filter as string);
+        } else {
+          const cards = this.card.getCards();
+          cards.forEach(elem => {
+            elem.classList.remove('hide');
+            elem.classList.remove('none');
+          })
+        }
+      })
+    })
+  }
+
+  private liveSearch(article: HTMLElement): void {
     const stringSearch: HTMLInputElement = article.querySelector('#search') as HTMLInputElement,
       btnSearch: HTMLButtonElement = article.querySelector('.button') as HTMLButtonElement;
 
       stringSearch.oninput = () => {
-        const value = stringSearch.value.trim().toLocaleLowerCase(),
-          cardItems = this.card.getCards();
+        let value = stringSearch.value.trim().toLocaleLowerCase();
+        const cardItems = this.card.getCards();
 
         btnSearch.onclick = (e: Event) => {
           e.preventDefault();
-          stringSearch.value = '';
-
-          //todo настройки должны сохраняться
-          this.card.render();
+          stringSearch.value = value = '';
           btnSearch.classList.remove('close');
+          this.checkSearchEmpty(value, btnSearch, cardItems);
         }
+        this.checkSearchEmpty(value, btnSearch, cardItems);
         
-        if (value != '') {
-        btnSearch.classList.add('close');
-        cardItems.forEach(elem => {
-          const titleCard = (elem.firstElementChild as HTMLElement).innerText.toLocaleLowerCase();
-
-          if(titleCard.search(value) == -1) {
-            elem.classList.add('hide');
-            this.returnTitleCard(elem);
-            elem.addEventListener('transitionend', () => {
-              elem.classList.add('none');
-            })
-          } else {
-            elem.classList.contains('none hide') ?
-              elem.classList.remove('none') :
-              elem.classList.remove('hide');
-            (elem.firstElementChild as HTMLElement).innerHTML = this.markFindString(this.returnTitleCard(elem), titleCard.search(value), value.length);
-          }
-        })
-      } else {
-        btnSearch.classList.remove('close');
-        cardItems.forEach(elem => {
-          elem.classList.remove('hide');
-          this.returnTitleCard(elem);
-        })
-      }
-      const arrayCardItems = Array.from(cardItems)
-      arrayCardItems.forEach(elem => {
+      //const arrayCardItems = Array.from(cardItems)
+      //arrayCardItems.forEach(elem => {
 
 //todo написать модалку
 
         // elem.matches('div.card.none.hide') ?
         //   article.style.transform = 'scale(0)' :
         //   article.style.transform = 'scale(1)';
+      //})
+    }
+  }
+
+  private checkSearchEmpty(value: string, btn: HTMLElement, cards: NodeListOf<Element>): void {
+    if (value != '') {
+      btn.classList.add('close');
+      cards.forEach(elem => {
+        const titleCard = (elem.firstElementChild as HTMLElement).innerText.toLocaleLowerCase();
+
+        if(titleCard.search(value) == -1) {
+          elem.classList.add('hide');
+          this.returnTitleCard(elem);
+          elem.addEventListener('transitionend', () => {
+            elem.classList.add('none');
+          })
+        } else {
+          elem.classList.contains('none hide') ?
+            elem.classList.remove('none') :
+            elem.classList.remove('hide');
+          (elem.firstElementChild as HTMLElement).innerHTML = this.markFindString(this.returnTitleCard(elem), titleCard.search(value), value.length);
+        }
+      })
+    } else {
+      btn.classList.remove('close');
+      cards.forEach(elem => {
+        elem.classList.remove('hide');
+        this.returnTitleCard(elem);
       })
     }
   }
@@ -240,7 +246,6 @@ export default class SettingsPage extends Page {
       this.card.filterRange(slider.noUiSlider.get(), true, 'data-count');
       secondSlider.noUiSlider.set([SettingsPage.paramNoUiSliderYear.startValue, SettingsPage.paramNoUiSliderYear.endValue]);
       this.removeSelectCheckbox(component);
-      // this.card.render(filterRangeData);
     });
   }
 
@@ -279,7 +284,7 @@ export default class SettingsPage extends Page {
     });
   }
 
-  private sortedCards(article: HTMLElement) {
+  private sortedCards(article: HTMLElement): void {
     const sort: HTMLInputElement = article.querySelector('#sort') as HTMLInputElement;
     sort?.addEventListener('change', () => {
       this.card.sortCards(sort.value);
