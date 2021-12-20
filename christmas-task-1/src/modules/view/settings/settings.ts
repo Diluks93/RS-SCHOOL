@@ -154,22 +154,22 @@ export default class SettingsPage extends Page {
         const titleCard = (elem.firstElementChild as HTMLElement).innerText.toLocaleLowerCase();
 
         if(titleCard.search(value) == -1) {
-          elem.classList.add('hide');
+          elem.classList.add('not-find');
           this.returnTitleCard(elem);
           elem.addEventListener('transitionend', () => {
             elem.classList.add('none');
           })
         } else {
-          elem.classList.contains('none hide') ?
+          elem.classList.contains('none not-find') ?
             elem.classList.remove('none') :
-            elem.classList.remove('hide');
+            elem.classList.remove('not-find');
           (elem.firstElementChild as HTMLElement).innerHTML = this.markFindString(this.returnTitleCard(elem), titleCard.search(value), value.length);
         }
       })
     } else {
       btn.classList.remove('close');
       cards.forEach(elem => {
-        elem.classList.remove('hide');
+        elem.classList.remove('not-find');
         this.returnTitleCard(elem);
       })
     }

@@ -56,7 +56,8 @@
       }
     }
   }
-  &.hide {
+  &.hide,
+  &.not-find {
     transform: translateX(-100%) scale(0);
     &.none {
       display: none;
