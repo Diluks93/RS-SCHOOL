@@ -3,7 +3,8 @@ import { templateQuiz } from './createPageQuestions';
 import { FOOTER, H1, HEADER, HOME_PAGE, PRELOADER, QUIZ } from './variables';
 
 window.addEventListener('hashchange', () => {
-  localStorage.setItem('hash', window.location.hash.slice(1));
+  const valueHash = window.location.hash.slice(1);
+  localStorage.setItem('hash', valueHash);
 });
 
 export function start() { setTimeout(() => {
