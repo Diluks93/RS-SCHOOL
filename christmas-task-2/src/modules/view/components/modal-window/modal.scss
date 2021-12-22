@@ -1,0 +1,31 @@
+@import '../../../../styles/variables.scss';
+
+.modal {
+  display: flex;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border: 2px solid $hover-color;
+  width: 35em;
+  height: 18em;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  border-radius: 2rem;
+  background: radial-gradient(118.88% 606.86% at 0% 0%, rgba(36, 197, 219, 0.15) 0%, rgba(36, 197, 219, 0) 100%);
+  backdrop-filter: blur(31px);
+  flex-direction: column;
+  justify-content: center;
+  animation: showDown 0.9s ease-in-out;
+  @media (max-width: 425px) {
+    width: 22rem;
+    font-size: 2em;
+  }
+  @keyframes showDown {
+    from {
+      transform: scale(0) translate(50%, 50%);
+    }
+    to {
+      transform: scale(1) translate(-50%, -50%);
+    }
+  }
+}
