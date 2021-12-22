@@ -3,12 +3,12 @@ import { getLinkToJSON } from './getImages';
 import { CARDS } from './variables';
 
 export async function createCards() {
-  const data = await getLinkToJSON();
-  let previewElement;
-  isPicture ? (previewElement = -1) : (previewElement = +11);
+  const arrayChunksDataImages = await getLinkToJSON();
+  const MAX_VALUE_ROUNDS = 12;
+  let previewElement = isPicture ? -1 : 11;
 
-  for (let i = 1; i <= 12; i++) {
-    let li = document.createElement('li');
+  for (let i = 1; i <= MAX_VALUE_ROUNDS; i++) {
+    const li = document.createElement('li');
     li.classList.add('cart', 'category__cart');
 
     li.innerHTML = `
@@ -17,10 +17,10 @@ export async function createCards() {
         <figure>
           <picture>
               <source srcset="https://raw.githubusercontent.com/Diluks93/image-data/master/img/${
-                data[previewElement + i][0].imageNum + '.webp'
+                arrayChunksDataImages[previewElement + i][0].imageNum + '.webp'
               }">
               <img class="img img-category" src="https://raw.githubusercontent.com/Diluks93/image-data/master/img/${
-                data[previewElement + i][0].imageNum + '.jpg'
+                arrayChunksDataImages[previewElement + i][0].imageNum + '.jpg'
               }" alt="preview category">
           </picture>
           <figcaption class="category__descr">Play again</figcaption>

@@ -6,10 +6,10 @@ export function removeActive () {
   })
 };
 
-export function addActive (array, selector) {
-  if(array) {
-    array.forEach(element => {
-      element.addEventListener('click', () => {
+export function addActive (arrayBTNS, selector) {
+  if(arrayBTNS) {
+    arrayBTNS.forEach(btn => {
+      btn.addEventListener('click', () => {
         removeActive();
         selector.classList.add('active');
       })

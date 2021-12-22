@@ -1,12 +1,12 @@
 export const getLinkToJSON = async () => {
-  const url =
-    `https://raw.githubusercontent.com/Diluks93/image-data/master/images.json`,
-    res = await fetch(url),
-    data = await res.json();
+  const url = `https://raw.githubusercontent.com/Diluks93/image-data/master/images.json`;
+  const res = await fetch(url);
+  const imagesData = await res.json();
 
-  let array = [];
-  for( let i = 0; i <= data.length; i += 10)
-    array.push(data.slice(i, i + 10))
+  const arrayChunksDataImages = [];
+  const MAX_VALUE_CHUNK = 10;
+  for( let i = 0; i <= imagesData.length; i += MAX_VALUE_CHUNK)
+    arrayChunksDataImages.push(imagesData.slice(i, i + MAX_VALUE_CHUNK))
 
-  return array;
+  return arrayChunksDataImages;
 }

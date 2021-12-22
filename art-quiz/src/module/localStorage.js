@@ -1,31 +1,32 @@
-import { checkCheckbox } from './checkBox';
-import { CHECKBOX, DEFAULT, INPT_NUMBER, RANGE, SAVE } from './variables';
+import { showInputTime } from './checkBox';
+import { TIME_CHECKBOX, DEFAULT, INPUT_NUMBER as INPUT_NUMBER, RANGE, SAVE } from './variables';
 
 export function setLocalStorage() {
-  localStorage.setItem('box', CHECKBOX.checked);
+  localStorage.setItem('box', TIME_CHECKBOX.checked);
 
   localStorage.setItem('range', RANGE.value);
-  localStorage.setItem('number', INPT_NUMBER.getAttribute('value'));
+  localStorage.setItem('number', INPUT_NUMBER.getAttribute('value'));
 };
 
 export function getLocalStorage() {
-  let checked = JSON.parse(localStorage.getItem('box'));
-  CHECKBOX.checked = checked;
-  checkCheckbox()
+  const isCheckboxTimeActive = JSON.parse(localStorage.getItem('box'));
+  TIME_CHECKBOX.checked = isCheckboxTimeActive;
+  showInputTime()
 
-  let valueRange = JSON.parse(localStorage.getItem('range'));
+  const valueRange = JSON.parse(localStorage.getItem('range'));
   RANGE.value = valueRange;
 
-  let valueNumber = JSON.parse(localStorage.getItem('number'));
-  INPT_NUMBER.value = valueNumber;
+  const valueNumber = JSON.parse(localStorage.getItem('number'));
+  INPUT_NUMBER.value = valueNumber;
 };
 
 getLocalStorage();
 
 SAVE.addEventListener('click', setLocalStorage);
 DEFAULT.addEventListener('click', () => {
-  CHECKBOX.checked = false;
-  checkCheckbox();
-  RANGE.value = '20';
+  const DEFAULT_VALUE_VOLUME = '20';
+  TIME_CHECKBOX.checked = false;
+  showInputTime();
+  RANGE.value = DEFAULT_VALUE_VOLUME;
   setLocalStorage();
 });

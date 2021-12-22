@@ -7,14 +7,14 @@ window.addEventListener('hashchange', () => {
 });
 
 export function start() { setTimeout(() => {
-  let array = [H1, HEADER, FOOTER, QUIZ],
-    ELEMENT;
+  const arrayHtmlElements = [H1, HEADER, FOOTER, QUIZ];
+  let currentSection;
 
   if (localStorage.getItem('hash')) {
-    ELEMENT =
+    currentSection =
       document.querySelector(`.${localStorage.getItem('hash')}`);
   };
-
+  // todo calling function for each round
   switch(localStorage.getItem('hash')) {
     case ('categories'): createCards();
       break;
@@ -35,9 +35,13 @@ export function start() { setTimeout(() => {
 
   PRELOADER.classList.remove('active');
 
-  ELEMENT === undefined ? array.push(HOME_PAGE) : array.push(ELEMENT);
+  if(currentSection === undefined) {
+    arrayHtmlElements.push(HOME_PAGE);
+  } else {
+    arrayHtmlElements.push(currentSection);
+  } 
 
-  array.forEach((elem) => {
+  arrayHtmlElements.forEach((elem) => {
     if(elem) elem.classList.add('active');
   });
 }, 1000) };

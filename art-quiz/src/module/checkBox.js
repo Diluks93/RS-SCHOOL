@@ -1,12 +1,12 @@
 import { setLocalStorage } from './localStorage';
-import { CHECKBOX, NUMBER } from './variables';
+import { TIME_CHECKBOX, NUMBER } from './variables';
 
-export function checkCheckbox() {
-  if (CHECKBOX.checked) NUMBER.classList.add('active');
+export function showInputTime() {
+  if (TIME_CHECKBOX.checked) NUMBER.classList.add('active');
   else NUMBER.classList.remove('active');
 }
 
-CHECKBOX.addEventListener('click', () => {
+TIME_CHECKBOX.addEventListener('click', () => {
   setLocalStorage();
-  checkCheckbox();
+  showInputTime();
 });
