@@ -1,0 +1,64 @@
+.img {
+  width: 2em;
+  height: 2em;
+  &__descr {
+    transition: all 0.5s linear;
+    font-family: $Lobster;
+  }
+  &__card {
+    width: 8em;
+    height: 8em;
+    @media (max-width: 1024px) {
+      width: 6em;
+      height: 6em;
+    }
+  }
+  &__tree {
+    flex: 2;
+    background-color: lightgoldenrodyellow;
+    padding: 0.2em;
+  }
+  &__background,
+  &__tree {
+    width: 5.3em;
+    height: 5.3em;
+    border-radius: 1em;
+    transition: ease-in-out 0.5s all;
+    cursor: pointer;
+    box-shadow: 0.1em 0.1em 1px $hover-color;
+    @media (max-width: 1540px) {
+      width: 4.2em;
+      height: 4.2em;
+    }
+    &:hover,
+    &.active {
+      transform: scale(1.1);
+      box-shadow: 0.2em 0.2em 1px $hover-color;
+    }
+  }
+  &__tree {
+    width: 9.1em;
+    height: 9.1em;
+    @media (max-width: 1540px) {
+      width: 7.3em;
+      height: 7.3em;
+    }
+  }
+  &__main-tree {
+    position: absolute;
+    width: 50%;
+    height: 80%;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+  }
+  &__toy {
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

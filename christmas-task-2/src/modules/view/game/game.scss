@@ -1,0 +1,104 @@
+@import '../../../styles/variables.scss';
+
+.christmas-tree {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  flex-basis: 100%;
+}
+
+.settings,
+.result {
+  flex: 1;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  padding: 1em;
+  height: 100%;
+}
+
+.main-tree {
+  position: relative;
+  background-image: url(https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/bg/1.webp);
+  flex: 2;
+  height: 100%;
+  z-index: 1;
+}
+
+.choose-tree,
+.choose-background,
+.choose-garland {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: content;
+  .wrap__row {
+    justify-content: start;
+    row-gap: 0.5em;
+    column-gap: 0.5em;
+  }
+}
+
+.toy {
+  position: relative;
+  width: 4em;
+  height: 4em;
+  background: radial-gradient(118.88% 606.86% at 0% 0%, rgba(36, 197, 219, 0.15) 0%, rgba(36, 197, 219, 0) 100%);
+  backdrop-filter: blur(31px);
+  border-radius: 0.5em;
+  // @media (max-width: 1540px) {
+  //   width: 6.2em;
+  //   height: 6.2em;
+  // }
+}
+
+.toys {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  .wrap__row {
+    justify-content: space-between;
+    align-content: space-around;
+    height: 100%;
+    column-gap: 0.5em;
+    row-gap: 0.5em;
+  }
+}
+
+.quantity {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: $hover-color;
+  color: white;
+  font-family: $Lobster;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  width: 1.3em;
+  height: 1.3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.decorate-tree {
+  min-width: 6.7em;
+  min-height: 6.7em;
+  backdrop-filter: blur(31px);
+  background-color: lightgoldenrodyellow;
+  border-radius: 0.5em;
+}
+
+.decorate {
+  display: flex;
+  flex-direction: column;
+  .wrap.wrap__row {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    height: 140px;
+    width: 350px;
+    overflow-y: auto;
+    flex-wrap: nowrap;
+  }
+}

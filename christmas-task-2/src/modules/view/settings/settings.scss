@@ -1,21 +1,5 @@
 @import '../../../styles/variables.scss';
 
-.img {
-  width: 2em;
-  height: 2em;
-  &__descr {
-    transition: all 0.5s linear;
-    font-family: $Lobster;
-  }
-  &__card {
-    width: 8em;
-    height: 8em;
-    @media (max-width: 1024px) {
-      width: 6em;
-      height: 6em;
-    }
-  }
-}
 figure {
   &.wrapper.wrap__col {
     &.active {

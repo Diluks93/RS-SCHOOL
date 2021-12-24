@@ -19,7 +19,7 @@ const Buttons: {
   },
   {
     id: Pages.gamePage,
-    text: 'Game',
+    text: 'Christmas tree',
   }
 ]
 

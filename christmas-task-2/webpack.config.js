@@ -27,6 +27,10 @@ const config = {
       minify: true,
       inject: "body"
     }),
+    new HtmlWebpackPlugin({
+      filename: "game.html",
+      template: "./src/modules/view/game/game.html"
+    })
   ],
   module: {
     rules: [
