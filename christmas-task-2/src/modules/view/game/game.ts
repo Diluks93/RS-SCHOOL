@@ -15,6 +15,7 @@ export default class GamePage extends Page {
   QUANTITY_TREES = 6;
   QUANTITY_BACKGROUNDS = 10;
   QUANTITY_TEMPLATES = 5;
+  QUANTITY_LIGHTS = 60;
   isPlay = false;
   audio = new Audio('https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/audio/audio.mp3')
 
@@ -50,6 +51,8 @@ export default class GamePage extends Page {
     this.showMoveSnowflake(main);
     this.addMusic(main);
     this.buildSectionMainTree(main);
+    this.showGarland(main);
+    this.changeColorGarland(main);
     
     return main;
   }
@@ -198,10 +201,240 @@ export default class GamePage extends Page {
   buildSectionMainTree(element: HTMLElement) {
     const mainTree = element.querySelector('.main-tree') as HTMLElement;
     const img = document.createElement('img');
+
     img.className = 'img img__main-tree';
     img.alt = 'christmas-tree';
     img.src = 'https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/tree/1.webp';
     mainTree.append(img);
+  }
+
+  showGarland(element: HTMLElement) {
+    const checkboxGarland: HTMLInputElement = element.querySelector('.checkbox') as HTMLInputElement;
+    const mainTree = element.querySelector('.main-tree') as HTMLElement;
+    const ul = this.createGarland();
+    checkboxGarland.addEventListener('click', () => {
+      if(checkboxGarland.checked) mainTree.append(ul);
+      else ul.remove()
+    })
+
+  }
+
+  createGarland(){
+    const ul = document.createElement('ul');
+    ul.className = 'lights';
+
+    for(let i = 0; i < this.QUANTITY_LIGHTS; i++) {
+      const li = document.createElement('li');
+      let top, left = 0
+      switch(i) {
+        case(0): top = 3; left = 55;
+          break;
+
+        case(1): top = 10; left = 42;
+          break;
+        case(2): top = 12; left = 48.5;
+          break;
+        case(3): top = 10; left = 55;
+          break;
+
+        case(4): top = 18; left = 38;
+          break;
+        case(5): top = 20; left = 45;
+          break;
+        case(6): top = 20; left = 52;
+          break;
+        case(7): top = 18; left = 58;
+          break;
+
+        case(8): top = 26; left = 34;
+          break;
+        case(9): top = 28; left = 41;
+          break;
+        case(10): top = 30; left = 49;
+          break;
+        case(11): top = 28; left = 57;
+          break;
+        case(12): top = 26; left = 63;
+          break;
+
+        case(13): top = 32; left = 33;
+          break;
+        case(14): top = 36; left = 40;
+          break;
+        case(15): top = 38; left = 47;
+          break;
+        case(16): top = 38; left = 54;
+          break;
+        case(17): top = 36; left = 60;
+          break;
+        case(18): top = 32; left = 67;
+          break;
+
+        case(19): top = 40; left = 29;
+          break;
+        case(20): top = 44; left = 37;
+          break;
+        case(21): top = 47; left = 45;
+          break;
+        case(22): top = 47; left = 55;
+          break;
+        case(23): top = 44; left = 63;
+          break;
+        case(24): top = 40; left = 71;
+          break;
+
+        case(25): top = 47; left = 23;
+          break;
+        case(26): top = 51; left = 32;
+          break;
+        case(27): top = 55; left = 41;
+          break;
+        case(28): top = 57; left = 50;
+          break;
+        case(29): top = 55; left = 59;
+          break;
+        case(30): top = 51; left = 68;
+          break;
+        case(31): top = 47; left = 77;
+          break;
+
+        case(32): top = 55; left = 19;
+          break; 
+        case(33): top = 59; left = 28;
+          break; 
+        case(34): top = 63; left = 37;
+          break; 
+        case(35): top = 65; left = 46;
+          break; 
+        case(36): top = 65; left = 55;
+          break; 
+        case(37): top = 63; left = 64;
+          break; 
+        case(38): top = 59; left = 73;
+          break; 
+        case(39): top = 55; left = 82;
+          break; 
+
+        case(40): top = 63; left = 10;
+          break; 
+        case(41): top = 67; left = 19;
+          break; 
+        case(42): top = 71; left = 28;
+          break; 
+        case(43): top = 73; left = 37;
+          break; 
+        case(44): top = 75; left = 46;
+          break; 
+        case(45): top = 75; left = 55;
+          break; 
+        case(46): top = 73; left = 64;
+          break; 
+        case(47): top = 71; left = 73;
+          break; 
+        case(48): top = 67; left = 82;
+          break; 
+        case(49): top = 63; left = 91;
+          break;
+
+        case(50): top = 75; left = 9;
+          break; 
+        case(51): top = 79; left = 18;
+          break; 
+        case(52): top = 83; left = 27;
+          break; 
+        case(53): top = 87; left = 36;
+          break; 
+        case(54): top = 89; left = 45;
+          break; 
+        case(55): top = 89; left = 54;
+          break; 
+        case(56): top = 87; left = 65;
+          break; 
+        case(57): top = 83; left = 74;
+          break; 
+        case(58): top = 79; left = 83;
+          break; 
+        case(59): top = 75; left = 91;
+          break;         
+      }
+      li.style.top = `${top}%`;
+      li.style.left = `${left}%`;
+      ul.append(li);
+    }
+
+    return ul;
+  }
+
+  changeColorGarland(element: HTMLElement) {
+    const radioColors: NodeListOf<HTMLInputElement> = element.querySelectorAll('.radio') as NodeListOf<HTMLInputElement>;
+    const style = document.createElement('style');
+    radioColors.forEach(radio => {
+      radio.addEventListener('click', () => {
+        switch(radio.dataset.color){
+          case('much'): style.innerText = `*{
+            --green: rgba(0,247,165,1);
+            --dark-green: rgba(0,247,165,0.2);
+            --light-green: rgba(0,247,165,0.4);
+            --blue: rgba(0,255,255,1);
+            --dark-blue: rgba(0,255,255,0.5);
+            --light-blue: rgba(0,255,255,0.4);
+            --red: rgba(247,0,148,1);
+            --dark-red: rgba(247,0,148,0.2);
+            --light-red: rgba(247,0,148,0.4);
+          }`;
+          break;
+          case('yellow'): style.innerText = `*{
+            --green: rgba(202,247,0,1);
+            --dark-green: rgba(202,247,0,0.2);
+            --light-green: rgba(202,247,0,0.4);
+            --blue: rgba(202,247,0,1);
+            --dark-blue: rgba(202,247,0,0.2);
+            --light-blue: rgba(202,247,0,0.4);
+            --red: rgba(202,247,0,1);
+            --dark-red: rgba(202,247,0,0.2);
+            --light-red: rgba(202,247,0,0.4);
+          }`;
+          break;
+          case('blue'): style.innerText = `*{
+            --green: rgba(0,255,255,1);
+            --dark-green: rgba(0,255,255,0.5);
+            --light-green: rgba(0,255,255,0.4);
+            --blue: rgba(0,255,255,1);
+            --dark-blue: rgba(0,255,255,0.5);
+            --light-blue: rgba(0,255,255,0.4);
+            --red: rgba(0,255,255,1);
+            --dark-red: rgba(0,255,255,0.5);
+            --light-red: rgba(0,255,255,0.4);
+          }`;
+          break;
+          case('red'): style.innerText = `*{
+            --green: rgba(247,0,148,1);
+            --dark-green: rgba(247,0,148,0.2);
+            --light-green: rgba(247,0,148,0.4);
+            --blue: rgba(247,0,148,1);
+            --dark-blue: rgba(247,0,148,0.2);
+            --light-blue: rgba(247,0,148,0.4);
+            --red: rgba(247,0,148,1);
+            --dark-red: rgba(247,0,148,0.2);
+            --light-red: rgba(247,0,148,0.4);
+          }`;
+          break;
+          case('green'): style.innerText = `*{
+            --green: rgba(0,247,165,1);
+            --dark-green: rgba(0,247,165,0.2);
+            --light-green: rgba(0,247,165,0.4);
+            --blue: rgba(0,247,165,1);
+            --dark-blue: rgba(0,247,165,0.2);
+            --light-blue: rgba(0,247,165,0.4);
+            --red: rgba(0,247,165,1);
+            --dark-red: rgba(0,247,165,0.2);
+            --light-red: rgba(0,247,165,0.4);
+          }`;
+          break;
+        }
+        document.head.append(style);
+      })
+    })
   }
 
   changeChristmasTree(element: HTMLElement) {
@@ -239,6 +472,7 @@ export default class GamePage extends Page {
     for(let i = 1; i <= this.QUANTITY_TEMPLATES; i++){
       const divRadio = document.createElement('div');
       divRadio.className = 'radio';
+      divRadio.dataset.color = `${arrayNameColor[i - 1]}`
       divRadio.innerHTML = `
         <label class="custom-radio">
           <input type="radio" name="color" id="color-${arrayNameColor[i - 1]}">
