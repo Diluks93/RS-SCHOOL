@@ -34,15 +34,17 @@
 
 #canvas {
   position:absolute;
-  top:0;
-  left:0;
-  animation: showUp 4s linear;
-  @keyframes showUp {
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: showSnow 4s linear;
+  @keyframes showSnow {
     from {
-      transform: translateY(-100%);
+      transform: translateY(-100%) translateX(-50%);
+      left: 50%;
     }
     to {
-      transform: translateY(0);
+      transform: translateY(0) translateX(-50%);
     }
   }
 }

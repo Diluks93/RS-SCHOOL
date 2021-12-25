@@ -15,7 +15,7 @@
   }
   &__tree {
     flex: 2;
-    background-color: lightgoldenrodyellow;
+    background-color: rgba(255, 255, 255, .5);
     padding: 0.2em;
   }
   &__background,
@@ -52,6 +52,17 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 5;
+    animation: showChristmasTree ease-in-out 1s;
+    @keyframes showChristmasTree {
+      from {
+        transform: scale(0);
+        bottom: 30%;
+        left: -50%;
+      }
+      to {
+        transform: scale(1) translateX(-50%);
+      }
+    }
   }
   &__toy {
     position: absolute;

@@ -31,12 +31,6 @@ export const enum ClassNameWrap {
 
 export const enum TemplateArticle {
   componentSearch = `
-    <a href="" class="comp__search_link" id="sound">
-      <img class="img img__button" src="https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/svg/audio.svg" alt="mute button">
-    </a>
-    <a href="" class="comp__search_link" id="snowflake">
-      <img class="img img__button" src="https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/svg/snow.svg" alt="show snow button">
-    </a>
     <div class="search">
       <form>
         <input type="search" placeholder="Search by toy name..." autocomplete="off" id="search" autofocus>

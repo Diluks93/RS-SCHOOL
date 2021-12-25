@@ -5,9 +5,9 @@ WIDTH: number;
 HEIGHT: number;
 MAX_SNOWFLAKES: number;
 
-  constructor() {
-    this.WIDTH = document.documentElement.scrollWidth;
-    this.HEIGHT = document.documentElement.scrollHeight - 10;
+  constructor(element: HTMLElement) {
+    this.WIDTH = (element.children[1] as HTMLElement).offsetWidth as number;
+    this.HEIGHT = (element.children[1] as HTMLElement).offsetHeight as number;
     this.MAX_SNOWFLAKES = 200;
   }
 

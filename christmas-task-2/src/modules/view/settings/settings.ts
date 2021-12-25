@@ -5,7 +5,6 @@ import '../../../../node_modules/nouislider/dist/nouislider.css'
 import './settings.scss';
 import noUiSlider from '../../../../node_modules/nouislider/dist/nouislider.mjs';
 import { ParamNoUiSlider } from '../../models/interfaces';
-import { Snowflake } from '../components/snowflake/snowflake';
 import Modal from '../components/modal-window/modal';
 
 declare namespace noUiSlider {
@@ -22,8 +21,6 @@ declare namespace noUiSlider {
 
 export default class SettingsPage extends Page {
   private card: Card;
-  private snowflake: Snowflake;
-  private isSnowMove = true;
   private modal: Modal;
   
   static textObject = {
@@ -49,7 +46,6 @@ export default class SettingsPage extends Page {
   constructor(id: string) {
     super(id);
     this.card = new Card('main', 'main');
-    this.snowflake = new Snowflake();
     this.modal = new Modal('modal', 'modal');
   }
 
@@ -90,7 +86,6 @@ export default class SettingsPage extends Page {
       );
     this.container.append(article);
     this.sortedCards(article)
-    this.showMoveSnowflake(componentSearch);
     this.settingFilter(article);
     this.liveSearch(article);
     this.clearSettings(article);
@@ -313,23 +308,6 @@ export default class SettingsPage extends Page {
     const sort: HTMLInputElement = article.querySelector('#sort') as HTMLInputElement;
     sort?.addEventListener('change', () => {
       this.card.sortCards(sort.value);
-    })
-  }
-
-  private showMoveSnowflake(component: HTMLElement): void {
-    component.querySelector('#snowflake')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      const canvas = document.createElement('canvas');
-      canvas.id = 'canvas';
-
-      if(this.isSnowMove) {
-        component.parentElement?.parentElement?.append(canvas);
-        this.snowflake.showSnowflake();
-        this.isSnowMove = false;
-      } else {
-        component.parentElement?.parentElement?.lastChild?.remove();
-        this.isSnowMove = true;
-      }
     })
   }
 }
