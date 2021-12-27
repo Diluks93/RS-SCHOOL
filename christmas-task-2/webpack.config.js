@@ -26,11 +26,6 @@ const config = {
       favicon: "./src/favicon.ico",
       minify: true,
       inject: "body"
-    }),
-    new HtmlWebpackPlugin({
-      filename: "game.html",
-      template: "./src/modules/view/game/game.html",
-      inject: "body"
     })
   ],
   module: {

@@ -24,6 +24,7 @@
   top: 16%;
   left: 49%;
   transform: translateX(-50%);
+  animation: showGarland 1s linear;
   li {
     position: absolute;
     animation-fill-mode: both; 
@@ -95,5 +96,13 @@
   50% { 
     background: var(--light-red);
     box-shadow: 0px calc($globe-height/6) calc($globe-width*2) $globe-spread var(--dark-red);
+  }
+}
+@keyframes showGarland {
+  from {
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
   }
 }

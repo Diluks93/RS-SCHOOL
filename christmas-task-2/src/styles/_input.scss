@@ -227,8 +227,8 @@ form {
   display: inline-flex;
   align-items: center;
   user-select: none;
-  width: 18px;
-  height: 18px;
+  width: 1.1em;
+  height: 1.1em;
   border-radius: 50%;
   cursor: pointer;
   &::before {
@@ -341,7 +341,7 @@ form {
 
 #button .checkbox:active + .knobs:before {
   width: 2.7em;
-  border-radius: 100px;
+  border-radius: 7em;
 }
 
 #button .checkbox:checked + .knobs:before {

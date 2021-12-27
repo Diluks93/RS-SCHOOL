@@ -224,8 +224,15 @@ export default class GamePage extends Page {
   async buildSectionResult(element: HTMLElement) {
     const resultComponent = element.querySelector('.result') as HTMLElement;
     const toys = await this.createComponentToys();
+    const buttonSafeTree = this.createButtonSafeTree();
+    const componentYouDecorate = this.createComponentYouDecorate();
 
     resultComponent.append(toys);
+    resultComponent.append(componentYouDecorate);
+    resultComponent.append(buttonSafeTree);
+
+    this.getPage(resultComponent);
+    this.setPage(resultComponent)
 
     return resultComponent;
   }
@@ -539,6 +546,7 @@ export default class GamePage extends Page {
     toys.append(wrap);
 
     this.dragAndDropToys(toys);
+
     return toys;
   }
 
@@ -626,5 +634,54 @@ export default class GamePage extends Page {
     componentTitle.innerText = text;
 
     return componentTitle;
+  }
+
+  createButtonSafeTree(){
+    const buttonSafeTree = document.createElement('a');
+    buttonSafeTree.className = 'btn btn__articles';
+    buttonSafeTree.innerText = 'Safe Tree';
+
+    return buttonSafeTree;
+  }
+
+  createComponentYouDecorate(){
+    const componentYouDecorate = this.createComponentWrapper('decorate');
+    const titleYouDecorate = this.createComponentTitle(GamePage.textObject.titleComponentDecorate, 'title__settings');
+    const wrap = this.createComponentWrapper('wrap wrap__row decorate-trees');
+    componentYouDecorate.append(titleYouDecorate);
+    componentYouDecorate.append(wrap);
+
+    return componentYouDecorate;
+  }
+
+  getPage(element: HTMLElement) {
+    const buttonSafeTree = element.querySelector('.btn__articles');
+    const componentYouDecorate = element.querySelector('.decorate-trees')
+    let counter = 0;
+    buttonSafeTree?.addEventListener('click', (e) => {
+      e.preventDefault();
+      counter++;
+      const previewTree = document.body.querySelector('.img__main-tree') as HTMLImageElement;
+      const backgroundTree = document.body.querySelector('.main-tree') as HTMLImageElement;
+      const sourceBackground = window.getComputedStyle(backgroundTree).getPropertyValue('background-image');
+      const buttonDecorateTree = this.createComponentWrapper('decorate-tree');
+      buttonDecorateTree.dataset.id = `${counter}`;
+      const previewImg = document.createElement('img');
+      const srcTree = previewTree.src;
+      previewImg.className = 'img img__decorate'
+      buttonDecorateTree.append(previewImg);
+      buttonDecorateTree.style.backgroundImage = sourceBackground;
+      previewImg.src = srcTree;
+      localStorage.setItem(`html${counter}`, JSON.stringify(document.body.innerHTML));
+      componentYouDecorate?.append(buttonDecorateTree);
+    })
+  }
+
+  setPage(element: HTMLElement){
+    const parentPages = element.querySelector('.decorate-trees');
+    parentPages?.addEventListener('click', (e) => {
+      const index = (e.target as HTMLImageElement).parentElement?.dataset.id;
+      document.body.innerHTML = `${JSON.parse(localStorage.getItem(`html${index}`) as string)}`
+    })
   }
 }
