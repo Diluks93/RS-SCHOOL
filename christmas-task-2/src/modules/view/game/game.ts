@@ -9,7 +9,7 @@ export default class GamePage extends Page {
   private loader: Loader;
   private isSnowMove = true;
   static textObject = {
-    titlePage: 'Happy New Year!!!',
+    titlePage: '❄️ New Year is Coming! ❄️',
     titleComponentChooseTree: 'Choose Christmas tree',
     titleComponentChooseBackground: 'Choose background',
     titleComponentChooseGarland: 'Choose garland\'s lighting',
@@ -32,9 +32,12 @@ export default class GamePage extends Page {
   render() {
     const title = this.createHeaderTitle(GamePage.textObject.titlePage);
     const main = this.createMainComponent();
+    const timer = this.createTimer()
     this.container.append(title);
     this.container.append(main);
-    
+    main.append(timer);
+    this.showBeforeNewYear(main);
+
     return this.container;
   }
 
@@ -683,5 +686,52 @@ export default class GamePage extends Page {
       const index = (e.target as HTMLImageElement).parentElement?.dataset.id;
       document.body.innerHTML = `${JSON.parse(localStorage.getItem(`html${index}`) as string)}`
     })
+  }
+
+  createTimer(){
+    const timerComponent = this.createComponentWrapper('countdown-container');
+    timerComponent.innerHTML = `
+      <div class="time">
+        <h4 id="days">00</h1>
+        <small>days</small>
+      </div>
+      <div class="time">
+        <h4 id="hours">00</h1>
+        <small>hours</small>
+      </div>
+      <div class="time">
+        <h4 id="minutes">00</h1>
+        <small>minutes</small>
+      </div>
+      <div class="time">
+        <h4 id="seconds">00</h1>
+        <small>seconds</small>
+      </div>
+    `
+
+    return timerComponent;
+  }
+
+  showBeforeNewYear(element: HTMLElement){
+    const endTime = new Date('December 31 2021 23:59:59');
+    const daysEl = element.querySelector('#days') as HTMLElement;
+    const hoursEl = element.querySelector('#hours') as HTMLElement;
+    const minutesEl = element.querySelector('#minutes') as HTMLElement;
+    const secondsEl = element.querySelector('#seconds') as HTMLElement;
+
+    const updateCountdown = () => {
+      const startTime = new Date();
+      const diff = +endTime - +startTime;
+      const days = Math.floor(diff / 1000 / 60 / 60 / 24);
+      const hours = Math.floor(diff / 1000 / 60 / 60) % 24;
+      const minutes = Math.floor(diff / 1000 / 60) % 60;
+      const seconds = Math.floor(diff / 1000) % 60;
+      daysEl.innerText = `${days}`;
+      hoursEl.innerText = `${hours}`;
+      minutesEl.innerText = `${minutes}`;
+      secondsEl.innerText = `${seconds}`;
+    }
+
+    setInterval(updateCountdown, 1000);
   }
 }
