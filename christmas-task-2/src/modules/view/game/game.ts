@@ -236,7 +236,8 @@ export default class GamePage extends Page {
 
     this.getPage(resultComponent);
     this.setPage(resultComponent)
-
+    //this.dragAndDropToys(toys);
+    
     return resultComponent;
   }
 
