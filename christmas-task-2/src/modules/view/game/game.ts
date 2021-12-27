@@ -218,7 +218,7 @@ export default class GamePage extends Page {
     img.useMap = '#tree';
     mainTree.innerHTML = `
     <map name = 'tree'>
-      <area coords = '251,0,211,55,193,82,157,132,107,220,73,353,19,439,44,488,3,550,38,607,70,636,119,685,197,705,267,691,314,700,354,689,432,665,459,623,468,592,490,551,452,451,426,351,395,223,355,140,307,66' shape = 'poly'>
+      <area coords = '250,15,218,57,200,83,171,135,119,226,126,270,120,323,82,357,33,450,53,486,15,558,44,599,71,631,119,674,189,691,262,694,308,693,361,684,435,660,459,622,481,542,447,454,420,357,391,226,349,150,305,73' shape = 'poly'>
     </map>
     `
     mainTree.prepend(img);
@@ -235,8 +235,9 @@ export default class GamePage extends Page {
     resultComponent.append(buttonSafeTree);
 
     this.getPage(resultComponent);
-    this.setPage(resultComponent)
-    //this.dragAndDropToys(toys);
+    this.setPage(resultComponent);
+
+    this.dragAndDropToys(toys);
     
     return resultComponent;
   }
@@ -506,13 +507,13 @@ export default class GamePage extends Page {
     const toys = this.createComponentWrapper('toys__component');
     const tittleComponentToys = this.createComponentTitle(GamePage.textObject.titleComponentToys, 'title__settings');
     const wrap = this.createComponentWrapper('wrap wrap__row toys');
-    const dataImages: DataToys[] = this.getDataImage();
+    const dataImages: DataToys[] = await this.getDataImage();
     if(dataImages.length != 0) {
       for(let i = 0; i < dataImages.length; i++){
         const toy = this.createComponentWrapper('toy');
         const quantityToy = this.createComponentWrapper('quantity');
         quantityToy.innerText = `${dataImages[i].count}`;
-        for(let j = 0;  j <= dataImages[i].count; j++){
+        for(let j = 0;  j < dataImages[i].count; j++){
           const imgToy: HTMLImageElement = document.createElement('img');
           imgToy.src = `https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/toys/${i + 1}.webp`;
           imgToy.className = 'img img__toy';
@@ -548,8 +549,6 @@ export default class GamePage extends Page {
 
     toys.append(tittleComponentToys);
     toys.append(wrap);
-
-    this.dragAndDropToys(toys);
 
     return toys;
   }
@@ -620,7 +619,7 @@ export default class GamePage extends Page {
       e.preventDefault();
     })
     
-    drop.addEventListener('drop', (e)=> {
+    drop.addEventListener('drop', (e) => {
       e.preventDefault()
       toys.addEventListener('dragend', (e) => {
         dragging = false;
