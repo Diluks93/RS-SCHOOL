@@ -55,7 +55,7 @@
 }
 
 #current-page {
-  height: 87%;
+  height: calc(100vh - 96px);
   display: flex;
   justify-content: center;
   // animation: showPage 1.9s ease-in-out;

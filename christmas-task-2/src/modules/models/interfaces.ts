@@ -1,12 +1,12 @@
 export interface DataToys {
-  num: number;
-  name: string;
-  count: number;
-  year: number;
-  shape: string;
-  color: string;
-  size: string;
-  favorite: boolean;
+  readonly num: number;
+  readonly name: string;
+  readonly count: number;
+  readonly year: number;
+  readonly shape: string;
+  readonly color: string;
+  readonly size: string;
+  readonly favorite: boolean;
   unique?: boolean;
 }
 

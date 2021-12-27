@@ -35,21 +35,21 @@
     width: $globe-width;
     height: $globe-height;
     border-radius: 50%;
-    margin: $globe-spacing/2;
+    margin: calc($globe-spacing/2);
     display: inline-block;
     background: var(--green);
-    box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread var(--green);
+    box-shadow: 0px calc($globe-height/6) calc($globe-width*2) $globe-spread var(--green);
     animation-name: flash-1;
     animation-duration: 2s;
     &:nth-child(2n+1) {
       background: var(--blue);
-      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread var(--dark-blue);
+      box-shadow: 0px calc($globe-height/6) calc($globe-width*2) $globe-spread var(--dark-blue);
       animation-name: flash-2;
       animation-duration: 0.4s;
     }
     &:nth-child(4n+2) {
       background: var(--red);
-      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread var(--red);
+      box-shadow: 0px calc($globe-height/6) calc($globe-width*2) $globe-spread var(--red);
       animation-name: flash-3;
       animation-duration: 1.1s;
     }
@@ -68,32 +68,32 @@
   0%, 
   100% { 
     background: var(--green);
-    box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread var(--green);
+    box-shadow: 0px calc($globe-height/6) calc($globe-width*2) $globe-spread var(--green);
   } 
   50% {
     background: var(--light-green);
-    box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread var(--dark-green);
+    box-shadow: 0px calc($globe-height/6) calc($globe-width*2) $globe-spread var(--dark-green);
   }
 }
 @keyframes flash-2 { 
   0%, 
   100% { 
     background: var(--blue);
-    box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread var(--blue);
+    box-shadow: 0px calc($globe-height/6) calc($globe-width*2) $globe-spread var(--blue);
   } 
   50% { 
     background: var(--light-blue);
-    box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread var(--dark-blue);
+    box-shadow: 0px calc($globe-height/6) calc($globe-width*2) $globe-spread var(--dark-blue);
   }
 }
 @keyframes flash-3 { 
   0%, 
   100% { 
     background: var(--red);
-    box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread var(--red);
+    box-shadow: 0px calc($globe-height/6) calc($globe-width*2) $globe-spread var(--red);
   } 
   50% { 
     background: var(--light-red);
-    box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread var(--dark-red);
+    box-shadow: 0px calc($globe-height/6) calc($globe-width*2) $globe-spread var(--dark-red);
   }
 }

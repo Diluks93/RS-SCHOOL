@@ -1,8 +1,12 @@
+import Loader from '../../loader/loader';
+import { DataToys } from '../../models/interfaces';
 import Page from '../components/abstract/page';
 import { Snowflake } from '../components/snowflake/snowflake';
 import './game.scss'
 
 export default class GamePage extends Page {
+  private static url = 'https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/data.json';
+  private loader: Loader;
   private isSnowMove = true;
   static textObject = {
     titlePage: 'Happy New Year!!!',
@@ -16,18 +20,20 @@ export default class GamePage extends Page {
   QUANTITY_BACKGROUNDS = 10;
   QUANTITY_TEMPLATES = 5;
   QUANTITY_LIGHTS = 60;
+  MAX_QUANTITY_TOYS = 20;
   isPlay = false;
   audio = new Audio('https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/audio/audio.mp3')
 
   constructor(id: string) {
     super(id);
+    this.loader = new Loader(GamePage.url);
   }
 
   render() {
     const title = this.createHeaderTitle(GamePage.textObject.titlePage);
     const main = this.createMainComponent();
     this.container.append(title);
-    this.container.append(main);   
+    this.container.append(main);
     
     return this.container;
   }
@@ -53,6 +59,7 @@ export default class GamePage extends Page {
     this.buildSectionMainTree(main);
     this.showGarland(main);
     this.changeColorGarland(main);
+    this.buildSectionResult(main);
     
     return main;
   }
@@ -205,7 +212,22 @@ export default class GamePage extends Page {
     img.className = 'img img__main-tree';
     img.alt = 'christmas-tree';
     img.src = 'https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/tree/1.webp';
-    mainTree.append(img);
+    img.useMap = '#tree';
+    mainTree.innerHTML = `
+    <map name = 'tree'>
+      <area coords = '251,0,211,55,193,82,157,132,107,220,73,353,19,439,44,488,3,550,38,607,70,636,119,685,197,705,267,691,314,700,354,689,432,665,459,623,468,592,490,551,452,451,426,351,395,223,355,140,307,66' shape = 'poly'>
+    </map>
+    `
+    mainTree.prepend(img);
+  }
+
+  async buildSectionResult(element: HTMLElement) {
+    const resultComponent = element.querySelector('.result') as HTMLElement;
+    const toys = await this.createComponentToys();
+
+    resultComponent.append(toys);
+
+    return resultComponent;
   }
 
   showGarland(element: HTMLElement) {
@@ -450,17 +472,74 @@ export default class GamePage extends Page {
       img.className = 'img img__main-tree';
       img.alt = 'christmas-tree';
       img.src = chooseImg;
+      img.useMap = '#tree';
       if (mainTree.childElementCount === 0) {
-        mainTree.append(img);
+        mainTree.prepend(img);
       } else {
-        mainTree.lastChild?.remove();
-        mainTree.append(img);
+        mainTree.firstChild?.remove();
+        mainTree.prepend(img);
       }
     })
   }
 
   getImg(element: HTMLImageElement) {
     return element.src;
+  }
+
+  getDataImage(){
+    const dataImages: DataToys[] = JSON.parse(localStorage.getItem('dataImage') as string);
+    return dataImages || [];
+  }
+
+  async createComponentToys(){
+    const toys = this.createComponentWrapper('toys__component');
+    const tittleComponentToys = this.createComponentTitle(GamePage.textObject.titleComponentToys, 'title__settings');
+    const wrap = this.createComponentWrapper('wrap wrap__row toys');
+    const dataImages: DataToys[] = this.getDataImage();
+    if(dataImages.length != 0) {
+      for(let i = 0; i < dataImages.length; i++){
+        const toy = this.createComponentWrapper('toy');
+        const quantityToy = this.createComponentWrapper('quantity');
+        quantityToy.innerText = `${dataImages[i].count}`;
+        for(let j = 0;  j <= dataImages[i].count; j++){
+          const imgToy: HTMLImageElement = document.createElement('img');
+          imgToy.src = `https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/toys/${i + 1}.webp`;
+          imgToy.className = 'img img__toy';
+          imgToy.alt = 'toy';
+          imgToy.draggable = true;
+          if(dataImages[i].unique){
+            toy.append(imgToy);
+          }
+        }
+        if(dataImages[i].unique){
+          toy.append(quantityToy);
+          wrap.append(toy);
+        } 
+      }
+    } else {
+      const srcData: Awaited<DataToys>[] = await this.loader.load();
+      for(let i = 0; i < this.MAX_QUANTITY_TOYS; i++){
+        const toy = this.createComponentWrapper('toy');
+        const quantityToy = this.createComponentWrapper('quantity');
+        quantityToy.innerText = `${srcData[i].count}`;
+        for(let j = 1; j <= srcData[i].count; j++){
+          const imgToy: HTMLImageElement = document.createElement('img');
+          imgToy.src = `https://raw.githubusercontent.com/Diluks93/stage1-tasks/christmas-task/assets/toys/${i + 1}.webp`;
+          imgToy.className = 'img img__toy';
+          imgToy.alt = 'toy';
+          imgToy.draggable = true;
+          toy.append(imgToy);
+        }
+        toy.append(quantityToy);
+        wrap.append(toy);
+      }
+    }
+
+    toys.append(tittleComponentToys);
+    toys.append(wrap);
+
+    this.dragAndDropToys(toys);
+    return toys;
   }
 
   createComponentChooseGarland() {
@@ -505,6 +584,40 @@ export default class GamePage extends Page {
     div.className = className;
 
     return div;
+  }
+
+  dragAndDropToys(element: HTMLElement) {
+    const toys: HTMLElement = element.querySelector('.toys') as HTMLElement;
+    const drop: HTMLElement = document.body.querySelector('map') as HTMLElement;
+    let dragging = false;
+    let startX = 0;
+    let startY = 0;
+    let currentQuantity = 0;
+
+    toys?.addEventListener('dragstart', (e) =>  {
+      dragging = true;
+      const style = window.getComputedStyle(e.target as HTMLElement);
+      const translateX = parseInt(style.getPropertyValue('--x'));
+      const translateY = parseInt(style.getPropertyValue('--y'));
+      startX = (e as MouseEvent).pageX - translateX;
+      startY = (e as MouseEvent).pageY - translateY;
+      currentQuantity = +((e.target as HTMLElement)?.parentElement?.lastChild as HTMLElement)?.innerText;
+    })
+    
+    drop.addEventListener('dragover', (e) => {
+      e.preventDefault();
+    })
+    
+    drop.addEventListener('drop', (e)=> {
+      e.preventDefault()
+      toys.addEventListener('dragend', (e) => {
+        dragging = false;
+        (e.target as HTMLElement).style.setProperty('--x', `${(e as MouseEvent).pageX - startX}px`);
+        (e.target as HTMLElement).style.setProperty('--y', `${(e as MouseEvent).pageY - startY}px`);
+        const changeQuantity = currentQuantity ? currentQuantity - 1 : 0;
+        ((e.target as HTMLElement).parentElement?.lastChild as HTMLElement).innerText = `${changeQuantity}`;
+      })
+    })
   }
 
   protected createComponentTitle(text: string, className: string): HTMLHeadingElement {

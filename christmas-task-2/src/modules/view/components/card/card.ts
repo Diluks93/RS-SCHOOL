@@ -307,6 +307,7 @@ export class Card {
           this.showUnique(counter);
           card.classList.remove('active');
         }
+        localStorage.setItem('dataImage', JSON.stringify(srcData));
       })
     })
   }
