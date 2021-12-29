@@ -615,9 +615,8 @@ export default class GamePage extends Page {
       currentQuantity = +((e.target as HTMLElement)?.parentElement?.lastChild as HTMLElement)?.innerText;
     })
     
-    toys.addEventListener('dragover', (e) => {
+    drop.addEventListener('dragover', (e) => {
       e.preventDefault();
-
     })
     
     drop.addEventListener('drop', (e) => {
