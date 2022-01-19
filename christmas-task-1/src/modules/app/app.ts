@@ -32,7 +32,7 @@ export default class App {
     }
 
     if(page) {
-      const pageHTML: Awaited<HTMLElement> = await page.render();
+      const pageHTML: HTMLElement = await page.render();
       pageHTML.id = App.defaultPageId;
       App.container.append(pageHTML);
     }

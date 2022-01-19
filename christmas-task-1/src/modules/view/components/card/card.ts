@@ -282,7 +282,7 @@ export class Card {
 
   private async addUniqueElement() {  
     const cards = this.getCards(),
-      srcData: Awaited<DataToys>[] = await this.loader.load();
+      srcData: DataToys[] = await this.loader.load();
     let counter = this.MIN_LENGTH_UNIQUE;
 
     cards.forEach((card) => {
